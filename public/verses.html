@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>KothaCraft AI Studio — Verse Reels</title>
     <link rel="stylesheet" href="/ui.css" />
+    <script>
+      if (window.self !== window.top) {
+        document.documentElement.classList.add('embedded');
+        window.addEventListener('DOMContentLoaded', () => document.body.classList.add('embedded'));
+      }
+    </script>
     <style>
+
       main { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; gap: 18px; }
       section { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
       .verse { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; display: grid; gap: 8px; margin-bottom: 10px; }

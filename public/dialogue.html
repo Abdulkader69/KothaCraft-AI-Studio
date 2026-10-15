@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>KothaCraft AI Studio — Dialogue Studio</title>
     <link rel="stylesheet" href="/ui.css" />
+    <script>
+      if (window.self !== window.top) {
+        document.documentElement.classList.add('embedded');
+        window.addEventListener('DOMContentLoaded', () => document.body.classList.add('embedded'));
+      }
+    </script>
     <style>
+
       main {
         max-width: 1400px;
         margin: 0 auto;

@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>KothaCraft AI Studio — AI Video Generation</title>
     <link rel="stylesheet" href="/ui.css" />
+    <script>
+      if (window.self !== window.top) {
+        document.documentElement.classList.add('embedded');
+        window.addEventListener('DOMContentLoaded', () => document.body.classList.add('embedded'));
+      }
+    </script>
     <style>
+
       .video-studio-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.25fr) minmax(380px, 1fr);
@@ -741,10 +748,21 @@
           });
           const d = await res.json();
           if (d.ok) {
-            showToast(`Added to Scene ${sceneIndex + 1}! Redirecting to Story Reels...`);
+            showToast(`Added to Scene ${sceneIndex + 1}! Switching to Story Reels...`);
             setTimeout(() => {
-              window.location.href = '/';
-            }, 1200);
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage(
+                  {
+                    type: 'switch-tab',
+                    tab: 'reels',
+                    message: `Added to Scene ${sceneIndex + 1} in Story Reels!`,
+                  },
+                  '*',
+                );
+              } else {
+                window.location.href = '/#reels';
+              }
+            }, 600);
           } else {
             alert(d.error || 'Failed to assign to scene');
           }
@@ -767,10 +785,21 @@
           });
           const d = await res.json();
           if (d.ok) {
-            showToast(`Added to Dialogue Scene ${sceneIndex + 1}! Redirecting...`);
+            showToast(`Added to Dialogue Scene ${sceneIndex + 1}! Switching...`);
             setTimeout(() => {
-              window.location.href = '/dialogue';
-            }, 1200);
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage(
+                  {
+                    type: 'switch-tab',
+                    tab: 'dialogue',
+                    message: `Added to Scene ${sceneIndex + 1} in Dialogue Studio!`,
+                  },
+                  '*',
+                );
+              } else {
+                window.location.href = '/#dialogue';
+              }
+            }, 600);
           } else {
             alert(d.error || 'Failed to assign');
           }
@@ -778,6 +807,7 @@
           alert(err.message);
         }
       });
+
 
       // Gallery Loader
       async function loadGallery() {
@@ -832,3 +862,4 @@
     </script>
   </body>
 </html>
+

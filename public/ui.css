@@ -18,6 +18,13 @@
 [hidden] {
   display: none !important;
 }
+html.embedded header, body.embedded header {
+  display: none !important;
+}
+html.embedded main, body.embedded main {
+  padding-top: 10px !important;
+}
+
 body {
   margin: 0;
   background: var(--bg);

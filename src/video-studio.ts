@@ -229,3 +229,4 @@ export function buildLtx2Args(
 
   return { args, frames, width, height, tempImage };
 }
+

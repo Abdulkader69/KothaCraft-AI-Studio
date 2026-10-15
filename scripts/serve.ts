@@ -1389,8 +1389,11 @@ const server = http.createServer(async (req, res) => {
     const page: Record<string, string> = {
       '/': 'index.html',
       '/index.html': 'index.html',
-      '/stock': 'index.html',
+      '/reels': 'reels.html',
+      '/reels.html': 'reels.html',
+      '/stock': 'reels.html',
       '/cards': 'cards.html',
+
       '/cards.html': 'cards.html',
       '/verses': 'verses.html',
       '/verses.html': 'verses.html',
