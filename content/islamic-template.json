@@ -1,0 +1,72 @@
+{
+  "title": "তৃষ্ণার্ত কুকুর ও ক্ষমা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, warm desert light, muted earth tones, sand and stone, shallow depth of field, atmospheric dust, no people, no figures",
+    "negative": "people, person, man, woman, child, face, portrait, human figure, hands, crowd, silhouette of a person, statue, idol, animal, dog, text, letters, calligraphy, watermark, logo, signature, low quality, blurry"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "endless desert path at midday, heat haze over sand dunes, harsh white sun, empty horizon",
+      "narration": "এক ব্যক্তি দীর্ঘ পথ চলছিল। প্রচণ্ড পিপাসায় তার গলা শুকিয়ে কাঠ হয়ে গেল।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ২৩৬৩; সহীহ মুসলিম ২২৪৪"
+    },
+    {
+      "id": "02",
+      "prompt": "ancient stone well in the desert, worn rope, dark water far below, weathered stones",
+      "narration": "হঠাৎ সে একটি কূপ দেখতে পেল। নিচে নেমে পানি পান করে সে তৃষ্ণা মেটাল।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ২৩৬৩; সহীহ মুসলিম ২২৪৪"
+    },
+    {
+      "id": "03",
+      "prompt": "cracked dry earth beside a well, patch of damp mud, scattered pebbles, low afternoon light",
+      "narration": "উপরে উঠে সে দেখল, তৃষ্ণায় কাতর হয়ে একটি কুকুর ভেজা মাটি চাটছে।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ২৩৬৩; সহীহ মুসলিম ২২৪৪"
+    },
+    {
+      "id": "04",
+      "prompt": "water pouring from a leather vessel onto dry sand, droplets catching golden light, close up",
+      "narration": "সে ভাবল, এই প্রাণীটিরও আমার মতোই কষ্ট হচ্ছে। আবার কূপে নেমে সে নিজের মোজা ভরে পানি এনে তাকে পান করাল।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ২৩৬৩; সহীহ মুসলিম ২২৪৪"
+    },
+    {
+      "id": "05",
+      "prompt": "soft dawn light over a calm desert, open sky, gentle clouds, warm horizon glow",
+      "narration": "আল্লাহ তার এই ছোট কাজটি কবুল করলেন এবং তাকে ক্ষমা করে দিলেন। নবীজি বললেন, প্রতিটি জীবিত প্রাণীর প্রতি দয়ায় সওয়াব রয়েছে।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ২৩৬৩; সহীহ মুসলিম ২২৪৪"
+    }
+  ]
+}

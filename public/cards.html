@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>faceless-pipeline — photo cards</title>
+    <link rel="stylesheet" href="/ui.css" />
+    <style>
+      main { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; gap: 18px; }
+      section { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+      .card-item { display: grid; grid-template-columns: 150px 1fr; gap: 12px; }
+      .card-item .thumb { width: 150px; height: 150px; object-fit: cover; cursor: zoom-in; }
+      .card-set-card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #0a0e14; }
+      @media (max-width: 640px) { .card-item { grid-template-columns: 1fr; } }
+      #status { font-size: 12px; color: var(--dim); }
+      #log { height: 180px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>faceless-pipeline</h1>
+      <nav class="nav"><a href="/">Reels</a><a href="/stock">Local video</a><a class="active" href="/cards">Photo cards</a><a href="/verses">Verse reels</a><a href="/dialogue">Dialogue</a></nav>
+      <span id="status" style="margin-left:auto">Idle.</span>
+      <button id="cancel" class="small" disabled>Cancel</button>
+    </header>
+
+    <main>
+      <section>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+          <h2 style="margin:0">Card set</h2>
+          <span class="hint" style="margin:0">a JSON set of quotes → finished images</span>
+          <button id="newCardSet" class="small">+ New set</button>
+          <button id="makeCards" class="small" style="margin-left:auto;background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600">Make cards</button>
+        </div>
+        <div class="row three">
+          <div><label for="cardTitle">Set name</label><input id="cardTitle" placeholder="আজকের আয়াত — সপ্তাহ ১" /></div>
+          <div><label for="cardAspect">Size</label>
+            <select id="cardAspect">
+              <option value="1:1">1:1 — feed (1080×1080)</option>
+              <option value="4:5">4:5 — portrait feed (1080×1350)</option>
+              <option value="9:16">9:16 — story (1080×1920)</option>
+            </select>
+          </div>
+          <div><label for="cardLayout">Text layout</label>
+            <select id="cardLayout">
+              <option value="center">centre — whole image dimmed</option>
+              <option value="bottom">bottom — dark ramp under the text</option>
+            </select>
+          </div>
+        </div>
+        <div class="row two">
+          <div><label for="cardHeading">Heading (small, top)</label><input id="cardHeading" placeholder="আজকের আয়াত" /></div>
+          <div><label for="cardPrompt">Default background prompt</label><input id="cardPrompt" placeholder="used when a card has no prompt of its own" /></div>
+        </div>
+        <div class="scene-actions" style="margin-bottom:12px;flex-wrap:wrap">
+          <button id="cardImport" class="small">Import JSON</button>
+          <button id="cardExport" class="small">Export JSON</button>
+          <button id="cardFromScenes" class="small" title="One card per scene of the current reel: narration + source + prompt">From current reel</button>
+          <button id="addCard" class="small">+ Add card</button>
+        </div>
+        <div id="cards"></div>
+        <p class="hint">
+          Backgrounds are generated once per card and cached — edit the text and re-make for free;
+          <i>Reroll background</i> draws a new one. Click a thumbnail to open it full size.
+          Files land in <code>out/cards/&lt;set&gt;/</code>. The same JSON works from the CLI:
+          <code>npm run cards -- --project content/cards/demo.json</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Look</h2>
+        <div class="row two">
+          <div><label for="imageProvider">Image provider</label>
+            <select id="imageProvider">
+              <option value="cloudflare">cloudflare — Workers AI (keys in .env)</option>
+              <option value="pollinations">pollinations — free, no key</option>
+              <option value="fal">fal — API key</option>
+              <option value="openai">openai — API key</option>
+              <option value="mflux">mflux — local, Apple Silicon</option>
+            </select>
+          </div>
+          <div id="cfWrap"><label for="cfModel">Cloudflare model</label>
+            <select id="cfModel">
+              <option value="@cf/stabilityai/stable-diffusion-xl-base-1.0">SDXL — honours aspect + negative prompt</option>
+              <option value="@cf/black-forest-labs/flux-1-schnell">FLUX.1 schnell — sharper, square only</option>
+              <option value="@cf/bytedance/stable-diffusion-xl-lightning">SDXL Lightning — fastest</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div><label for="style">Image style — appended to every background prompt</label>
+            <input id="style" placeholder="cinematic 35mm film still, natural light, no people, no text" /></div>
+        </div>
+        <div class="row two">
+          <div>
+            <label for="brandMode">Watermark</label>
+            <select id="brandMode">
+              <option value="">off</option>
+              <option value="text">text — a handle or name</option>
+              <option value="image">image — a logo</option>
+            </select>
+          </div>
+          <div>
+            <label for="brandPosition">Corner</label>
+            <select id="brandPosition">
+              <option value="bottom-right">bottom right</option>
+              <option value="bottom-left">bottom left</option>
+              <option value="top-right">top right</option>
+              <option value="top-left">top left</option>
+            </select>
+          </div>
+        </div>
+        <div class="row two" id="brandTextWrap" hidden>
+          <div><label for="brandText">Text</label><input id="brandText" placeholder="হিকমাহ-Wisdom" /></div>
+          <div><label for="brandSize">Font size (px)</label><input id="brandSize" placeholder="36" inputmode="numeric" /></div>
+        </div>
+        <div class="row two" id="brandImageWrap" hidden>
+          <div><label for="brandImage">Logo (assets/brand/)</label><select id="brandImage"></select></div>
+          <div><label for="brandSizeImg">Logo width (px)</label><input id="brandSizeImg" placeholder="110" inputmode="numeric" /></div>
+        </div>
+        <p class="hint" id="lookHint"></p>
+      </section>
+
+      <section>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <h2 style="margin:0">Your card sets</h2>
+          <span class="hint" id="cardSetCount" style="margin:0"></span>
+        </div>
+        <div id="cardSets" class="reel-grid"></div>
+      </section>
+
+      <section id="publishSection">
+      </section>
+
+      <section>
+        <h2>Log</h2>
+        <div id="log"></div>
+      </section>
+    </main>
+
+    <script src="/publish-box.js"></script>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      let busy = false;
+      const pad = (i) => String(i + 1).padStart(2, '0');
+      const esc = (v) => String(v).replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const safeGet = (k) => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } };
+      const safeSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+
+      // ── log / busy / events (same shape as the reels page) ─────────────
+      function line(text, cls = '') {
+        const log = $('log');
+        const atBottom = log.scrollHeight - log.scrollTop - log.clientHeight < 40;
+        const div = document.createElement('div');
+        if (cls) div.className = cls;
+        div.textContent = text;
+        log.appendChild(div);
+        if (atBottom) log.scrollTop = log.scrollHeight;
+      }
+      const classify = (t) => /failed|error|Error|missing/i.test(t) ? 'err' : /^\[(images|cards)\].*(no |not |ignored)/i.test(t) ? 'warn' : '';
+      function setBusy(on, label) {
+        busy = on;
+        $('makeCards').disabled = on;
+        $('cancel').disabled = !on;
+        document.querySelectorAll('[data-cact="reroll"]').forEach((b) => (b.disabled = on));
+        $('status').innerHTML = on ? `<span class="spinner"></span> ${label ?? 'working'}…` : 'Idle.';
+      }
+      $('cancel').onclick = () => fetch('/api/cancel', { method: 'POST' });
+      const es = new EventSource('/api/events');
+      es.addEventListener('hello', (e) => { if (JSON.parse(e.data).busy) setBusy(true, 'busy'); });
+      es.addEventListener('log', (e) => { const t = JSON.parse(e.data).line; line(t, classify(t)); });
+      es.addEventListener('start', (e) => setBusy(true, JSON.parse(e.data).label));
+      es.addEventListener('done', (e) => {
+        const d = JSON.parse(e.data);
+        setBusy(false);
+        line(d.ok ? `— ${d.label} finished` : `— ${d.label} failed (exit ${d.code})`, d.ok ? 'muted' : 'err');
+        if (d.ok && pubBoxInstance) pubBoxInstance.refresh();
+      });
+      es.addEventListener('cards', (e) => {
+        const d = JSON.parse(e.data);
+        cardSlug = d.slug;
+        persistCards();
+        refreshCardThumbs(d.rendered);
+        refreshCardSets();
+        if (pubBoxInstance) pubBoxInstance.setSlug(cardSlug);
+      });
+
+      // ── settings come from the reels page (same browser) + .env on the server ──
+      const REEL_STORE = 'faceless-ui-v1';
+      const reelFields = () => safeGet(REEL_STORE)?.fields ?? {};
+      // Provider and model are chosen here; keys, fonts and the rest come from the
+      // reels page's saved settings and .env.
+      function settings() {
+        const f = reelFields();
+        return {
+          imageProvider: $('imageProvider').value, cfModel: $('cfModel').value,
+          pollinationsModel: f.pollinationsModel, cfAccountId: f.cfAccountId, mfluxModel: f.mfluxModel, mfluxSteps: f.mfluxSteps,
+          fontFile: f.fontFile, captionFont: f.captionFont,
+        };
+      }
+      $('imageProvider').onchange = () => { $('cfWrap').hidden = $('imageProvider').value !== 'cloudflare'; persistCards(); };
+
+      // ── look: style + watermark, defaulting from the reels page ────────
+      function syncBrand() {
+        const mode = $('brandMode').value;
+        $('brandTextWrap').hidden = mode !== 'text';
+        $('brandImageWrap').hidden = mode !== 'image';
+      }
+      $('brandMode').onchange = () => { syncBrand(); persistCards(); };
+      function brandPayload() {
+        const mode = $('brandMode').value;
+        if (!mode) return null;
+        const num = (id) => ($(id).value.trim() ? Number($(id).value) : undefined);
+        return mode === 'image'
+          ? { image: $('brandImage').value ? `assets/brand/${$('brandImage').value}` : '', position: $('brandPosition').value, size: num('brandSizeImg') }
+          : { text: $('brandText').value.trim(), position: $('brandPosition').value, size: num('brandSize') };
+      }
+      async function loadBrand(selected) {
+        const d = await fetch('/api/brand').then((r) => r.json()).catch(() => ({ images: [] }));
+        $('brandImage').innerHTML = '<option value="">— choose a logo —</option>' +
+          d.images.map((f) => `<option value="${esc(f)}">${esc(f)}</option>`).join('');
+        if (selected && d.images.includes(selected)) $('brandImage').value = selected;
+      }
+
+      // ── the set ────────────────────────────────────────────────────────
+      let cards = [];
+      let cardSlug = '';
+      let pubBoxInstance = null;
+      const FIELDS = ['cardTitle', 'cardAspect', 'cardLayout', 'cardHeading', 'cardPrompt',
+        'imageProvider', 'cfModel', 'style', 'brandMode', 'brandPosition', 'brandText', 'brandSize', 'brandImage', 'brandSizeImg'];
+
+      function renderCards() {
+        const host = $('cards');
+        host.innerHTML = '';
+        cards.forEach((c, i) => {
+          const id = pad(i);
+          const el = document.createElement('div');
+          el.className = 'scene';
+          el.innerHTML = `
+      <div class="scene-head">
+        <span class="scene-no">${id}</span>
+        <div class="scene-actions">
+          <button class="small" data-cact="reroll" data-id="${id}" title="New background for this card">Reroll background</button>
+          <button class="small" data-cact="remove" data-i="${i}">Remove</button>
+        </div>
+      </div>
+      <div class="card-item">
+        <div>
+          <img class="thumb" data-cthumb="${id}" alt="card ${id}" hidden>
+          <div class="thumb thumb-empty" data-cempty="${id}" style="width:150px;height:150px">not made<br>yet</div>
+        </div>
+        <div class="shot-fields">
+          <div class="row"><div>
+            <label>Text — the message</label>
+            <textarea data-cf="text" data-i="${i}" placeholder="নিশ্চয়ই কষ্টের সাথে স্বস্তি আছে।">${esc(c.text ?? '')}</textarea>
+          </div></div>
+          <div class="row two">
+            <div><label>Source</label><input data-cf="source" data-i="${i}" value="${esc(c.source ?? '')}" placeholder="সূরা ইনশিরাহ ৯৪:৬"></div>
+            <div><label>Layout</label>
+              <select data-cf="layout" data-i="${i}">
+                <option value="">set default</option><option value="center">centre</option><option value="bottom">bottom</option>
+              </select>
+            </div>
+          </div>
+          <div class="row two">
+            <div><label>Background prompt</label><input data-cf="prompt" data-i="${i}" value="${esc(c.prompt ?? '')}" placeholder="(set default)"></div>
+            <div><label>Seed</label><input data-cf="seed" data-i="${i}" value="${c.seed ?? ''}" placeholder="(auto)"></div>
+          </div>
+        </div>
+      </div>`;
+          el.querySelector('select[data-cf="layout"]').value = c.layout ?? '';
+          host.appendChild(el);
+        });
+        refreshCardThumbs();
+      }
+
+      function refreshCardThumbs(ids) {
+        const stamp = Date.now();
+        cards.forEach((_, i) => {
+          const id = pad(i);
+          const img = document.querySelector(`img[data-cthumb="${id}"]`);
+          const empty = document.querySelector(`div[data-cempty="${id}"]`);
+          if (!img) return;
+          if (!cardSlug || (ids && !ids.includes(id))) { img.hidden = true; if (empty) empty.hidden = false; return; }
+          const probe = new Image();
+          probe.onload = () => { img.src = probe.src; img.hidden = false; if (empty) empty.hidden = true; };
+          probe.onerror = () => { img.hidden = true; if (empty) empty.hidden = false; };
+          probe.src = `/api/card?slug=${encodeURIComponent(cardSlug)}&id=${id}&v=${stamp}`;
+        });
+      }
+
+      $('cards').addEventListener('input', (e) => {
+        const t = e.target, f = t.dataset.cf, i = t.dataset.i;
+        if (!f || i === undefined) return;
+        cards[+i][f] = f === 'seed' ? (t.value.trim() === '' ? undefined : Number(t.value)) : t.value;
+        persistCards();
+      });
+      $('cards').addEventListener('click', async (e) => {
+        const img = e.target.closest('img[data-cthumb]');
+        if (img && !img.hidden) { window.open(img.src.replace(/&v=\d+$/, ''), '_blank'); return; }
+        const b = e.target.closest('button');
+        if (!b) return;
+        if (b.dataset.cact === 'remove') { cards.splice(+b.dataset.i, 1); renderCards(); persistCards(); }
+        if (b.dataset.cact === 'reroll') await makeCards(b.dataset.id);
+      });
+
+      function cardSetPayload() {
+        return {
+          title: $('cardTitle').value.trim(),
+          aspect: $('cardAspect').value,
+          layout: $('cardLayout').value,
+          heading: $('cardHeading').value.trim(),
+          prompt: $('cardPrompt').value.trim(),
+          style: $('style').value.trim(),
+          image: {},
+          captions: {},
+          brand: brandPayload(),
+          cards: cards.map((c) => ({ ...c, layout: c.layout || undefined })),
+          settings: settings(),
+        };
+      }
+
+      /** Load a card-set JSON (file, saved set) into the form. */
+      function applyCardSet(p, slug) {
+        if (!p || !Array.isArray(p.cards)) throw new Error('no "cards" array');
+        $('cardTitle').value = p.title ?? '';
+        $('cardAspect').value = ['1:1', '4:5', '9:16'].includes(p.aspect) ? p.aspect : '1:1';
+        $('cardLayout').value = p.layout === 'bottom' ? 'bottom' : 'center';
+        $('cardHeading').value = p.heading ?? '';
+        $('cardPrompt').value = p.prompt ?? '';
+        if (p.image?.style) $('style').value = p.image.style;
+        if (p.brand) {
+          $('brandMode').value = p.brand.image ? 'image' : p.brand.text ? 'text' : '';
+          $('brandPosition').value = p.brand.position ?? 'bottom-right';
+          $('brandText').value = p.brand.text ?? '';
+          if (p.brand.image) loadBrand(p.brand.image.replace(/^.*\//, ''));
+          (p.brand.image ? $('brandSizeImg') : $('brandSize')).value = p.brand.size ?? '';
+          syncBrand();
+        }
+        cards = p.cards.map((c) => ({ text: c.text ?? '', source: c.source ?? '', prompt: c.prompt ?? '', seed: c.seed, layout: c.layout ?? '' }));
+        cardSlug = slug ?? '';
+        renderCards();
+        persistCards();
+        if (pubBoxInstance) pubBoxInstance.setSlug(cardSlug);
+      }
+
+      async function makeCards(reroll) {
+        if (busy) return;
+        if (!cards.some((c) => (c.text ?? '').trim())) { line('— add a card with some text first', 'err'); return; }
+        if (!$('cardTitle').value.trim()) { line('— give the set a name — it becomes the folder', 'err'); return; }
+        const r = await fetch('/api/cards', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...cardSetPayload(), reroll }) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) { line(`— ${d.error ?? r.statusText}`, 'err'); return; }
+        cardSlug = d.slug;
+        persistCards();
+        if (pubBoxInstance) pubBoxInstance.setSlug(cardSlug);
+      }
+      $('makeCards').onclick = () => makeCards();
+      $('addCard').onclick = () => { cards.push({ text: '', source: '', prompt: '' }); renderCards(); persistCards(); };
+      $('newCardSet').onclick = () => {
+        ['cardTitle', 'cardHeading', 'cardPrompt'].forEach((id) => ($(id).value = ''));
+        cards = [{ text: '', source: '', prompt: '' }];
+        cardSlug = '';
+        renderCards();
+        persistCards();
+        refreshCardSets();
+        if (pubBoxInstance) pubBoxInstance.setSlug('');
+      };
+      $('cardFromScenes').onclick = async () => {
+        const st = await fetch('/api/state').then((r) => r.json()).catch(() => null);
+        const p = st?.project;
+        const from = (p?.scenes ?? []).filter((sc) => (sc.narration ?? '').trim());
+        if (!from.length) { line('— the current reel has no narration to turn into cards', 'err'); return; }
+        cards = from.map((sc) => ({ text: sc.narration, source: sc.source ?? '', prompt: sc.prompt ?? '', seed: sc.seed }));
+        if (!$('cardTitle').value.trim()) $('cardTitle').value = p.title ?? '';
+        if (!$('style').value.trim() && p.image?.style) $('style').value = p.image.style;
+        cardSlug = '';
+        renderCards();
+        persistCards();
+        line(`— ${cards.length} card(s) from "${p.title}"`, 'muted');
+      };
+      $('cardImport').onclick = () => {
+        const input = document.createElement('input');
+        input.type = 'file'; input.accept = '.json,application/json';
+        input.onchange = async () => {
+          const f = input.files?.[0]; if (!f) return;
+          try { applyCardSet(JSON.parse(await f.text()), ''); line(`— imported ${cards.length} card(s) from ${f.name}`, 'muted'); }
+          catch (err) { line(`— ${f.name}: ${err.message}`, 'err'); }
+        };
+        input.click();
+      };
+      $('cardExport').onclick = () => {
+        const { settings: _s, style, image, captions, ...p } = cardSetPayload();
+        if (style) p.image = { style };
+        if (!p.brand) delete p.brand;
+        if (!p.heading) delete p.heading;
+        if (!p.prompt) delete p.prompt;
+        p.cards = p.cards.map((c, i) => ({ id: pad(i), ...Object.fromEntries(Object.entries(c).filter(([, v]) => v !== '' && v != null)) }));
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([JSON.stringify(p, null, 2)], { type: 'application/json' }));
+        a.download = `${(p.title || 'cards').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '') || 'cards'}.json`;
+        a.click();
+      };
+
+      // ── saved sets ─────────────────────────────────────────────────────
+      function renderCardSets(sets) {
+        $('cardSetCount').textContent = sets.length ? `${sets.length} saved` : '';
+        $('cardSets').innerHTML = sets.length
+          ? sets.map((r) => `
+            <div class="reel-card card-set-card ${r.slug === cardSlug ? 'active' : ''}" data-cslug="${esc(r.slug)}">
+              ${r.rendered.length
+                ? `<img src="/api/card?slug=${encodeURIComponent(r.slug)}&id=${r.rendered[0]}&v=${r.updated}" alt="">`
+                : `<div class="noshot" style="aspect-ratio:1">not made yet</div>`}
+              <div class="reel-meta" style="display:flex;align-items:center;gap:6px">
+                <div style="min-width:0;flex:1">
+                  <b>${esc(r.title || r.slug)}</b>
+                  <span>${r.rendered.length}/${r.cards} made · ${new Date(r.updated).toLocaleDateString()}</span>
+                </div>
+                <button class="reel-del" data-cdel="${esc(r.slug)}" title="Delete this set">✕</button>
+              </div>
+            </div>`).join('')
+          : `<p class="hint" style="margin:0">No card sets yet — make one above.</p>`;
+      }
+      async function refreshCardSets() {
+        const d = await fetch('/api/cards').then((r) => r.json()).catch(() => null);
+        if (d?.sets) renderCardSets(d.sets);
+      }
+      $('cardSets').addEventListener('click', async (e) => {
+        const del = e.target.closest('button[data-cdel]');
+        if (del) {
+          if (!confirm(`Delete card set "${del.dataset.cdel}" and its images?`)) return;
+          const r = await fetch(`/api/cards?slug=${encodeURIComponent(del.dataset.cdel)}`, { method: 'DELETE' });
+          const d = await r.json().catch(() => ({}));
+          if (d.sets) renderCardSets(d.sets);
+          if (cardSlug === del.dataset.cdel) { cardSlug = ''; refreshCardThumbs(); }
+          return;
+        }
+        const card = e.target.closest('.card-set-card');
+        if (!card || busy) return;
+        const d = await fetch(`/api/cards?slug=${encodeURIComponent(card.dataset.cslug)}`).then((x) => x.json()).catch(() => null);
+        if (!d?.project) { line('— could not open that set', 'err'); return; }
+        applyCardSet(d.project, d.slug);
+        refreshCardSets();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ── remember across reloads ────────────────────────────────────────
+      const CARDSTORE = 'faceless-ui-cards-v1';
+      function persistCards() {
+        const fields = {};
+        FIELDS.forEach((id) => (fields[id] = $(id).value));
+        safeSet(CARDSTORE, { fields, cards, cardSlug });
+      }
+      FIELDS.forEach((id) => $(id).addEventListener('input', persistCards));
+
+      (async () => {
+        const saved = safeGet(CARDSTORE);
+        // First visit: borrow the style and watermark the reels page uses.
+        const f = reelFields();
+        if (!saved) {
+          $('style').value = f.style ?? '';
+          $('brandMode').value = f.brandMode ?? 'text';
+          $('brandPosition').value = f.brandPosition || 'bottom-right';
+          $('brandText').value = f.brandText || (f.brandMode ? '' : 'হিকমাহ-Wisdom');
+          $('brandSize').value = f.brandSize ?? '';
+          $('brandSizeImg').value = f.brandSize ?? '';
+        } else {
+          Object.entries(saved.fields ?? {}).forEach(([id, v]) => { if ($(id) && v != null && id !== 'brandImage') $(id).value = v; });
+          cards = Array.isArray(saved.cards) ? saved.cards : [];
+          cardSlug = saved.cardSlug ?? '';
+        }
+        await loadBrand(saved?.fields?.brandImage || f.brandImage || '');
+        syncBrand();
+        $('cfWrap').hidden = $('imageProvider').value !== 'cloudflare';
+        const st = await fetch('/api/state').then((r) => r.json()).catch(() => null);
+        const cfKeys = st?.savedKeys?.CF_ACCOUNT_ID && st?.savedKeys?.CF_API_TOKEN;
+        $('lookHint').textContent = cfKeys
+          ? 'Cloudflare keys found in .env. Fonts for Bangla text come from the Reels page settings (FONT_FILE / CAPTION_FONT).'
+          : 'No Cloudflare keys in .env yet — add CF_ACCOUNT_ID and CF_API_TOKEN on the Reels page (Images → cloudflare) or pick another provider.';
+        if (!cards.length) cards = [{ text: '', source: '', prompt: '' }];
+        renderCards();
+        refreshCardSets();
+
+        if (typeof mountPublishBox === 'function') {
+          pubBoxInstance = mountPublishBox($('publishSection'), {
+            getSlug: () => cardSlug,
+            onSlugChange: (newSlug) => {
+              const el = document.querySelector(`[data-cslug="${newSlug}"]`);
+              if (el) el.click();
+            },
+            onLog: (msg, type) => line(msg, type),
+          });
+          if (cardSlug) pubBoxInstance.setSlug(cardSlug);
+        }
+      })();
+    </script>
+  </body>
+</html>

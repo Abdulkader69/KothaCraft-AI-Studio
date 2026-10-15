@@ -1,0 +1,210 @@
+{
+  "title": "মায়ের শিক্ষা: ঘরে প্রবেশের অনুমতি বা ইস্তিজান",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A closed heavy wooden carved bedroom door, a child running quickly down the hallway about to push the door handle open, vintage oil painting",
+      "narration": "মা, আমি একটা মজার জিনিস দেখাব! আমি দরজা খুলে ভেতরে ঢুকছি! একটু থামো সোনা! কারো ঘরে এভাবে হঠাৎ করে দরজা ঠেলে ঢুকতে নেই।",
+      "motion": "in",
+      "source": "সূরা আন-নূর ২৭",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "excited",
+          "text": "মা, আমি একটা মজার জিনিস দেখাব! আমি দরজা খুলে ভেতরে ঢুকছি!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "calm",
+          "text": "একটু থামো সোনা! কারো ঘরে এভাবে হঠাৎ করে দরজা ঠেলে ঢুকতে নেই।"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "A child standing outside the closed door, looking puzzled, knuckles raised near the wooden panel, storybook gouache painting",
+      "narration": "মা, এটা তো আমাদের নিজেদের ঘর! এখানেও কি অনুমতি নিতে হবে? হ্যাঁ বাবা। এমনকি মা-বাবার ঘরে প্রবেশের আগেও অনুমতি নিতে হয়। একে ইসলামে বলে ইস্তিজান।",
+      "motion": "left",
+      "source": "অনুমতির নিয়ম",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "মা, এটা তো আমাদের নিজেদের ঘর! এখানেও কি অনুমতি নিতে হবে?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "হ্যাঁ বাবা। এমনকি মা-বাবার ঘরে প্রবেশের আগেও অনুমতি নিতে হয়। একে ইসলামে বলে ইস্তিজান।"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "Child tapping gently three times with knuckles on the door, standing slightly to the side of the doorframe, classical oil painting",
+      "narration": "তাহলে অনুমতি নেওয়ার সঠিক নিয়মটা কী মা? দরজায় আস্তে তিনবার টোকা দেবে, তারপর সালাম দিয়ে বলবে—আমি কি ভেতরে আসতে পারি?",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬২৪৫",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "polite",
+          "text": "তাহলে অনুমতি নেওয়ার সঠিক নিয়মটা কী মা?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "দরজায় আস্তে তিনবার টোকা দেবে, তারপর সালাম দিয়ে বলবে—আমি কি ভেতরে আসতে পারি?"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "Child standing politely looking away from the doorway slit, not peeking inside, warm corridor lighting, storybook illustration",
+      "narration": "আর দরজার ঠিক সামনাসামনি দাঁড়াবে না, একটু পাশে দাঁড়াবে যাতে দরজা খুললে ভেতরে নজর না পড়ে। ভেতর থেকে যদি তিনবার ডাকার পরও কেউ সাড়া না দেয় মা?",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২১৫৩",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "আর দরজার ঠিক সামনাসামনি দাঁড়াবে না, একটু পাশে দাঁড়াবে যাতে দরজা খুললে ভেতরে নজর না পড়ে।"
+        },
+        {
+          "speaker": "child",
+          "tone": "thoughtful",
+          "text": "ভেতর থেকে যদি তিনবার ডাকার পরও কেউ সাড়া না দেয় মা?"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "A child quietly stepping back from a closed door and returning to the living room peacefully, fairytale gouache painting",
+      "narration": "কুরআনে আল্লাহ বলেছেন, যদি বলা হয় ফিরে যাও, তবে চুপচাপ ফিরে যাবে। কোনো রাগ বা জেদ করবে না। আমি তো আগে কখনো অনুমতি চাইতাম না... আমি দুঃখিত মা।",
+      "motion": "left",
+      "source": "সূরা আন-নূর ২৮",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "কুরআনে আল্লাহ বলেছেন, যদি বলা হয় ফিরে যাও, তবে চুপচাপ ফিরে যাবে। কোনো রাগ বা জেদ করবে না।"
+        },
+        {
+          "speaker": "child",
+          "tone": "remorseful",
+          "text": "আমি তো আগে কখনো অনুমতি চাইতাম না... আমি দুঃখিত মা।"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "Mother opening the door with a welcoming smile, inviting child into the sunlit cozy room, oil painting",
+      "narration": "মানুষের ঘরের ভেতরে ব্যক্তিগত কাজকর্ম থাকতে পারে বাবা। তাদের গোপনীয়তাকে সম্মান করাই বড় শিষ্টাচার। আসসালামু আলাইকুম মা! আমি কি এখন ভেতরে আসতে পারি?",
+      "motion": "right",
+      "source": "ব্যক্তিগত শালীনতা",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "মানুষের ঘরের ভেতরে ব্যক্তিগত কাজকর্ম থাকতে পারে বাবা। তাদের গোপনীয়তাকে সম্মান করাই বড় শিষ্টাচার।"
+        },
+        {
+          "speaker": "child",
+          "tone": "happy",
+          "text": "আসসালামু আলাইকুম মা! আমি কি এখন ভেতরে আসতে পারি?"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "Mother embracing the child with deep affection in the peaceful room, golden sunbeams streaming, fairytale oil painting",
+      "narration": "ওয়া আলাইকুমুস সালাম সোনা! স্বাগতম। এই সুন্দর আদব তোমাকে সবার কাছে সম্মানিত করবে।",
+      "motion": "out",
+      "source": "হিকমাহ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "ওয়া আলাইকুমুস সালাম সোনা! স্বাগতম। এই সুন্দর আদব তোমাকে সবার কাছে সম্মানিত করবে।"
+        }
+      ]
+    }
+  ],
+  "description": "কারো ঘরে বা ব্যক্তিগত কক্ষে প্রবেশের পূর্বে অনুমতি চাওয়া এবং দরজায় তিনবার মৃদু আঘাত করা ইসলামের সুন্দর শালীনতা।\n\nসূত্র: সূরা আন-নূর ২৭-২৮ · সহীহ বুখারী ৬২৪৫ · সহীহ মুসলিম ২১৫৩",
+  "publish": {
+    "description": "কারো ঘরে বা ব্যক্তিগত কক্ষে প্রবেশের পূর্বে অনুমতি চাওয়া এবং দরজায় তিনবার মৃদু আঘাত করা ইসলামের সুন্দর শালীনতা।\n\nসূত্র: সূরা আন-নূর ২৭-২৮ · সহীহ বুখারী ৬২৪৫ · সহীহ মুসলিম ২১৫৩",
+    "hashtags": [
+      "#অনুমতি",
+      "#ইস্তিজান",
+      "#মায়ের_শিক্ষা",
+      "#শিষ্টাচার",
+      "#পারিবারিক_শিক্ষা",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "title": "ওয়াদা রক্ষা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "two thick ropes bound tightly together with a strong knot, close detail in warm light, trust",
+      "narration": "আল্লাহ বলেন, ওয়াদা পূরণ করো। নিশ্চয়ই ওয়াদা সম্পর্কে জিজ্ঞাসা করা হবে।",
+      "motion": "in",
+      "source": "সূরা ইসরা ১৭:৩৪"
+    },
+    {
+      "id": "02",
+      "prompt": "a wax-sealed letter resting on a desk beside a candle, trust held, deep shadows",
+      "narration": "নবীজি বলেছেন, মুনাফিকের আলামত তিনটি।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৩৩"
+    },
+    {
+      "id": "03",
+      "prompt": "a cracked clay cup leaking water onto a table, unable to hold anything, harsh light",
+      "narration": "যখন কথা বলে, মিথ্যা বলে।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৩৩"
+    },
+    {
+      "id": "04",
+      "prompt": "the frayed ends of a snapped rope lying apart on the ground, broken",
+      "narration": "যখন ওয়াদা করে, ভঙ্গ করে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৩৩"
+    },
+    {
+      "id": "05",
+      "prompt": "an iron strongbox left open and empty in a dim room, betrayed",
+      "narration": "আর যখন আমানত রাখা হয়, খিয়ানত করে।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৩৩"
+    },
+    {
+      "id": "06",
+      "prompt": "a strong knot holding firm under heavy tension, fibres taut, reliable, warm light",
+      "narration": "তিনি বলেছেন, যার আমানত নেই, তার ঈমান নেই। যার ওয়াদা নেই, তার দ্বীন নেই।",
+      "motion": "right",
+      "source": "মুসনাদে আহমাদ ১২৩৮৩"
+    }
+  ],
+  "description": "প্রতিশ্রুতি পূরণ করা ও আমানত রক্ষা করা মুমিনের মৌলিক বৈশিষ্ট্য। মিথ্যা, অঙ্গীকার ভঙ্গ ও খিয়ানত মুনাফিকের লক্ষণ। ওয়াদা রক্ষার মধ্যেই মানবচরিত্রের সৌন্দর্য নিহিত।\n\nসূত্র: সূরা ইসরা ১৭:৩৪ · সহীহ বুখারী ৩৩ · মুসনাদে আহমাদ ১২৩৮৩",
+  "publish": {
+    "description": "প্রতিশ্রুতি পূরণ করা ও আমানত রক্ষা করা মুমিনের মৌলিক বৈশিষ্ট্য। মিথ্যা, অঙ্গীকার ভঙ্গ ও খিয়ানত মুনাফিকের লক্ষণ। ওয়াদা রক্ষার মধ্যেই মানবচরিত্রের সৌন্দর্য নিহিত।\n\nসূত্র: সূরা ইসরা ১৭:৩৪ · সহীহ বুখারী ৩৩ · মুসনাদে আহমাদ ১২৩৮৩",
+    "hashtags": [
+      "#ওয়াদারক্ষা",
+      "#আমানত",
+      "#ঈমান",
+      "#হাদিস",
+      "#কোরআন",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

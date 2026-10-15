@@ -1,0 +1,210 @@
+{
+  "title": "মায়ের শিক্ষা: ধৈর্য ও সবরের সুন্দর ফল",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A quiet cozy antique home corner with clay pots and wooden furniture, soft warm morning sunlight streaming through an arched window, vintage storybook oil painting",
+      "narration": "এই গুটিপোকাটা কবে প্রজাপতি হয়ে উড়বে মা? আমার আর তর সইছে না! সুন্দর সবকিছুর জন্য অপেক্ষা করতে হয় বাবা, একেই বলে সবর।",
+      "motion": "in",
+      "source": "ধৈর্য ও সবরের সুন্দর ফল",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "এই গুটিপোকাটা কবে প্রজাপতি হয়ে উড়বে মা? আমার আর তর সইছে না!"
+        },
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "সুন্দর সবকিছুর জন্য অপেক্ষা করতে হয় বাবা, একেই বলে সবর।"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "Mother gently kneeling beside child, touching his hands lovingly, soft golden hour lighting, storybook gouache painting",
+      "narration": "জীবনের প্রতিটি পদক্ষেপে সুন্দর আচার-আচরণ বজায় রাখাই হলো প্রকৃত শিক্ষা সোনা। কেন মা? এতে কি মানুষ আমাদের বেশি ভালোবাসবে?",
+      "motion": "left",
+      "source": "পারিবারিক শিক্ষা",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "জীবনের প্রতিটি পদক্ষেপে সুন্দর আচার-আচরণ বজায় রাখাই হলো প্রকৃত শিক্ষা সোনা।"
+        },
+        {
+          "speaker": "child",
+          "tone": "wondering",
+          "text": "কেন মা? এতে কি মানুষ আমাদের বেশি ভালোবাসবে?"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "An open ancient book on a rustic wooden study table beside a glowing candle, classical fairytale storybook illustration",
+      "narration": "তাড়াহুড়ো শয়তানের কাজ আর ধৈর্য ধরলে আল্লাহ উত্তম ফল দেন। নবীজি কি এই কথাটি সবসময় সবাইকে মনে করিয়ে দিতেন মা?",
+      "motion": "right",
+      "source": "হাদিস ও শিক্ষা",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "তাড়াহুড়ো শয়তানের কাজ আর ধৈর্য ধরলে আল্লাহ উত্তম ফল দেন।"
+        },
+        {
+          "speaker": "child",
+          "tone": "thoughtful",
+          "text": "নবীজি কি এই কথাটি সবসময় সবাইকে মনে করিয়ে দিতেন মা?"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "A child looking thoughtfully at his own actions, reflection in a polished brass surface or window, warm soft shadows, oil painting",
+      "narration": "হ্যাঁ বাবা। সুন্দর চরিত্র আর সদাচরণই কিয়ামতের দিন মিজানের পাল্লায় সবচেয়ে ভারী হবে। আমি তো মাঝে মাঝে ভুলে এমন ভুল করে ফেলতাম মা, আমি আর করব না।",
+      "motion": "in",
+      "source": "আত্মোপলব্ধি",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "হ্যাঁ বাবা। সুন্দর চরিত্র আর সদাচরণই কিয়ামতের দিন মিজানের পাল্লায় সবচেয়ে ভারী হবে।"
+        },
+        {
+          "speaker": "child",
+          "tone": "remorseful",
+          "text": "আমি তো মাঝে মাঝে ভুলে এমন ভুল করে ফেলতাম মা, আমি আর করব না।"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "Mother and child engaged happily in positive action together, warm sunlit room filled with domestic warmth, gouache painting",
+      "narration": "শান্ত মনে অপেক্ষা করা ও আল্লাহর সিদ্ধান্তে সন্তুষ্ট থাকা। আমি এখনই এই কাজটি সুন্দরভাবে সম্পন্ন করছি মা!",
+      "motion": "left",
+      "source": "সদাচরণ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "caring",
+          "text": "শান্ত মনে অপেক্ষা করা ও আল্লাহর সিদ্ধান্তে সন্তুষ্ট থাকা।"
+        },
+        {
+          "speaker": "child",
+          "tone": "eager",
+          "text": "আমি এখনই এই কাজটি সুন্দরভাবে সম্পন্ন করছি মা!"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "Child smiling with pure joyful satisfaction after doing the right deed, golden sunlight kissing his face, oil painting",
+      "narration": "মাশাআল্লাহ! ছোট ছোট এই সুন্দর অভ্যাসগুলোই তোমাকে একদিন একজন আদর্শ মানুষ হিসেবে গড়ে তুলবে। তোমার এই সুন্দর কথাগুলো আমি সবসময় মনে রাখব মা।",
+      "motion": "right",
+      "source": "আমল",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "মাশাআল্লাহ! ছোট ছোট এই সুন্দর অভ্যাসগুলোই তোমাকে একদিন একজন আদর্শ মানুষ হিসেবে গড়ে তুলবে।"
+        },
+        {
+          "speaker": "child",
+          "tone": "happy",
+          "text": "তোমার এই সুন্দর কথাগুলো আমি সবসময় মনে রাখব মা।"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "Mother holding child close by a sunlit courtyard overlooking blooming olive trees and flowers, fairytale oil painting",
+      "narration": "আল্লাহ তোমার অন্তরকে সর্বদা সত্য, বিনয় আর সুন্দর চরিত্রে ভরিয়ে রাখুন আমার মানিক।",
+      "motion": "out",
+      "source": "দোয়া ও হিকমাহ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "আল্লাহ তোমার অন্তরকে সর্বদা সত্য, বিনয় আর সুন্দর চরিত্রে ভরিয়ে রাখুন আমার মানিক।"
+        }
+      ]
+    }
+  ],
+  "description": "জীবনের প্রতিটি ক্ষেত্রে তাড়াহুড়ো না করে ধৈর্য ধারণ করলে আল্লাহ তার সর্বোত্তম ও কল্যাণকর প্রতিদান দেন।\n\nসূত্র: সূরা বাকারা ১৫৩ · সহীহ মুসলিম ২২৩",
+  "publish": {
+    "description": "জীবনের প্রতিটি ক্ষেত্রে তাড়াহুড়ো না করে ধৈর্য ধারণ করলে আল্লাহ তার সর্বোত্তম ও কল্যাণকর প্রতিদান দেন।\n\nসূত্র: সূরা বাকারা ১৫৩ · সহীহ মুসলিম ২২৩",
+    "hashtags": [
+      "#সবর",
+      "#ধৈর্য",
+      "#মায়ের_শিক্ষা",
+      "#কুরআন",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

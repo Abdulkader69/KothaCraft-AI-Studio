@@ -1,0 +1,100 @@
+{
+  "title": "রিজিকের নিশ্চয়তা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a spring breaking through dry desert ground, green spreading outward from it, birds arriving, wide shot",
+      "narration": "আল্লাহ বলেন, পৃথিবীতে এমন কোনো প্রাণী নেই, যার রিজিকের দায়িত্ব আল্লাহর উপর নয়।",
+      "motion": "in",
+      "source": "সূরা হুদ ১১:৬"
+    },
+    {
+      "id": "02",
+      "prompt": "an ant carrying a grain of wheat across a stone in golden light, macro, provision found",
+      "narration": "নবীজি বলেছেন, রিজিক তোমাকে খুঁজে নেবে, যেমন মৃত্যু তোমাকে খুঁজে নেয়।",
+      "motion": "left",
+      "source": "মুসনাদে আহমাদ"
+    },
+    {
+      "id": "03",
+      "prompt": "an open road at sunrise through fields toward a market town, a cart, going out to work, hopeful",
+      "narration": "তিনি বলেছেন, পাখিরা সকালে খালি পেটে বের হয়, আর সন্ধ্যায় ভরা পেটে ফিরে আসে।",
+      "motion": "out",
+      "source": "জামে তিরমিযী ২৩৪৪"
+    },
+    {
+      "id": "04",
+      "prompt": "a small market stall with fruit and grain set out honestly on a cloth, morning light, an old souk",
+      "narration": "আল্লাহ বলেন, যে আল্লাহকে ভয় করে, তিনি তার জন্য বের হওয়ার পথ করে দেন।",
+      "motion": "right",
+      "source": "সূরা তালাক ৬৫:২"
+    },
+    {
+      "id": "05",
+      "prompt": "clear water welling unexpectedly from a crack in bare rock, ferns taking hold, sunlight sparkling",
+      "narration": "আর তাকে এমন জায়গা থেকে রিজিক দেন, যা সে কল্পনাও করেনি।",
+      "motion": "in",
+      "source": "সূরা তালাক ৬৫:৩"
+    },
+    {
+      "id": "06",
+      "prompt": "a calm evening over a home with a full vegetable garden, a lamp in the window, provision enough",
+      "narration": "রিজিক নিয়ে দুশ্চিন্তা নয় — হালাল পথে চেষ্টা করো, বাকিটা তাঁর দায়িত্ব।",
+      "motion": "right",
+      "source": "সূরা তালাক ৬৫:৩"
+    }
+  ],
+  "description": "পৃথিবীর প্রতিটি সৃষ্টির রিজিকের দায়িত্ব মহান আল্লাহর। হালাল পথে নিষ্ঠার সাথে চেষ্টা করুন আর আল্লাহর ওপর পূর্ণ ভরসা রাখুন; নির্ধারিত রিজিক আপনাকে ঠিকই খুঁজে নেবে।\n\nসূত্র: সূরা হুদ ১১:৬ · মুসনাদে আহমাদ · জামে তিরমিযী ২৩৪৪ · সূরা তালাক ৬৫:২-৩",
+  "publish": {
+    "description": "পৃথিবীর প্রতিটি সৃষ্টির রিজিকের দায়িত্ব মহান আল্লাহর। হালাল পথে নিষ্ঠার সাথে চেষ্টা করুন আর আল্লাহর ওপর পূর্ণ ভরসা রাখুন; নির্ধারিত রিজিক আপনাকে ঠিকই খুঁজে নেবে।\n\nসূত্র: সূরা হুদ ১১:৬ · মুসনাদে আহমাদ · জামে তিরমিযী ২৩৪৪ · সূরা তালাক ৬৫:২-৩",
+    "hashtags": [
+      "#রিজিক",
+      "#ভরসা",
+      "#তাওয়াক্কুল",
+      "#কোরআন",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

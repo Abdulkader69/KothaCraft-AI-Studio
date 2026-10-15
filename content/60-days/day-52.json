@@ -1,0 +1,99 @@
+{
+  "title": "কবরের সঙ্গী",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a dusty path with many footprints leading toward a graveyard at dusk, cypress trees, no one in frame",
+      "narration": "নবীজি বলেছেন, মৃতের সাথে তিনটি জিনিস কবর পর্যন্ত যায়।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৫১৪"
+    },
+    {
+      "id": "02",
+      "prompt": "an old house with its doors closing at dusk, lamplight fading in the windows, a chest of belongings left behind",
+      "narration": "তার পরিবার, তার সম্পদ, আর তার আমল।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৬৫১৪"
+    },
+    {
+      "id": "03",
+      "prompt": "two paths turning back toward a town while one continues alone into the dark, evening, a fork in the road",
+      "narration": "দুটি ফিরে আসে — একটি থেকে যায়।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৬৫১৪"
+    },
+    {
+      "id": "04",
+      "prompt": "a closed wooden gate at dusk seen from the road, footprints leading away from it back toward the village",
+      "narration": "পরিবার ও সম্পদ ফিরে আসে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬৫১৪"
+    },
+    {
+      "id": "05",
+      "prompt": "a single oil lamp still burning in a dark empty room, its small warm light holding the darkness back",
+      "narration": "থেকে যায় কেবল তার আমল।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৫১৪"
+    },
+    {
+      "id": "06",
+      "prompt": "a still quiet patch of earth at night under stars, a single flower on it, alone but peaceful",
+      "narration": "কবরে কেউ সঙ্গ দেবে না — শুধু তুমি যা পাঠিয়েছ।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬৫১৪"
+    }
+  ],
+  "description": "মৃত্যুর পর পরিবার ও সম্পদ কবর থেকে ফিরে এলেও একমাত্র নেক আমলই কবরে চিরসঙ্গী হিসেবে থেকে যায়। পরকালের পাথেয় হিসেবে যা আগে পাঠানো হয়েছে, কেবল তাই কাজে আসবে।\n\nসূত্র: সহীহ বুখারী ৬৫১৪",
+  "publish": {
+    "description": "মৃত্যুর পর পরিবার ও সম্পদ কবর থেকে ফিরে এলেও একমাত্র নেক আমলই কবরে চিরসঙ্গী হিসেবে থেকে যায়। পরকালের পাথেয় হিসেবে যা আগে পাঠানো হয়েছে, কেবল তাই কাজে আসবে।\n\nসূত্র: সহীহ বুখারী ৬৫১৪",
+    "hashtags": [
+      "#কবর",
+      "#আমল",
+      "#আখেরাত",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

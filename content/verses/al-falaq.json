@@ -1,0 +1,62 @@
+{
+  "_note": "Bangla here is a plain literal rendering, not a published translation — swap in one you hold the rights to before publishing at scale.",
+  "title": "সূরা আল-ফালাক",
+  "arabicTitle": "الفلق",
+  "range": "আয়াত ১–৫",
+  "surah": 113,
+  "aspect": "9:16",
+  "fps": 30,
+  "theme": "fajr-dawn",
+  "recitation": {
+    "reciter": "Alafasy_64kbps"
+  },
+  "voiceover": "none",
+  "opening": "both",
+  "gap": 0.6,
+  "intro": {
+    "seconds": 4
+  },
+  "type": {
+    "centerY": 0.42,
+    "arabicColor": "#FFFFFF",
+    "banglaColor": "#E9DCC0",
+    "numberColor": "#E9C987"
+  },
+  "verses": [
+    {
+      "id": "01",
+      "ayah": 1,
+      "number": "١",
+      "arabic": "قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ",
+      "bangla": "বলুন, আমি আশ্রয় চাই ভোরের রবের কাছে।"
+    },
+    {
+      "id": "02",
+      "ayah": 2,
+      "number": "٢",
+      "arabic": "مِن شَرِّ مَا خَلَقَ",
+      "bangla": "তিনি যা সৃষ্টি করেছেন, তার অনিষ্ট থেকে।"
+    },
+    {
+      "id": "03",
+      "ayah": 3,
+      "number": "٣",
+      "arabic": "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ",
+      "bangla": "আর রাতের অন্ধকারের অনিষ্ট থেকে, যখন তা ঘনিয়ে আসে।"
+    },
+    {
+      "id": "04",
+      "ayah": 4,
+      "number": "٤",
+      "arabic": "وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ",
+      "bangla": "আর গিঁটে ফুঁ দেওয়া নারীদের অনিষ্ট থেকে।"
+    },
+    {
+      "id": "05",
+      "ayah": 5,
+      "number": "٥",
+      "arabic": "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+      "bangla": "আর হিংসুকের অনিষ্ট থেকে, যখন সে হিংসা করে।"
+    }
+  ]
+}

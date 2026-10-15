@@ -1,0 +1,106 @@
+{
+  "title": "তওবার দরজা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a great closed wooden door at night with warm light glowing around its edges, a hand reaching toward it",
+      "narration": "নবীজি বলেছেন, আল্লাহ রাতে তাঁর হাত বাড়িয়ে দেন…",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৭৫৯"
+    },
+    {
+      "id": "02",
+      "prompt": "the door opening a crack, a blade of golden light cutting into the dark, dust glowing",
+      "narration": "…যেন দিনে গুনাহকারী তওবা করে ফিরে আসে।",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ২৭৫৯"
+    },
+    {
+      "id": "03",
+      "prompt": "the door swinging wider at dawn, light flooding the threshold, a garden beyond",
+      "narration": "আর দিনে হাত বাড়িয়ে দেন, যেন রাতে গুনাহকারী তওবা করে।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ২৭৫৯"
+    },
+    {
+      "id": "04",
+      "prompt": "a strange sunrise on the western horizon over a desert, the sky an unnatural colour, the last deadline",
+      "narration": "এভাবেই চলতে থাকবে, যতদিন না সূর্য পশ্চিম দিক থেকে ওঠে।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২৭৫৯"
+    },
+    {
+      "id": "05",
+      "prompt": "a lone camel wandering off across vast desert dunes at dusk, a man's pack and waterskin on its back, despair",
+      "narration": "তিনি বলেছেন, ভাবো — মরুভূমিতে একজনের উট হারিয়ে গেল, যার পিঠে ছিল তার সব খাবার ও পানি। সে হতাশ হয়ে গাছের নিচে মৃত্যুর অপেক্ষায় শুয়ে পড়ল।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৭৪৭"
+    },
+    {
+      "id": "06",
+      "prompt": "the same camel standing right beside the tree at dawn, its rope trailing, the waterskin intact, overwhelming relief",
+      "narration": "চোখ খুলে সে দেখল, উটটি তার পাশেই দাঁড়িয়ে। আনন্দে সে বলে ফেলল — হে আল্লাহ, আমি তোমার প্রভু! আল্লাহ বান্দার তওবায় এর চেয়েও বেশি খুশি হন।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২৭৪৭"
+    },
+    {
+      "id": "07",
+      "prompt": "an open door with warm light spilling out onto a dark path, welcoming, a lamp hung beside it",
+      "narration": "দরজা খোলাই আছে। শুধু ফিরে আসতে হবে।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ২৭৫৯"
+    }
+  ],
+  "description": "রাত ও দিনে আল্লাহর ক্ষমার হাত সর্বদা প্রসারিত। বান্দা যখন অনুতপ্ত হয়ে তাঁর কাছে ফিরে আসে, আল্লাহ সীমাহীন আনন্দিত হন এবং ক্ষমাশীলতার চাদরে তাকে আবৃত করে নেন।\n\nসূত্র: সহীহ মুসলিম ২৭৫৯ · সহীহ মুসলিম ২৭৪৭",
+  "publish": {
+    "description": "রাত ও দিনে আল্লাহর ক্ষমার হাত সর্বদা প্রসারিত। বান্দা যখন অনুতপ্ত হয়ে তাঁর কাছে ফিরে আসে, আল্লাহ সীমাহীন আনন্দিত হন এবং ক্ষমাশীলতার চাদরে তাকে আবৃত করে নেন।\n\nসূত্র: সহীহ মুসলিম ২৭৫৯ · সহীহ মুসলিম ২৭৪৭",
+    "hashtags": [
+      "#তওবা",
+      "#ক্ষমা",
+      "#অনুশোচনা",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

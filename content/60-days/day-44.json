@@ -1,0 +1,106 @@
+{
+  "title": "গীবত — মৃত ভাইয়ের মাংস",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "closed wooden shutters on an old house at dusk, a sliver of light between them, secrets behind, narrow alley",
+      "narration": "আল্লাহ বলেন, তোমরা একে অপরের গোপন বিষয় খুঁজে বেড়িও না।",
+      "motion": "in",
+      "source": "সূরা হুজুরাত ৪৯:১২"
+    },
+    {
+      "id": "02",
+      "prompt": "wind whispering through tall dry reeds by a marsh at dusk, unsettled movement, grey light",
+      "narration": "এবং একে অপরের গীবত কোরো না।",
+      "motion": "left",
+      "source": "সূরা হুজুরাত ৪৯:১২"
+    },
+    {
+      "id": "03",
+      "prompt": "rotting fruit split open on the ground swarming with flies, ugly and repulsive, harsh light",
+      "narration": "তোমাদের কেউ কি তার মৃত ভাইয়ের গোশত খেতে চাইবে?",
+      "motion": "out",
+      "source": "সূরা হুজুরাত ৪৯:১২"
+    },
+    {
+      "id": "04",
+      "prompt": "a clean empty plate pushed away across a table, a chair turned aside, refusal",
+      "narration": "তোমরা তো তা ঘৃণাই করবে।",
+      "motion": "right",
+      "source": "সূরা হুজুরাত ৪৯:১২"
+    },
+    {
+      "id": "05",
+      "prompt": "white feathers scattered on a strong wind across a field, impossible to gather back, overcast",
+      "narration": "নবীজি সাহাবিদের জিজ্ঞেস করলেন, গীবত কী, তোমরা জানো? তাঁরা বললেন, আল্লাহ ও তাঁর রাসূলই ভালো জানেন।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৫৮৯"
+    },
+    {
+      "id": "06",
+      "prompt": "an empty stone room with a single chair, the shape of an echo, quiet cold light",
+      "narration": "তিনি বললেন, তোমার ভাইয়ের অনুপস্থিতিতে তার এমন কথা বলা, যা সে শুনলে অপছন্দ করত।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২৫৮৯"
+    },
+    {
+      "id": "07",
+      "prompt": "a clean quiet country lane at dawn between green hedges, birds singing, nothing said, peace",
+      "narration": "নবীজি বলেছেন, যে চুপ থাকল, সে মুক্তি পেল।",
+      "motion": "out",
+      "source": "জামে তিরমিযী ২৫০১"
+    }
+  ],
+  "description": "কারো অনুপস্থিতিতে তার অপ্রিয় কথা বলা মৃত ভাইয়ের গোশত খাওয়ার মতো জঘন্য অপরাধ। জিহ্বাকে সংযত রাখা ও অনর্থক কথা পরিহার করাই প্রকৃত মুক্তির পথ।\n\nসূত্র: সূরা হুজুরাত ৪৯:১২ · সহীহ মুসলিম ২৫৮৯ · জামে তিরমিযী ২৫০১",
+  "publish": {
+    "description": "কারো অনুপস্থিতিতে তার অপ্রিয় কথা বলা মৃত ভাইয়ের গোশত খাওয়ার মতো জঘন্য অপরাধ। জিহ্বাকে সংযত রাখা ও অনর্থক কথা পরিহার করাই প্রকৃত মুক্তির পথ।\n\nসূত্র: সূরা হুজুরাত ৪৯:১২ · সহীহ মুসলিম ২৫৮৯ · জামে তিরমিযী ২৫০১",
+    "hashtags": [
+      "#গীবত",
+      "#জিহ্বারসংযম",
+      "#কোরআন",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

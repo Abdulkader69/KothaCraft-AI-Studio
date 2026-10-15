@@ -1,0 +1,210 @@
+{
+  "title": "মায়ের শিক্ষা: ভাগ করে খাওয়ার অনাবিল আনন্দ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A single ripe juicy mango sliced into golden sweet pieces on a rustic ceramic plate, an older child holding the plate eagerly, vintage oil painting",
+      "narration": "মা, বাগানের পাকা আমটা কী মিষ্টি গন্ধ বেরোচ্ছে! আমি সবটুকু একাই খেয়ে ফেলি? একটু ডানে তাকিয়ে দেখো তো বাবা, ছোট বোন কিন্তু দরজার কোণে দাঁড়িয়ে আছে।",
+      "motion": "in",
+      "source": "পারিবারিক সদাচরণ",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "excited",
+          "text": "মা, বাগানের পাকা আমটা কী মিষ্টি গন্ধ বেরোচ্ছে! আমি সবটুকু একাই খেয়ে ফেলি?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "একটু ডানে তাকিয়ে দেখো তো বাবা, ছোট বোন কিন্তু দরজার কোণে দাঁড়িয়ে আছে।"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "A little younger sister looking shyly at the plate with big hopeful eyes, warm cozy kitchen backdrop, storybook gouache painting",
+      "narration": "ওকে দিলে তো আমার ভাগে খুব অল্প পড়বে মা... এটা তো আমার খুব পছন্দের ফল! একা খেলে শুধু পেট ভরে মানিক, কিন্তু ভাগ করে খেলে অন্তরটা শান্তিতে ভরে যায়।",
+      "motion": "left",
+      "source": "আত্মত্যাগ",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "hesitant",
+          "text": "ওকে দিলে তো আমার ভাগে খুব অল্প পড়বে মা... এটা তো আমার খুব পছন্দের ফল!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "একা খেলে শুধু পেট ভরে মানিক, কিন্তু ভাগ করে খেলে অন্তরটা শান্তিতে ভরে যায়।"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "Older brother lovingly handing the largest golden mango slice to the younger sister, her face lighting up with a radiant grin, oil painting",
+      "narration": "এই নাও আপুনি, বড় টুকরোটা তুমি খাও! আমরা একসাথে খাব। নবীজি বলেছেন, তোমরা ততক্ষণ পর্যন্ত পূর্ণ মুমিন হতে পারবে না, যতক্ষণ না নিজের ভাইয়ের জন্য তা পছন্দ করবে যা নিজের জন্য পছন্দ করো।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ১৩",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "generous",
+          "text": "এই নাও আপুনি, বড় টুকরোটা তুমি খাও! আমরা একসাথে খাব।"
+        },
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "নবীজি বলেছেন, তোমরা ততক্ষণ পর্যন্ত পূর্ণ মুমিন হতে পারবে না, যতক্ষণ না নিজের ভাইয়ের জন্য তা পছন্দ করবে যা নিজের জন্য পছন্দ করো।"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "Two siblings sitting cross-legged on a carpet eating mangoes together, laughing cheerfully, warm afternoon sunlight, fairytale painting",
+      "narration": "মা দেখো, বোন আম খেয়ে কেমন হাসছে! একা খেলে কিন্তু এতো আনন্দ লাগত না। নবীজি বলেছেন, একজনের খাবার দুজনের জন্য যথেষ্ট আর দুজনের খাবার চারজনের জন্য যথেষ্ট।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২০৫৯",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "joyful",
+          "text": "মা দেখো, বোন আম খেয়ে কেমন হাসছে! একা খেলে কিন্তু এতো আনন্দ লাগত না।"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "নবীজি বলেছেন, একজনের খাবার দুজনের জন্য যথেষ্ট আর দুজনের খাবার চারজনের জন্য যথেষ্ট।"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "A mother placing a fresh bowl of sweet dates on the table beside the children, smiling gratefully, gouache painting",
+      "narration": "খাবার ভাগ করে দিলে খাবার কি কমে যায় না মা? বাহ্যিকভাবে কম মনে হলেও খাবারে আল্লাহ এমন বরকত ঢেলে দেন যা দিয়ে অল্পতেই তৃপ্তি চলে আসে।",
+      "motion": "left",
+      "source": "বরকতের রহস্য",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "খাবার ভাগ করে দিলে খাবার কি কমে যায় না মা?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "বাহ্যিকভাবে কম মনে হলেও খাবারে আল্লাহ এমন বরকত ঢেলে দেন যা দিয়ে অল্পতেই তৃপ্তি চলে আসে।"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "The children wiping their sticky hands with a wet cloth, smiling at each other with pure affection, storybook illustration",
+      "narration": "আমি এখন থেকে টিফিনের খাবারও বন্ধুদের সাথে ভাগ করে খাব মা। মাশাআল্লাহ! যে হাত দেওয়ার জন্য প্রসারিত হয়, সে হাত কখনোই শূন্য থাকে না সোনা।",
+      "motion": "right",
+      "source": "ভ্রাতৃত্বের বন্ধন",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "happy",
+          "text": "আমি এখন থেকে টিফিনের খাবারও বন্ধুদের সাথে ভাগ করে খাব মা।"
+        },
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "মাশাআল্লাহ! যে হাত দেওয়ার জন্য প্রসারিত হয়, সে হাত কখনোই শূন্য থাকে না সোনা।"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "Mother wrapping both children in a warm embrace by the sunlit window, peaceful fairytale oil painting",
+      "narration": "ভালোবাসা ভাগ করলে বাড়ে, খাবার ভাগ করলে বরকত বাড়ে। আল্লাহ তোমাদের চিরকাল এমন মিল রাখুন।",
+      "motion": "out",
+      "source": "হিকমাহ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "ভালোবাসা ভাগ করলে বাড়ে, খাবার ভাগ করলে বরকত বাড়ে। আল্লাহ তোমাদের চিরকাল এমন মিল রাখুন।"
+        }
+      ]
+    }
+  ],
+  "description": "নিজের প্রিয় খাবার ভাইবোন ও বন্ধুদের সাথে ভাগ করে খাওয়া ভ্রাতৃত্ব ও বরকতের প্রতীক। একা খাওয়ার চেয়ে ভাগ করে খাওয়াতে তৃপ্তি অনেক বেশি।\n\nসূত্র: সহীহ বুখারী ১৩ · সহীহ মুসলিম ২০৫৯",
+  "publish": {
+    "description": "নিজের প্রিয় খাবার ভাইবোন ও বন্ধুদের সাথে ভাগ করে খাওয়া ভ্রাতৃত্ব ও বরকতের প্রতীক। একা খাওয়ার চেয়ে ভাগ করে খাওয়াতে তৃপ্তি অনেক বেশি।\n\nসূত্র: সহীহ বুখারী ১৩ · সহীহ মুসলিম ২০৫৯",
+    "hashtags": [
+      "#ভাগ_করে_খাওয়া",
+      "#মায়ের_শিক্ষা",
+      "#ভ্রাতৃত্ব",
+      "#বরকত",
+      "#পারিবারিক_শিক্ষা",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

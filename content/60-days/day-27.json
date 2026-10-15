@@ -1,0 +1,99 @@
+{
+  "title": "তাওয়াক্কুল — উট বাঁধো, তারপর ভরসা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a camel resting beside a stone wall outside a mosque courtyard at dusk, saddlebags on the ground, lanterns lit, a desert town",
+      "narration": "এক ব্যক্তি উটে চড়ে নবীজির কাছে এলেন। তিনি জিজ্ঞেস করলেন, আমি কি উটটি ছেড়ে দিয়ে আল্লাহর উপর ভরসা করব?",
+      "motion": "in",
+      "source": "জামে তিরমিযী ২৫১৭"
+    },
+    {
+      "id": "02",
+      "prompt": "a loose coil of rope lying slack on the sand beside a wooden stake, untied, evening shadows long",
+      "narration": "তিনি বললেন, না।",
+      "motion": "left",
+      "source": "জামে তিরমিযী ২৫১৭"
+    },
+    {
+      "id": "03",
+      "prompt": "a rope tied in a firm knot around a wooden stake driven into the ground, close detail, rough fibres, steady",
+      "narration": "আগে উটটি বেঁধে রাখো, তারপর আল্লাহর উপর ভরসা করো।",
+      "motion": "out",
+      "source": "জামে তিরমিযী ২৫১৭"
+    },
+    {
+      "id": "04",
+      "prompt": "a flock of birds leaving a nest in a tree at sunrise, wings spread against a pink sky, green fields below, setting out",
+      "narration": "নবীজি বলেছেন, যদি তোমরা যথার্থভাবে আল্লাহর উপর ভরসা করতে, তবে তোমাদের রিজিক দেওয়া হতো পাখির মতো…",
+      "motion": "right",
+      "source": "জামে তিরমিযী ২৩৪৪"
+    },
+    {
+      "id": "05",
+      "prompt": "the same birds returning at dusk to an orchard full of fruit, wide amber sky, silhouettes settling into branches",
+      "narration": "…যারা সকালে খালি পেটে বের হয়, আর সন্ধ্যায় ভরা পেটে ফিরে আসে।",
+      "motion": "in",
+      "source": "জামে তিরমিযী ২৩৪৪"
+    },
+    {
+      "id": "06",
+      "prompt": "a line of clear footprints leading forward across pristine morning sand toward a distant oasis, purposeful",
+      "narration": "চেষ্টা তোমার দায়িত্ব, ফলাফল আল্লাহর হাতে।",
+      "motion": "right",
+      "source": "জামে তিরমিযী ২৫১৭"
+    }
+  ],
+  "description": "তাওয়াক্কুল মানে হাত গুটিয়ে বসে থাকা নয়। নিজের সাধ্যমতো সর্বোচ্চ চেষ্টা করা এবং ফলাফল আল্লাহর হাতে সঁপে দেওয়াই হলো প্রকৃত তাওয়াক্কুল।\n\nসূত্র: জামে তিরমিযী ২৫১৭ · জামে তিরমিযী ২৩৪৪",
+  "publish": {
+    "description": "তাওয়াক্কুল মানে হাত গুটিয়ে বসে থাকা নয়। নিজের সাধ্যমতো সর্বোচ্চ চেষ্টা করা এবং ফলাফল আল্লাহর হাতে সঁপে দেওয়াই হলো প্রকৃত তাওয়াক্কুল।\n\nসূত্র: জামে তিরমিযী ২৫১৭ · জামে তিরমিযী ২৩৪৪",
+    "hashtags": [
+      "#তাওয়াক্কুল",
+      "#আল্লাহরভরসা",
+      "#হাদিস",
+      "#ইসলামিকচিন্তা",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

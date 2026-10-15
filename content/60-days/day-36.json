@@ -1,0 +1,106 @@
+{
+  "title": "বিদায় হজের ভাষণ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a vast plain at the foot of a rocky hill under a wide sky, thousands of white tents and pilgrims seen from far above, historic",
+      "narration": "বিদায় হজে, আরাফাতের ময়দানে, নবীজি লক্ষাধিক মানুষের সামনে দাঁড়ালেন।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ১২১৮"
+    },
+    {
+      "id": "02",
+      "prompt": "a bare rocky hillside in soft golden light, a lone camel standing at the top, the plain spread below, stillness",
+      "narration": "তিনি বললেন, তোমাদের রক্ত ও সম্পদ একে অপরের জন্য হারাম — যেমন এই দিন, এই মাস পবিত্র।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ১৭৩৯"
+    },
+    {
+      "id": "03",
+      "prompt": "two identical stones of different colours resting side by side on a balance scale, perfectly level, close detail",
+      "narration": "আরবের উপর অনারবের কোনো শ্রেষ্ঠত্ব নেই, অনারবের উপর আরবেরও নয়।",
+      "motion": "out",
+      "source": "মুসনাদে আহমাদ ২৩৪৮৯"
+    },
+    {
+      "id": "04",
+      "prompt": "a hillside of wildflowers in every colour — white, black, red, gold — blending into one carpet under the sun",
+      "narration": "সাদার উপর কালোর নয়, কালোর উপর সাদারও নয় — শ্রেষ্ঠত্ব কেবল তাকওয়ায়।",
+      "motion": "right",
+      "source": "মুসনাদে আহমাদ ২৩৪৮৯"
+    },
+    {
+      "id": "05",
+      "prompt": "an open Qur'an on a stone beside a wooden staff, warm evening light, a legacy left behind",
+      "narration": "আমি তোমাদের মাঝে এমন জিনিস রেখে যাচ্ছি, যা শক্ত করে ধরে থাকলে তোমরা কখনো পথ হারাবে না।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ১২১৮"
+    },
+    {
+      "id": "06",
+      "prompt": "sunset over the vast plain, tents glowing, birds flying home, the close of a great day",
+      "narration": "আল্লাহর কিতাব।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ১২১৮"
+    },
+    {
+      "id": "07",
+      "prompt": "stars filling the sky above the quiet plain, a crescent moon rising over the hill, timeless",
+      "narration": "সেই ভাষণ চৌদ্দশ বছর পরেও প্রতিটি মানুষের জন্য সমান সত্য।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ১৭৩৯"
+    }
+  ],
+  "description": "আরাফাতের ময়দানে দেওয়া মানবাধিকার ও সমতার শাশ্বত ঘোষণা — বংশ, বর্ণ বা ভাষার কোনো শ্রেষ্ঠত্ব নেই, শ্রেষ্ঠত্ব কেবল তাকওয়ায়।\n\nসূত্র: সহীহ মুসলিম ১২১৮ · সহীহ বুখারী ১৭৩৯ · মুসনাদে আহমাদ ২৩৪৮৯",
+  "publish": {
+    "description": "আরাফাতের ময়দানে দেওয়া মানবাধিকার ও সমতার শাশ্বত ঘোষণা — বংশ, বর্ণ বা ভাষার কোনো শ্রেষ্ঠত্ব নেই, শ্রেষ্ঠত্ব কেবল তাকওয়ায়।\n\nসূত্র: সহীহ মুসলিম ১২১৮ · সহীহ বুখারী ১৭৩৯ · মুসনাদে আহমাদ ২৩৪৮৯",
+    "hashtags": [
+      "#বিদায়হজ",
+      "#মানবাধিকার",
+      "#সমতা",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

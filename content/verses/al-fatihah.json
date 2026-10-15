@@ -1,0 +1,76 @@
+{
+  "_note": "Bangla here is a plain literal rendering, not a published translation — swap in one you hold the rights to before publishing at scale.",
+  "title": "সূরা আল-ফাতিহা",
+  "arabicTitle": "الفاتحة",
+  "range": "আয়াত ১–৭",
+  "surah": 1,
+  "aspect": "9:16",
+  "fps": 30,
+  "theme": "emerald-night",
+  "recitation": {
+    "reciter": "Husary_64kbps"
+  },
+  "voiceover": "none",
+  "opening": "taawwudh",
+  "gap": 0.6,
+  "intro": {
+    "seconds": 4
+  },
+  "type": {
+    "centerY": 0.42,
+    "arabicColor": "#FFFFFF",
+    "banglaColor": "#E9DCC0",
+    "numberColor": "#E9C987"
+  },
+  "verses": [
+    {
+      "id": "01",
+      "ayah": 1,
+      "number": "١",
+      "arabic": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "bangla": "পরম করুণাময়, অসীম দয়ালু আল্লাহর নামে।"
+    },
+    {
+      "id": "02",
+      "ayah": 2,
+      "number": "٢",
+      "arabic": "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
+      "bangla": "সমস্ত প্রশংসা আল্লাহর, যিনি সকল জগতের রব।"
+    },
+    {
+      "id": "03",
+      "ayah": 3,
+      "number": "٣",
+      "arabic": "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "bangla": "পরম করুণাময়, অসীম দয়ালু।"
+    },
+    {
+      "id": "04",
+      "ayah": 4,
+      "number": "٤",
+      "arabic": "مَٰلِكِ يَوْمِ ٱلدِّينِ",
+      "bangla": "বিচার দিনের মালিক।"
+    },
+    {
+      "id": "05",
+      "ayah": 5,
+      "number": "٥",
+      "arabic": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+      "bangla": "আমরা কেবল আপনারই ইবাদত করি, আর কেবল আপনারই সাহায্য চাই।"
+    },
+    {
+      "id": "06",
+      "ayah": 6,
+      "number": "٦",
+      "arabic": "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
+      "bangla": "আমাদের সরল পথ দেখান।"
+    },
+    {
+      "id": "07",
+      "ayah": 7,
+      "number": "٧",
+      "arabic": "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
+      "bangla": "তাদের পথ, যাদের প্রতি আপনি অনুগ্রহ করেছেন; তাদের নয় যারা ক্রোধের শিকার, আর নয় পথভ্রষ্টদের।"
+    }
+  ]
+}

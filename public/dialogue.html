@@ -1,0 +1,1902 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>faceless-pipeline — Dialogue Studio</title>
+    <link rel="stylesheet" href="/ui.css" />
+    <style>
+      main {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 16px;
+      }
+      /* Two Column Studio Layout: Left Large, Right Small */
+      .studio-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.65fr) minmax(350px, 1fr);
+        gap: 20px;
+        align-items: start;
+      }
+      @media (max-width: 1040px) {
+        .studio-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+      .left-col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        min-width: 0;
+      }
+      .right-col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        min-width: 0;
+      }
+      .bottom-full {
+        width: 100%;
+      }
+      .speakers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 12px;
+        margin-top: 10px;
+      }
+      .speaker-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.02);
+        display: grid;
+        gap: 8px;
+      }
+      .speaker-pill {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .dialogue-scene {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 14px;
+        margin-bottom: 14px;
+        background: rgba(255, 255, 255, 0.015);
+        display: grid;
+        gap: 10px;
+      }
+      .scene-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .scene-id {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .bubble-list {
+        display: grid;
+        gap: 8px;
+        margin-top: 6px;
+      }
+      .bubble-line {
+        display: grid;
+        gap: 4px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 3px solid var(--accent);
+      }
+      .bubble-line.speaker-alt {
+        border-left-color: #88c0d0;
+        background: rgba(136, 192, 208, 0.04);
+      }
+      .line-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .speaker-select {
+        font-weight: 600;
+        font-size: 12px;
+        padding: 2px 6px;
+      }
+      .tone-input {
+        font-size: 11px;
+        padding: 2px 6px;
+        width: 140px;
+        color: var(--dim);
+      }
+      .modal-bg {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 20px;
+      }
+      .modal-box {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        max-width: 650px;
+        width: 100%;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+      .modal-box textarea {
+        flex: 1;
+        min-height: 250px;
+        font-family: monospace;
+        font-size: 12px;
+        margin: 10px 0;
+      }
+      .badge {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .badge-green { background: #238636; color: #fff; }
+      .badge-purple { background: #8957e5; color: #fff; }
+      .badge-blue { background: #1f6feb; color: #fff; }
+      .badge-gray { background: #30363d; color: var(--dim); }
+      .stock-mini-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 6px;
+        max-height: 170px;
+        overflow-y: auto;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .stock-mini-item {
+        position: relative;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        cursor: pointer;
+        background: #000;
+      }
+      .stock-mini-item img {
+        width: 100%;
+        height: 65px;
+        object-fit: cover;
+        display: block;
+      }
+      .stock-mini-item .dur {
+        position: absolute;
+        bottom: 2px;
+        right: 4px;
+        font-size: 9px;
+        background: rgba(0,0,0,0.7);
+        padding: 1px 3px;
+        border-radius: 2px;
+      }
+      .stock-mini-item .name {
+        font-size: 9px;
+        padding: 2px 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .reels-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 14px;
+      }
+      .reel-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: border-color .15s ease, box-shadow .15s ease;
+      }
+      .reel-card:hover {
+        border-color: var(--accent);
+      }
+      .reel-card video {
+        width: 100%;
+        aspect-ratio: 9/16;
+        object-fit: cover;
+        background: #000;
+        display: block;
+      }
+      .reel-card .noshot {
+        width: 100%;
+        aspect-ratio: 9/16;
+        background: #0a0e14;
+        display: grid;
+        place-items: center;
+        color: var(--dim);
+        font-size: 11px;
+      }
+      .reel-meta {
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .tab-btn {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--dim);
+        padding: 4px 10px;
+        font-size: 11px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .tab-btn.active {
+        background: var(--line);
+        color: #fff;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>faceless-pipeline</h1>
+      <nav class="nav">
+        <a href="/">Reels</a><a href="/stock">Local video</a><a href="/cards">Photo cards</a><a href="/verses">Verse reels</a><a class="active" href="/dialogue">Dialogue</a>
+      </nav>
+      <span id="status" style="margin-left:auto">Idle.</span>
+      <button id="cancelBtn" class="small" disabled>Cancel</button>
+    </header>
+
+    <main>
+      <!-- Two Column Layout: Left (Large) | Right (Small) -->
+      <div class="studio-layout">
+        
+        <!-- LEFT COLUMN (Large) -->
+        <div class="left-col">
+          
+          <!-- 1. Dialogue Reel Studio Top Controls -->
+          <section>
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <h2 style="margin:0">Dialogue Reel Studio</h2>
+              <span class="hint" style="margin:0">multi-character dialogue conversations</span>
+              
+              <div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap">
+                <select id="reelSelect" style="max-width:180px;font-size:12px"></select>
+                <button id="newReelBtn" class="small">+ New</button>
+                <button id="importModalBtn" class="small" style="background:#238636;color:white;border-color:#2ea043;font-weight:600">Import JSON ✦</button>
+                <button id="exportJsonBtn" class="small">Export</button>
+                <button id="saveBtn" class="small" style="font-weight:600">Save</button>
+              </div>
+            </div>
+
+            <div class="row two" style="margin-top:14px">
+              <div>
+                <label for="reelTitle">Reel Title</label>
+                <input id="reelTitle" placeholder="মায়ের শিক্ষা: বালেগ হওয়ার পর" />
+              </div>
+              <div>
+                <label for="reelAspect">Aspect Ratio</label>
+                <select id="reelAspect">
+                  <option value="9:16">9:16 — Vertical (Reels / Shorts / TikTok)</option>
+                  <option value="1:1">1:1 — Square (Instagram Post)</option>
+                  <option value="16:9">16:9 — Landscape (YouTube Video)</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. Voices & Characters -->
+          <section>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+              <h3 style="margin:0">Voices & Characters</h3>
+              <span class="hint" style="margin:0">assign character profiles & voices</span>
+              <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+                <label style="margin:0;font-size:12px;font-weight:600">Provider:</label>
+                <select id="voiceProvider" style="padding:2px 8px;font-size:12px">
+                  <option value="edge">Edge TTS (100% Free)</option>
+                  <option value="vits-bd">vits-bd (Local, Free, Bangladeshi Bangla)</option>
+                  <option value="gemini">Gemini TTS (Free Google AI)</option>
+                  <option value="elevenlabs">ElevenLabs (API Key)</option>
+                </select>
+                <label style="margin:0;font-size:12px;font-weight:600">Turn Pause:</label>
+                <div style="display:flex;align-items:center;gap:3px">
+                  <input id="dialogueGap" type="number" step="0.05" min="0.2" max="2.0" value="0.65" style="width:58px;padding:2px 4px;font-size:12px" title="Conversational delay between turns (seconds)" />
+                  <span style="font-size:11px;color:var(--dim)">s</span>
+                </div>
+                <select id="addProfileSelect" style="padding:3px 8px;font-size:12px;background:#238636;color:#ffffff;border:1px solid #2ea043;border-radius:4px;cursor:pointer;font-weight:600">
+                  <option value="">+ Add Character...</option>
+                  <optgroup label="Female Voice Profiles" style="background:#161b22;color:#c9d1d9">
+                    <option value="female_child">👧 মেয়ে (Girl / Daughter)</option>
+                    <option value="female_adult">👩 মা (Mother / Adult Female)</option>
+                    <option value="female_elderly">👵 নানী/দাদী (Elderly Female)</option>
+                  </optgroup>
+                  <optgroup label="Male Voice Profiles" style="background:#161b22;color:#c9d1d9">
+                    <option value="male_child">👦 ছেলে (Boy / Son)</option>
+                    <option value="male_adult">👨 বাবা (Father / Adult Male)</option>
+                    <option value="male_teacher">📖 শিক্ষক (Teacher / Scholar)</option>
+                    <option value="male_elderly">👴 নানা/দাদা (Elderly Male)</option>
+                  </optgroup>
+                  <option value="custom" style="background:#161b22;color:#c9d1d9">⚙️ Custom Character...</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="speakers-grid" id="speakersContainer"></div>
+
+            <div id="auditionPlayerWrap" hidden style="margin-top:10px;padding:8px;background:#151a24;border-radius:6px">
+              <span style="font-size:12px;font-weight:600;color:var(--accent)">Voice Audition:</span>
+              <audio id="auditionAudio" controls style="margin-top:4px"></audio>
+            </div>
+          </section>
+
+          <!-- 3. Scenes & Dialogue Script -->
+          <section>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+              <h3 style="margin:0">Scenes & Dialogue Script</h3>
+              <span class="hint" style="margin:0">conversational turns • image prompts / video clips</span>
+              <button id="addSceneBtn" class="small" style="margin-left:auto">+ Add Scene</button>
+            </div>
+
+            <div id="scenesContainer"></div>
+
+            <div style="text-align:center;margin-top:10px">
+              <button id="addSceneBtnBottom" class="small" style="padding:6px 14px">+ Add Next Scene</button>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- RIGHT COLUMN (Small) -->
+        <div class="right-col">
+
+          <!-- 1. Render Reel Button & Live Progress -->
+          <section style="background: rgba(235, 203, 128, 0.03); border-color: rgba(235, 203, 128, 0.25);">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+              <h3 style="margin:0">Render Video</h3>
+              <div style="margin-left:auto;display:flex;gap:6px">
+                <button id="renderBtn" style="background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:700;font-size:13px;padding:6px 14px;border-radius:4px;cursor:pointer">Render Reel 🚀</button>
+                <button id="stopBtn" style="background:#da3633;color:#fff;border-color:#da3633;font-weight:700;font-size:13px;padding:6px 14px;border-radius:4px;cursor:pointer" disabled>Stop ◼</button>
+              </div>
+            </div>
+
+            <!-- Live SSE Progress Logs -->
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+                <span style="font-size:11px;font-weight:600;color:var(--dim)">Render Progress</span>
+                <span class="hint" id="elapsedHint" style="margin-left:auto;font-size:11px"></span>
+              </div>
+              <div id="log" style="height:150px;font-size:11px;overflow-y:auto;background:rgba(0,0,0,0.4);padding:8px;border-radius:4px;border:1px solid var(--line);font-family:monospace"></div>
+            </div>
+          </section>
+
+          <!-- 2. Visual Footage (Images vs Stock) -->
+          <section id="footageSection">
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+              <h3 style="margin:0">Visual Footage</h3>
+              <div style="margin-left:auto;display:flex;gap:4px">
+                <button type="button" id="tabImages" class="tab-btn active">AI Images</button>
+                <button type="button" id="tabStock" class="tab-btn">Local Video</button>
+              </div>
+            </div>
+
+            <!-- Mode A: AI Generated Images -->
+            <div id="imageSettingsWrap">
+              <div style="margin-bottom:8px">
+                <label for="imageProvider" style="font-size:11px">Image Provider</label>
+                <select id="imageProvider" style="font-size:12px;padding:3px 6px">
+                  <option value="pollinations">pollinations — free, no key</option>
+                  <option value="mflux">mflux — local Apple Silicon (Z-Image-Turbo)</option>
+                  <option value="cloudflare">Cloudflare Workers AI — key</option>
+                  <option value="fal">fal.ai — API key</option>
+                  <option value="dalle3">DALL-E 3 — OpenAI key</option>
+                  <option value="recraft">recraft — Recraft v3 API</option>
+                  <option value="replicate">replicate — API token</option>
+                </select>
+              </div>
+
+              <div id="mfluxSettingsWrap" style="margin-bottom:8px">
+                <label for="mfluxModel" style="font-size:11px">mflux Model</label>
+                <select id="mfluxModel" style="font-size:12px;padding:3px 6px">
+                  <option value="filipstrand/Z-Image-Turbo-mflux-4bit">Z-Image-Turbo 4-bit (Fastest, ~4 steps)</option>
+                  <option value="schnell">FLUX.1-schnell (4 steps)</option>
+                  <option value="dev">FLUX.1-dev</option>
+                </select>
+              </div>
+
+              <div style="margin-bottom:8px">
+                <label for="imageStyle" style="font-size:11px">Global Image Style</label>
+                <textarea id="imageStyle" rows="2" style="font-size:11px;width:100%" placeholder="cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field"></textarea>
+              </div>
+
+              <div>
+                <label for="imageNegative" style="font-size:11px">Negative Prompt</label>
+                <input id="imageNegative" style="font-size:11px" placeholder="low quality, blurry, deformed, watermark" />
+              </div>
+            </div>
+
+            <!-- Mode B: Local Video (Stock) -->
+            <div id="stockSettingsWrap" hidden>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                <span class="hint" style="margin:0;font-size:11px">Clips from <code>stock/</code>:</span>
+                <input type="file" id="uploadStockInput" accept="video/mp4,video/quicktime,video/webm" style="display:none" />
+                <button id="uploadStockBtn" class="small" style="margin-left:auto;font-size:11px">+ Upload</button>
+              </div>
+              <div id="stockMiniGrid" class="stock-mini-grid"></div>
+            </div>
+          </section>
+
+          <!-- 3. Brand / Watermark -->
+          <section>
+            <h3 style="margin:0 0 8px">Brand / Watermark</h3>
+            <div class="row two">
+              <div>
+                <label for="brandMode" style="font-size:11px">Watermark</label>
+                <select id="brandMode" style="font-size:12px;padding:3px">
+                  <option value="">off</option>
+                  <option value="text">text (handle/name)</option>
+                  <option value="image">image (logo)</option>
+                </select>
+              </div>
+              <div>
+                <label for="brandPosition" style="font-size:11px">Corner</label>
+                <select id="brandPosition" style="font-size:12px;padding:3px">
+                  <option value="bottom-right">bottom-right</option>
+                  <option value="bottom-left">bottom-left</option>
+                  <option value="top-right">top-right</option>
+                  <option value="top-left">top-left</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="brandTextWrap" style="margin-top:6px">
+              <label for="brandText" style="font-size:11px">Watermark Text</label>
+              <input id="brandText" placeholder="হিকমাহ-Wisdom" style="font-size:12px" />
+            </div>
+
+            <div id="brandImgWrap" hidden style="margin-top:6px">
+              <label for="brandImgSelect" style="font-size:11px">Logo Image</label>
+              <div style="display:flex;gap:4px">
+                <select id="brandImgSelect" style="flex:1;font-size:12px"></select>
+                <input type="file" id="uploadBrandInput" accept="image/png,image/jpeg,image/webp" style="display:none" />
+                <button id="uploadBrandBtn" class="small" style="font-size:11px">+ Upload</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. Subtitle Captions -->
+          <section>
+            <h3 style="margin:0 0 8px">Subtitle Captions</h3>
+            <div class="row two">
+              <div>
+                <label for="captionStyle" style="font-size:11px">Style</label>
+                <select id="captionStyle" style="font-size:12px;padding:3px">
+                  <option value="highlight">highlight (word lights up)</option>
+                  <option value="word">word (one word pop-in)</option>
+                  <option value="chunk">chunk (short cue)</option>
+                </select>
+              </div>
+              <div>
+                <label for="wordsPerCue" style="font-size:11px">Words / cue</label>
+                <input id="wordsPerCue" placeholder="3" type="number" min="1" max="6" style="font-size:12px" />
+              </div>
+            </div>
+
+            <div style="margin-top:10px">
+              <label style="display:flex;align-items:flex-start;gap:6px;font-size:12px;cursor:pointer">
+                <input type="checkbox" id="speakerLabelsCheck" checked style="width:auto;margin-top:2px" />
+                <span><b>Show speaker header on top of captions</b> (e.g. <code>মেয়েঃ</code>, <code>মাঃ</code>)</span>
+              </label>
+              <p class="hint" style="margin:2px 0 0 20px;font-size:11px">
+                Stays visible during character turns while spoken words light up below.
+              </p>
+            </div>
+          </section>
+
+          <!-- 5. Intro (3s) & Outro Cards (6s) -->
+          <section>
+            <h3 style="margin:0 0 8px">Intro (3s) & Outro Cards (6s)</h3>
+            <div style="margin-bottom:8px">
+              <div style="display:flex;align-items:center;gap:6px">
+                <label for="introSeconds" style="font-size:11px;margin:0">Intro Duration (seconds, 0=off):</label>
+                <input id="introSeconds" placeholder="3" inputmode="decimal" style="width:50px;font-size:12px;padding:2px 4px;margin-left:auto" />
+              </div>
+              <input id="introText" placeholder="Intro card text (defaults to title)" style="font-size:12px;margin-top:4px" />
+            </div>
+
+            <div>
+              <div style="display:flex;align-items:center;gap:6px">
+                <label for="outroSeconds" style="font-size:11px;margin:0">Outro Duration (seconds, 0=off):</label>
+                <input id="outroSeconds" placeholder="6" inputmode="decimal" style="width:50px;font-size:12px;padding:2px 4px;margin-left:auto" />
+              </div>
+              <textarea id="outroText" rows="2" style="font-size:11px;margin-top:4px" placeholder="প্রতিদিন একটি গল্প&#10;ফলো করুন&#10;facebook//হিকমাহ-Wisdom"></textarea>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- BOTTOM SECTION: Full Container Width (Only Dialogue Reels) -->
+      <section class="bottom-full" id="allReelsSection">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <h3 style="margin:0">Dialogue Reels Gallery</h3>
+          <span id="reelsCountBadge" class="badge badge-green">0 dialogue reels</span>
+          <span class="hint" style="margin:0">stored in <code>out/dialogue/</code></span>
+          <button id="refreshGalleryBtn" class="small" style="margin-left:auto">↻ Refresh</button>
+        </div>
+
+        <div id="reelsGalleryGrid" class="reels-gallery-grid"></div>
+      </section>
+
+      <!-- 4. Universal Publish & Schedule Section -->
+      <section class="bottom-full" id="publishSection" style="margin-top: 10px;">
+      </section>
+    </main>
+
+    <!-- Import JSON Modal -->
+    <div id="importModal" class="modal-bg" hidden>
+      <div class="modal-box">
+        <div style="display:flex;align-items:center;gap:8px">
+          <h3 style="margin:0">Import Dialogue Project JSON</h3>
+          <button id="closeModalBtn" class="small" style="margin-left:auto;padding:2px 8px">✕</button>
+        </div>
+        <p class="hint" style="margin:6px 0 0">
+          Paste your project JSON below (or choose a file). It will automatically populate the title, characters, dialogue lines, and prompts.
+        </p>
+
+        <div style="margin:10px 0">
+          <input type="file" id="jsonFileInput" accept=".json,application/json" style="font-size:12px" />
+        </div>
+
+        <textarea id="jsonPasteArea" placeholder='{\n  "title": "মায়ের শিক্ষা...",\n  "voice": {\n    "speakers": {\n      "mother": { "name": "মা", "color": "#88C0D0" },\n      "child": { "name": "মেয়ে", "color": "#EBCB80" }\n    }\n  },\n  "scenes": [\n    {\n      "id": "01",\n      "prompt": "...",\n      "lines": [\n        { "speaker": "child", "text": "মা, বড় হওয়া মানে কী?" },\n        { "speaker": "mother", "text": "আজ তোমাকে বলব..." }\n      ]\n    }\n  ]\n}'></textarea>
+
+        <div style="display:flex;gap:8px;margin-top:auto">
+          <span id="importErr" style="color:#f85149;font-size:12px;margin-right:auto"></span>
+          <button id="confirmImportBtn" style="background:#238636;color:white;border-color:#2ea043;font-weight:600">Load Project</button>
+          <button id="cancelModalBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/publish-box.js"></script>
+    <script>
+      const $ = (id) => document.getElementById(id);
+
+      // Default Template Project
+      let project = {
+        title: "মায়ের শিক্ষা: বালেগ হওয়ার পর",
+        aspect: "9:16",
+        fps: 30,
+        gap: 0.35,
+        footage: "images",
+        image: {
+          style: "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, respectful aesthetic",
+          negative: "low quality, blurry, deformed, watermark"
+        },
+        voice: {
+          provider: "edge",
+          mode: "dialogue",
+          speakers: {
+            child: {
+              profile: "female_child",
+              name: "মেয়ে",
+              edgeVoice: "bn-BD-NabanitaNeural",
+              edgeRate: "+6%",
+              edgePitch: "+22Hz",
+              vitsPitch: "+16%",
+              vitsRate: "1.05x",
+              voiceId: "MF3mGyEYCl7XYWbV9V6O",
+              geminiVoice: "Aoede",
+              color: "#88C0D0",
+              note: "young girl, daughter (~10-14)"
+            },
+            mother: {
+              profile: "female_adult",
+              name: "মা",
+              edgeVoice: "bn-BD-NabanitaNeural",
+              edgeRate: "-2%",
+              edgePitch: "+0Hz",
+              vitsPitch: "+3%",
+              vitsRate: "0.98x",
+              voiceId: "EXAVITQu4vr4xnSDxMaL",
+              geminiVoice: "Kore",
+              color: "#EBCB80",
+              note: "warm adult mother"
+            }
+          }
+        },
+        captions: {
+          style: "highlight",
+          wordsPerCue: 3,
+          fontName: "Kohinoor Bangla",
+          primary: "#FFFFFF",
+          highlight: "#EBCB80",
+          outline: "#000000",
+          speakerLabels: true
+        },
+        intro: { seconds: 3, text: "" },
+        outro: { seconds: 6, text: "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom" },
+        brand: { mode: "text", position: "bottom-right", text: "হিকমাহ-Wisdom" },
+        scenes: []
+      };
+
+      let stockClips = [];
+      let brandImages = [];
+      let allReels = [];
+      let currentDialogueSlug = null;
+
+      const CHARACTER_PROFILES = {
+        female_child: {
+          id: "female_child",
+          label: "👧 মেয়ে (Girl / Daughter)",
+          name: "মেয়ে",
+          edgeVoice: "bn-BD-NabanitaNeural",
+          edgeRate: "+6%",
+          edgePitch: "+22Hz",
+          vitsPitch: "+16%",
+          vitsRate: "1.05x",
+          voiceId: "MF3mGyEYCl7XYWbV9V6O",
+          geminiVoice: "Aoede",
+          color: "#88C0D0",
+          note: "young girl, daughter (~10-14)"
+        },
+        female_adult: {
+          id: "female_adult",
+          label: "👩 মা (Mother / Adult Female)",
+          name: "মা",
+          edgeVoice: "bn-BD-NabanitaNeural",
+          edgeRate: "-2%",
+          edgePitch: "+0Hz",
+          vitsPitch: "+3%",
+          vitsRate: "0.98x",
+          voiceId: "EXAVITQu4vr4xnSDxMaL",
+          geminiVoice: "Kore",
+          color: "#EBCB80",
+          note: "warm adult female, mother"
+        },
+        female_elderly: {
+          id: "female_elderly",
+          label: "👵 নানী/দাদী (Elderly Female)",
+          name: "দাদী",
+          edgeVoice: "bn-BD-NabanitaNeural",
+          edgeRate: "-8%",
+          edgePitch: "-6Hz",
+          vitsPitch: "-8%",
+          vitsRate: "0.90x",
+          voiceId: "Xb7hH8MSUJpSbSDYk0k2",
+          geminiVoice: "Leda",
+          color: "#D08770",
+          note: "elderly female, grandmother"
+        },
+        male_child: {
+          id: "male_child",
+          label: "👦 ছেলে (Boy / Son)",
+          name: "ছেলে",
+          edgeVoice: "bn-BD-PradeepNeural",
+          edgeRate: "+8%",
+          edgePitch: "+18Hz",
+          vitsPitch: "+10%",
+          vitsRate: "1.04x",
+          voiceId: "TxGEqnHWrfWFTfGW9XjX",
+          geminiVoice: "Puck",
+          color: "#A3BE8C",
+          note: "young boy, son (~10-14)"
+        },
+        male_adult: {
+          id: "male_adult",
+          label: "👨 বাবা (Father / Adult Male)",
+          name: "বাবা",
+          edgeVoice: "bn-BD-PradeepNeural",
+          edgeRate: "-4%",
+          edgePitch: "-4Hz",
+          vitsPitch: "-12%",
+          vitsRate: "0.96x",
+          voiceId: "pNInz6obpgDQGcFmaJgB",
+          geminiVoice: "Charon",
+          color: "#B48EAD",
+          note: "warm adult male, father"
+        },
+        male_teacher: {
+          id: "male_teacher",
+          label: "📖 শিক্ষক (Teacher / Scholar / Narrator)",
+          name: "শিক্ষক",
+          edgeVoice: "bn-BD-PradeepNeural",
+          edgeRate: "-2%",
+          edgePitch: "+0Hz",
+          vitsPitch: "-8%",
+          vitsRate: "0.94x",
+          voiceId: "JBFqnCBsd6RMkjVDRZzb",
+          geminiVoice: "Orus",
+          color: "#5E81AC",
+          note: "thoughtful male teacher, scholar, narrator"
+        },
+        male_elderly: {
+          id: "male_elderly",
+          label: "👴 নানা/দাদা (Elderly Male)",
+          name: "দাদা",
+          edgeVoice: "bn-BD-PradeepNeural",
+          edgeRate: "-9%",
+          edgePitch: "-8Hz",
+          vitsPitch: "-15%",
+          vitsRate: "0.88x",
+          voiceId: "JBFqnCBsd6RMkjVDRZzb",
+          geminiVoice: "Charon",
+          color: "#BF616A",
+          note: "elderly male, grandfather"
+        }
+      };
+
+      // Aliases for intuitive JSON authoring
+      CHARACTER_PROFILES.mother = CHARACTER_PROFILES.female_adult;
+      CHARACTER_PROFILES.daughter = CHARACTER_PROFILES.female_child;
+      CHARACTER_PROFILES.child = CHARACTER_PROFILES.female_child;
+      CHARACTER_PROFILES.son = CHARACTER_PROFILES.male_child;
+      CHARACTER_PROFILES.father = CHARACTER_PROFILES.male_adult;
+      CHARACTER_PROFILES.grandma = CHARACTER_PROFILES.female_elderly;
+      CHARACTER_PROFILES.grandpa = CHARACTER_PROFILES.male_elderly;
+      CHARACTER_PROFILES.scholar = CHARACTER_PROFILES.male_teacher;
+
+      function normalizeProfileKey(profKey, key = '', spk = {}) {
+        if (profKey && CHARACTER_PROFILES[profKey]?.id) {
+          return CHARACTER_PROFILES[profKey].id;
+        }
+        const raw = `${profKey || ''} ${key || ''} ${spk.name || ''} ${spk.note || ''}`.toLowerCase();
+        if (/grandma|grandmother|elderly.*female|old.*female|নানী|দাদী|বৃদ্ধা/.test(raw)) return 'female_elderly';
+        if (/grandpa|grandfather|elderly.*male|old.*male|নানা|দাদা|বৃদ্ধ/.test(raw)) return 'male_elderly';
+        if (/teacher|scholar|alim|sheikh|narrator|ustadh|শিক্ষক|ওস্তাদ|আলেম|বর্ণনাকারী/.test(raw)) return 'male_teacher';
+        if (/child|daughter|girl|kid_female|young.*female|young.*girl|মেয়ে|কন্যা|শিশু|সন্তান/.test(raw)) return 'female_child';
+        if (/son|boy|kid_male|young.*male|young.*boy|ছেলে|পুত্র/.test(raw)) return 'male_child';
+        if (/mother|mom|woman|female|মা|মহিলা|জননী/.test(raw)) return 'female_adult';
+        if (/father|dad|man|male|বাবা|পিতা|পুরুষ/.test(raw)) return 'male_adult';
+        return profKey || 'female_adult';
+      }
+
+      function detectProfile(key, spk = {}) {
+        return normalizeProfileKey(spk.profile, key, spk);
+      }
+
+      function normalizeSpeakers(speakers) {
+        if (!speakers || typeof speakers !== 'object') return {};
+        for (const [key, spk] of Object.entries(speakers)) {
+          const canonicalKey = normalizeProfileKey(spk.profile, key, spk) || 'female_adult';
+          const prof = CHARACTER_PROFILES[canonicalKey] || CHARACTER_PROFILES.female_adult;
+          spk.profile = canonicalKey;
+          if (!spk.edgeVoice) spk.edgeVoice = prof.edgeVoice;
+          if (!spk.edgeRate) spk.edgeRate = prof.edgeRate;
+          if (!spk.edgePitch) spk.edgePitch = prof.edgePitch;
+          if (!spk.vitsPitch) spk.vitsPitch = prof.vitsPitch || '+0%';
+          if (!spk.vitsRate) spk.vitsRate = prof.vitsRate || '1.0x';
+          if (!spk.voiceId || spk.voiceId.startsWith('PASTE_')) spk.voiceId = prof.voiceId;
+          if (!spk.geminiVoice) spk.geminiVoice = prof.geminiVoice;
+          if (!spk.name || spk.name === key) spk.name = prof.name;
+          if (!spk.color) spk.color = prof.color;
+          if (!spk.note) spk.note = prof.note;
+        }
+        return speakers;
+      }
+
+      const ELEVEN_VOICE_OPTIONS = [
+        { id: "EXAVITQu4vr4xnSDxMaL", label: "Sarah (Mother / Warm Adult Female)", profile: "female_adult" },
+        { id: "MF3mGyEYCl7XYWbV9V6O", label: "Elli (Daughter / Young Girl)", profile: "female_child" },
+        { id: "jsCqWAovK2LkecY7zXl4", label: "Freya (Daughter / Expressive Girl)", profile: "female_child" },
+        { id: "TxGEqnHWrfWFTfGW9XjX", label: "Josh (Son / Energetic Young Boy)", profile: "male_child" },
+        { id: "pNInz6obpgDQGcFmaJgB", label: "Adam (Father / Deep Adult Male)", profile: "male_adult" },
+        { id: "nPczCjzI2devNBz1zQrb", label: "Brian (Father / Warm Deep Narrator)", profile: "male_adult" },
+        { id: "Xb7hH8MSUJpSbSDYk0k2", label: "Alice (Grandmother / Elder Female)", profile: "female_elderly" },
+        { id: "JBFqnCBsd6RMkjVDRZzb", label: "George (Grandfather / Storyteller)", profile: "male_elderly" },
+        { id: "21m00Tcm4TlvDq8ikWAM", label: "Rachel (Calm Professional Female)", profile: "female_adult" },
+        { id: "custom", label: "⚙️ Custom Voice ID..." }
+      ];
+
+      const GEMINI_VOICE_OPTIONS = [
+        { id: "Kore", label: "Kore (Mother / Warm Female)", profile: "female_adult" },
+        { id: "Aoede", label: "Aoede (Daughter / Youthful Girl)", profile: "female_child" },
+        { id: "Puck", label: "Puck (Son / Energetic Boy)", profile: "male_child" },
+        { id: "Charon", label: "Charon (Father / Deep Male)", profile: "male_adult" },
+        { id: "Leda", label: "Leda (Grandmother / Elder Female)", profile: "female_elderly" },
+        { id: "Orus", label: "Orus (Scholar / Grandfather)", profile: "male_teacher" }
+      ];
+
+      const EDGE_VOICE_OPTIONS = [
+        { id: "bn-BD-NabanitaNeural", label: "Nabanita (Bangladesh Female)" },
+        { id: "bn-BD-PradeepNeural", label: "Pradeep (Bangladesh Male)" },
+        { id: "bn-IN-TanishaaNeural", label: "Tanishaa (India Female)" },
+        { id: "bn-IN-BashkarNeural", label: "Bashkar (India Male)" },
+        { id: "en-US-AriaNeural", label: "Aria (US Female)" },
+        { id: "en-US-GuyNeural", label: "Guy (US Male)" }
+      ];
+
+      function logLine(text) {
+        const l = $('log');
+        const d = document.createElement('div');
+        d.textContent = text;
+        l.appendChild(d);
+        l.scrollTop = l.scrollHeight;
+      }
+
+      function syncFormToProject() {
+        project.title = $('reelTitle').value.trim() || 'Untitled Dialogue';
+        project.aspect = $('reelAspect').value;
+        project.footage = $('tabStock').classList.contains('active') ? 'stock' : 'images';
+
+        if (!project.image) project.image = {};
+        project.image.style = $('imageStyle').value.trim();
+        project.image.negative = $('imageNegative').value.trim();
+
+        if (!project.voice) project.voice = {};
+        project.voice.provider = $('voiceProvider').value;
+        project.voice.mode = 'dialogue';
+        const dGap = parseFloat($('dialogueGap').value);
+        project.gap = isNaN(dGap) ? 0.65 : dGap;
+
+        // Intro (3s) & Outro (6s)
+        const iSec = parseFloat($('introSeconds').value);
+        project.intro = { seconds: isNaN(iSec) ? 3 : iSec, text: $('introText').value.trim() };
+        const oSec = parseFloat($('outroSeconds').value);
+        project.outro = { seconds: isNaN(oSec) ? 6 : oSec, text: $('outroText').value.trim() };
+
+        // Brand / Watermark
+        const bMode = $('brandMode').value;
+        if (!bMode) {
+          project.brand = { off: true };
+        } else {
+          project.brand = {
+            mode: bMode,
+            position: $('brandPosition').value,
+            text: bMode === 'text' ? $('brandText').value.trim() : undefined,
+            image: bMode === 'image' ? `assets/brand/${$('brandImgSelect').value}` : undefined
+          };
+        }
+
+        // Captions
+        if (!project.captions) project.captions = {};
+        project.captions.style = $('captionStyle').value;
+        project.captions.wordsPerCue = parseInt($('wordsPerCue').value) || 3;
+        project.captions.speakerLabels = $('speakerLabelsCheck').checked;
+
+        // Settings
+        project.settings = {
+          imageProvider: $('imageProvider').value,
+          mfluxModel: $('mfluxModel').value
+        };
+      }
+
+      function renderSpeakers() {
+        const c = $('speakersContainer');
+        c.innerHTML = '';
+        const provider = $('voiceProvider').value;
+        const speakers = project.voice.speakers || {};
+
+        for (const [key, spk] of Object.entries(speakers)) {
+          const card = document.createElement('div');
+          card.className = 'speaker-card';
+
+          const canonical = normalizeProfileKey(spk.profile, key, spk) || 'female_adult';
+          if (spk.profile !== canonical) spk.profile = canonical;
+
+          let providerHtml = '';
+          if (provider === 'elevenlabs') {
+            const isKnownVoice = ELEVEN_VOICE_OPTIONS.some(o => o.id === spk.voiceId);
+            providerHtml = `
+              <div style="margin-top:6px">
+                <label style="font-size:11px;font-weight:600">ElevenLabs Voice Profile:</label>
+                <select class="spk-eleven-select" data-key="${key}" style="font-size:11px;padding:3px;width:100%">
+                  ${ELEVEN_VOICE_OPTIONS.filter(o => o.id !== 'custom').map(o => `
+                    <option value="${o.id}" ${spk.voiceId === o.id ? 'selected' : ''}>${o.label}</option>
+                  `).join('')}
+                  <option value="custom" ${!isKnownVoice ? 'selected' : ''}>⚙️ Custom Voice ID...</option>
+                </select>
+              </div>
+              <div class="row two" style="margin-top:4px">
+                <div>
+                  <label style="font-size:11px">Voice ID</label>
+                  <input class="spk-eleven-id" data-key="${key}" value="${spk.voiceId || ''}" placeholder="ElevenLabs voice ID" style="font-size:11px" />
+                </div>
+                <div>
+                  <label style="font-size:11px">Subtitle Color</label>
+                  <input type="color" class="spk-color" data-key="${key}" value="${spk.color || '#EBCB80'}" style="height:26px;width:100%;padding:1px" />
+                </div>
+              </div>
+              <div style="margin-top:4px">
+                <label style="font-size:11px">Character Persona / Note</label>
+                <input class="spk-note" data-key="${key}" value="${spk.note || ''}" placeholder="e.g. warm adult mother" style="font-size:11px" />
+              </div>
+            `;
+          } else if (provider === 'gemini') {
+            providerHtml = `
+              <div style="margin-top:6px">
+                <label style="font-size:11px;font-weight:600">Gemini Voice Profile:</label>
+                <select class="spk-gemini-voice" data-key="${key}" style="font-size:11px;padding:3px;width:100%">
+                  ${GEMINI_VOICE_OPTIONS.map(o => `
+                    <option value="${o.id}" ${(spk.geminiVoice || 'Kore') === o.id ? 'selected' : ''}>${o.label}</option>
+                  `).join('')}
+                </select>
+              </div>
+              <div class="row two" style="margin-top:4px">
+                <div>
+                  <label style="font-size:11px">Subtitle Color</label>
+                  <input type="color" class="spk-color" data-key="${key}" value="${spk.color || '#EBCB80'}" style="height:26px;width:100%;padding:1px" />
+                </div>
+                <div>
+                  <label style="font-size:11px">Character Persona / Note</label>
+                  <input class="spk-note" data-key="${key}" value="${spk.note || ''}" placeholder="e.g. warm adult mother" style="font-size:11px" />
+                </div>
+              </div>
+            `;
+          } else if (provider === 'vits-bd') {
+            const vitsToneOptions = [
+              { id: 'female_child', label: '👧 Child / Girl (+16% pitch, 1.05x speed)' },
+              { id: 'female_adult', label: '👩 Mother / Woman (+3% pitch, 0.98x speed)' },
+              { id: 'female_elderly', label: '👵 Grandmother (-8% pitch, 0.90x speed)' },
+              { id: 'male_child', label: '👦 Child / Boy (+10% pitch, 1.04x speed)' },
+              { id: 'male_adult', label: '👨 Father / Man (-12% pitch, 0.96x speed)' },
+              { id: 'male_teacher', label: '📖 Teacher / Scholar (-8% pitch, 0.94x speed)' },
+              { id: 'male_elderly', label: '👴 Grandfather (-15% pitch, 0.88x speed)' },
+              { id: 'custom', label: '⚙️ Custom Pitch & Speed...' }
+            ];
+            const isKnownTone = vitsToneOptions.some(t => t.id === spk.profile);
+            providerHtml = `
+              <div class="row two" style="margin-top:6px">
+                <div>
+                  <label style="font-size:11px;font-weight:600">vits-bd Tone Preset</label>
+                  <select class="spk-vits-select" data-key="${key}" style="font-size:11px;padding:2px">
+                    ${vitsToneOptions.map(t => `<option value="${t.id}" ${(spk.profile === t.id || (!isKnownTone && t.id === 'custom')) ? 'selected' : ''}>${t.label}</option>`).join('')}
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size:11px">Pitch Shift</label>
+                  <input class="spk-vits-pitch" data-key="${key}" value="${spk.vitsPitch || '+0%'}" placeholder="+16% (child)" style="font-size:11px;padding:2px" />
+                </div>
+              </div>
+              <div class="row two" style="margin-top:4px">
+                <div>
+                  <label style="font-size:11px">Speed Pace</label>
+                  <input class="spk-vits-rate" data-key="${key}" value="${spk.vitsRate || '1.0x'}" placeholder="1.05x" style="font-size:11px;padding:2px" />
+                </div>
+                <div>
+                  <label style="font-size:11px">Subtitle Color</label>
+                  <input type="color" class="spk-color" data-key="${key}" value="${spk.color || '#EBCB80'}" style="height:26px;width:100%;padding:1px" />
+                </div>
+              </div>
+              <div style="margin-top:4px">
+                <label style="font-size:11px">Character Persona / Note</label>
+                <input class="spk-note" data-key="${key}" value="${spk.note || ''}" placeholder="e.g. warm adult mother" style="font-size:11px" />
+              </div>
+            `;
+          } else {
+            // Edge TTS
+            providerHtml = `
+              <div class="row two" style="margin-top:6px">
+                <div>
+                  <label style="font-size:11px;font-weight:600">Edge Voice</label>
+                  <select class="spk-edge-voice" data-key="${key}" style="font-size:11px;padding:2px">
+                    ${EDGE_VOICE_OPTIONS.map(o => `<option value="${o.id}" ${spk.edgeVoice === o.id ? 'selected' : ''}>${o.label}</option>`).join('')}
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size:11px">Pitch / Tone</label>
+                  <input class="spk-edge-pitch" data-key="${key}" value="${spk.edgePitch || '+0Hz'}" placeholder="+20Hz (child)" style="font-size:11px;padding:2px" />
+                </div>
+              </div>
+              <div class="row two" style="margin-top:4px">
+                <div>
+                  <label style="font-size:11px">Speed Rate</label>
+                  <input class="spk-edge-rate" data-key="${key}" value="${spk.edgeRate || '+0%'}" placeholder="+5%" style="font-size:11px;padding:2px" />
+                </div>
+                <div>
+                  <label style="font-size:11px">Subtitle Color</label>
+                  <input type="color" class="spk-color" data-key="${key}" value="${spk.color || '#EBCB80'}" style="height:26px;width:100%;padding:1px" />
+                </div>
+              </div>
+              <div style="margin-top:4px">
+                <label style="font-size:11px">Character Persona / Note</label>
+                <input class="spk-note" data-key="${key}" value="${spk.note || ''}" placeholder="e.g. warm adult mother" style="font-size:11px" />
+              </div>
+            `;
+          }
+
+          card.innerHTML = `
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="speaker-pill" style="background:${spk.color || '#EBCB80'};color:#0d1117">${spk.name || key}</span>
+              <input class="spk-name" data-key="${key}" value="${spk.name || key}" placeholder="Display name" style="font-size:11px;padding:2px 4px;width:90px" />
+              <button class="small audition-spk-btn" data-key="${key}" style="margin-left:auto;font-size:10px;padding:2px 6px">▶ Test</button>
+              <button class="small remove-spk-btn" data-key="${key}" style="color:#f85149;padding:2px 5px">✕</button>
+            </div>
+            <div style="margin:6px 0 2px">
+              <label style="font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--dim);font-weight:600">Character Profile Preset:</label>
+              <select class="spk-profile-select" data-key="${key}" style="font-size:11px;padding:3px 6px;width:100%;background:#1e2430;color:var(--text);border:1px solid var(--line);border-radius:4px" title="Apply character profile preset">
+                <optgroup label="Female Voice Profiles">
+                  <option value="female_adult" ${canonical === 'female_adult' ? 'selected' : ''}>👩 মা (Mother / Adult Female)</option>
+                  <option value="female_child" ${canonical === 'female_child' ? 'selected' : ''}>👧 মেয়ে (Girl / Daughter / Child)</option>
+                  <option value="female_elderly" ${canonical === 'female_elderly' ? 'selected' : ''}>👵 নানী/দাদী (Elderly Female / Grandmother)</option>
+                </optgroup>
+                <optgroup label="Male Voice Profiles">
+                  <option value="male_child" ${canonical === 'male_child' ? 'selected' : ''}>👦 ছেলে (Boy / Son / Child)</option>
+                  <option value="male_adult" ${canonical === 'male_adult' ? 'selected' : ''}>👨 বাবা (Father / Adult Male)</option>
+                  <option value="male_teacher" ${canonical === 'male_teacher' ? 'selected' : ''}>📖 শিক্ষক (Teacher / Scholar / Narrator)</option>
+                  <option value="male_elderly" ${canonical === 'male_elderly' ? 'selected' : ''}>👴 নানা/দাদা (Elderly Male / Grandfather)</option>
+                </optgroup>
+                <option value="custom" ${!CHARACTER_PROFILES[canonical] ? 'selected' : ''}>⚙️ Custom Profile...</option>
+              </select>
+            </div>
+            ${providerHtml}
+          `;
+          c.appendChild(card);
+        }
+
+        // Attach listeners
+        c.querySelectorAll('.spk-profile-select').forEach(el => el.addEventListener('change', e => {
+          const profKey = e.target.value;
+          const key = e.target.dataset.key;
+          if (!profKey || !CHARACTER_PROFILES[profKey]) return;
+          const prof = CHARACTER_PROFILES[profKey];
+          const spk = project.voice.speakers[key];
+          spk.profile = profKey;
+          spk.edgeVoice = prof.edgeVoice;
+          spk.edgeRate = prof.edgeRate;
+          spk.edgePitch = prof.edgePitch;
+          spk.vitsPitch = prof.vitsPitch || '+0%';
+          spk.vitsRate = prof.vitsRate || '1.0x';
+          spk.voiceId = prof.voiceId;
+          spk.geminiVoice = prof.geminiVoice;
+          spk.name = prof.name;
+          spk.color = prof.color;
+          spk.note = prof.note;
+          renderSpeakers();
+          renderScenes();
+        }));
+        c.querySelectorAll('.spk-vits-select').forEach(el => el.addEventListener('change', e => {
+          const profKey = e.target.value;
+          const key = e.target.dataset.key;
+          const spk = project.voice.speakers[key];
+          if (profKey === 'custom') {
+            const input = el.closest('.speaker-card').querySelector('.spk-vits-pitch');
+            if (input) input.focus();
+          } else if (CHARACTER_PROFILES[profKey]) {
+            const prof = CHARACTER_PROFILES[profKey];
+            spk.profile = profKey;
+            spk.vitsPitch = prof.vitsPitch || '+0%';
+            spk.vitsRate = prof.vitsRate || '1.0x';
+            renderSpeakers();
+            renderScenes();
+          }
+        }));
+        c.querySelectorAll('.spk-vits-pitch').forEach(el => el.addEventListener('change', e => {
+          project.voice.speakers[e.target.dataset.key].vitsPitch = e.target.value.trim();
+        }));
+        c.querySelectorAll('.spk-vits-rate').forEach(el => el.addEventListener('change', e => {
+          project.voice.speakers[e.target.dataset.key].vitsRate = e.target.value.trim();
+        }));
+        c.querySelectorAll('.spk-name').forEach(el => el.addEventListener('change', e => {
+          project.voice.speakers[e.target.dataset.key].name = e.target.value.trim();
+          renderScenes();
+        }));
+        c.querySelectorAll('.spk-eleven-select').forEach(el => el.addEventListener('change', e => {
+          const vId = e.target.value;
+          const key = e.target.dataset.key;
+          const spk = project.voice.speakers[key];
+          if (vId === 'custom') {
+            const input = el.closest('.speaker-card').querySelector('.spk-eleven-id');
+            if (input) input.focus();
+          } else {
+            spk.voiceId = vId;
+            const opt = ELEVEN_VOICE_OPTIONS.find(o => o.id === vId);
+            if (opt && opt.profile) spk.profile = opt.profile;
+            renderSpeakers();
+            renderScenes();
+          }
+        }));
+        c.querySelectorAll('.spk-eleven-id').forEach(el => el.addEventListener('input', e => {
+          const vId = e.target.value.trim();
+          const key = e.target.dataset.key;
+          project.voice.speakers[key].voiceId = vId;
+          const sel = el.closest('.speaker-card').querySelector('.spk-eleven-select');
+          if (sel) {
+            const matches = Array.from(sel.options).some(o => o.value === vId);
+            sel.value = matches ? vId : 'custom';
+          }
+        }));
+        c.querySelectorAll('.spk-gemini-voice').forEach(el => el.addEventListener('change', e => {
+          const gv = e.target.value;
+          const key = e.target.dataset.key;
+          const spk = project.voice.speakers[key];
+          spk.geminiVoice = gv;
+          const opt = GEMINI_VOICE_OPTIONS.find(o => o.id === gv);
+          if (opt && opt.profile) spk.profile = opt.profile;
+          renderSpeakers();
+          renderScenes();
+        }));
+        c.querySelectorAll('.spk-edge-voice').forEach(el => el.addEventListener('change', e => {
+          project.voice.speakers[e.target.dataset.key].edgeVoice = e.target.value;
+        }));
+        c.querySelectorAll('.spk-edge-pitch').forEach(el => el.addEventListener('change', e => {
+          project.voice.speakers[e.target.dataset.key].edgePitch = e.target.value.trim();
+        }));
+        c.querySelectorAll('.spk-edge-rate').forEach(el => el.addEventListener('change', e => {
+          project.voice.speakers[e.target.dataset.key].edgeRate = e.target.value.trim();
+        }));
+        c.querySelectorAll('.spk-note').forEach(el => el.addEventListener('change', e => {
+          project.voice.speakers[e.target.dataset.key].note = e.target.value.trim();
+        }));
+        c.querySelectorAll('.spk-color').forEach(el => el.addEventListener('change', e => {
+          project.voice.speakers[e.target.dataset.key].color = e.target.value;
+          renderSpeakers();
+        }));
+        c.querySelectorAll('.remove-spk-btn').forEach(el => el.addEventListener('click', e => {
+          delete project.voice.speakers[e.target.dataset.key];
+          renderSpeakers();
+          renderScenes();
+        }));
+        c.querySelectorAll('.audition-spk-btn').forEach(el => el.addEventListener('click', e => {
+          auditionSpeaker(e.target.dataset.key);
+        }));
+      }
+
+      function renderScenes() {
+        const container = $('scenesContainer');
+        container.innerHTML = '';
+        const speakers = Object.keys(project.voice.speakers || {});
+        const isStock = project.footage === 'stock';
+
+        project.scenes.forEach((sc, sIdx) => {
+          const div = document.createElement('div');
+          div.className = 'dialogue-scene';
+
+          const linesHtml = (sc.lines || []).map((l, lIdx) => {
+            const spk = project.voice.speakers[l.speaker] || {};
+            const isAlt = l.speaker === 'mother' || lIdx % 2 === 1;
+            return `
+              <div class="bubble-line ${isAlt ? 'speaker-alt' : ''}">
+                <div class="line-top">
+                  <select class="speaker-select line-spk" data-sidx="${sIdx}" data-lidx="${lIdx}">
+                    ${speakers.map(k => `<option value="${k}" ${l.speaker === k ? 'selected' : ''}>${project.voice.speakers[k]?.name || k}</option>`).join('')}
+                  </select>
+                  <input class="tone-input line-tone" data-sidx="${sIdx}" data-lidx="${lIdx}" value="${l.tone || ''}" placeholder="tone (curious, warm)" />
+                  <button class="small del-line-btn" data-sidx="${sIdx}" data-lidx="${lIdx}" style="margin-left:auto;color:#f85149;padding:2px 6px">✕</button>
+                </div>
+                <textarea class="line-text" data-sidx="${sIdx}" data-lidx="${lIdx}" rows="2" style="width:100%;padding:6px;font-size:13px">${l.text || ''}</textarea>
+              </div>
+            `;
+          }).join('');
+
+          const visualInputHtml = isStock ? `
+            <div>
+              <label style="font-size:11px">Stock Video Clip</label>
+              <div style="display:flex;align-items:center;gap:8px">
+                <select class="sc-clip" data-sidx="${sIdx}" style="flex:1;font-size:12px">
+                  <option value="">(Auto-pick best matching clip based on narration)</option>
+                  ${stockClips.map(c => `<option value="${c.name}" ${sc.clip === c.name ? 'selected' : ''}>${c.name} (${c.seconds}s)</option>`).join('')}
+                </select>
+                ${sc.clip ? `<img src="/api/stock/thumb?name=${encodeURIComponent(sc.clip)}" style="height:32px;width:48px;object-fit:cover;border-radius:3px;border:1px solid var(--line)" />` : ''}
+              </div>
+            </div>
+          ` : `
+            <div>
+              <label style="font-size:11px">AI Image Prompt</label>
+              <textarea class="sc-prompt" data-sidx="${sIdx}" rows="2" style="width:100%;font-size:12px">${sc.prompt || ''}</textarea>
+            </div>
+          `;
+
+          div.innerHTML = `
+            <div class="scene-header">
+              <span class="scene-id">Scene ${sc.id || String(sIdx + 1).padStart(2, '0')}</span>
+              <input class="sc-source" data-sidx="${sIdx}" value="${sc.source || ''}" placeholder="Source citation (e.g. সূরা নিসা ৪:১০৩)" style="font-size:12px;width:170px" />
+              <label style="margin:0;font-size:11px">Motion:
+                <select class="sc-motion" data-sidx="${sIdx}" style="font-size:11px;padding:2px 4px">
+                  ${['in', 'out', 'left', 'right', 'cinematic', 'ai'].map(m => `<option value="${m}" ${(sc.motion || 'in') === m ? 'selected' : ''}>${m}</option>`).join('')}
+                </select>
+              </label>
+              <input class="sc-motion-prompt" data-sidx="${sIdx}" value="${sc.motionPrompt || ''}" placeholder="AI motion prompt (e.g. slow camera drift)" style="font-size:11px;width:150px;${sc.motion === 'ai' ? '' : 'display:none'}" title="Prompt describing motion for generated video" />
+              <button class="small audition-scene-btn" data-sidx="${sIdx}" style="margin-left:auto;font-size:11px">▶ Audition Scene</button>
+              <button class="small del-scene-btn" data-sidx="${sIdx}" style="color:#f85149;font-size:11px">✕</button>
+            </div>
+            ${visualInputHtml}
+            <div style="margin-top:4px">
+              <div style="display:flex;align-items:center;gap:6px">
+                <label style="font-size:11px;font-weight:600">Conversation Turns:</label>
+                <button class="small add-line-btn" data-sidx="${sIdx}" style="margin-left:auto;font-size:11px">+ Add Turn</button>
+              </div>
+              <div class="bubble-list">${linesHtml}</div>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+
+        // Attach scene listeners
+        container.querySelectorAll('.sc-source').forEach(el => el.addEventListener('change', e => {
+          project.scenes[e.target.dataset.sidx].source = e.target.value.trim();
+        }));
+        container.querySelectorAll('.sc-motion').forEach(el => el.addEventListener('change', e => {
+          const m = e.target.value;
+          const sIdx = e.target.dataset.sidx;
+          project.scenes[sIdx].motion = m;
+          const mpInput = el.closest('.scene-header').querySelector('.sc-motion-prompt');
+          if (mpInput) mpInput.style.display = m === 'ai' ? '' : 'none';
+        }));
+        container.querySelectorAll('.sc-motion-prompt').forEach(el => el.addEventListener('change', e => {
+          project.scenes[e.target.dataset.sidx].motionPrompt = e.target.value.trim();
+        }));
+        container.querySelectorAll('.sc-prompt').forEach(el => el.addEventListener('change', e => {
+          project.scenes[e.target.dataset.sidx].prompt = e.target.value.trim();
+        }));
+        container.querySelectorAll('.sc-clip').forEach(el => el.addEventListener('change', e => {
+          project.scenes[e.target.dataset.sidx].clip = e.target.value;
+          renderScenes();
+        }));
+        container.querySelectorAll('.line-spk').forEach(el => el.addEventListener('change', e => {
+          project.scenes[e.target.dataset.sidx].lines[e.target.dataset.lidx].speaker = e.target.value;
+          renderScenes();
+        }));
+        container.querySelectorAll('.line-tone').forEach(el => el.addEventListener('change', e => {
+          project.scenes[e.target.dataset.sidx].lines[e.target.dataset.lidx].tone = e.target.value.trim();
+        }));
+        container.querySelectorAll('.line-text').forEach(el => el.addEventListener('change', e => {
+          const s = project.scenes[e.target.dataset.sidx];
+          s.lines[e.target.dataset.lidx].text = e.target.value.trim();
+          s.narration = s.lines.map(l => l.text).join(' ');
+        }));
+        container.querySelectorAll('.add-line-btn').forEach(el => el.addEventListener('click', e => {
+          const s = project.scenes[e.target.dataset.sidx];
+          if (!s.lines) s.lines = [];
+          const lastSpk = s.lines.length ? s.lines[s.lines.length - 1].speaker : '';
+          const nextSpk = speakers.find(k => k !== lastSpk) || speakers[0] || 'child';
+          s.lines.push({ speaker: nextSpk, text: '', tone: '' });
+          renderScenes();
+        }));
+        container.querySelectorAll('.del-line-btn').forEach(el => el.addEventListener('click', e => {
+          project.scenes[e.target.dataset.sidx].lines.splice(e.target.dataset.lidx, 1);
+          renderScenes();
+        }));
+        container.querySelectorAll('.del-scene-btn').forEach(el => el.addEventListener('click', e => {
+          project.scenes.splice(e.target.dataset.sidx, 1);
+          renderScenes();
+        }));
+        container.querySelectorAll('.audition-scene-btn').forEach(el => el.addEventListener('click', e => {
+          auditionScene(e.target.dataset.sidx);
+        }));
+      }
+
+      function hydrateUI() {
+        if (!project.voice) project.voice = {};
+        if (project.voice.speakers) normalizeSpeakers(project.voice.speakers);
+        $('reelTitle').value = project.title || '';
+        $('reelAspect').value = project.aspect || '9:16';
+
+        // Footage mode toggle
+        const isStock = project.footage === 'stock';
+        $('tabImages').classList.toggle('active', !isStock);
+        $('tabStock').classList.toggle('active', isStock);
+        $('imageSettingsWrap').hidden = isStock;
+        $('stockSettingsWrap').hidden = !isStock;
+
+        // Image settings
+        $('imageStyle').value = project.image?.style || '';
+        $('imageNegative').value = project.image?.negative || '';
+        if (project.settings?.imageProvider) $('imageProvider').value = project.settings.imageProvider;
+        if (project.settings?.mfluxModel) $('mfluxModel').value = project.settings.mfluxModel;
+
+        // Voice provider & pause
+        const pVal = project.voice?.provider;
+        $('voiceProvider').value = ['elevenlabs', 'gemini', 'vits-bd'].includes(pVal) ? pVal : 'edge';
+        $('dialogueGap').value = project.gap ?? 0.65;
+
+        // Intro (3s) & Outro (6s)
+        $('introSeconds').value = project.intro?.seconds ?? 3;
+        $('introText').value = project.intro?.text || '';
+        $('outroSeconds').value = project.outro?.seconds ?? 6;
+        $('outroText').value = project.outro?.text || '';
+
+        // Brand
+        if (project.brand && !project.brand.off) {
+          $('brandMode').value = project.brand.image ? 'image' : project.brand.text ? 'text' : '';
+          $('brandPosition').value = project.brand.position || 'bottom-right';
+          $('brandText').value = project.brand.text || '';
+          if (project.brand.image) {
+            const imgName = project.brand.image.replace(/^assets\/brand\//, '');
+            $('brandImgSelect').value = imgName;
+          }
+        } else {
+          $('brandMode').value = '';
+        }
+        syncBrandVisibility();
+
+        // Captions
+        $('captionStyle').value = project.captions?.style || 'highlight';
+        $('wordsPerCue').value = project.captions?.wordsPerCue || 3;
+        $('speakerLabelsCheck').checked = project.captions?.speakerLabels !== false;
+
+        renderSpeakers();
+        renderScenes();
+      }
+
+      function syncBrandVisibility() {
+        const m = $('brandMode').value;
+        $('brandTextWrap').hidden = m !== 'text';
+        $('brandImgWrap').hidden = m !== 'image';
+      }
+      $('brandMode').addEventListener('change', syncBrandVisibility);
+
+      // Footage toggle listeners
+      $('tabImages').addEventListener('click', () => {
+        project.footage = 'images';
+        hydrateUI();
+      });
+      $('tabStock').addEventListener('click', () => {
+        project.footage = 'stock';
+        hydrateUI();
+      });
+
+      // Stock clips mini grid
+      function renderStockMiniGrid() {
+        const grid = $('stockMiniGrid');
+        grid.innerHTML = '';
+        stockClips.forEach(c => {
+          const item = document.createElement('div');
+          item.className = 'stock-mini-item';
+          item.title = c.name;
+          item.innerHTML = `
+            <img src="/api/stock/thumb?name=${encodeURIComponent(c.name)}" loading="lazy" />
+            <span class="dur">${c.seconds}s</span>
+            <div class="name">${c.name}</div>
+          `;
+          grid.appendChild(item);
+        });
+      }
+
+      async function loadStock() {
+        try {
+          const res = await fetch('/api/stock');
+          const data = await res.json();
+          stockClips = data.clips || [];
+          renderStockMiniGrid();
+        } catch {}
+      }
+
+      $('uploadStockBtn').addEventListener('click', () => $('uploadStockInput').click());
+      $('uploadStockInput').addEventListener('change', async (e) => {
+        const files = Array.from(e.target.files || []);
+        for (const f of files) {
+          $('status').textContent = `Uploading ${f.name}...`;
+          await fetch(`/api/stock?name=${encodeURIComponent(f.name)}`, { method: 'PUT', body: f });
+        }
+        $('status').textContent = 'Upload complete.';
+        await loadStock();
+        renderScenes();
+      });
+
+      // Brand library
+      async function loadBrand() {
+        try {
+          const res = await fetch('/api/brand');
+          const data = await res.json();
+          brandImages = data.images || [];
+          const sel = $('brandImgSelect');
+          sel.innerHTML = brandImages.map(img => `<option value="${img}">${img}</option>`).join('');
+        } catch {}
+      }
+
+      $('uploadBrandBtn').addEventListener('click', () => $('uploadBrandInput').click());
+      $('uploadBrandInput').addEventListener('change', async (e) => {
+        const f = e.target.files[0];
+        if (!f) return;
+        $('status').textContent = `Uploading logo ${f.name}...`;
+        await fetch(`/api/brand?name=${encodeURIComponent(f.name)}`, { method: 'PUT', body: f });
+        $('status').textContent = 'Logo uploaded.';
+        await loadBrand();
+        $('brandImgSelect').value = f.name;
+      });
+
+      // Audition functions
+      async function auditionSpeaker(key) {
+        const spk = project.voice.speakers[key];
+        if (!spk) return;
+        const text = spk.name === 'মা' || key === 'mother'
+          ? "আজ তোমাকে একটা গুরুত্বপূর্ণ কথা বলব, মন দিয়ে শোনো।"
+          : "মা, বড় হওয়া মানে কী?";
+        auditionPayload([{ speaker: key, text }], { [key]: spk });
+      }
+
+      async function auditionScene(sIdx) {
+        const sc = project.scenes[sIdx];
+        if (!sc || !sc.lines || !sc.lines.length) {
+          alert('This scene has no lines to audition');
+          return;
+        }
+        auditionPayload(sc.lines, project.voice.speakers);
+      }
+
+      async function auditionPayload(lines, speakers) {
+        $('status').textContent = 'Generating audition audio...';
+        try {
+          const res = await fetch('/api/dialogue/audition', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              lines,
+              speakers,
+              provider: $('voiceProvider').value,
+              gap: 0.3
+            })
+          });
+          const data = await res.json();
+          if (data.ok && data.url) {
+            $('status').textContent = 'Audition ready.';
+            $('auditionPlayerWrap').hidden = false;
+            const a = $('auditionAudio');
+            a.src = data.url;
+            a.play();
+          } else {
+            $('status').textContent = 'Audition error: ' + (data.error || 'failed');
+            alert(data.error || 'Audition failed');
+          }
+        } catch (err) {
+          $('status').textContent = 'Audition network error';
+          alert(err.message);
+        }
+      }
+
+      // Import JSON handling
+      $('importModalBtn').addEventListener('click', () => {
+        syncFormToProject();
+        $('jsonPasteArea').value = JSON.stringify(project, null, 2);
+        $('importErr').textContent = '';
+        $('importModal').hidden = false;
+      });
+
+      $('closeModalBtn').addEventListener('click', () => $('importModal').hidden = true);
+      $('cancelModalBtn').addEventListener('click', () => $('importModal').hidden = true);
+
+      $('jsonFileInput').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          $('jsonPasteArea').value = evt.target.result;
+        };
+        reader.readAsText(file);
+      });
+
+      $('confirmImportBtn').addEventListener('click', async () => {
+        const raw = $('jsonPasteArea').value.trim();
+        try {
+          const parsed = JSON.parse(raw);
+          if (!parsed.title || !Array.isArray(parsed.scenes)) {
+            throw new Error('JSON must include "title" and "scenes" array');
+          }
+          project = parsed;
+          if (!project.voice) project.voice = {};
+          if (!project.voice.speakers || Object.keys(project.voice.speakers).length === 0) {
+            project.voice.speakers = {
+              child: { ...CHARACTER_PROFILES.female_child },
+              mother: { ...CHARACTER_PROFILES.female_adult }
+            };
+          }
+          normalizeSpeakers(project.voice.speakers);
+          hydrateUI();
+          $('importModal').hidden = true;
+          logLine(`Imported project: "${project.title}" (${project.scenes.length} scenes)`);
+
+          // Save to server
+          const saveRes = await fetch('/api/dialogue/import', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...project, folder: 'dialogue' })
+          });
+          const saveData = await saveRes.json();
+          if (saveData.ok) {
+            loadDialogueReels();
+          }
+        } catch (err) {
+          $('importErr').textContent = err.message;
+        }
+      });
+
+      // Export JSON
+      $('exportJsonBtn').addEventListener('click', () => {
+        syncFormToProject();
+        const blob = new Blob([JSON.stringify(project, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = (project.title || 'dialogue-project').replace(/\s+/g, '_') + '.json';
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // Save Project
+      $('saveBtn').addEventListener('click', async () => {
+        syncFormToProject();
+        $('status').textContent = 'Saving...';
+        try {
+          const payload = { ...project, slug: currentDialogueSlug, isDialogue: true, folder: 'dialogue' };
+          const res = await fetch('/api/dialogue/import', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          if (data.ok) {
+            if (data.slug) currentDialogueSlug = data.slug;
+            $('status').textContent = 'Saved to out/dialogue.';
+            logLine(`Project saved: ${project.title} (${currentDialogueSlug})`);
+            loadDialogueReels();
+          } else {
+            $('status').textContent = 'Error: ' + data.error;
+          }
+        } catch (err) {
+          $('status').textContent = 'Save error';
+        }
+      });
+
+      // Render Video
+      $('renderBtn').addEventListener('click', async () => {
+        syncFormToProject();
+        $('status').textContent = 'Starting render...';
+        $('log').innerHTML = '';
+        logLine(`━━ Starting render for "${project.title}" ━━`);
+        try {
+          const payload = { ...project, slug: currentDialogueSlug, isDialogue: true, folder: 'dialogue' };
+          const res = await fetch('/api/render', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          if (data.ok) {
+            if (data.slug) currentDialogueSlug = data.slug;
+            $('status').textContent = 'Rendering...';
+            $('cancelBtn').disabled = false;
+            $('stopBtn').disabled = false;
+            $('renderBtn').disabled = true;
+          } else {
+            $('status').textContent = 'Render rejected: ' + (data.error || 'busy');
+            logLine(`Error: ${data.error || 'busy'}`);
+          }
+        } catch (err) {
+          $('status').textContent = 'Render request failed';
+          logLine(`Error: ${err.message}`);
+        }
+      });
+
+      async function stopAllWork() {
+        $('status').textContent = 'Stopping all work...';
+        logLine('━━ Stopping render job... ━━');
+        $('stopBtn').disabled = true;
+        $('cancelBtn').disabled = true;
+        try {
+          await fetch('/api/cancel', { method: 'POST' });
+          $('status').textContent = 'Stopped.';
+          $('renderBtn').disabled = false;
+          logLine('━━ Work stopped by user ━━');
+        } catch (err) {
+          $('status').textContent = 'Stop error: ' + err.message;
+          $('renderBtn').disabled = false;
+        }
+      }
+
+      $('cancelBtn').addEventListener('click', stopAllWork);
+      $('stopBtn').addEventListener('click', stopAllWork);
+
+      $('newReelBtn').addEventListener('click', () => {
+        if (!confirm('Start a new dialogue reel? Unsaved changes will be cleared.')) return;
+        currentDialogueSlug = null;
+        project = {
+          title: "নতুন সংলাপ রিল",
+          aspect: "9:16",
+          fps: 30,
+          gap: 0.65,
+          footage: "images",
+          image: { style: "cinematic 35mm film still, natural light, rich colour, respectful aesthetic", negative: "" },
+          voice: {
+            provider: "edge",
+            mode: "dialogue",
+            speakers: {
+              child: { name: "মেয়ে", edgeVoice: "bn-BD-NabanitaNeural", edgeRate: "+6%", edgePitch: "+22Hz", color: "#EBCB80" },
+              mother: { name: "মা", edgeVoice: "bn-BD-NabanitaNeural", edgeRate: "-2%", color: "#88C0D0" }
+            }
+          },
+          captions: { style: "highlight", wordsPerCue: 3, fontName: "Kohinoor Bangla", primary: "#FFFFFF", highlight: "#EBCB80", speakerLabels: true },
+          intro: { seconds: 3, text: "" },
+          outro: { seconds: 6, text: "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom" },
+          scenes: [
+            {
+              id: "01",
+              prompt: "A mother and daughter in modest attire having a thoughtful conversation, warm lighting",
+              lines: [
+                { speaker: "child", text: "মা, আমাকে একটা কথা বলো?", tone: "curious" },
+                { speaker: "mother", text: "হ্যাঁ মা, বলো কী জানতে চাও?", tone: "warm" }
+              ]
+            }
+          ]
+        };
+        hydrateUI();
+      });
+
+      $('addProfileSelect').addEventListener('change', (e) => {
+        const profKey = e.target.value;
+        if (!profKey) return;
+        e.target.value = '';
+        if (!project.voice) project.voice = {};
+        if (!project.voice.speakers) project.voice.speakers = {};
+
+        if (profKey === 'custom') {
+          const id = prompt('Enter custom character name or role (e.g. father, student, শিক্ষক):');
+          if (!id) return;
+          const key = id.toLowerCase().replace(/[^a-z0-9_]/g, '') || `spk_${Date.now()}`;
+          project.voice.speakers[key] = {
+            profile: "female_adult",
+            name: id,
+            edgeVoice: "bn-BD-NabanitaNeural",
+            edgeRate: "+0%",
+            edgePitch: "+0Hz",
+            voiceId: "EXAVITQu4vr4xnSDxMaL",
+            geminiVoice: "Kore",
+            color: "#EBCB80",
+            note: id
+          };
+        } else {
+          const prof = CHARACTER_PROFILES[profKey];
+          if (!prof) return;
+          let baseKey = profKey.replace(/^(female|male)_/, '');
+          if (baseKey === 'adult') baseKey = profKey.startsWith('female') ? 'mother' : 'father';
+          let key = baseKey;
+          let n = 2;
+          while (project.voice.speakers[key]) {
+            key = `${baseKey}_${n++}`;
+          }
+          project.voice.speakers[key] = {
+            profile: profKey,
+            name: prof.name,
+            edgeVoice: prof.edgeVoice,
+            edgeRate: prof.edgeRate,
+            edgePitch: prof.edgePitch,
+            voiceId: prof.voiceId,
+            geminiVoice: prof.geminiVoice,
+            color: prof.color,
+            note: prof.note
+          };
+        }
+        renderSpeakers();
+        renderScenes();
+      });
+
+      function addScene() {
+        const idx = project.scenes.length + 1;
+        const speakers = Object.keys(project.voice.speakers || {});
+        project.scenes.push({
+          id: String(idx).padStart(2, '0'),
+          prompt: "A peaceful modest domestic setting, natural lighting, cinematic",
+          source: "",
+          motion: "in",
+          lines: [
+            { speaker: speakers[0] || "child", text: "", tone: "curious" },
+            { speaker: speakers[1] || "mother", text: "", tone: "warm" }
+          ]
+        });
+        renderScenes();
+      }
+
+      $('addSceneBtn').addEventListener('click', addScene);
+      $('addSceneBtnBottom').addEventListener('click', addScene);
+
+      $('voiceProvider').addEventListener('change', () => {
+        project.voice.provider = $('voiceProvider').value;
+        renderSpeakers();
+      });
+
+      // ONLY DIALOGUE REELS LOADED & DISPLAYED
+      async function loadDialogueReels() {
+        try {
+          const res = await fetch('/api/reels');
+          const data = await res.json();
+          // Filter strictly to dialogue reels
+          allReels = (data.reels || []).filter(r => r.folder === 'dialogue' || r.isDialogue);
+
+          // Populate top dropdown
+          const sel = $('reelSelect');
+          sel.innerHTML = '<option value="">-- Load Dialogue Reel --</option>';
+          allReels.forEach(r => {
+            const opt = document.createElement('option');
+            opt.value = r.slug;
+            opt.textContent = `${r.title || r.slug} (${r.scenes || 0} scenes)`;
+            sel.appendChild(opt);
+          });
+
+          // Render bottom gallery (full width)
+          renderDialogueGallery();
+        } catch {}
+      }
+
+      const esc = (v) =>
+        String(v ?? '').replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              '"': '&quot;',
+              "'": '&#39;',
+            })[c],
+        );
+
+      function renderDialogueGallery() {
+        const container = $('reelsGalleryGrid');
+        container.innerHTML = '';
+
+        $('reelsCountBadge').textContent = `${allReels.length} dialogue reel${allReels.length === 1 ? '' : 's'}`;
+
+        if (!allReels.length) {
+          container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:24px;color:var(--dim)">No dialogue reels yet in <code>out/dialogue/</code>. Create or import one above!</div>`;
+          return;
+        }
+
+        allReels.forEach(r => {
+          const card = document.createElement('div');
+          card.className = `reel-card ${r.slug === currentDialogueSlug ? 'active' : ''}`;
+          card.dataset.slug = r.slug;
+
+          const footageBadge = r.footage === 'stock'
+            ? `<span class="badge badge-blue">stock</span>`
+            : `<span class="badge badge-gray">ai image</span>`;
+
+          const statusBadge = r.hasVideo
+            ? `<span class="badge badge-green">✓ Rendered</span>`
+            : `<span class="badge badge-gray">Draft</span>`;
+
+          const videoHtml = r.hasVideo
+            ? `<video src="/api/video?slug=${encodeURIComponent(r.slug)}#t=0.5" controls playsinline preload="metadata"></video>`
+            : `<div class="noshot">Draft (not rendered yet)</div>`;
+
+          card.innerHTML = `
+            ${videoHtml}
+            <div class="reel-meta">
+              <div style="display:flex;align-items:center;gap:6px">
+                <b style="flex:1;min-width:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${esc(r.title || r.slug)}">${esc(r.title || r.slug)}</b>
+                ${statusBadge}
+              </div>
+              <div style="font-size:11px;color:var(--dim);display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+                <span>${r.scenes || 0} scenes</span>
+                <span>•</span>
+                ${footageBadge}
+                <span>•</span>
+                <span>${r.updated ? new Date(r.updated).toLocaleDateString() : 'recent'}</span>
+              </div>
+              <div style="font-size:10px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${esc(r.slug)}">
+                📁 <code>${esc(r.slug)}</code>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;margin-top:4px">
+                <button class="small load-reel-btn" data-slug="${esc(r.slug)}" style="flex:1;font-weight:600;padding:4px 8px">Open in Editor</button>
+                ${r.hasVideo ? `
+                  <a class="small" href="/api/video?slug=${encodeURIComponent(r.slug)}" download="${esc(r.title || r.slug)}.mp4" title="Download MP4" style="text-decoration:none;padding:3px 8px;border:1px solid var(--line);border-radius:4px;color:var(--text);font-size:11px;display:inline-flex;align-items:center;justify-content:center">⬇</a>
+                ` : `
+                  <button class="small render-reel-btn" data-slug="${esc(r.slug)}" style="padding:4px 8px">Render</button>
+                `}
+                <button class="small reel-del del-reel-btn" data-slug="${esc(r.slug)}" title="Delete reel" style="padding:4px 8px;color:var(--bad)">✕</button>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        // Pause other videos when one begins playback
+        container.querySelectorAll('video').forEach(vid => {
+          vid.addEventListener('play', () => {
+            container.querySelectorAll('video').forEach(other => {
+              if (other !== vid && !other.paused) other.pause();
+            });
+          });
+        });
+
+        // Gallery listeners
+        container.querySelectorAll('.load-reel-btn').forEach(btn => btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          loadReelBySlug(btn.dataset.slug);
+        }));
+        container.querySelectorAll('.render-reel-btn').forEach(btn => btn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          await loadReelBySlug(btn.dataset.slug);
+          $('renderBtn').click();
+        }));
+        container.querySelectorAll('.del-reel-btn').forEach(btn => btn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          const slug = btn.dataset.slug;
+          if (!confirm(`Delete dialogue reel "${slug}"? This cannot be undone.`)) return;
+          await fetch(`/api/reel?slug=${encodeURIComponent(slug)}`, { method: 'DELETE' });
+          loadDialogueReels();
+        }));
+      }
+
+      $('refreshGalleryBtn').addEventListener('click', loadDialogueReels);
+
+      async function loadReelBySlug(slug) {
+        if (!slug) return;
+        try {
+          const res = await fetch(`/api/reel?slug=${encodeURIComponent(slug)}`);
+          const data = await res.json();
+          if (data.project) {
+            currentDialogueSlug = slug;
+            project = data.project;
+            if (!project.voice) project.voice = {};
+            if (!project.voice.speakers || Object.keys(project.voice.speakers).length === 0) {
+              project.voice.speakers = {
+                child: { ...CHARACTER_PROFILES.female_child },
+                mother: { ...CHARACTER_PROFILES.female_adult }
+              };
+            }
+            normalizeSpeakers(project.voice.speakers);
+            hydrateUI();
+            pubBoxInstance?.setSlug(slug);
+            logLine(`Loaded dialogue reel: "${project.title}" (${slug})`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        } catch (err) {
+          alert('Could not load reel: ' + err.message);
+        }
+      }
+
+      $('reelSelect').addEventListener('change', (e) => loadReelBySlug(e.target.value));
+
+      // SSE Events
+      const ev = new EventSource('/api/events');
+      ev.addEventListener('log', (e) => {
+        const data = JSON.parse(e.data);
+        if (data.line) logLine(data.line);
+      });
+      ev.addEventListener('done', () => {
+        $('status').textContent = 'Done.';
+        $('cancelBtn').disabled = true;
+        $('stopBtn').disabled = true;
+        $('renderBtn').disabled = false;
+        logLine('━━ Render completed successfully! Available in gallery below. ━━');
+        loadDialogueReels();
+        pubBoxInstance?.refresh();
+      });
+      ev.addEventListener('error', () => {
+        $('status').textContent = 'Idle.';
+        $('cancelBtn').disabled = true;
+        $('stopBtn').disabled = true;
+        $('renderBtn').disabled = false;
+      });
+
+      // Initial boot
+      hydrateUI();
+      loadStock();
+      loadBrand();
+      loadDialogueReels();
+
+      let pubBoxInstance = null;
+      if (typeof mountPublishBox === 'function') {
+        pubBoxInstance = mountPublishBox($('publishSection'), {
+          getSlug: () => currentDialogueSlug,
+          onSlugChange: (newSlug) => {
+            loadReelBySlug(newSlug);
+          },
+          onLog: (msg, type) => logLine(msg),
+        });
+      }
+    </script>
+  </body>
+</html>

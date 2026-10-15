@@ -1,0 +1,210 @@
+{
+  "title": "মায়ের শিক্ষা: পশুপাখির প্রতি মায়াময় হৃদয়",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A sunbaked stone terrace during a blistering hot afternoon, two tiny dusty sparrows panting with open beaks under the scorching sun, vintage oil painting",
+      "narration": "মা, বারান্দার রোদটা দেখো! চড়ুই পাখি দুটো কেমন হাঁপাচ্ছে, ওদের খুব কষ্ট হচ্ছে। ওরা পিপাসায় ছটফট করছে বাবা। প্রচণ্ড রোদে কোথাও একটু পানি খুঁজে পাচ্ছে না।",
+      "motion": "in",
+      "source": "সৃষ্টির সেবা",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "concerned",
+          "text": "মা, বারান্দার রোদটা দেখো! চড়ুই পাখি দুটো কেমন হাঁপাচ্ছে, ওদের খুব কষ্ট হচ্ছে।"
+        },
+        {
+          "speaker": "mother",
+          "tone": "caring",
+          "text": "ওরা পিপাসায় ছটফট করছে বাবা। প্রচণ্ড রোদে কোথাও একটু পানি খুঁজে পাচ্ছে না।"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "A child filling an earthen clay saucer with crystal clear water from a jug, mother standing beside with a handful of grain seeds, gouache painting",
+      "narration": "মা, আমি কি এই মাটির সানকিতে ঠান্ডা পানি আর কিছু চাল নিয়ে যাই? হ্যাঁ সোনা। সাবধানে বারান্দার রেলিংয়ের ছায়ায় রেখে এসো যাতে ওরা ভয় না পায়।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ২৩৬৩",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "eager",
+          "text": "মা, আমি কি এই মাটির সানকিতে ঠান্ডা পানি আর কিছু চাল নিয়ে যাই?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "হ্যাঁ সোনা। সাবধানে বারান্দার রেলিংয়ের ছায়ায় রেখে এসো যাতে ওরা ভয় না পায়।"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "Two sparrows eagerly dipping their beaks into the clean water, droplets scattering in the sunlight, child peeking from behind window curtain, storybook illustration",
+      "narration": "মা দেখো দেখো! পাখি দুটো কি তৃপ্তি নিয়ে পানি খাচ্ছে! ওদের ডানা ঝাপটানো দেখে মনটা ভরে গেল! ওরা কিন্তু ওদের ভাষায় আল্লাহর কাছে তোমার জন্য শুকরিয়া আদায় করছে সোনা।",
+      "motion": "right",
+      "source": "রহমত",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "joyful",
+          "text": "মা দেখো দেখো! পাখি দুটো কি তৃপ্তি নিয়ে পানি খাচ্ছে! ওদের ডানা ঝাপটানো দেখে মনটা ভরে গেল!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "ওরা কিন্তু ওদের ভাষায় আল্লাহর কাছে তোমার জন্য শুকরিয়া আদায় করছে সোনা।"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "An ancient storybook painting depicting a traveler lowering a leather sock into a desert well to save a thirsty panting dog, classical fairytale style",
+      "narration": "পাখিদের পানি খাওয়ালে কি আমরা কোনো সওয়াব পাই মা? নবীজি বলেছেন, এক ব্যক্তি তৃষ্ণার্ত কুকুরকে পানি খাইয়েছিল বলে আল্লাহ তাকে ক্ষমা করে জান্নাত দান করেছিলেন।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৩৩২১",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "পাখিদের পানি খাওয়ালে কি আমরা কোনো সওয়াব পাই মা?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "নবীজি বলেছেন, এক ব্যক্তি তৃষ্ণার্ত কুকুরকে পানি খাইয়েছিল বলে আল্লাহ তাকে ক্ষমা করে জান্নাত দান করেছিলেন।"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "A gentle mother and child placing a wooden bird feeder under the shade of an olive tree in courtyard, gouache painting",
+      "narration": "শুধু একটা প্রাণীকে পানি খাইয়েই জান্নাত পাওয়া যায়? হ্যাঁ বাবা। প্রতিটি জীবন্ত প্রাণের সেবায় রয়েছে মহাপুরস্কার। সৃষ্টির প্রতি দয়া করাই স্রষ্টার সন্তুষ্টি।",
+      "motion": "left",
+      "source": "তিরমিজি ১৯২৪",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "amazed",
+          "text": "শুধু একটা প্রাণীকে পানি খাইয়েই জান্নাত পাওয়া যায়?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "হ্যাঁ বাবা। প্রতিটি জীবন্ত প্রাণের সেবায় রয়েছে মহাপুরস্কার। সৃষ্টির প্রতি দয়া করাই স্রষ্টার সন্তুষ্টি।"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "Doves and sparrows flying peacefully across a brilliant blue sky above blooming courtyards, golden sunlight, oil painting",
+      "narration": "আমি প্রতিদিন সকালে ঘুম থেকে উঠে এই পাত্রটা ধুয়ে নতুন পানি আর খাবার দিয়ে দেব মা। মাশাআল্লাহ! যে নিয়মিত এমন ছোট ছোট ভালো কাজ করে, তার ঘরে সবসময় রহমত বিরাজ করে।",
+      "motion": "right",
+      "source": "আবু দাউদ ৪৯৪১",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "earnest",
+          "text": "আমি প্রতিদিন সকালে ঘুম থেকে উঠে এই পাত্রটা ধুয়ে নতুন পানি আর খাবার দিয়ে দেব মা।"
+        },
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "মাশাআল্লাহ! যে নিয়মিত এমন ছোট ছোট ভালো কাজ করে, তার ঘরে সবসময় রহমত বিরাজ করে।"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "Mother holding child close by the sunlit window, sparrows singing on the sill, peaceful fairytale oil painting",
+      "narration": "মনে রাখবে বাবা, জমিনের অধিবাসীদের প্রতি যে দয়া দেখায়, আসমানের মালিক তার প্রতি দয়া বর্ষণ করেন।",
+      "motion": "out",
+      "source": "হিকমাহ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "মনে রাখবে বাবা, জমিনের অধিবাসীদের প্রতি যে দয়া দেখায়, আসমানের মালিক তার প্রতি দয়া বর্ষণ করেন।"
+        }
+      ]
+    }
+  ],
+  "description": "সৃষ্টির প্রতিটি অবলা জীবের প্রতি দয়া প্রদর্শন করা জান্নাত লাভের উসিলা। পিপাসার্ত পাখিকে পানি পান করানো মহান সদকা।\n\nসূত্র: সহীহ বুখারী ২৩৬৩ · তিরমিজি ১৯২৪",
+  "publish": {
+    "description": "সৃষ্টির প্রতিটি অবলা জীবের প্রতি দয়া প্রদর্শন করা জান্নাত লাভের উসিলা। পিপাসার্ত পাখিকে পানি পান করানো মহান সদকা।\n\nসূত্র: সহীহ বুখারী ২৩৬৩ · তিরমিজি ১৯২৪",
+    "hashtags": [
+      "#জীবপ্রেম",
+      "#মায়ের_শিক্ষা",
+      "#দয়া",
+      "#সদকা",
+      "#পারিবারিক_শিক্ষা",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "title": "রাগ নিয়ন্ত্রণ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "towering black storm clouds massing over a green valley, a lone stone farmhouse below, the last shaft of sunlight about to be swallowed, tense and cinematic",
+      "narration": "একজন লোক নবীজির কাছে এসে বললেন, আমাকে কিছু উপদেশ দিন।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬১১৬"
+    },
+    {
+      "id": "02",
+      "prompt": "a violent gale tearing through a grove of tall trees, leaves and dust ripped into the air, branches bent almost to breaking, rain slashing sideways",
+      "narration": "নবীজি বললেন, রাগ কোরো না।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৬১১৬"
+    },
+    {
+      "id": "03",
+      "prompt": "the same valley minutes after the storm, air washed clean, a rainbow over wet meadows, drops falling from leaves, sunlight returning",
+      "narration": "লোকটি বারবার একই কথা জিজ্ঞেস করলেন, আর তিনি প্রতিবারই বললেন, রাগ কোরো না।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৬১১৬"
+    },
+    {
+      "id": "04",
+      "prompt": "a dusty wrestling ground of packed earth ringed by old stone walls in harsh afternoon sun, empty, footprints in the dust, heat shimmer",
+      "narration": "তিনি আরও বলেছেন, শক্তিশালী সে নয় যে কুস্তিতে অন্যকে হারায়।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬১১৪"
+    },
+    {
+      "id": "05",
+      "prompt": "a solitary oak standing perfectly still on a hilltop in the calm of dusk, long shadow, sky graded from amber to deep blue, composed and immovable",
+      "narration": "বরং শক্তিশালী সে, যে রাগের সময় নিজেকে নিয়ন্ত্রণ করে।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬১১৪"
+    },
+    {
+      "id": "06",
+      "prompt": "a cool clear stream sliding over smooth grey stones in a shaded forest, ferns and moss, soft green light, the sound of water almost visible",
+      "narration": "রাগ এলে অবস্থান বদলাও — দাঁড়িয়ে থাকলে বসে পড়ো, চুপ থাকো, অজু করো।",
+      "motion": "right",
+      "source": "সুনানে আবু দাউদ ৪৭৮২"
+    },
+    {
+      "id": "07",
+      "prompt": "a still lake at blue hour with a full moon rising over dark pines, its reflection unbroken, mist on the water, serene and cool",
+      "narration": "যে মুহূর্তে তুমি চুপ থাকতে পারলে, সেই মুহূর্তেই তুমি জিতে গেলে।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৬১১৪"
+    }
+  ]
+}

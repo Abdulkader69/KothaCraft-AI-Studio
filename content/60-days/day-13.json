@@ -1,0 +1,93 @@
+{
+  "title": "পথ থেকে কষ্ট সরানো",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a narrow dirt path through a sunlit forest blocked by a fallen thorny branch, dappled light, a distant figure approaching seen from far behind",
+      "narration": "একদিন এক ব্যক্তি রাস্তা দিয়ে যাচ্ছিল। সে দেখল, পথের মাঝে একটি কাঁটাযুক্ত ডাল পড়ে আছে।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৫২; সহীহ মুসলিম ১৯১৪"
+    },
+    {
+      "id": "02",
+      "prompt": "extreme macro of long curved thorns on a dry acacia branch, razor sharp tips catching the light, shallow depth of field, dust on the bark",
+      "narration": "সে ভাবল, এই ডাল তো পথচারীদের কষ্ট দেবে।",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ১৯১৪"
+    },
+    {
+      "id": "03",
+      "prompt": "weathered hands lifting a thorny branch off a forest path and setting it aside, warm light, the path ahead now clear",
+      "narration": "সে ডালটি সরিয়ে দিল, যেন আর কারো কষ্ট না হয়।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ১৯১৪"
+    },
+    {
+      "id": "04",
+      "prompt": "a forest path opening into a clearing flooded with golden light, tall trees like pillars, a soft glow at the far end, heavenly and welcoming",
+      "narration": "নবীজি বলেছেন, আল্লাহ তার এই ছোট কাজটি কবুল করলেন এবং তাকে ক্ষমা করে দিলেন।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬৫২"
+    },
+    {
+      "id": "05",
+      "prompt": "an ancient tree with seventy branching limbs spreading against a bright sky, every branch alive with leaves, low wide-angle shot",
+      "narration": "নবীজি বলেছেন, ঈমানের সত্তরটিরও বেশি শাখা আছে। সবচেয়ে উঁচু শাখা — লা ইলাহা ইল্লাল্লাহ।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ৩৫"
+    },
+    {
+      "id": "06",
+      "prompt": "a single grey stone lifted from a garden path and placed on the grass verge, morning dew, warm side light, simple and quiet",
+      "narration": "আর সবচেয়ে নিচের শাখা হলো রাস্তা থেকে কষ্টদায়ক জিনিস সরিয়ে দেওয়া।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ৩৫"
+    },
+    {
+      "id": "07",
+      "prompt": "a quiet cobbled lane in an old town at golden hour, swept clean, lanterns just lit, bougainvillea over the walls, orderly and peaceful",
+      "narration": "ছোট কাজকে ছোট ভেবো না — আল্লাহর কাছে তার ওজন অনেক বড়।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ৩৫"
+    }
+  ]
+}

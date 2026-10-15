@@ -1,0 +1,13 @@
+{
+  "title": "গভীর সমুদ্র",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.35,
+  "image": { "style": "cinematic, 35mm film still, muted teal palette" },
+  "voice": { "mmsLang": "ben", "speed": 1.0 },
+  "captions": { "style": "highlight", "wordsPerCue": 3, "primary": "#FFFFFF", "highlight": "#FFD166", "outline": "#000000" },
+  "scenes": [
+    { "id": "01", "prompt": "a lone diver in deep blue water", "narration": "সমুদ্রের পঁচানব্বই শতাংশ কখনো মানুষের চোখে দেখা হয়নি।", "motion": "in" },
+    { "id": "02", "prompt": "bioluminescent glow in the deep ocean", "narration": "এক হাজার মিটারের নিচে সূর্যের আলো পৌঁছায় না।", "motion": "left" }
+  ]
+}

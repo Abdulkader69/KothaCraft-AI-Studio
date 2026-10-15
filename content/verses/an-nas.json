@@ -1,0 +1,69 @@
+{
+  "_note": "Bangla here is a plain literal rendering, not a published translation — swap in one you hold the rights to before publishing at scale.",
+  "title": "সূরা আন-নাস",
+  "arabicTitle": "الناس",
+  "range": "আয়াত ১–৬",
+  "surah": 114,
+  "aspect": "9:16",
+  "fps": 30,
+  "theme": "desert-dusk",
+  "recitation": {
+    "reciter": "Abdul_Basit_Murattal_64kbps"
+  },
+  "voiceover": "none",
+  "opening": "both",
+  "gap": 0.6,
+  "intro": {
+    "seconds": 4
+  },
+  "type": {
+    "centerY": 0.42,
+    "arabicColor": "#FFFFFF",
+    "banglaColor": "#E9DCC0",
+    "numberColor": "#E9C987"
+  },
+  "verses": [
+    {
+      "id": "01",
+      "ayah": 1,
+      "number": "١",
+      "arabic": "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ",
+      "bangla": "বলুন, আমি আশ্রয় চাই মানুষের রবের কাছে।"
+    },
+    {
+      "id": "02",
+      "ayah": 2,
+      "number": "٢",
+      "arabic": "مَلِكِ ٱلنَّاسِ",
+      "bangla": "মানুষের অধিপতির কাছে।"
+    },
+    {
+      "id": "03",
+      "ayah": 3,
+      "number": "٣",
+      "arabic": "إِلَٰهِ ٱلنَّاسِ",
+      "bangla": "মানুষের উপাস্যের কাছে।"
+    },
+    {
+      "id": "04",
+      "ayah": 4,
+      "number": "٤",
+      "arabic": "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ",
+      "bangla": "আত্মগোপনকারী কুমন্ত্রণাদাতার অনিষ্ট থেকে।"
+    },
+    {
+      "id": "05",
+      "ayah": 5,
+      "number": "٥",
+      "arabic": "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ",
+      "bangla": "যে মানুষের অন্তরে কুমন্ত্রণা দেয়।"
+    },
+    {
+      "id": "06",
+      "ayah": 6,
+      "number": "٦",
+      "arabic": "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ",
+      "bangla": "জিন ও মানুষের মধ্য থেকে।"
+    }
+  ]
+}

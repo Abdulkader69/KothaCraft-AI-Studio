@@ -1,0 +1,100 @@
+{
+  "title": "সদকা সম্পদ কমায় না",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a few gold coins on a wooden counter beside an open ledger and a brass scale, warm honest lamplight",
+      "narration": "নবীজি বলেছেন, সদকা করলে সম্পদ কমে না।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৫৮৮"
+    },
+    {
+      "id": "02",
+      "prompt": "clear water pouring from one clay vessel into another in sunlight, not a drop lost, sparkling",
+      "narration": "তিনি আরও বলেছেন, কাউকে ক্ষমা করলে আল্লাহ তার মর্যাদা বাড়িয়ে দেন।",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ২৫৮৮"
+    },
+    {
+      "id": "03",
+      "prompt": "a single seed splitting open in dark soil with a pale green shoot emerging, macro, a drop of water, potential",
+      "narration": "আর যে আল্লাহর জন্য বিনয়ী হয়, আল্লাহ তাকে উঁচু করে দেন।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ২৫৮৮"
+    },
+    {
+      "id": "04",
+      "prompt": "one wheat stalk carrying seven heavy heads of grain, close-up against a warm sky, abundance from one seed",
+      "narration": "আল্লাহ বলেন, যারা তাঁর পথে সম্পদ খরচ করে, তাদের উদাহরণ একটি বীজের মতো…",
+      "motion": "right",
+      "source": "সূরা বাকারা ২:২৬১"
+    },
+    {
+      "id": "05",
+      "prompt": "a field of golden grain stretching to the horizon under a blue sky, wind rippling through it, multiplied without end",
+      "narration": "…যা থেকে সাতটি শীষ জন্মায়, আর প্রতিটি শীষে একশ দানা।",
+      "motion": "in",
+      "source": "সূরা বাকারা ২:২৬১"
+    },
+    {
+      "id": "06",
+      "prompt": "harvest light over full fields, sheaves stacked, sparrows gleaning, the return many times over",
+      "narration": "আল্লাহ যাকে চান তার জন্য বহুগুণ বাড়িয়ে দেন।",
+      "motion": "right",
+      "source": "সূরা বাকারা ২:২৬১"
+    }
+  ],
+  "description": "আল্লাহর সন্তুষ্টির উদ্দেশ্যে দান করলে কখনো সম্পদ কমে না, বরং বহুগুণ বৃদ্ধি পায়। বিনয় মানুষকে সম্মানিত করে আর ক্ষমা মর্যাদা বৃদ্ধি করে।\n\nসূত্র: সহীহ মুসলিম ২৫৮৮ · সূরা বাকারা ২:২৬১",
+  "publish": {
+    "description": "আল্লাহর সন্তুষ্টির উদ্দেশ্যে দান করলে কখনো সম্পদ কমে না, বরং বহুগুণ বৃদ্ধি পায়। বিনয় মানুষকে সম্মানিত করে আর ক্ষমা মর্যাদা বৃদ্ধি করে।\n\nসূত্র: সহীহ মুসলিম ২৫৮৮ · সূরা বাকারা ২:২৬১",
+    "hashtags": [
+      "#সদকা",
+      "#দান",
+      "#বরকত",
+      "#হাদিস",
+      "#কোরআন",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

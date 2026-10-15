@@ -1,0 +1,99 @@
+{
+  "title": "সদকায়ে জারিয়া",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "water flowing steadily from an old carved stone well spout into a basin, sunlight on the stream, endless",
+      "narration": "নবীজি বলেছেন, মানুষ মারা গেলে তার সব আমল বন্ধ হয়ে যায়…",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ১৬৩১"
+    },
+    {
+      "id": "02",
+      "prompt": "a clear stream flowing through the heart of a village past homes and gardens, children's kites in the sky",
+      "narration": "…তিনটি ছাড়া।",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ১৬৩১"
+    },
+    {
+      "id": "03",
+      "prompt": "an ancient public well with its stone rim worn smooth by centuries of hands, buckets beside it, still serving",
+      "narration": "সদকায়ে জারিয়া — এমন দান, যা চলতে থাকে।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ১৬৩১"
+    },
+    {
+      "id": "04",
+      "prompt": "open books on a sunlit wooden shelf in a madrasa, a student's notes beside them, knowledge passed on",
+      "narration": "এমন জ্ঞান, যা দিয়ে মানুষ উপকৃত হতে থাকে।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ১৬৩১"
+    },
+    {
+      "id": "05",
+      "prompt": "a prayer mat unrolled in soft morning light with hands raised in dua, a photograph frame on the shelf behind",
+      "narration": "আর নেক সন্তান, যে তার জন্য দোয়া করে।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ১৬৩১"
+    },
+    {
+      "id": "06",
+      "prompt": "a great tree planted decades ago now giving deep shade over a village square, birds nesting, people's benches beneath",
+      "narration": "একটি গাছ, একটি কূপ, একটি বই — মৃত্যুর পরও তোমার হয়ে কাজ করে যায়।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ১৬৩১"
+    }
+  ],
+  "description": "মৃত্যুর পরও যে আমলের সওয়াবের ধারা জারি থাকে — সদকায়ে জারিয়া, উপকারী জ্ঞান ও নেক সন্তানের দোয়া। এমন কিছু রেখে যান যা অনন্ত জীবনেও আপনার কল্যাণের উসিলা হবে।\n\nসূত্র: সহীহ মুসলিম ১৬৩১",
+  "publish": {
+    "description": "মৃত্যুর পরও যে আমলের সওয়াবের ধারা জারি থাকে — সদকায়ে জারিয়া, উপকারী জ্ঞান ও নেক সন্তানের দোয়া। এমন কিছু রেখে যান যা অনন্ত জীবনেও আপনার কল্যাণের উসিলা হবে।\n\nসূত্র: সহীহ মুসলিম ১৬৩১",
+    "hashtags": [
+      "#সদকায়েজারিয়া",
+      "#দান",
+      "#কল্যাণ",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

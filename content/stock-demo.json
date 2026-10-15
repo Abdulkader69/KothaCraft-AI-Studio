@@ -1,0 +1,14 @@
+{
+  "title": "Places That Breathe",
+  "aspect": "9:16",
+  "footage": "stock",
+  "stock": { "zoom": 0.08, "fade": 0.25 },
+  "voice": { "kokoroVoice": "af_sarah", "lang": "en-us" },
+  "captions": { "style": "highlight", "wordsPerCue": 3 },
+  "scenes": [
+    { "id": "01", "prompt": "ocean waves rolling under a blue sky", "narration": "The ocean never sleeps. Every wave has travelled a thousand miles to reach you." },
+    { "id": "02", "prompt": "fog drifting through a forest at dawn", "narration": "In the forest, the morning arrives slowly, one tree at a time." },
+    { "id": "03", "prompt": "city traffic lights at night", "narration": "The city breathes in light. Two million lives, one heartbeat.", "motion": "left" },
+    { "id": "04", "prompt": "desert dunes at sunset", "narration": "And the desert keeps its silence, waiting for the stars." }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "title": "শোকর — কৃতজ্ঞতা বাড়িয়ে দেয়",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a simple clay bowl of rice and lentils on a plain wooden table, steam rising, one spoon, honest morning light",
+      "narration": "আল্লাহ বলেন, যদি তোমরা শোকর করো, আমি অবশ্যই তোমাদের আরও বাড়িয়ে দেব।",
+      "motion": "in",
+      "source": "সূরা ইবরাহীম ১৪:৭"
+    },
+    {
+      "id": "02",
+      "prompt": "a clear glass of water on a sunlit windowsill, light refracting through it into a small rainbow, the most basic blessing",
+      "narration": "আর যদি অকৃতজ্ঞ হও — জেনে রাখো, আমার শাস্তি বড় কঠিন।",
+      "motion": "left",
+      "source": "সূরা ইবরাহীম ১৪:৭"
+    },
+    {
+      "id": "03",
+      "prompt": "a hillside covered in countless wildflowers of every colour stretching to the horizon, uncountable detail, warm light",
+      "narration": "যদি তোমরা আল্লাহর নিয়ামত গুনতে চাও, গুনে শেষ করতে পারবে না।",
+      "motion": "out",
+      "source": "সূরা ইবরাহীম ১৪:৩৪"
+    },
+    {
+      "id": "04",
+      "prompt": "soft morning light through a curtain falling onto a simple made bed, a safe quiet room, an ordinary blessing",
+      "narration": "নবীজি বলেছেন, যে ব্যক্তি সকালে নিরাপদে ঘুম থেকে ওঠে…",
+      "motion": "right",
+      "source": "জামে তিরমিযী ২৩৪৬"
+    },
+    {
+      "id": "05",
+      "prompt": "a loaf of bread and a clay jug of water on a rough table, sunlight, enough for the day, sufficiency",
+      "narration": "…শরীর সুস্থ থাকে, আর সেই দিনের খাবার তার কাছে থাকে…",
+      "motion": "in",
+      "source": "জামে তিরমিযী ২৩৪৬"
+    },
+    {
+      "id": "06",
+      "prompt": "a wide green landscape at golden hour with rivers, forests and distant hills all in one frame, generous and complete",
+      "narration": "…যেন তার জন্য গোটা দুনিয়াই জড়ো করে দেওয়া হলো।",
+      "motion": "right",
+      "source": "জামে তিরমিযী ২৩৪৬"
+    },
+    {
+      "id": "07",
+      "prompt": "golden hour over a small cottage with a vegetable garden, smoke from the chimney, a cat on the step, contentment",
+      "narration": "যা নেই তার হিসাব রেখো না। যা আছে তার শোকর করো।",
+      "motion": "out",
+      "source": "সূরা ইবরাহীম ১৪:৭"
+    }
+  ],
+  "description": "যা নেই তার জন্য আক্ষেপ না করে যা আছে তার শুকরিয়া আদায় করুন। কৃতজ্ঞতা নিয়ামত বৃদ্ধি করে এবং অন্তরে প্রকৃত প্রশান্তি এনে দেয়।\n\nসূত্র: সূরা ইবরাহীম ১৪:৭ · সূরা ইবরাহীম ১৪:৩৪ · জামে তিরমিযী ২৩৪৬",
+  "publish": {
+    "description": "যা নেই তার জন্য আক্ষেপ না করে যা আছে তার শুকরিয়া আদায় করুন। কৃতজ্ঞতা নিয়ামত বৃদ্ধি করে এবং অন্তরে প্রকৃত প্রশান্তি এনে দেয়।\n\nসূত্র: সূরা ইবরাহীম ১৪:৭ · সূরা ইবরাহীম ১৪:৩৪ · জামে তিরমিযী ২৩৪৬",
+    "hashtags": [
+      "#শোকর",
+      "#কৃতজ্ঞতা",
+      "#কোরআন",
+      "#নিয়ামত",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

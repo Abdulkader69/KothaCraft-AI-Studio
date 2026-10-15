@@ -1,0 +1,210 @@
+{
+  "title": "মায়ের শিক্ষা: ক্ষমা করার অপার মহত্ত্ব",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A beautifully colored drawing of a green garden torn in half lying on a wooden study table, a crying child standing beside, vintage oil painting",
+      "narration": "মা, আমি সারাদিন ধরে বাগানটার ছবি এঁকেছিলাম! বন্ধু রাফি সেটা ছিঁড়ে ফেলেছে! মন খারাপ কোরো না বাবা। রাফি কি ইচ্ছে করে ছিঁড়েছে?",
+      "motion": "in",
+      "source": "নৈতিক চরিত্র",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "crying",
+          "text": "মা, আমি সারাদিন ধরে বাগানটার ছবি এঁকেছিলাম! বন্ধু রাফি সেটা ছিঁড়ে ফেলেছে!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "caring",
+          "text": "মন খারাপ কোরো না বাবা। রাফি কি ইচ্ছে করে ছিঁড়েছে?"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "Mother gently wiping child’s tears, child clenching small fists with anger, warm indoor lighting, storybook gouache painting",
+      "narration": "ও বলল অসাবধানে লেগেছে, কিন্তু আমি কাল ওর খাতাও ছিঁড়ে ফেলব! ইটের বদলে পাটকেল মারলে তো তোমাদের দুজনের মাঝে কোনো তফাত থাকবে না সোনা।",
+      "motion": "left",
+      "source": "সহমর্মিতা",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "angry",
+          "text": "ও বলল অসাবধানে লেগেছে, কিন্তু আমি কাল ওর খাতাও ছিঁড়ে ফেলব!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "ইটের বদলে পাটকেল মারলে তো তোমাদের দুজনের মাঝে কোনো তফাত থাকবে না সোনা।"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "An open hand releasing a captive white bird into the clear blue sky, symbol of letting go and forgiveness, classical fairytale painting",
+      "narration": "ও আমার ক্ষতি করেছে মা, আমি কি প্রতিশোধ নিতে পারব না? কুরআনে বলা হয়েছে, যে ব্যক্তি ধৈর্য ধরে এবং ক্ষমা করে দেয়—নিশ্চয়ই তা সাহসিকতা ও মহত্ত্বের কাজ।",
+      "motion": "right",
+      "source": "সূরা শুরা ৪০",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "ও আমার ক্ষতি করেছে মা, আমি কি প্রতিশোধ নিতে পারব না?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "কুরআনে বলা হয়েছে, যে ব্যক্তি ধৈর্য ধরে এবং ক্ষমা করে দেয়—নিশ্চয়ই তা সাহসিকতা ও মহত্ত্বের কাজ।"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "Two children sitting under a shaded tree, one looking down apologetically while the other smiles gently, gouache painting",
+      "narration": "ক্ষমা করে দিলে কি মানুষ আমাকে দুর্বল ভাববে মা? কখনোই না বাবা। নবীজি বলেছেন, ক্ষমার মাধ্যমে আল্লাহ বান্দার সম্মান ও মর্যাদা কেবল বৃদ্ধিই করেন।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৫৮৮",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "thoughtful",
+          "text": "ক্ষমা করে দিলে কি মানুষ আমাকে দুর্বল ভাববে মা?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "কখনোই না বাবা। নবীজি বলেছেন, ক্ষমার মাধ্যমে আল্লাহ বান্দার সম্মান ও মর্যাদা কেবল বৃদ্ধিই করেন।"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "Two hands holding clear tape and carefully pasting the torn drawing back together, creating something even more precious, oil painting",
+      "narration": "তুমি যদি মানুষকে ক্ষমা করো, তবে কিয়ামতের দিন আল্লাহ তোমার সমস্ত বড় বড় ভুলগুলো ক্ষমা করে দেবেন। আমি তো আল্লাহর ক্ষমা পেতে চাই মা... তাহলে রাফিকে আমি মন থেকেই মাফ করে দিই?",
+      "motion": "left",
+      "source": "তিরমিজি ২০২৩",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "caring",
+          "text": "তুমি যদি মানুষকে ক্ষমা করো, তবে কিয়ামতের দিন আল্লাহ তোমার সমস্ত বড় বড় ভুলগুলো ক্ষমা করে দেবেন।"
+        },
+        {
+          "speaker": "child",
+          "tone": "remorseful",
+          "text": "আমি তো আল্লাহর ক্ষমা পেতে চাই মা... তাহলে রাফিকে আমি মন থেকেই মাফ করে দিই?"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "Child drawing a fresh new flower on the taped paper with a bright smile, mother assisting, warm lamplight, storybook illustration",
+      "narration": "হ্যাঁ সোনা। কাল সকালে রাফিকে বলবে—আমি তোমাকে ক্ষমা করে দিয়েছি, চলো আমরা আবার একসাথে ছবি আঁকি। রাফি নিশ্চয়ই খুব অবাক হবে আর অনেক খুশি হবে মা!",
+      "motion": "right",
+      "source": "মহত্ত্ব",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "হ্যাঁ সোনা। কাল সকালে রাফিকে বলবে—আমি তোমাকে ক্ষমা করে দিয়েছি, চলো আমরা আবার একসাথে ছবি আঁকি।"
+        },
+        {
+          "speaker": "child",
+          "tone": "happy",
+          "text": "রাফি নিশ্চয়ই খুব অবাক হবে আর অনেক খুশি হবে মা!"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "Mother hugging the child warmly against a glowing sunrise window, peaceful fairytale storybook painting",
+      "narration": "ক্ষমাশীল হৃদয় হলো পৃথিবীর সবচেয়ে সুন্দর হৃদয়। তোমার এই মহত্ত্ব আল্লাহ কবুল করুন।",
+      "motion": "out",
+      "source": "হিকমাহ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "ক্ষমাশীল হৃদয় হলো পৃথিবীর সবচেয়ে সুন্দর হৃদয়। তোমার এই মহত্ত্ব আল্লাহ কবুল করুন।"
+        }
+      ]
+    }
+  ],
+  "description": "প্রতিশোধ নেওয়ার ক্ষমতা থাকা সত্ত্বেও ক্ষমা করে দেওয়া মুমিনের অনন্য মহত্ত্ব। যে ক্ষমা করে, আল্লাহ তার মর্যাদা বাড়িয়ে দেন।\n\nসূত্র: সূরা শুরা ৪০ · তিরমিজি ২০২৩ · সহীহ মুসলিম ২৫৮৮",
+  "publish": {
+    "description": "প্রতিশোধ নেওয়ার ক্ষমতা থাকা সত্ত্বেও ক্ষমা করে দেওয়া মুমিনের অনন্য মহত্ত্ব। যে ক্ষমা করে, আল্লাহ তার মর্যাদা বাড়িয়ে দেন।\n\nসূত্র: সূরা শুরা ৪০ · তিরমিজি ২০২৩ · সহীহ মুসলিম ২৫৮৮",
+    "hashtags": [
+      "#ক্ষমা",
+      "#সহমর্মিতা",
+      "#মায়ের_শিক্ষা",
+      "#নৈতিকতা",
+      "#পারিবারিক_শিক্ষা",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

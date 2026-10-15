@@ -1,0 +1,99 @@
+{
+  "title": "সবচেয়ে প্রিয় আমল",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a small steady candle flame that has burned all night, wax pooled beneath it, dawn at the window",
+      "narration": "আয়েশা রাঃ-কে জিজ্ঞেস করা হলো, নবীজির কাছে সবচেয়ে প্রিয় আমল কোনটি ছিল?",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৪৬৫"
+    },
+    {
+      "id": "02",
+      "prompt": "a footpath worn deep into a hillside by years of daily walking, morning mist, consistency",
+      "narration": "তিনি বললেন, যা নিয়মিত করা হতো — অল্প হলেও।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৬৪৬৫"
+    },
+    {
+      "id": "03",
+      "prompt": "a single drop of water falling onto a stone, ripples in the puddle beneath, repeated over years, macro",
+      "narration": "নবীজি বলেছেন, তোমরা সাধ্যমতো আমল করো।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৫৮৬১"
+    },
+    {
+      "id": "04",
+      "prompt": "a river stone worn perfectly smooth and hollowed by constant dripping water, close detail",
+      "narration": "কারণ আল্লাহ ক্লান্ত হন না, যতক্ষণ না তোমরা নিজেরা ক্লান্ত হয়ে যাও।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৫৮৬১"
+    },
+    {
+      "id": "05",
+      "prompt": "a small daily measure of grain in a wooden scoop, the same every morning, warm light, a full sack behind",
+      "narration": "অল্প কিন্তু নিয়মিত আমলই আল্লাহর কাছে সবচেয়ে প্রিয়।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৪৬৪"
+    },
+    {
+      "id": "06",
+      "prompt": "the growth rings of a great felled tree trunk, hundreds of them, close detail in raking light, years made visible",
+      "narration": "প্রতিদিন একটু — এক বছরে তা বিশাল হয়ে যায়।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬৪৬৪"
+    }
+  ],
+  "description": "আল্লাহর কাছে সবচেয়ে প্রিয় আমল তা-ই, যা পরিমাণে অল্প হলেও নিয়মিত ও ধারাবাহিকভাবে করা হয়। প্রতিদিনের ছোট ছোট ভালো আমলই আখিরাতে মহা সওয়াবের ভাণ্ডার গড়ে তোলে।\n\nসূত্র: সহীহ বুখারী ৬৪৬৫ · সহীহ বুখারী ৫৮৬১ · সহীহ বুখারী ৬৪৬৪",
+  "publish": {
+    "description": "আল্লাহর কাছে সবচেয়ে প্রিয় আমল তা-ই, যা পরিমাণে অল্প হলেও নিয়মিত ও ধারাবাহিকভাবে করা হয়। প্রতিদিনের ছোট ছোট ভালো আমলই আখিরাতে মহা সওয়াবের ভাণ্ডার গড়ে তোলে।\n\nসূত্র: সহীহ বুখারী ৬৪৬৫ · সহীহ বুখারী ৫৮৬১ · সহীহ বুখারী ৬৪৬৪",
+    "hashtags": [
+      "#প্রিয়আমল",
+      "#ধারাবাহিকতা",
+      "#ইবাদত",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

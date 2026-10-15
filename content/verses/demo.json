@@ -1,0 +1,65 @@
+{
+  "title": "সূরা আল-ওয়াকিয়াহ",
+  "arabicTitle": "الواقعة",
+  "range": "আয়াত ৮–১২",
+  "surah": 56,
+  "aspect": "9:16",
+  "fps": 30,
+  "theme": "night-mosque",
+  "recitation": {
+    "reciter": "Abdul_Basit_Mujawwad_128kbps"
+  },
+  "voiceover": "none",
+  "gap": 0.6,
+  "intro": {
+    "seconds": 4
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "type": {
+    "centerY": 0.42,
+    "arabicColor": "#FFFFFF",
+    "banglaColor": "#E9DCC0",
+    "numberColor": "#E9C987"
+  },
+  "verses": [
+    {
+      "id": "01",
+      "number": "٨",
+      "arabic": "فَأَصْحَابُ الْمَيْمَنَةِ مَا أَصْحَابُ الْمَيْمَنَةِ",
+      "bangla": "সুতরাং ডান পার্শ্বের দল, ডান পার্শ্বের দলটি কত সৌভাগ্যবান!",
+      "ayah": 8
+    },
+    {
+      "id": "02",
+      "number": "٩",
+      "arabic": "وَأَصْحَابُ الْمَشْأَمَةِ مَا أَصْحَابُ الْمَشْأَمَةِ",
+      "bangla": "আর বাম পার্শ্বের দল, বাম পার্শ্বের দলটি কত হতভাগা!",
+      "ayah": 9
+    },
+    {
+      "id": "03",
+      "number": "١٠",
+      "arabic": "وَالسَّابِقُونَ السَّابِقُونَ",
+      "bangla": "আর অগ্রগামীরাই অগ্রগামী।",
+      "ayah": 10
+    },
+    {
+      "id": "04",
+      "number": "١١",
+      "arabic": "أُولَٰئِكَ الْمُقَرَّبُونَ",
+      "bangla": "তারাই সান্নিধ্যপ্রাপ্ত।",
+      "ayah": 11
+    },
+    {
+      "id": "05",
+      "number": "١٢",
+      "arabic": "فِي جَنَّاتِ النَّعِيمِ",
+      "bangla": "তারা থাকবে নিআমতপূর্ণ জান্নাতসমূহে।",
+      "ayah": 12
+    }
+  ],
+  "opening": "taawwudh",
+  "_note": "Bangla here is a plain literal rendering, not a published translation — swap in one you hold the rights to before publishing at scale."
+}

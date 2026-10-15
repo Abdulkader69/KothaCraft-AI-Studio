@@ -1,0 +1,99 @@
+{
+  "title": "দুনিয়ার প্রকৃত রূপ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a green field glistening after rain, every blade vivid, raindrops catching low sun, a rainbow fading over distant hills",
+      "narration": "আল্লাহ দুনিয়ার জীবনের উদাহরণ দিয়েছেন বৃষ্টির মতো।",
+      "motion": "in",
+      "source": "সূরা হাদীদ ৫৭:২০"
+    },
+    {
+      "id": "02",
+      "prompt": "tall lush crops swaying in full summer colour, heads heavy, a farmer's scarecrow among them, impressive abundance",
+      "narration": "যে বৃষ্টিতে ফসল এমন সুন্দর হয়ে ওঠে, যে চাষিরা মুগ্ধ হয়ে তাকিয়ে থাকে।",
+      "motion": "left",
+      "source": "সূরা হাদীদ ৫৭:২০"
+    },
+    {
+      "id": "03",
+      "prompt": "the same field turning yellow and brittle under a harsh white sun, colour draining out, heat shimmer",
+      "narration": "তারপর তা শুকিয়ে যায় — তুমি দেখো, সব হলুদ হয়ে গেছে।",
+      "motion": "out",
+      "source": "সূরা হাদীদ ৫৭:২০"
+    },
+    {
+      "id": "04",
+      "prompt": "dry broken stalks and chaff scattered across bare cracked earth, wind blowing the dust away, desolate",
+      "narration": "এরপর তা ভেঙে খড়কুটো হয়ে যায়, বাতাসে উড়ে যায়।",
+      "motion": "right",
+      "source": "সূরা হাদীদ ৫৭:২০"
+    },
+    {
+      "id": "05",
+      "prompt": "a bare harvested field under a vast empty sky, nothing left standing, one crow, wide and silent",
+      "narration": "দুনিয়ার জীবন এই — খেলা, তামাশা, সাজসজ্জা আর একে অপরের সাথে গর্ব করা।",
+      "motion": "in",
+      "source": "সূরা হাদীদ ৫৭:২০"
+    },
+    {
+      "id": "06",
+      "prompt": "a dusk horizon beyond the empty fields, the first stars appearing in a deep blue sky, a lamp lit in a distant house",
+      "narration": "আর আখিরাতের ঘরই প্রকৃত জীবন — যদি তারা জানত।",
+      "motion": "right",
+      "source": "সূরা আনকাবুত ২৯:৬৪"
+    }
+  ],
+  "description": "দুনিয়ার ক্ষণস্থায়ী মোহ যেন বৃষ্টির পর গজিয়ে ওঠা সবুজ ফসলের মতো, যা দেখতে সুন্দর হলেও দ্রুত শুকিয়ে খড়কুটো হয়ে যায়। চিরস্থায়ী আখেরাতই মানুষের আসল ঠিকানা।\n\nসূত্র: সূরা হাদীদ ৫৭:২০ · সূরা আনকাবুত ২৯:৬৪",
+  "publish": {
+    "description": "দুনিয়ার ক্ষণস্থায়ী মোহ যেন বৃষ্টির পর গজিয়ে ওঠা সবুজ ফসলের মতো, যা দেখতে সুন্দর হলেও দ্রুত শুকিয়ে খড়কুটো হয়ে যায়। চিরস্থায়ী আখেরাতই মানুষের আসল ঠিকানা।\n\nসূত্র: সূরা হাদীদ ৫৭:২০ · সূরা আনকাবুত ২৯:৬৪",
+    "hashtags": [
+      "#দুনিয়া",
+      "#আখেরাত",
+      "#কোরআন",
+      "#বাস্তবতা",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

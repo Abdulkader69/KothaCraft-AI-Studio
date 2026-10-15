@@ -1,0 +1,86 @@
+{
+  "title": "যিকিরে হৃদয়ের প্রশান্তি",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a dark restless sea at night, waves chopping and breaking under heavy clouds, no horizon, cold and anxious",
+      "narration": "মানুষের হৃদয় অস্থির হয়, দুশ্চিন্তায় ভরে যায়, রাতে ঘুম আসে না।",
+      "motion": "in",
+      "source": "সূরা রাদ ১৩:২৮"
+    },
+    {
+      "id": "02",
+      "prompt": "the same sea settling into glassy calm at dawn, clouds parting, the first pink light reflected perfectly, breath returning",
+      "narration": "আল্লাহ বলেন, জেনে রাখো, আল্লাহর স্মরণেই অন্তর প্রশান্ত হয়।",
+      "motion": "left",
+      "source": "সূরা রাদ ১৩:২৮"
+    },
+    {
+      "id": "03",
+      "prompt": "a string of dark wooden prayer beads resting on a worn Qur'an cover, warm lamplight, extreme close-up, deep shadows",
+      "narration": "নবীজি বলেছেন, দুটি বাক্য আছে — জিহ্বায় হালকা, কিন্তু মিযানে ভারী, আর আল্লাহর কাছে প্রিয়।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৬৬৮২"
+    },
+    {
+      "id": "04",
+      "prompt": "golden light falling across an open page of elegant Arabic calligraphy on aged paper, an ink pot beside it, quiet and still",
+      "narration": "সুবহানাল্লাহি ওয়া বিহামদিহি, সুবহানাল্লাহিল আজীম।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬৬৮২"
+    },
+    {
+      "id": "05",
+      "prompt": "a lush flower garden in soft rain beside a bare dead patch of cracked earth, the contrast stark, water beading on petals",
+      "narration": "নবীজি বলেছেন, যে আল্লাহকে স্মরণ করে আর যে করে না — তাদের উদাহরণ জীবিত ও মৃতের মতো।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৪০৭"
+    },
+    {
+      "id": "06",
+      "prompt": "dawn breaking over a still lake in the hills, mist lifting off the water, a heron rising, pale gold light, deep peace",
+      "narration": "মন খারাপ লাগলে ফোন নয়, জিহ্বা নাড়াও। প্রশান্তি সেখানেই।",
+      "motion": "right",
+      "source": "সূরা রাদ ১৩:২৮"
+    }
+  ]
+}

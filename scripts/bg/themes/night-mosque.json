@@ -1,0 +1,13 @@
+{
+  "_name": "night-mosque",
+  "_note": "Deep indigo to violet night — the house default.",
+  "speed": 2,
+  "stars": 330,
+  "fireflies": 34,
+  "palette": {
+    "skyTop": "#070620", "skyMid": "#251a55", "skyLow": "#5d4180", "skyBottom": "#8a6298",
+    "haze": "#7d55a6", "hazeWarm": "#b98bc4", "star": "#ffffff", "moon": "#f4e5ab",
+    "gold": "#e9c987", "lantern": "#ffcf7d", "firefly": "#f6e98a",
+    "ink": "#0e0a24", "window": "#ffc16a", "water": "#100c2b"
+  }
+}

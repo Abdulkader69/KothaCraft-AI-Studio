@@ -1,0 +1,107 @@
+{
+  "title": "ইউসুফ (আলাইহিছ ছালাম) ও কূপ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "night sky thick with stars over a quiet desert, deep blue tones",
+      "narration": "ছোট্ট ইউসুফ তাঁর বাবাকে বললেন, আমি স্বপ্নে এগারোটি তারা দেখেছি।",
+      "motion": "in",
+      "source": "সূরা ইউসুফ ১২:৪"
+    },
+    {
+      "id": "02",
+      "prompt": "worn wooden door slightly ajar, warm interior light beyond",
+      "narration": "ইয়াকুব আলাইহিছ ছালাম বললেন, তোমার স্বপ্ন ভাইদের কাছে বলো না।",
+      "motion": "left",
+      "source": "সূরা ইউসুফ ১২:৫"
+    },
+    {
+      "id": "03",
+      "prompt": "dry grassland at the edge of a green field, harsh midday light",
+      "narration": "ভাইয়েরা তাঁকে খেলার কথা বলে দূরে নিয়ে গেল।",
+      "motion": "out",
+      "source": "সূরা ইউসুফ ১২:১২"
+    },
+    {
+      "id": "04",
+      "prompt": "dark stone well from above, rope hanging, deep shadow below",
+      "narration": "তারা তাঁকে একটি গভীর কূপে ফেলে দিল।",
+      "motion": "right",
+      "source": "সূরা ইউসুফ ১২:১৫"
+    },
+    {
+      "id": "05",
+      "prompt": "a winding country road at sunset, trees along the verge, long shadows",
+      "narration": "এক কাফেলা সেখানে থামল এবং তাঁকে তুলে নিল।",
+      "motion": "in",
+      "source": "সূরা ইউসুফ ১২:১৯"
+    },
+    {
+      "id": "06",
+      "prompt": "grand hall with tall columns, cool marble, quiet grandeur",
+      "narration": "বছর পেরিয়ে সেই ইউসুফই মিসরের ভাণ্ডারের দায়িত্ব পেলেন।",
+      "motion": "right",
+      "source": "সূরা ইউসুফ ১২:৫৫"
+    },
+    {
+      "id": "07",
+      "prompt": "golden wheat field ready for harvest, heavy heads bending, warm light",
+      "narration": "দুর্ভিক্ষের সময় তাঁর ভাইয়েরাই তাঁর কাছে এসে দাঁড়াল।",
+      "motion": "out",
+      "source": "সূরা ইউসুফ ১২:৫৮"
+    },
+    {
+      "id": "08",
+      "prompt": "open doorway with soft light flooding in, peaceful",
+      "narration": "তিনি বললেন, আজ তোমাদের বিরুদ্ধে কোনো অভিযোগ নেই। আল্লাহ তোমাদের ক্ষমা করুন।",
+      "motion": "left",
+      "source": "সূরা ইউসুফ ১২:৯২"
+    },
+    {
+      "id": "09",
+      "prompt": "sunrise over a river delta, green banks, mist lifting off the water",
+      "narration": "যে ধৈর্য ধরে ও তাকওয়া অবলম্বন করে, আল্লাহ তার প্রতিদান নষ্ট করেন না।",
+      "motion": "in",
+      "source": "সূরা ইউসুফ ১২:৯০"
+    }
+  ]
+}

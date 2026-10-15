@@ -1,0 +1,99 @@
+{
+  "title": "যে চোখ আল্লাহর ভয়ে কাঁদে",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a single drop of water on a dry brown leaf, extreme macro, the drop holding a tiny reflection of the sky",
+      "narration": "নবীজি বলেছেন, দুটি চোখকে জাহান্নামের আগুন কখনো স্পর্শ করবে না।",
+      "motion": "in",
+      "source": "জামে তিরমিযী ১৬৩৯"
+    },
+    {
+      "id": "02",
+      "prompt": "dew forming on meadow grass at dawn, spiderwebs strung with droplets shining like pearls, soft light",
+      "narration": "যে চোখ আল্লাহর ভয়ে কেঁদেছে।",
+      "motion": "left",
+      "source": "জামে তিরমিযী ১৬৩৯"
+    },
+    {
+      "id": "03",
+      "prompt": "a stone watchtower on a desert frontier at night under stars, a lone lantern burning, vigilant and still",
+      "narration": "আর যে চোখ আল্লাহর পথে পাহারা দিয়ে রাত কাটিয়েছে।",
+      "motion": "out",
+      "source": "জামে তিরমিযী ১৬৩৯"
+    },
+    {
+      "id": "04",
+      "prompt": "a shaded courtyard with a fountain, cool refuge from a blazing sky outside, deep shadow and light",
+      "narration": "তিনি আরও বলেছেন, কিয়ামতের দিন যারা আল্লাহর ছায়া পাবে, তাদের একজন সে — যে নির্জনে আল্লাহকে স্মরণ করে চোখ ভিজিয়েছে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬৬০"
+    },
+    {
+      "id": "05",
+      "prompt": "still dark water reflecting a single warm lamp, tender light, a ripple from one falling drop",
+      "narration": "কান্না দুর্বলতা নয় — জীবিত অন্তরের চিহ্ন।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৬০"
+    },
+    {
+      "id": "06",
+      "prompt": "soft dawn light through a window onto fresh flowers in a clay vase, relief and peace",
+      "narration": "যে অন্তর নরম, রহমত সেখানেই নামে।",
+      "motion": "right",
+      "source": "জামে তিরমিযী ১৬৩৯"
+    }
+  ],
+  "description": "নির্জনে আল্লাহর ভয়ে ও ভালোবাসায় ফেলা এক ফোঁটা অশ্রু জাহান্নামের আগুনকে হারাম করে দেয় এবং কিয়ামতের দিন আরশের সুশীতল ছায়া এনে দেয়।\n\nসূত্র: জামে তিরমিযী ১৬৩৯ · সহীহ বুখারী ৬৬০",
+  "publish": {
+    "description": "নির্জনে আল্লাহর ভয়ে ও ভালোবাসায় ফেলা এক ফোঁটা অশ্রু জাহান্নামের আগুনকে হারাম করে দেয় এবং কিয়ামতের দিন আরশের সুশীতল ছায়া এনে দেয়।\n\nসূত্র: জামে তিরমিযী ১৬৩৯ · সহীহ বুখারী ৬৬০",
+    "hashtags": [
+      "#আল্লাহরভয়",
+      "#অশ্রু",
+      "#আরশেরছায়া",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

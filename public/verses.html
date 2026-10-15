@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>faceless-pipeline — verse reels</title>
+    <link rel="stylesheet" href="/ui.css" />
+    <style>
+      main { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; gap: 18px; }
+      section { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+      .verse { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; display: grid; gap: 8px; margin-bottom: 10px; }
+      .verse-head { display: flex; align-items: center; gap: 8px; }
+      .verse-no { font-size: 12px; color: var(--dim); font-variant-numeric: tabular-nums; }
+      /* The ayat needs a face that draws Arabic, and right-to-left input. */
+      .ar { direction: rtl; text-align: right; font-family: "Geeza Pro", "Scheherazade New", "Traditional Arabic", serif; font-size: 20px; line-height: 2; }
+      .bn { font-family: "Kohinoor Bangla", system-ui, sans-serif; font-size: 15px; line-height: 1.8; }
+      .verse-grid { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: start; }
+      .theme-note { font-size: 12px; color: var(--dim); }
+      .set-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+      .set-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; display: grid; gap: 4px; cursor: pointer; }
+      .set-card .t { font-weight: 600; font-size: 13px; }
+      .set-card .m { font-size: 11px; color: var(--dim); }
+      #preview { width: 100%; max-width: 320px; border-radius: var(--radius); background: #0a0e14; display: block; }
+      #status { font-size: 12px; color: var(--dim); }
+      #log { height: 180px; }
+      @media (max-width: 640px) { .verse-grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>faceless-pipeline</h1>
+      <nav class="nav">
+        <a href="/">Reels</a><a href="/stock">Local video</a><a href="/cards">Photo cards</a><a class="active" href="/verses">Verse reels</a><a href="/dialogue">Dialogue</a>
+      </nav>
+      <span id="status" style="margin-left:auto">Idle.</span>
+      <button id="cancel" class="small" disabled>Cancel</button>
+    </header>
+
+    <main>
+      <section>
+        <h2 style="margin:0 0 4px">Verse reel</h2>
+        <p class="hint" style="margin:0 0 12px">
+          One animated background runs the whole length; only the text changes over it.
+          The Arabic is shown, never spoken — the voice reads the translation.
+        </p>
+
+        <div class="row">
+          <label>Title<input id="title" placeholder="সূরা আল-ওয়াকিয়াহ" /></label>
+          <label>Arabic title<input id="arabicTitle" class="ar" placeholder="الواقعة" /></label>
+        </div>
+        <div class="row">
+          <label>Subtitle<input id="subtitle" placeholder="(optional)" /></label>
+          <label>Range<input id="range" placeholder="আয়াত ৮–১২" /></label>
+        </div>
+
+        <div class="row">
+          <label>Surah number<input id="surah" type="number" min="1" max="114" placeholder="56" /></label>
+          <label>Reciter (qari)<select id="reciter"></select></label>
+          <label>Opens with<select id="opening">
+            <option value="none">Nothing</option>
+            <option value="taawwudh">Ta'awwudh — starting mid-surah</option>
+            <option value="basmala">Basmala only</option>
+            <option value="both">Ta'awwudh + Basmala — opening a surah</option>
+          </select></label>
+          <label>Translation audio<select id="voiceover">
+            <option value="none">None — recitation only</option>
+            <option value="bangla">Bangla voiceover, ducked under</option>
+          </select></label>
+        </div>
+        <div class="theme-note" id="reciterNote"></div>
+
+        <div class="row">
+          <label>Background<select id="theme"></select></label>
+          <label>Aspect<select id="aspect"><option value="9:16">9:16</option><option value="1:1">1:1</option></select></label>
+          <label>FPS<input id="fps" type="number" min="24" max="60" value="30" /></label>
+        </div>
+        <div class="theme-note" id="themeNote"></div>
+
+        <div class="row">
+          <label>Gap after each ayat (s)<input id="gap" type="number" step="0.1" min="0" value="0.6" /></label>
+          <label>Title card (s)<input id="introSeconds" type="number" step="0.5" min="0" value="4" /></label>
+          <label>Voice speed<input id="speed" type="number" step="0.05" min="0.5" max="1.5" value="0.95" /></label>
+        </div>
+        <div class="row">
+          <label>Outro text<input id="outroText" placeholder="(optional)" /></label>
+          <label>Outro (s)<input id="outroSeconds" type="number" step="0.5" min="0" value="5" /></label>
+        </div>
+        <label style="display:flex;align-items:center;gap:8px;margin-top:8px">
+          <input id="rebuildBg" type="checkbox" />
+          <span>Re-render the background loop (slow — only after editing the scene or theme)</span>
+        </label>
+      </section>
+
+      <section>
+        <h2 style="margin:0 0 4px">Import</h2>
+        <p class="hint" style="margin:0 0 12px">
+          Start from one of the sets in <code>content/verses/</code>, open a .json file, or paste one.
+        </p>
+        <div class="row">
+          <label>Start from<select id="template"></select></label>
+          <label>&nbsp;<button id="loadTemplate" class="small">Load template</button></label>
+          <label>Open a file<input id="importFile" type="file" accept=".json,application/json" /></label>
+          <label>&nbsp;<button id="exportJson" class="small">Export this set</button></label>
+        </div>
+        <label style="margin-top:8px">Or paste a verse-set JSON
+          <textarea id="importPaste" rows="3" placeholder='{ "title": "…", "surah": 112, "verses": [ … ] }'></textarea>
+        </label>
+        <button id="importPasteBtn" class="small" style="margin-top:8px">Load pasted JSON</button>
+      </section>
+
+      <section>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <h2 style="margin:0">Ayat</h2>
+          <button id="addVerse" class="small" style="margin-left:auto">Add ayat</button>
+        </div>
+        <div id="verses"></div>
+      </section>
+
+      <section>
+        <button id="fetchRec" class="small">Fetch recitation</button>
+        <button id="make">Render verse reel</button>
+        <span class="hint" id="recStatus" style="margin-left:10px"></span>
+        <div class="hint" id="firstRunHint" style="margin-top:8px"></div>
+        <div id="log" class="log" style="margin-top:12px"></div>
+        <video id="preview" controls playsinline hidden style="margin-top:12px"></video>
+      </section>
+
+      <section id="publishSection">
+      </section>
+
+      <section>
+        <h2 style="margin:0 0 10px">Saved sets</h2>
+        <div id="sets" class="set-grid"></div>
+      </section>
+    </main>
+
+    <script src="/publish-box.js"></script>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const pad = (i) => String(i + 1).padStart(2, '0');
+      const esc = (v) => String(v).replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const safeGet = (k) => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } };
+      const safeSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+
+      const STORE = 'faceless-verses-v1';
+      const FIELDS = ['title','arabicTitle','subtitle','range','surah','reciter','voiceover','opening','theme','aspect','fps','gap','introSeconds','speed','outroText','outroSeconds'];
+      let slug = null;
+      let verses = [];
+      let themes = [];
+
+      // ── log / busy / events (same shape as the reels and cards pages) ──
+      function line(text, cls = '') {
+        const log = $('log');
+        const atBottom = log.scrollHeight - log.scrollTop - log.clientHeight < 40;
+        const div = document.createElement('div');
+        if (cls) div.className = cls;
+        div.textContent = text;
+        log.appendChild(div);
+        if (atBottom) log.scrollTop = log.scrollHeight;
+      }
+      const classify = (t) => /failed|error|Error|not found|missing/i.test(t) ? 'err'
+        : /^\[(verses|tts|bg)\].*(no |not |cached)/i.test(t) ? 'warn' : '';
+      function setBusy(on, label) {
+        $('make').disabled = on;
+        $('fetchRec').disabled = on;
+        $('cancel').disabled = !on;
+        $('status').innerHTML = on ? `<span class="spinner"></span> ${esc(label ?? 'working')}…` : 'Idle.';
+      }
+      $('cancel').onclick = () => fetch('/api/cancel', { method: 'POST' });
+
+      const es = new EventSource('/api/events');
+      es.addEventListener('hello', (e) => { if (JSON.parse(e.data).busy) setBusy(true, 'busy'); });
+      es.addEventListener('log', (e) => { const t = JSON.parse(e.data).line; line(t, classify(t)); });
+      es.addEventListener('start', (e) => setBusy(true, JSON.parse(e.data).label));
+      es.addEventListener('done', (e) => {
+        const d = JSON.parse(e.data);
+        setBusy(false);
+        line(d.ok ? `— ${d.label} finished` : `— ${d.label} failed (exit ${d.code})`, d.ok ? 'muted' : 'err');
+        recitationStatus();
+      });
+      es.addEventListener('verses', (e) => {
+        const d = JSON.parse(e.data);
+        slug = d.slug;
+        persist();
+        showPreview(d.slug);
+        refreshSets();
+      });
+
+      // ── verses ────────────────────────────────────────────────────────
+      function blankVerse() { return { arabic: '', bangla: '', number: '', ayah: '', narration: '', seconds: '' }; }
+
+      function renderVerses() {
+        $('verses').innerHTML = verses.map((v, i) => `
+          <div class="verse" data-i="${i}">
+            <div class="verse-head">
+              <span class="verse-no">${pad(i)}</span>
+              <input data-f="ayah" type="number" min="1" value="${esc(v.ayah ?? '')}" placeholder="8" style="width:64px" title="ayat number in the surah — finds the recitation" />
+              <input data-f="number" value="${esc(v.number ?? '')}" placeholder="٨" style="width:64px" class="ar" title="what the on-screen marker shows" />
+              <span class="hint">ayat / marker</span>
+              <button class="small" data-act="up" style="margin-left:auto" ${i === 0 ? 'disabled' : ''}>↑</button>
+              <button class="small" data-act="down" ${i === verses.length - 1 ? 'disabled' : ''}>↓</button>
+              <button class="small" data-act="del">Remove</button>
+            </div>
+            <textarea data-f="arabic" class="ar" rows="2" placeholder="الآية">${esc(v.arabic ?? '')}</textarea>
+            <textarea data-f="bangla" class="bn" rows="2" placeholder="বাংলা অনুবাদ">${esc(v.bangla ?? '')}</textarea>
+            <div class="verse-grid">
+              <label class="hint">Hold (s)<input data-f="seconds" type="number" step="0.5" min="0" value="${esc(v.seconds ?? '')}" /></label>
+              <label class="hint">Read aloud instead of the translation (optional)
+                <input data-f="narration" class="bn" value="${esc(v.narration ?? '')}" /></label>
+            </div>
+          </div>`).join('');
+      }
+
+      $('verses').addEventListener('input', (e) => {
+        const box = e.target.closest('.verse'); if (!box) return;
+        const f = e.target.dataset.f; if (!f) return;
+        verses[+box.dataset.i][f] = e.target.value;
+        persist();
+      });
+
+      $('verses').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-act]'); if (!btn) return;
+        const i = +btn.closest('.verse').dataset.i;
+        const act = btn.dataset.act;
+        if (act === 'del') verses.splice(i, 1);
+        if (act === 'up' && i > 0) verses.splice(i - 1, 0, verses.splice(i, 1)[0]);
+        if (act === 'down' && i < verses.length - 1) verses.splice(i + 1, 0, verses.splice(i, 1)[0]);
+        if (!verses.length) verses = [blankVerse()];
+        renderVerses(); persist();
+      });
+
+      $('addVerse').onclick = () => { verses.push(blankVerse()); renderVerses(); persist(); };
+
+      // ── themes ────────────────────────────────────────────────────────
+      function noteFor(name) { return (themes.find((t) => t.name === name) || {}).note || ''; }
+      $('theme').onchange = () => { $('themeNote').textContent = noteFor($('theme').value); persist(); };
+
+      let reciters = [];
+      function reciterNote() {
+        const r = reciters.find((x) => x.id === $('reciter').value);
+        $('reciterNote').textContent = r ? `${r.arabic} · ${r.style} — ${r.note}` : '';
+      }
+      $('reciter').onchange = () => { reciterNote(); persist(); };
+
+      async function loadReciters() {
+        const d = await fetch('/api/reciters').then((r) => r.json()).catch(() => ({ reciters: [] }));
+        reciters = d.reciters || [];
+        const group = (style, label) => {
+          const rows = reciters.filter((r) => r.style === style)
+            .map((r) => `<option value="${esc(r.id)}">${esc(r.name)}</option>`).join('');
+          return rows ? `<optgroup label="${label}">${rows}</optgroup>` : '';
+        };
+        $('reciter').innerHTML =
+          group('mujawwad', 'Mujawwad — melodic, emotive') + group('murattal', 'Murattal — measured');
+        if (d.default) $('reciter').value = d.default;
+        reciterNote();
+      }
+
+      $('fetchRec').onclick = async () => {
+        if (!$('surah').value) { line('Set a surah number first.', 'err'); return; }
+        $('log').innerHTML = '';
+        const r = await fetch('/api/recitation', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload()),
+        }).then((x) => x.json()).catch(() => ({ error: 'network' }));
+        if (r.error) { line(r.error, 'err'); return; }
+        slug = r.slug; persist();
+      };
+
+      async function recitationStatus() {
+        if (!slug) { $('recStatus').textContent = ''; return; }
+        const d = await fetch(`/api/recitation?slug=${encodeURIComponent(slug)}`).then((r) => r.json()).catch(() => null);
+        if (!d || d.error) { $('recStatus').textContent = ''; return; }
+        $('recStatus').textContent = `${d.have}/${d.total} ayat have audio`;
+      }
+
+      async function loadThemes() {
+        const d = await fetch('/api/bg-themes').then((r) => r.json()).catch(() => ({ themes: [] }));
+        themes = d.themes || [];
+        $('theme').innerHTML = themes.map((t) => `<option value="${esc(t.name)}">${esc(t.name)}</option>`).join('');
+        $('themeNote').textContent = noteFor($('theme').value);
+      }
+
+      // ── filling the form ──────────────────────────────────────────────
+      // Templates, an opened file, pasted JSON and a saved set all land here, so
+      // they can never drift apart in what they do or do not restore.
+      function applyProject(p) {
+        if (!p || typeof p !== 'object') throw new Error('not a verse set');
+        if (!Array.isArray(p.verses)) throw new Error('no "verses" array');
+        $('title').value = p.title ?? '';
+        $('arabicTitle').value = p.arabicTitle ?? '';
+        $('subtitle').value = p.subtitle ?? '';
+        $('range').value = p.range ?? '';
+        $('surah').value = p.surah ?? '';
+        if (p.recitation?.reciter) $('reciter').value = p.recitation.reciter;
+        $('voiceover').value = p.voiceover ?? 'none';
+        $('opening').value = p.opening ?? 'none';
+        if (p.theme) $('theme').value = p.theme;
+        $('aspect').value = p.aspect ?? '9:16';
+        $('fps').value = p.fps ?? 30;
+        $('gap').value = p.gap ?? 0.6;
+        $('introSeconds').value = p.intro?.seconds ?? 4;
+        $('speed').value = p.voice?.speed ?? 0.95;
+        $('outroText').value = p.outro?.text ?? '';
+        $('outroSeconds').value = p.outro?.seconds ?? 5;
+        $('themeNote').textContent = noteFor($('theme').value);
+        reciterNote();
+        verses = p.verses.map((v) => ({
+          arabic: v.arabic ?? '', bangla: v.bangla ?? '', number: v.number ?? '',
+          ayah: v.ayah ?? '', narration: v.narration ?? '', seconds: v.seconds ?? '',
+        }));
+        if (!verses.length) verses = [blankVerse()];
+        renderVerses();
+        persist();
+      }
+
+      function loadJsonText(text, label) {
+        let p;
+        try { p = JSON.parse(text); } catch (err) { line(`${label}: not valid JSON — ${err.message}`, 'err'); return; }
+        try { applyProject(p); } catch (err) { line(`${label}: ${err.message}`, 'err'); return; }
+        // A fresh import is a different set until it is rendered under its own name.
+        slug = null;
+        $('recStatus').textContent = '';
+        $('preview').hidden = true;
+        line(`${label}: loaded ${verses.length} ayat`, 'muted');
+      }
+
+      async function loadTemplates() {
+        const d = await fetch('/api/verse-templates').then((r) => r.json()).catch(() => ({ templates: [] }));
+        $('template').innerHTML = (d.templates || [])
+          .map((t) => `<option value="${esc(t.name)}">${esc(t.title)} (${t.verses})</option>`).join('')
+          || '<option value="">none found</option>';
+      }
+
+      $('loadTemplate').onclick = async () => {
+        const name = $('template').value;
+        if (!name) return;
+        const d = await fetch(`/api/verse-templates?name=${encodeURIComponent(name)}`).then((r) => r.json()).catch(() => null);
+        if (!d || d.error) { line(d?.error ?? 'could not load template', 'err'); return; }
+        loadJsonText(JSON.stringify(d.project), name);
+      };
+
+      $('importFile').addEventListener('change', async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        loadJsonText(await file.text(), file.name);
+        e.target.value = '';
+      });
+
+      $('importPasteBtn').onclick = () => {
+        const text = $('importPaste').value.trim();
+        if (!text) { line('Nothing pasted.', 'err'); return; }
+        loadJsonText(text, 'pasted JSON');
+      };
+
+      $('exportJson').onclick = () => {
+        const body = payload();
+        // Export the verse set itself, not the form's transport shape.
+        const out = {
+          title: body.title, arabicTitle: body.arabicTitle || undefined,
+          subtitle: body.subtitle || undefined, range: body.range || undefined,
+          surah: Number(body.surah) || undefined,
+          aspect: body.aspect, fps: Number(body.fps) || 30, theme: body.theme,
+          recitation: { reciter: body.reciter }, voiceover: body.voiceover, opening: body.opening,
+          gap: Number(body.gap), intro: { seconds: Number(body.introSeconds) },
+          ...(body.outroText ? { outro: { seconds: Number(body.outroSeconds) || 5, text: body.outroText } } : {}),
+          verses: verses.map((v, i) => ({
+            id: String(i + 1).padStart(2, '0'),
+            ...(Number(v.ayah) ? { ayah: Number(v.ayah) } : {}),
+            ...(v.number ? { number: v.number } : {}),
+            arabic: v.arabic, bangla: v.bangla,
+            ...(v.narration ? { narration: v.narration } : {}),
+            ...(v.seconds !== '' && v.seconds != null ? { seconds: Number(v.seconds) } : {}),
+          })),
+        };
+        const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${(body.title || 'verses').replace(/[\\/:*?"<>|]+/g, ' ').trim()}.json`;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      };
+
+      // ── persistence ───────────────────────────────────────────────────
+      function persist() {
+        const fields = {};
+        FIELDS.forEach((id) => (fields[id] = $(id).value));
+        safeSet(STORE, { fields, verses, slug, rebuildBg: $('rebuildBg').checked });
+      }
+      function restore() {
+        const s = safeGet(STORE);
+        if (!s) { verses = [blankVerse()]; return; }
+        FIELDS.forEach((id) => { if (s.fields?.[id] != null && $(id)) $(id).value = s.fields[id]; });
+        verses = Array.isArray(s.verses) && s.verses.length ? s.verses : [blankVerse()];
+        slug = s.slug ?? null;
+        $('rebuildBg').checked = !!s.rebuildBg;
+      }
+      FIELDS.forEach((id) => $(id).addEventListener('input', persist));
+      $('rebuildBg').addEventListener('change', persist);
+
+      // ── render ────────────────────────────────────────────────────────
+      // Settings (keys, fonts, provider) are chosen on the reels page and kept
+      // in the same browser store; verse reels only need the voice ones.
+      const REEL_STORE = 'faceless-ui-v1';
+      function settings() {
+        const f = safeGet(REEL_STORE)?.fields ?? {};
+        return { fontFile: f.fontFile, captionFont: f.captionFont, ttsProvider: f.ttsProvider,
+                 piperSpeaker: f.piperSpeaker, edgeVoice: f.edgeVoice, edgeRate: f.edgeRate };
+      }
+
+      function payload() {
+        return {
+          title: $('title').value.trim() || 'Untitled verses',
+          arabicTitle: $('arabicTitle').value, subtitle: $('subtitle').value, range: $('range').value,
+          surah: $('surah').value, reciter: $('reciter').value, voiceover: $('voiceover').value,
+          opening: $('opening').value,
+          theme: $('theme').value, aspect: $('aspect').value, fps: $('fps').value,
+          gap: $('gap').value, introSeconds: $('introSeconds').value,
+          outroText: $('outroText').value, outroSeconds: $('outroSeconds').value,
+          rebuildBg: $('rebuildBg').checked,
+          voice: { speed: Number($('speed').value) || 0.95 },
+          verses,
+          settings: settings(),
+        };
+      }
+
+      $('make').onclick = async () => {
+        const body = payload();
+        $('log').innerHTML = '';
+        const r = await fetch('/api/verses', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+        }).then((x) => x.json()).catch(() => ({ error: 'network' }));
+        if (r.error) { line(r.error, 'err'); return; }
+        slug = r.slug; persist();
+      };
+
+      function showPreview(s) {
+        const v = $('preview');
+        v.src = `/api/verse-video?slug=${encodeURIComponent(s)}&t=${Date.now()}`;
+        v.hidden = false;
+        pubBoxInstance?.setSlug(s);
+      }
+
+      // ── saved sets ────────────────────────────────────────────────────
+      async function refreshSets() {
+        const d = await fetch('/api/verses').then((r) => r.json()).catch(() => null);
+        if (!d) return;
+        $('sets').innerHTML = (d.sets || []).map((s) => `
+          <div class="set-card" data-slug="${esc(s.slug)}">
+            <div class="t">${esc(s.title)}</div>
+            <div class="m">${s.verses} ayat · ${esc(s.theme || '—')}${s.rendered ? ' · rendered' : ''}</div>
+            <button class="small" data-del="${esc(s.slug)}">Delete</button>
+          </div>`).join('') || '<span class="hint">Nothing saved yet.</span>';
+      }
+
+      $('sets').addEventListener('click', async (e) => {
+        const del = e.target.closest('button[data-del]');
+        if (del) {
+          e.stopPropagation();
+          if (!confirm(`Delete "${del.dataset.del}" and everything rendered in it?`)) return;
+          await fetch(`/api/verses?slug=${encodeURIComponent(del.dataset.del)}`, { method: 'DELETE' });
+          refreshSets();
+          return;
+        }
+        const card = e.target.closest('.set-card'); if (!card) return;
+        const d = await fetch(`/api/verses?slug=${encodeURIComponent(card.dataset.slug)}`).then((x) => x.json()).catch(() => null);
+        if (!d || d.error) return;
+        try { applyProject(d.project); } catch (err) { line(String(err.message), 'err'); return; }
+        slug = d.slug;
+        persist();
+        recitationStatus();
+        if (d.rendered) showPreview(d.slug);
+      });
+
+      let pubBoxInstance = null;
+
+      // ── boot ──────────────────────────────────────────────────────────
+      (async () => {
+        await Promise.all([loadThemes(), loadReciters(), loadTemplates()]);
+        restore();
+        reciterNote();
+        renderVerses();
+        refreshSets();
+        recitationStatus();
+        $('firstRunHint').textContent =
+          'Recitation is fetched once per ayat and shared by every set. The first render of a background/size pair also renders its loop (~2 min); both are cached after that.';
+        const st = await fetch('/api/state').then((r) => r.json()).catch(() => null);
+        if (st?.busy) setBusy(true, 'busy');
+
+        if (typeof mountPublishBox === 'function') {
+          pubBoxInstance = mountPublishBox($('publishSection'), {
+            getSlug: () => slug,
+            onSlugChange: (newSlug) => {
+              const card = document.querySelector(`.set-card[data-slug="${newSlug}"]`);
+              if (card) card.click();
+            },
+            onLog: (msg, type) => line(msg, type),
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

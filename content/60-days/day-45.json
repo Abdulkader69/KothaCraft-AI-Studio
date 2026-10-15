@@ -1,0 +1,99 @@
+{
+  "title": "ক্ষমা করার শক্তি",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a thick rope knotted and pulled tight between two posts, fibres straining, tension, harsh light",
+      "narration": "আয়েশা রাঃ-এর উপর অপবাদের ঘটনায় আবু বকর রাঃ কষ্ট পেয়ে এক গরিব আত্মীয়কে সাহায্য করা বন্ধ করে দিলেন। তখন আয়াত নাজিল হলো —",
+      "motion": "in",
+      "source": "সূরা নূর ২৪:২২"
+    },
+    {
+      "id": "02",
+      "prompt": "the same rope with the knot loosening, tension easing, softer light",
+      "narration": "তারা যেন ক্ষমা করে দেয় ও উপেক্ষা করে। তোমরা কি চাও না যে আল্লাহ তোমাদের ক্ষমা করুন?",
+      "motion": "left",
+      "source": "সূরা নূর ২৪:২২"
+    },
+    {
+      "id": "03",
+      "prompt": "a shaft of warm light opening across a quiet stone room from a door swinging open, dust glowing",
+      "narration": "আবু বকর রাঃ বললেন, অবশ্যই চাই। আর তিনি সাহায্য আবার চালু করলেন।",
+      "motion": "out",
+      "source": "সূরা নূর ২৪:২২"
+    },
+    {
+      "id": "04",
+      "prompt": "a heavy stone set down on the ground, a straightened back implied, relief, golden evening light",
+      "narration": "আল্লাহ বলেন, মন্দের জবাব দাও তা দিয়ে, যা উত্তম।",
+      "motion": "right",
+      "source": "সূরা ফুসসিলাত ৪১:৩৪"
+    },
+    {
+      "id": "05",
+      "prompt": "two paths converging into one road leading toward a sunlit village, reconciliation",
+      "narration": "তখন দেখবে, যার সাথে শত্রুতা ছিল, সে যেন হয়ে গেছে ঘনিষ্ঠ বন্ধু।",
+      "motion": "in",
+      "source": "সূরা ফুসসিলাত ৪১:৩৪"
+    },
+    {
+      "id": "06",
+      "prompt": "a clear washed sky after a storm over green hills, air fresh, a rainbow, the weight gone",
+      "narration": "ক্ষমা দুর্বলতা নয় — নিজের শান্তি ফিরিয়ে নেওয়ার সাহস।",
+      "motion": "right",
+      "source": "সূরা ফুসসিলাত ৪১:৩৪"
+    }
+  ],
+  "description": "অন্যায়ের জবাবে ক্ষমা প্রদর্শন করা কোনো দুর্বলতা নয়, বরং অন্তরের শ্রেষ্ঠত্ব ও আত্মিক শান্তির পরিচয়। মন্দের বিপরীতে উত্তম আচরণই দূরত্বের মাঝে ভালোবাসার সেতু গড়ে তোলে।\n\nসূত্র: সূরা নূর ২৪:২২ · সূরা ফুসসিলাত ৪১:৩৪",
+  "publish": {
+    "description": "অন্যায়ের জবাবে ক্ষমা প্রদর্শন করা কোনো দুর্বলতা নয়, বরং অন্তরের শ্রেষ্ঠত্ব ও আত্মিক শান্তির পরিচয়। মন্দের বিপরীতে উত্তম আচরণই দূরত্বের মাঝে ভালোবাসার সেতু গড়ে তোলে।\n\nসূত্র: সূরা নূর ২৪:২২ · সূরা ফুসসিলাত ৪১:৩৪",
+    "hashtags": [
+      "#ক্ষমা",
+      "#ধৈর্য",
+      "#কোরআন",
+      "#উত্তমআচরণ",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

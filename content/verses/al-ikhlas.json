@@ -1,0 +1,55 @@
+{
+  "_note": "Bangla here is a plain literal rendering, not a published translation — swap in one you hold the rights to before publishing at scale.",
+  "title": "সূরা আল-ইখলাস",
+  "arabicTitle": "الإخلاص",
+  "range": "আয়াত ১–৪",
+  "surah": 112,
+  "aspect": "9:16",
+  "fps": 30,
+  "theme": "night-mosque",
+  "recitation": {
+    "reciter": "Minshawy_Mujawwad_192kbps"
+  },
+  "voiceover": "none",
+  "opening": "both",
+  "gap": 0.6,
+  "intro": {
+    "seconds": 4
+  },
+  "type": {
+    "centerY": 0.42,
+    "arabicColor": "#FFFFFF",
+    "banglaColor": "#E9DCC0",
+    "numberColor": "#E9C987"
+  },
+  "verses": [
+    {
+      "id": "01",
+      "ayah": 1,
+      "number": "١",
+      "arabic": "قُلْ هُوَ ٱللَّهُ أَحَدٌ",
+      "bangla": "বলুন, তিনিই আল্লাহ, এক ও অদ্বিতীয়।"
+    },
+    {
+      "id": "02",
+      "ayah": 2,
+      "number": "٢",
+      "arabic": "ٱللَّهُ ٱلصَّمَدُ",
+      "bangla": "আল্লাহ কারও মুখাপেক্ষী নন, সবাই তাঁর মুখাপেক্ষী।"
+    },
+    {
+      "id": "03",
+      "ayah": 3,
+      "number": "٣",
+      "arabic": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+      "bangla": "তিনি কাউকে জন্ম দেননি, আর তাঁকেও জন্ম দেওয়া হয়নি।"
+    },
+    {
+      "id": "04",
+      "ayah": 4,
+      "number": "٤",
+      "arabic": "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ",
+      "bangla": "আর তাঁর সমতুল্য কেউ নেই।"
+    }
+  ]
+}

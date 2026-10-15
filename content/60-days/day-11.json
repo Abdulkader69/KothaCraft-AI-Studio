@@ -1,0 +1,86 @@
+{
+  "title": "সত্যবাদিতার পথ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a straight desert road at dawn between two rows of ancient date palms, mist lifting off the sand, the sun a soft gold disc on the horizon, wide low-angle shot",
+      "narration": "নবীজি বলেছেন, সত্য মানুষকে সৎকাজের দিকে নিয়ে যায়, আর সৎকাজ জান্নাতের দিকে।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬০৯৪; সহীহ মুসলিম ২৬০৭"
+    },
+    {
+      "id": "02",
+      "prompt": "a perfectly still mountain lake at first light mirroring snow peaks and a pale pink sky, a single lantern glowing on a wooden jetty, glass-calm water",
+      "narration": "মানুষ সত্য বলতে বলতে আল্লাহর কাছে সিদ্দিক — চরম সত্যবাদী — হিসেবে লেখা হয়।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৬০৯৪"
+    },
+    {
+      "id": "03",
+      "prompt": "a narrow path swallowed by black thorn bushes under a bruised storm sky, dead vines twisting over broken stones, cold blue light, ominous",
+      "narration": "আর মিথ্যা নিয়ে যায় পাপের দিকে, আর পাপ নিয়ে যায় জাহান্নামের দিকে।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৬০৯৪"
+    },
+    {
+      "id": "04",
+      "prompt": "a great old tree split down the middle by lightning, charred heartwood, bark peeling, grey dusk over a dry plain, dramatic wide shot",
+      "narration": "মানুষ মিথ্যা বলতে বলতে আল্লাহর কাছে মিথ্যাবাদী হিসেবে লেখা হয়।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬০৯৪"
+    },
+    {
+      "id": "05",
+      "prompt": "an open Qur'an on a carved wooden rehal in a sunlit mosque, dust motes in a shaft of light through a latticed window, deep shadows, reverent",
+      "narration": "আল্লাহ বলেন, হে ঈমানদারগণ, আল্লাহকে ভয় করো এবং সত্যবাদীদের সাথে থাকো।",
+      "motion": "in",
+      "source": "সূরা তাওবা ৯:১১৯"
+    },
+    {
+      "id": "06",
+      "prompt": "a white stone road winding through green hills toward a sunlit valley, wildflowers on both sides, clouds breaking open, hopeful golden light",
+      "narration": "একটি মিথ্যা ঢাকতে আরও দশটি মিথ্যা লাগে। সত্যের জন্য কিছুই লাগে না।",
+      "motion": "right",
+      "source": "সূরা তাওবা ৯:১১৯"
+    }
+  ]
+}

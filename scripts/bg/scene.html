@@ -1,0 +1,690 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>bg scene</title>
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+<script>
+"use strict";
+/**
+ * A night scene drawn as a pure function of loop phase t (0 <= t < 1).
+ *
+ * Everything that moves is periodic in t, so the last frame flows back into the
+ * first and the clip loops with no seam. Three shapes of motion are allowed:
+ *   - oscillate with sin/cos of 2*PI*k*t, k a whole number
+ *   - scroll a horizontally tileable layer a whole number of tiles per loop
+ *   - make a one-way trip and fade to zero alpha at both ends of it
+ * Nothing may read the clock or draw an un-seeded random number per frame.
+ *
+ * `speed` scales every cycle count at once. It is rounded to a whole number per
+ * element, because a fractional cycle count would not close the loop.
+ *
+ * The costly layers (clouds, mosque, palms, window bloom, grain) are painted
+ * once into offscreen canvases; a frame only composites and nudges them.
+ */
+
+const DEFAULTS = {
+  width: 720,
+  height: 1280,
+  seed: 7,
+  speed: 2,              // whole-number multiplier on every cycle count
+  horizon: 0.735,        // waterline, as a fraction of height
+  mosqueScale: 1,
+  stars: 330,
+  fireflies: 34,         // জোনাকি পোকা — rise from the water past the mosque
+  motes: 18,             // finer dust, drifting
+  lanterns: true,
+  palms: true,
+  arch: true,
+  archDraw: true,        // the outline draws itself on, then fades before the seam
+  reflection: true,
+  grain: true,           // static noise — kills banding in the sky gradient
+  vignette: true,
+  palette: {
+    skyTop:   "#070620",
+    skyMid:   "#251a55",
+    skyLow:   "#5d4180",
+    skyBottom:"#8a6298",
+    haze:     "#7d55a6",
+    hazeWarm: "#b98bc4",
+    star:     "#ffffff",
+    moon:     "#f4e5ab",
+    gold:     "#e9c987",
+    lantern:  "#ffcf7d",
+    firefly:  "#f6e98a",
+    ink:      "#0e0a24",
+    window:   "#ffc16a",
+    water:    "#100c2b",
+  },
+};
+
+const cfg = Object.assign({}, DEFAULTS, window.BG_CONFIG || {});
+cfg.palette = Object.assign({}, DEFAULTS.palette, (window.BG_CONFIG || {}).palette || {});
+
+const W = cfg.width, H = cfg.height, P = cfg.palette;
+const HORIZON = Math.round(H * cfg.horizon);
+const TAU = Math.PI * 2;
+
+/** Scale a cycle count by `speed`, keeping it whole so the loop still closes. */
+const cyc = (n) => Math.max(1, Math.round(n * cfg.speed));
+
+const stage = document.getElementById("stage");
+stage.width = W; stage.height = H;
+const ctx = stage.getContext("2d", { alpha: false });
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+const rand = mulberry32(cfg.seed);
+const rnd = (lo, hi) => lo + rand() * (hi - lo);
+const pick = (n) => Math.floor(rand() * n);
+
+function rgba(hex, a) {
+  const n = parseInt(hex.replace("#", ""), 16);
+  return "rgba(" + ((n >> 16) & 255) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")";
+}
+
+function layer(w, h) {
+  const c = document.createElement("canvas");
+  c.width = Math.max(1, Math.ceil(w)); c.height = Math.max(1, Math.ceil(h));
+  return c;
+}
+
+const smooth = (p) => p * p * (3 - 2 * p);
+
+// ── sky ──────────────────────────────────────────────────────────────────────
+function paintSky(x) {
+  const g = x.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0.00, P.skyTop);
+  g.addColorStop(0.20, P.skyTop);
+  g.addColorStop(0.42, P.skyMid);
+  g.addColorStop(0.64, P.skyLow);
+  g.addColorStop(0.84, P.skyBottom);
+  g.addColorStop(1.00, P.skyBottom);
+  x.fillStyle = g;
+  x.fillRect(0, 0, W, H);
+}
+
+// ── stars ────────────────────────────────────────────────────────────────────
+const stars = [];
+for (let i = 0; i < cfg.stars; i++) {
+  stars.push({
+    x: rnd(0, W),
+    y: rnd(0, HORIZON * 0.92),
+    r: rnd(0.5, 1.8),
+    base: rnd(0.35, 1.0),
+    cycles: cyc(1 + pick(3)),
+    phase: rand(),
+  });
+}
+function drawStars(x, t) {
+  x.fillStyle = P.star;
+  for (const s of stars) {
+    const tw = 0.45 + 0.55 * Math.sin(TAU * (s.cycles * t + s.phase));
+    const depth = 1 - Math.min(1, s.y / (HORIZON * 0.92));
+    x.globalAlpha = Math.max(0, s.base * tw) * (0.25 + 0.75 * depth);
+    x.beginPath();
+    x.arc(s.x, s.y, s.r, 0, TAU);
+    x.fill();
+  }
+  x.globalAlpha = 1;
+}
+
+// ── cloud bands ──────────────────────────────────────────────────────────────
+/**
+ * Each band is a horizontally tileable strip that scrolls a whole number of its
+ * own tile widths per loop, so it drifts for real and still meets itself at the
+ * seam. Narrower tiles travel more slowly on screen, which is what separates the
+ * far bands from the near ones.
+ */
+const cloudBands = [
+  { tileW: 0.55, drift: 1, bob: 4,  alpha: 0.34, blobs: 7,  band: [0.06, 0.32], size: [150, 300] },
+  { tileW: 0.75, drift: 1, bob: 7,  alpha: 0.44, blobs: 8,  band: [0.20, 0.50], size: [190, 380] },
+  { tileW: 1.00, drift: 1, bob: 10, alpha: 0.38, blobs: 8,  band: [0.40, 0.70], size: [230, 460] },
+];
+for (const B of cloudBands) {
+  B.w = Math.round(W * B.tileW);
+  B.cycles = cyc(B.drift);
+  const c = layer(B.w, H);
+  const x = c.getContext("2d");
+  x.filter = "blur(34px)";
+  for (let i = 0; i < B.blobs; i++) {
+    const bx = rnd(0, B.w);
+    const by = rnd(H * B.band[0], H * B.band[1]);
+    const rx = rnd(B.size[0], B.size[1]);
+    const ry = rx * rnd(0.22, 0.4);
+    const tilt = rnd(-0.12, 0.12);
+    const warm = rand() < 0.35;
+    // Repeat each blob either side of the tile so the strip wraps cleanly.
+    for (let k = -2; k <= 2; k++) {
+      const g = x.createRadialGradient(bx + k * B.w, by, 0, bx + k * B.w, by, rx);
+      g.addColorStop(0, rgba(warm ? P.hazeWarm : P.haze, 0.85));
+      g.addColorStop(1, rgba(warm ? P.hazeWarm : P.haze, 0));
+      x.fillStyle = g;
+      x.beginPath();
+      x.ellipse(bx + k * B.w, by, rx, ry, tilt, 0, TAU);
+      x.fill();
+    }
+  }
+  x.filter = "none";
+  B.canvas = c;
+}
+function drawClouds(x, t) {
+  for (const B of cloudBands) {
+    const offset = (t * B.cycles * B.w) % B.w;
+    const dy = B.bob * Math.sin(TAU * (cyc(1) * t) + B.tileW * 4);
+    x.globalAlpha = B.alpha;
+    for (let px = -offset; px < W; px += B.w) x.drawImage(B.canvas, px, dy);
+  }
+  x.globalAlpha = 1;
+}
+
+// ── moon ─────────────────────────────────────────────────────────────────────
+const MOON_R = Math.round(W * 0.082);
+const moonCanvas = (function () {
+  const pad = 6, d = MOON_R * 2 + pad * 2;
+  const c = layer(d, d);
+  const x = c.getContext("2d");
+  x.fillStyle = P.moon;
+  x.beginPath();
+  x.arc(pad + MOON_R, pad + MOON_R, MOON_R, 0, TAU);
+  x.fill();
+  // destination-out so the bite is truly transparent: punching it with a sky
+  // colour would show a hard disc whenever a cloud passes behind.
+  x.globalCompositeOperation = "destination-out";
+  x.beginPath();
+  x.arc(pad + MOON_R * 0.62, pad + MOON_R * 0.80, MOON_R * 0.92, 0, TAU);
+  x.fill();
+  return c;
+})();
+function drawMoon(x, t) {
+  const cx = W * 0.77;
+  const cy = H * 0.105 + 7 * Math.sin(TAU * (cyc(1) * t));
+  const pulse = 0.78 + 0.22 * Math.sin(TAU * (cyc(2) * t));
+
+  const g = x.createRadialGradient(cx, cy, MOON_R * 0.4, cx, cy, MOON_R * 4.4);
+  g.addColorStop(0, rgba(P.moon, 0.22 * pulse));
+  g.addColorStop(0.45, rgba(P.moon, 0.07 * pulse));
+  g.addColorStop(1, rgba(P.moon, 0));
+  x.fillStyle = g;
+  x.beginPath();
+  x.arc(cx, cy, MOON_R * 4.4, 0, TAU);
+  x.fill();
+
+  x.drawImage(moonCanvas, cx - moonCanvas.width / 2, cy - moonCanvas.height / 2);
+}
+
+// ── silhouettes: mosque, palms, window bloom ─────────────────────────────────
+function archPath(x, cx, baseY, w, h) {
+  const r = w / 2;
+  x.beginPath();
+  x.moveTo(cx - r, baseY);
+  x.lineTo(cx - r, baseY - (h - r));
+  x.arc(cx, baseY - (h - r), r, Math.PI, 0);
+  x.lineTo(cx + r, baseY);
+  x.closePath();
+}
+
+function onionDome(x, cx, baseY, r, rise) {
+  x.beginPath();
+  x.moveTo(cx - r, baseY);
+  x.bezierCurveTo(cx - r, baseY - r * 1.15, cx - r * 0.52, baseY - rise * 0.70, cx, baseY - rise);
+  x.bezierCurveTo(cx + r * 0.52, baseY - rise * 0.70, cx + r, baseY - r * 1.15, cx + r, baseY);
+  x.closePath();
+  x.fill();
+}
+
+function finial(x, cx, topY, s) {
+  x.fillRect(cx - 1.2 * s, topY - 11 * s, 2.4 * s, 11 * s);
+  x.beginPath();
+  x.arc(cx, topY - 13 * s, 2.4 * s, 0, TAU);
+  x.fill();
+}
+
+function drawMinaret(x, cx, baseY, h, w, s) {
+  x.fillRect(cx - w / 2, baseY - h, w, h);
+  x.fillRect(cx - w * 0.95, baseY - h * 0.66, w * 1.9, w * 0.42);
+  x.fillRect(cx - w * 0.95, baseY - h * 0.40, w * 1.9, w * 0.30);
+  onionDome(x, cx, baseY - h, w * 0.62, w * 2.1);
+  finial(x, cx, baseY - h - w * 2.1, s * 0.8);
+}
+
+/** Window rectangles are collected during the build so the bloom layer and the
+ *  per-frame flicker can reuse exactly the same shapes. */
+const windows = [];
+
+const structCanvas = (function () {
+  const c = layer(W, H);
+  const x = c.getContext("2d");
+  const s = cfg.mosqueScale;
+  const cx = W / 2;
+  const baseY = HORIZON;
+
+  if (cfg.palms) {
+    x.fillStyle = P.ink;
+    const palm = (px, ph, dir) => {
+      x.save();
+      x.translate(px, baseY);
+      x.beginPath();
+      x.moveTo(-3 * s, 0);
+      x.quadraticCurveTo(dir * 7 * s, -ph * 0.55, dir * 12 * s, -ph);
+      x.lineTo(dir * 12 * s + 4 * s, -ph);
+      x.quadraticCurveTo(dir * 9 * s + 4 * s, -ph * 0.55, 3 * s, 0);
+      x.closePath();
+      x.fill();
+      const tx = dir * 12 * s + 2 * s, ty = -ph;
+      for (let i = 0; i < 7; i++) {
+        const a = Math.PI + (i / 6) * Math.PI;
+        const len = ph * rnd(0.30, 0.46);
+        x.beginPath();
+        x.moveTo(tx, ty);
+        x.quadraticCurveTo(tx + Math.cos(a) * len * 0.6, ty + Math.sin(a) * len * 0.6 - len * 0.32,
+                           tx + Math.cos(a) * len, ty + Math.sin(a) * len * 0.5);
+        x.quadraticCurveTo(tx + Math.cos(a) * len * 0.55, ty + Math.sin(a) * len * 0.5 - len * 0.10,
+                           tx, ty + 3 * s);
+        x.closePath();
+        x.fill();
+      }
+      x.restore();
+    };
+    palm(W * 0.045, H * 0.110, 1);
+    palm(W * 0.145, H * 0.086, -1);
+    palm(W * 0.875, H * 0.102, -1);
+    palm(W * 0.955, H * 0.082, 1);
+  }
+
+  const bodyW = 300 * s, bodyH = 86 * s;
+  x.fillStyle = P.ink;
+  x.fillRect(cx - bodyW / 2, baseY - bodyH, bodyW, bodyH);
+
+  const wingW = 92 * s, wingH = 58 * s;
+  x.fillRect(cx - bodyW / 2 - wingW, baseY - wingH, wingW, wingH);
+  x.fillRect(cx + bodyW / 2, baseY - wingH, wingW, wingH);
+  onionDome(x, cx - bodyW / 2 - wingW / 2, baseY - wingH, 26 * s, 46 * s);
+  onionDome(x, cx + bodyW / 2 + wingW / 2, baseY - wingH, 26 * s, 46 * s);
+
+  x.fillRect(cx - 62 * s, baseY - bodyH - 16 * s, 124 * s, 16 * s);
+  onionDome(x, cx, baseY - bodyH - 16 * s, 62 * s, 112 * s);
+  finial(x, cx, baseY - bodyH - 16 * s - 112 * s, s);
+
+  drawMinaret(x, cx - bodyW / 2 - wingW * 0.55, baseY, 196 * s, 15 * s, s);
+  drawMinaret(x, cx + bodyW / 2 + wingW * 0.55, baseY, 196 * s, 15 * s, s);
+  drawMinaret(x, cx - bodyW / 2 + 22 * s, baseY, 150 * s, 12 * s, s);
+  drawMinaret(x, cx + bodyW / 2 - 22 * s, baseY, 150 * s, 12 * s, s);
+
+  windows.push({ x: cx, y: baseY, w: 40 * s, h: 74 * s, cycles: cyc(2), phase: rand() });
+  for (const k of [-4, -3, -2, 2, 3, 4])
+    windows.push({ x: cx + k * 33 * s, y: baseY - 8 * s, w: 20 * s, h: 44 * s, cycles: cyc(1 + pick(3)), phase: rand() });
+  for (const k of [-1, 1]) {
+    windows.push({ x: cx - bodyW / 2 - wingW / 2 + k * 26 * s, y: baseY - 6 * s, w: 16 * s, h: 34 * s, cycles: cyc(1 + pick(3)), phase: rand() });
+    windows.push({ x: cx + bodyW / 2 + wingW / 2 + k * 26 * s, y: baseY - 6 * s, w: 16 * s, h: 34 * s, cycles: cyc(1 + pick(3)), phase: rand() });
+  }
+
+  for (const w of windows) {
+    const g = x.createLinearGradient(0, w.y - w.h, 0, w.y);
+    g.addColorStop(0, rgba(P.window, 0.35));
+    g.addColorStop(0.45, rgba(P.window, 0.95));
+    g.addColorStop(1, rgba(P.window, 0.75));
+    x.fillStyle = g;
+    archPath(x, w.x, w.y, w.w, w.h);
+    x.fill();
+  }
+  return c;
+})();
+
+/** Blurred copy of the windows alone, composited additively so the lamplight
+ *  can breathe without repainting the whole silhouette each frame. */
+const bloomCanvas = (function () {
+  const c = layer(W, H);
+  const x = c.getContext("2d");
+  x.filter = "blur(16px)";
+  x.fillStyle = rgba(P.window, 0.9);
+  for (const w of windows) {
+    archPath(x, w.x, w.y, w.w * 1.25, w.h * 1.1);
+    x.fill();
+  }
+  x.filter = "none";
+  return c;
+})();
+
+function drawWindowLight(x, t) {
+  // one slow swell for the whole facade …
+  const swell = 0.55 + 0.45 * (0.5 + 0.5 * Math.sin(TAU * (cyc(1) * t)));
+  x.save();
+  x.globalCompositeOperation = "lighter";
+  x.globalAlpha = 0.20 + 0.16 * swell;
+  x.drawImage(bloomCanvas, 0, 0);
+  x.restore();
+
+  // … and a faster flicker per window, each on its own phase
+  x.save();
+  x.globalCompositeOperation = "lighter";
+  for (const w of windows) {
+    const f = 0.5 + 0.5 * Math.sin(TAU * (w.cycles * t + w.phase));
+    x.globalAlpha = 0.10 + 0.22 * f;
+    x.fillStyle = rgba(P.window, 1);
+    archPath(x, w.x, w.y, w.w * 0.82, w.h * 0.86);
+    x.fill();
+  }
+  x.restore();
+}
+
+function drawHills(x) {
+  x.fillStyle = rgba(P.ink, 0.55);
+  x.beginPath();
+  x.moveTo(0, HORIZON);
+  x.lineTo(0, HORIZON - 26);
+  x.quadraticCurveTo(W * 0.18, HORIZON - 74, W * 0.37, HORIZON - 30);
+  x.quadraticCurveTo(W * 0.52, HORIZON - 12, W * 0.68, HORIZON - 52);
+  x.quadraticCurveTo(W * 0.86, HORIZON - 88, W, HORIZON - 34);
+  x.lineTo(W, HORIZON);
+  x.closePath();
+  x.fill();
+}
+
+// ── water ────────────────────────────────────────────────────────────────────
+function drawWater(x) {
+  const g = x.createLinearGradient(0, HORIZON, 0, H);
+  g.addColorStop(0, rgba(P.water, 0.82));
+  g.addColorStop(0.35, rgba(P.water, 0.95));
+  g.addColorStop(1, P.water);
+  x.fillStyle = g;
+  x.fillRect(0, HORIZON, W, H - HORIZON);
+}
+
+/**
+ * The reflection is the structure layer flipped and redrawn two rows at a time,
+ * each row shifted by a travelling sine — one drawImage per row pair instead of
+ * a per-pixel warp.
+ */
+function drawReflection(x, t) {
+  if (!cfg.reflection) return;
+  const depth = H - HORIZON;
+  const step = 2;
+  x.save();
+  x.beginPath();
+  x.rect(0, HORIZON, W, depth);
+  x.clip();
+  for (let y = 0; y < depth; y += step) {
+    const p = y / depth;
+    const wobble = (1.8 + p * 9) * Math.sin(TAU * (cyc(2) * t) + p * 16);
+    const srcY = HORIZON - y * 1.05;
+    x.globalAlpha = 0.30 * (1 - p) * (1 - p);
+    x.drawImage(structCanvas, 0, srcY, W, step, wobble, HORIZON + y, W, step);
+  }
+  x.restore();
+  x.globalAlpha = 1;
+
+  x.globalAlpha = 0.05;
+  x.fillStyle = P.moon;
+  for (let i = 0; i < 5; i++) {
+    const y = HORIZON + 14 + i * (depth / 7);
+    const w = W * (0.10 + 0.05 * i) * (0.8 + 0.2 * Math.sin(TAU * (cyc(1) * t) + i));
+    x.fillRect(W * 0.5 - w / 2 + 16 * Math.sin(TAU * (cyc(1) * t) + i * 0.9), y, w, 1.4);
+  }
+  x.globalAlpha = 1;
+}
+
+// ── lanterns ─────────────────────────────────────────────────────────────────
+const lanterns = [
+  { x: 0.085, drop: 0.052, size: 1.00, phase: 0.00 },
+  { x: 0.905, drop: 0.038, size: 0.92, phase: 0.42 },
+  { x: 0.965, drop: 0.088, size: 0.74, phase: 0.77 },
+];
+function drawLanterns(x, t) {
+  if (!cfg.lanterns) return;
+  for (const L of lanterns) {
+    const px = W * L.x, pivotY = -4;
+    const s = W * 0.042 * L.size;
+    const sway = 0.075 * Math.sin(TAU * (cyc(2) * t + L.phase));
+    const glow = 0.62 + 0.38 * Math.sin(TAU * (cyc(3) * t + L.phase));
+
+    x.save();
+    x.translate(px, pivotY);
+    x.rotate(sway);
+    const cordLen = H * L.drop;
+
+    x.strokeStyle = rgba(P.gold, 0.55);
+    x.lineWidth = 1.2;
+    x.beginPath(); x.moveTo(0, 0); x.lineTo(0, cordLen); x.stroke();
+
+    const by = cordLen;
+    const g = x.createRadialGradient(0, by + s * 0.8, 0, 0, by + s * 0.8, s * 3.8);
+    g.addColorStop(0, rgba(P.lantern, 0.40 * glow));
+    g.addColorStop(1, rgba(P.lantern, 0));
+    x.fillStyle = g;
+    x.beginPath(); x.arc(0, by + s * 0.8, s * 3.8, 0, TAU); x.fill();
+
+    x.fillStyle = rgba(P.gold, 0.95);
+    x.fillRect(-s * 0.42, by, s * 0.84, s * 0.16);
+    x.beginPath();
+    x.moveTo(-s * 0.30, by + s * 0.16);
+    x.lineTo(s * 0.30, by + s * 0.16);
+    x.lineTo(s * 0.46, by + s * 0.62);
+    x.lineTo(s * 0.30, by + s * 1.42);
+    x.lineTo(-s * 0.30, by + s * 1.42);
+    x.lineTo(-s * 0.46, by + s * 0.62);
+    x.closePath();
+    x.fill();
+    x.fillStyle = rgba(P.lantern, 0.55 + 0.45 * glow);
+    x.fillRect(-s * 0.22, by + s * 0.34, s * 0.44, s * 0.86);
+    x.fillStyle = rgba(P.gold, 0.95);
+    x.fillRect(-s * 0.16, by + s * 1.42, s * 0.32, s * 0.20);
+    x.restore();
+  }
+}
+
+// ── জোনাকি পোকা / fireflies ──────────────────────────────────────────────────
+/**
+ * Each one makes `trips` complete climbs per loop, from the water up past the
+ * domes, wandering sideways and blinking on the way. Alpha is a sine bell over
+ * the climb, so it is already dark at both ends and the restart is invisible.
+ * Concentrated around the mosque rather than spread evenly across the frame.
+ */
+const fireflies = [];
+for (let i = 0; i < cfg.fireflies; i++) {
+  const bias = rnd(-1, 1);
+  fireflies.push({
+    x: W * 0.5 + bias * Math.abs(bias) * W * 0.52,
+    y: HORIZON + rnd(-6, 46),
+    rise: rnd(H * 0.16, H * 0.46),
+    wander: rnd(12, 46),
+    wanderCycles: 1 + pick(3),
+    r: rnd(1.3, 2.9),
+    peak: rnd(0.45, 1.0),
+    blink: cyc(2 + pick(5)),
+    trips: cyc(1),
+    phase: rand(),
+  });
+}
+function drawFireflies(x, t) {
+  for (const f of fireflies) {
+    const p = (t * f.trips + f.phase) % 1;
+    const bell = Math.sin(Math.PI * p);
+    const blink = 0.30 + 0.70 * (0.5 + 0.5 * Math.sin(TAU * (f.blink * t + f.phase)));
+    const a = f.peak * bell * bell * blink;
+    if (a <= 0.01) continue;
+    const fx = f.x + f.wander * Math.sin(TAU * f.wanderCycles * p);
+    const fy = f.y - f.rise * p;
+
+    const g = x.createRadialGradient(fx, fy, 0, fx, fy, f.r * 6);
+    g.addColorStop(0, rgba(P.firefly, 0.55 * a));
+    g.addColorStop(1, rgba(P.firefly, 0));
+    x.fillStyle = g;
+    x.beginPath(); x.arc(fx, fy, f.r * 6, 0, TAU); x.fill();
+
+    x.globalAlpha = a;
+    x.fillStyle = P.firefly;
+    x.beginPath(); x.arc(fx, fy, f.r, 0, TAU); x.fill();
+    x.globalAlpha = 1;
+  }
+}
+
+// ── fine dust ────────────────────────────────────────────────────────────────
+const motes = [];
+for (let i = 0; i < cfg.motes; i++) {
+  motes.push({
+    x: rnd(0, W),
+    y: rnd(HORIZON * 0.45, HORIZON),
+    rise: rnd(H * 0.08, H * 0.20),
+    drift: rnd(-22, 22),
+    r: rnd(0.8, 1.8),
+    peak: rnd(0.2, 0.55),
+    trips: cyc(1),
+    phase: rand(),
+  });
+}
+function drawMotes(x, t) {
+  x.fillStyle = P.lantern;
+  for (const m of motes) {
+    const p = (t * m.trips + m.phase) % 1;
+    x.globalAlpha = m.peak * Math.sin(Math.PI * p);
+    x.beginPath();
+    x.arc(m.x + m.drift * p, m.y - m.rise * p, m.r, 0, TAU);
+    x.fill();
+  }
+  x.globalAlpha = 1;
+}
+
+// ── ornamental arch ──────────────────────────────────────────────────────────
+/**
+ * An equilateral arch: each side is an arc of radius = span struck from the
+ * opposite springing point, meeting span*sin(60deg) above the springing line —
+ * that meeting is what makes the point instead of a dome.
+ *
+ * With `archDraw` the two halves grow from the springing line up to the apex
+ * together, hold, then fade out before the loop restarts, so the seam lands on
+ * an empty frame and the outline draws itself on again every pass.
+ */
+const ARCH = (function () {
+  const left = W * 0.185, right = W * 0.815;
+  const span = right - left;
+  const spring = H * 0.425, bottom = H * 0.655;
+  return { left, right, span, spring, bottom, cx: W / 2, apex: spring - span * Math.sin(Math.PI / 3) };
+})();
+
+function drawArch(x, t) {
+  if (!cfg.arch) return;
+  const A = ARCH;
+
+  let reveal = 1, alpha = 1;
+  if (cfg.archDraw) {
+    const grow = 0.34, hold = 0.78;
+    if (t < grow) reveal = smooth(t / grow);
+    else if (t >= hold) alpha = 1 - smooth((t - hold) / (1 - hold));
+  }
+  if (reveal <= 0.001 || alpha <= 0.001) return;
+
+  // Straight side plus one 60-degree arc, per half — the dash length to reveal.
+  const halfLen = (A.bottom - A.spring) + A.span * (Math.PI / 3);
+
+  const half = (side, inset, width, a) => {
+    const l = A.left + inset, r = A.right - inset, sp = A.span - inset * 2;
+    x.strokeStyle = rgba(P.gold, a);
+    x.lineWidth = width;
+    x.setLineDash([halfLen * reveal, halfLen * 2]);
+    x.beginPath();
+    if (side < 0) {
+      x.moveTo(l, A.bottom);
+      x.lineTo(l, A.spring);
+      x.arc(r, A.spring, sp, Math.PI, Math.PI * 4 / 3, false);
+    } else {
+      x.moveTo(r, A.bottom);
+      x.lineTo(r, A.spring);
+      x.arc(l, A.spring, sp, 0, -Math.PI / 3, true);
+    }
+    x.stroke();
+  };
+
+  half(-1, 0, 1.4, 0.30 * alpha);
+  half(+1, 0, 1.4, 0.30 * alpha);
+  half(-1, 11, 0.9, 0.16 * alpha);
+  half(+1, 11, 0.9, 0.16 * alpha);
+  x.setLineDash([]);
+
+  // The keystone lights only once the two halves have actually met.
+  const lit = Math.max(0, (reveal - 0.92) / 0.08) * alpha;
+  if (lit > 0.001) {
+    x.fillStyle = rgba(P.gold, 0.55 * lit);
+    x.beginPath();
+    x.arc(A.cx, A.apex - 7, 3.4, 0, TAU);
+    x.fill();
+    const g = x.createRadialGradient(A.cx, A.apex - 7, 0, A.cx, A.apex - 7, 26);
+    g.addColorStop(0, rgba(P.gold, 0.30 * lit));
+    g.addColorStop(1, rgba(P.gold, 0));
+    x.fillStyle = g;
+    x.beginPath();
+    x.arc(A.cx, A.apex - 7, 26, 0, TAU);
+    x.fill();
+  }
+}
+
+// ── grain + vignette ─────────────────────────────────────────────────────────
+const grainPattern = (function () {
+  if (!cfg.grain) return null;
+  const c = layer(180, 180);
+  const x = c.getContext("2d");
+  const img = x.createImageData(180, 180);
+  for (let i = 0; i < img.data.length; i += 4) {
+    const v = 118 + Math.floor(rand() * 24);
+    img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+    img.data[i + 3] = 255;
+  }
+  x.putImageData(img, 0, 0);
+  return ctx.createPattern(c, "repeat");
+})();
+
+function drawGrain(x) {
+  if (!grainPattern) return;
+  x.save();
+  x.globalCompositeOperation = "overlay";
+  x.globalAlpha = 0.055;
+  x.fillStyle = grainPattern;
+  x.fillRect(0, 0, W, H);
+  x.restore();
+}
+
+function drawVignette(x) {
+  if (!cfg.vignette) return;
+  const g = x.createRadialGradient(W / 2, H * 0.46, H * 0.22, W / 2, H * 0.46, H * 0.78);
+  g.addColorStop(0, "rgba(0,0,0,0)");
+  g.addColorStop(1, "rgba(0,0,0,0.42)");
+  x.fillStyle = g;
+  x.fillRect(0, 0, W, H);
+}
+
+// ── frame ────────────────────────────────────────────────────────────────────
+function render(t) {
+  const x = ctx;
+  paintSky(x);
+  drawStars(x, t);
+  drawClouds(x, t);
+  drawMoon(x, t);
+  drawHills(x);
+  drawArch(x, t);
+  drawWater(x);
+  drawReflection(x, t);
+  x.drawImage(structCanvas, 0, 0);
+  drawWindowLight(x, t);
+  drawLanterns(x, t);
+  drawMotes(x, t);
+  drawFireflies(x, t);
+  drawGrain(x);
+  drawVignette(x);
+  return true;
+}
+
+window.renderFrame = render;
+render(0);
+window.__bgReady = true;
+</script>
+</body>
+</html>

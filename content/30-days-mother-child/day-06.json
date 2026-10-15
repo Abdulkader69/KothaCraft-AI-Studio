@@ -1,0 +1,210 @@
+{
+  "title": "মায়ের শিক্ষা: মৃদু ও মিষ্টি সুরে কথা বলা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A child standing in the middle of a hallway shouting at the top of his lungs toward the kitchen, harsh echoing sound waves, vintage oil painting",
+      "narration": "মা! আমার রঙিন পেন্সিলগুলো কোথায়? এখনই এনে দাও বলছি! সোনা, এত দূর থেকে চিৎকার না করে কাছে এসে বলো তো।",
+      "motion": "in",
+      "source": "কুরআনী আদাব",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "shouting",
+          "text": "মা! আমার রঙিন পেন্সিলগুলো কোথায়? এখনই এনে দাও বলছি!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "calm",
+          "text": "সোনা, এত দূর থেকে চিৎকার না করে কাছে এসে বলো তো।"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "Mother gently kneeling down at eye level with the child, placing a loving hand on the child’s shoulder, warm soft morning light, gouache painting",
+      "narration": "চিৎকার না করলে তুমি শুনবে কীভাবে মা? আমি তো পাশেই আছি বাবা। কিন্তু চিৎকার করে কথা বলা সুন্দর মানুষের স্বভাব নয়।",
+      "motion": "left",
+      "source": "সূরা লোকমান ১৯",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "impatient",
+          "text": "চিৎকার না করলে তুমি শুনবে কীভাবে মা?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "আমি তো পাশেই আছি বাবা। কিন্তু চিৎকার করে কথা বলা সুন্দর মানুষের স্বভাব নয়।"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "An open Qur’an on a carved wooden rehal beside an arched window, soft rays of sunlight touching the Arabic script, classical storybook painting",
+      "narration": "কুরআনে কি গলার আওয়াজ নিয়ে কিছু বলা আছে মা? হযরত লোকমান (আ.) তার পুত্রকে উপদেশ দিয়ে বলেছিলেন—তোমার কণ্ঠস্বর নিচু রাখো।",
+      "motion": "right",
+      "source": "সূরা লোকমান ১৯",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "কুরআনে কি গলার আওয়াজ নিয়ে কিছু বলা আছে মা?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "হযরত লোকমান (আ.) তার পুত্রকে উপদেশ দিয়ে বলেছিলেন—তোমার কণ্ঠস্বর নিচু রাখো।"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "A braying donkey in a dry desert field, mouth wide open with harsh unpleasant sound, metaphorical vintage storybook illustration",
+      "narration": "তিনি বলেছিলেন, নিশ্চয়ই সবচেয়ে অপ্রীতিকর ও কর্কশ স্বর হলো গাধার বিকট চিৎকার। আমি কি গাধার মতো চেঁচিয়েছি মা? আমার খুব লজ্জা লাগছে...",
+      "motion": "in",
+      "source": "কুরআনের উপমা",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "তিনি বলেছিলেন, নিশ্চয়ই সবচেয়ে অপ্রীতিকর ও কর্কশ স্বর হলো গাধার বিকট চিৎকার।"
+        },
+        {
+          "speaker": "child",
+          "tone": "remorseful",
+          "text": "আমি কি গাধার মতো চেঁচিয়েছি মা? আমার খুব লজ্জা লাগছে..."
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "Blooming delicate white jasmine and honeysuckle flowers on a sunlit balcony, bees humming gently, gouache painting",
+      "narration": "লজ্জা পাওয়ার কিছু নেই বাবা, তবে নিজেকে শুধরে নিতে হবে। মিষ্টি কথায় কথা বললে সবাই তোমাকে ভালোবাসবে। নরম গলায় কথা বললে কি মানুষ আমার কথা শুনবে মা?",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ২৫৯৩",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "লজ্জা পাওয়ার কিছু নেই বাবা, তবে নিজেকে শুধরে নিতে হবে। মিষ্টি কথায় কথা বললে সবাই তোমাকে ভালোবাসবে।"
+        },
+        {
+          "speaker": "child",
+          "tone": "thoughtful",
+          "text": "নরম গলায় কথা বললে কি মানুষ আমার কথা শুনবে মা?"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "Child speaking softly to mother with a warm pleasant smile, mother handing him the missing box of colored pencils, oil painting",
+      "narration": "নবীজি বলেছেন, কোমলতা যে জিনিসেই থাকে, তাকে তা সুন্দর করে তোলে। আর যাতে কোমলতা থাকে না, তা কদর্য হয়ে যায়। মা, দয়া করে আমার পেন্সিলের বাক্সটা দেবে? আমি মিষ্টি করেই বলছি।",
+      "motion": "right",
+      "source": "আদাবুল মুফরাদ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "নবীজি বলেছেন, কোমলতা যে জিনিসেই থাকে, তাকে তা সুন্দর করে তোলে। আর যাতে কোমলতা থাকে না, তা কদর্য হয়ে যায়।"
+        },
+        {
+          "speaker": "child",
+          "tone": "polite",
+          "text": "মা, দয়া করে আমার পেন্সিলের বাক্সটা দেবে? আমি মিষ্টি করেই বলছি।"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "Mother kissing the child’s forehead, peaceful serene home interior bathed in warm golden light, fairytale oil painting",
+      "narration": "এই তো আমার লক্ষ্মী সোনা! তোমার কথার মিষ্টি সুরেই তোমার ভালো চরিত্রের পরিচয় মেলে।",
+      "motion": "out",
+      "source": "হিকমাহ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "এই তো আমার লক্ষ্মী সোনা! তোমার কথার মিষ্টি সুরেই তোমার ভালো চরিত্রের পরিচয় মেলে।"
+        }
+      ]
+    }
+  ],
+  "description": "উঁচু গলায় চিৎকার করে কথা বলা শিষ্টাচার পরিপন্থী। কোমল ও নরম কথায় মানুষের মন জয় করা যায়।\n\nসূত্র: সূরা লোকমান ১৯ · আদাবুল মুফরাদ · সহীহ মুসলিম ২৫৯৩",
+  "publish": {
+    "description": "উঁচু গলায় চিৎকার করে কথা বলা শিষ্টাচার পরিপন্থী। কোমল ও নরম কথায় মানুষের মন জয় করা যায়।\n\nসূত্র: সূরা লোকমান ১৯ · আদাবুল মুফরাদ · সহীহ মুসলিম ২৫৯৩",
+    "hashtags": [
+      "#কোমল_ভাষা",
+      "#মায়ের_শিক্ষা",
+      "#কুরআনের_শিক্ষা",
+      "#আচার_আচরণ",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

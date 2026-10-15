@@ -1,0 +1,86 @@
+{
+  "title": "আত্মীয়তার বন্ধন",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a colossal banyan tree with a thousand aerial roots in warm afternoon light, a Bengal village behind it, birds nesting, majestic wide shot",
+      "narration": "নবীজি বলেছেন, যে ব্যক্তি চায় তার রিজিক বাড়ুক ও বয়স দীর্ঘ হোক…",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৫৯৮৫"
+    },
+    {
+      "id": "02",
+      "prompt": "dense branches of an old tree interlocking overhead into one green canopy, sunlight filtering through, seen from below",
+      "narration": "…সে যেন আত্মীয়তার সম্পর্ক বজায় রাখে।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৫৯৮৫"
+    },
+    {
+      "id": "03",
+      "prompt": "a broken branch lying grey and dry on the ground far from its tree, cracked bark, dead leaves, harsh noon light",
+      "narration": "নবীজি বলেছেন, আত্মীয়তার সম্পর্ক ছিন্নকারী জান্নাতে প্রবেশ করবে না।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৫৯৮৪"
+    },
+    {
+      "id": "04",
+      "prompt": "two forest paths curving back together into one wider path, soft green light, a stone bridge over a brook",
+      "narration": "প্রকৃত সম্পর্করক্ষাকারী সে নয়, যে বিনিময়ে সম্পর্ক রাখে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৫৯৯১"
+    },
+    {
+      "id": "05",
+      "prompt": "a thick old rope mended with a firm knot, close detail, rough fibres, warm side light, strong",
+      "narration": "বরং সে, যার সাথে সম্পর্ক ছিন্ন করা হলেও সে আবার জোড়া লাগায়।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৫৯৯১"
+    },
+    {
+      "id": "06",
+      "prompt": "a great tree in full leaf at golden hour, a flock of birds settling into its branches, a warm glow through the leaves",
+      "narration": "একটি ফোন, একটি খোঁজ, একটি সালাম — সম্পর্ক জোড়া লাগাতে এর বেশি কিছু লাগে না।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৫৯৮৫"
+    }
+  ]
+}

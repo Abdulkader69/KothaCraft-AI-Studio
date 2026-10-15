@@ -1,0 +1,100 @@
+{
+  "title": "শেষ কথা — তাকওয়া",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a traveller's path winding up into green mountains at dawn, mist in the valleys, a long road ahead",
+      "narration": "নবীজি বলেছেন, যেখানেই থাকো, আল্লাহকে ভয় করো।",
+      "motion": "in",
+      "source": "জামে তিরমিযী ১৯৮৭"
+    },
+    {
+      "id": "02",
+      "prompt": "a small lantern's light following a dark stretch of road and lighting it up, night turning to gold behind it",
+      "narration": "মন্দ কাজের পর একটি ভালো কাজ করো — তা মন্দকে মুছে দেবে।",
+      "motion": "left",
+      "source": "জামে তিরমিযী ১৯৮৭"
+    },
+    {
+      "id": "03",
+      "prompt": "two mountain paths meeting kindly at a stone bench under a tree, a shared spring, warm light",
+      "narration": "আর মানুষের সাথে উত্তম আচরণ করো।",
+      "motion": "out",
+      "source": "জামে তিরমিযী ১৯৮৭"
+    },
+    {
+      "id": "04",
+      "prompt": "provisions packed for a long journey — bread, dates, a waterskin, a cloak — laid out on a cloth at dawn",
+      "narration": "আল্লাহ বলেন, তোমরা পাথেয় সংগ্রহ করো।",
+      "motion": "right",
+      "source": "সূরা বাকারা ২:১৯৭"
+    },
+    {
+      "id": "05",
+      "prompt": "a simple cloth bundle tied to a staff, nothing excessive, resting against a milestone, ready",
+      "narration": "আর জেনে রাখো — সর্বোত্তম পাথেয় হলো তাকওয়া।",
+      "motion": "in",
+      "source": "সূরা বাকারা ২:১৯৭"
+    },
+    {
+      "id": "06",
+      "prompt": "a wide horizon at sunrise over sea and shore, a road along the coast continuing out of frame, the journey goes on",
+      "narration": "ষাট দিন শেষ — কিন্তু পথ চলা এখান থেকেই শুরু।",
+      "motion": "right",
+      "source": "সূরা বাকারা ২:১৯৭"
+    }
+  ],
+  "description": "যেখানেই থাকুন আল্লাহকে ভয় করুন, ভুলের পর ভালো কাজ দিয়ে তা মুছে ফেলুন এবং মানুষের সাথে সুন্দর আচরণ করুন। ইহকাল ও পরকালের সর্বোত্তম পাথেয় হলো তাকওয়া।\n\nসূত্র: জামে তিরমিযী ১৯৮৭ · সূরা বাকারা ২:১৯৭",
+  "publish": {
+    "description": "যেখানেই থাকুন আল্লাহকে ভয় করুন, ভুলের পর ভালো কাজ দিয়ে তা মুছে ফেলুন এবং মানুষের সাথে সুন্দর আচরণ করুন। ইহকাল ও পরকালের সর্বোত্তম পাথেয় হলো তাকওয়া।\n\nসূত্র: জামে তিরমিযী ১৯৮৭ · সূরা বাকারা ২:১৯৭",
+    "hashtags": [
+      "#তাকওয়া",
+      "#সদ্ব্যবহার",
+      "#পাথেয়",
+      "#কোরআন",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

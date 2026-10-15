@@ -1,0 +1,107 @@
+{
+  "title": "প্রত্যেক প্রাণীকে মৃত্যুর স্বাদ নিতে হবে",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "an empty country road disappearing into thick morning mist between tall bare trees, soft grey light, silence",
+      "narration": "আল্লাহ বলেন, প্রত্যেক প্রাণীকে মৃত্যুর স্বাদ নিতে হবে।",
+      "motion": "in",
+      "source": "সূরা আলে ইমরান ৩:১৮৫"
+    },
+    {
+      "id": "02",
+      "prompt": "an antique hourglass almost empty, the last few grains of sand falling, warm backlight, close-up",
+      "narration": "আর কিয়ামতের দিনই তোমাদের পূর্ণ প্রতিদান দেওয়া হবে।",
+      "motion": "left",
+      "source": "সূরা আলে ইমরান ৩:১৮৫"
+    },
+    {
+      "id": "03",
+      "prompt": "a pair of worn leather sandals left neatly by a door, dust on them, the journey ended, soft evening light",
+      "narration": "নবীজি বলেছেন, বেশি বেশি স্মরণ করো সব স্বাদ বিনষ্টকারীকে।",
+      "motion": "out",
+      "source": "জামে তিরমিযী ২৩০৭"
+    },
+    {
+      "id": "04",
+      "prompt": "a quiet graveyard path between simple unmarked stones under cypress trees, dignified, golden late light",
+      "narration": "অর্থাৎ মৃত্যুকে।",
+      "motion": "right",
+      "source": "জামে তিরমিযী ২৩০৭"
+    },
+    {
+      "id": "05",
+      "prompt": "morning light falling across an empty made bed, the room quiet, a window open to birdsong",
+      "narration": "তিনি বলেছেন, দুনিয়ায় এমনভাবে থাকো, যেন তুমি একজন মুসাফির…",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৪১৬"
+    },
+    {
+      "id": "06",
+      "prompt": "a traveller's cloth bundle and a walking staff packed and waiting by a door at dawn, ready to leave",
+      "narration": "…অথবা পথ পাড়ি দেওয়া কোনো পথিক, যে ছায়ায় একটু বসে আবার চলতে শুরু করে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬৪১৬"
+    },
+    {
+      "id": "07",
+      "prompt": "dawn light over an open road winding through green country toward distant mountains, onward",
+      "narration": "মৃত্যুর স্মরণ ভয় দেয় না — জীবনকে অর্থ দেয়।",
+      "motion": "out",
+      "source": "জামে তিরমিযী ২৩০৭"
+    }
+  ],
+  "description": "পার্থিব জীবন এক ক্ষণিকের মুসাফিরখানা। মৃত্যুর স্মরণে কোনো হতাশা নেই, বরং তা জীবনকে অর্থবহ করে এবং ভালো কাজের জন্য প্রস্তুত হওয়ার প্রেরণা জোগায়।\n\nসূত্র: সূরা আলে ইমরান ৩:১৮৫ · জামে তিরমিযী ২৩০৭ · সহীহ বুখারী ৬৪১৬",
+  "publish": {
+    "description": "পার্থিব জীবন এক ক্ষণিকের মুসাফিরখানা। মৃত্যুর স্মরণে কোনো হতাশা নেই, বরং তা জীবনকে অর্থবহ করে এবং ভালো কাজের জন্য প্রস্তুত হওয়ার প্রেরণা জোগায়।\n\nসূত্র: সূরা আলে ইমরান ৩:১৮৫ · জামে তিরমিযী ২৩০৭ · সহীহ বুখারী ৬৪১৬",
+    "hashtags": [
+      "#মৃত্যু",
+      "#মুসাফির",
+      "#জীবন",
+      "#কোরআন",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

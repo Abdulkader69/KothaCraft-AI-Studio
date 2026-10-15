@@ -1,0 +1,107 @@
+{
+  "title": "মক্কা বিজয় ও ক্ষমা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "the great gates of an ancient walled desert city standing open at dawn, no guards, palms beyond, the first light pouring through",
+      "narration": "আট বছর পর নবীজি দশ হাজার সাহাবি নিয়ে মক্কায় ফিরে এলেন — বিনা যুদ্ধে, বিজয়ীর বেশে।",
+      "motion": "in",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "02",
+      "prompt": "an empty city square in early morning light, old stone houses, the hush of a city holding its breath",
+      "narration": "যারা তাঁকে তাড়িয়েছিল, নির্যাতন করেছিল, হত্যার চেষ্টা করেছিল — তারা এখন তাঁর সামনে দাঁড়িয়ে।",
+      "motion": "left",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "03",
+      "prompt": "a low ancient stone archway, so low one must bow to pass through it, soft light beyond, humility carved in stone",
+      "narration": "তিনি প্রবেশ করেছিলেন উটের পিঠে মাথা এত নিচু করে, যে দাড়ি প্রায় জিনে ঠেকে যাচ্ছিল — কৃতজ্ঞতায়।",
+      "motion": "out",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "04",
+      "prompt": "a wide open courtyard in forgiving morning light, space to breathe, doves on the ground, calm",
+      "narration": "তিনি তাদের জিজ্ঞেস করলেন, তোমরা কী মনে করো, আমি তোমাদের সাথে কী করব?",
+      "motion": "right",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "05",
+      "prompt": "a great open gate with brilliant light streaming through it, dust glowing in the beams, hopeful",
+      "narration": "তারা বলল, আপনি সম্মানিত ভাই, আর সম্মানিত ভাইয়ের সন্তান। আমরা ভালোই আশা করি।",
+      "motion": "in",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "06",
+      "prompt": "a bright open plaza under a clear sky, entirely free of shadow, white stone glowing, release",
+      "narration": "তিনি বললেন, যাও — তোমরা সবাই মুক্ত। আজ তোমাদের উপর কোনো অভিযোগ নেই।",
+      "motion": "right",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "07",
+      "prompt": "sunrise over a peaceful walled city with gardens and minarets, doves rising, a new beginning, golden",
+      "narration": "ক্ষমতা যখন এলো, তিনি প্রতিশোধ নয় — ক্ষমা বেছে নিলেন।",
+      "motion": "out",
+      "source": "সূরা ইউসুফ ১২:৯২"
+    }
+  ],
+  "description": "বিজয়ী বেশে মক্কায় প্রবেশ করে অতীত নির্যাতনের প্রতিশোধ না নিয়ে সবাইকে নিঃশর্ত ক্ষমা করে দেওয়ার চিরন্তন শিক্ষা। ক্ষমতা এলে ক্ষমা করাই নববী আদর্শ।\n\nসূত্র: আস-সীরাহ · সূরা ইউসুফ ১২:৯২",
+  "publish": {
+    "description": "বিজয়ী বেশে মক্কায় প্রবেশ করে অতীত নির্যাতনের প্রতিশোধ না নিয়ে সবাইকে নিঃশর্ত ক্ষমা করে দেওয়ার চিরন্তন শিক্ষা। ক্ষমতা এলে ক্ষমা করাই নববী আদর্শ।\n\nসূত্র: আস-সীরাহ · সূরা ইউসুফ ১২:৯২",
+    "hashtags": [
+      "#মক্কাবিজয়",
+      "#উদারতা",
+      "#ক্ষমা",
+      "#নবীজি",
+      "#সিরাত",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

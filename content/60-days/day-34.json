@@ -1,0 +1,106 @@
+{
+  "title": "হিজরত ও গুহার সঙ্গী",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "an empty desert road leaving a walled city at night under a bright full moon, two sets of footprints in the sand, the city dark behind",
+      "narration": "মক্কা ছাড়ার রাতে, শত্রুরা যখন তাঁকে হত্যার জন্য ঘর ঘিরে রেখেছিল, নবীজি ও আবু বকর রাঃ গোপনে রওনা হলেন।",
+      "motion": "in",
+      "source": "সূরা তাওবা ৯:৪০"
+    },
+    {
+      "id": "02",
+      "prompt": "a dark cave entrance in a rugged rocky hillside, moonlight on the stones, a narrow opening, hidden",
+      "narration": "তাঁরা সাওর পাহাড়ের এক গুহায় আশ্রয় নিলেন।",
+      "motion": "left",
+      "source": "সূরা তাওবা ৯:৪০"
+    },
+    {
+      "id": "03",
+      "prompt": "many footprints on a dusty track winding up toward rocky outcrops, pursuit, hard afternoon light, dust hanging in the air",
+      "narration": "শত্রুরা খুঁজতে খুঁজতে একেবারে গুহার মুখ পর্যন্ত এসে গেল।",
+      "motion": "out",
+      "source": "সূরা তাওবা ৯:৪০"
+    },
+    {
+      "id": "04",
+      "prompt": "the interior of a cave in deep shadow, a thin line of daylight at the mouth, shapes of rocks, tense stillness",
+      "narration": "আবু বকর রাঃ ফিসফিস করে বললেন, তারা যদি নিচে তাকায়, আমাদের দেখে ফেলবে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৩৬৫৩"
+    },
+    {
+      "id": "05",
+      "prompt": "soft calm light filling a cave interior, the stone warm, the fear lifting, a sense of shelter",
+      "narration": "নবীজি বললেন, দুশ্চিন্তা কোরো না। নিশ্চয়ই আল্লাহ আমাদের সাথে আছেন।",
+      "motion": "in",
+      "source": "সূরা তাওবা ৯:৪০"
+    },
+    {
+      "id": "06",
+      "prompt": "a spider's web stretched across a cave mouth catching golden light, a dove nesting on a ledge beside it, dew on the silk",
+      "narration": "আল্লাহ তাঁদের উপর প্রশান্তি নামিয়ে দিলেন, আর এমনভাবে রক্ষা করলেন যে শত্রুরা ফিরে গেল।",
+      "motion": "right",
+      "source": "সূরা তাওবা ৯:৪০"
+    },
+    {
+      "id": "07",
+      "prompt": "an open desert road at sunrise leading toward a green oasis of date palms, a walled city glowing in the distance — Medina",
+      "narration": "দুজন মানুষ, একটি গুহা — আর তাদের সাথে ছিলেন আল্লাহ।",
+      "motion": "out",
+      "source": "সূরা তাওবা ৯:৪০"
+    }
+  ],
+  "description": "সাওর গুহার মুখে শত্রুর পদধ্বনি সত্ত্বেও রাসূলুল্লাহর (ﷺ) অবিচল সান্ত্বনা — 'দুশ্চিন্তা কোরো না, নিশ্চয়ই আল্লাহ আমাদের সাথে আছেন।' আল্লাহর সাহায্য সবসময় মুমিনের সাথে থাকে।\n\nসূত্র: সূরা তাওবা ৯:৪০ · সহীহ বুখারী ৩৬৫৩",
+  "publish": {
+    "description": "সাওর গুহার মুখে শত্রুর পদধ্বনি সত্ত্বেও রাসূলুল্লাহর (ﷺ) অবিচল সান্ত্বনা — 'দুশ্চিন্তা কোরো না, নিশ্চয়ই আল্লাহ আমাদের সাথে আছেন।' আল্লাহর সাহায্য সবসময় মুমিনের সাথে থাকে।\n\nসূত্র: সূরা তাওবা ৯:৪০ · সহীহ বুখারী ৩৬৫৩",
+    "hashtags": [
+      "#হিজরত",
+      "#আবুবকর",
+      "#আল্লাহরসাহায্য",
+      "#সিরাত",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

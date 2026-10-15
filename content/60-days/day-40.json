@@ -1,0 +1,106 @@
+{
+  "title": "সময়ের হিসাব",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "an antique hourglass with sand pouring through it, warm backlight glowing through the glass, the grains sharp, close-up",
+      "narration": "নবীজি বলেছেন, দুটি নিয়ামত আছে, যার ব্যাপারে অধিকাংশ মানুষ ধোঁকায় থাকে।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৪১২"
+    },
+    {
+      "id": "02",
+      "prompt": "fresh green leaves and white blossom glowing in strong spring sunlight, bees at work, vitality",
+      "narration": "সুস্থতা।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৬৪১২"
+    },
+    {
+      "id": "03",
+      "prompt": "an empty wooden chair by a window with afternoon light passing across it, unused, quiet",
+      "narration": "আর অবসর সময়।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৬৪১২"
+    },
+    {
+      "id": "04",
+      "prompt": "the shadow of an ancient stone sundial creeping across its carved face, time moving visibly",
+      "narration": "তিনি বলেছেন, কিয়ামতের দিন কেউ এক পা-ও নড়তে পারবে না, যতক্ষণ না চারটি প্রশ্নের জবাব দেয়।",
+      "motion": "right",
+      "source": "জামে তিরমিযী ২৪১৭"
+    },
+    {
+      "id": "05",
+      "prompt": "worn wooden calendar blocks and an old pocket watch on a desk, days counted, warm lamplight",
+      "narration": "জীবন কোথায় কাটিয়েছে, আর যা জেনেছে তা দিয়ে কী করেছে।",
+      "motion": "in",
+      "source": "জামে তিরমিযী ২৪১৭"
+    },
+    {
+      "id": "06",
+      "prompt": "coins and a worn leather ledger on a wooden desk, a candle, accounts to be settled",
+      "narration": "সম্পদ কোথা থেকে এসেছে ও কোথায় খরচ করেছে, আর শরীর কীসে ক্ষয় করেছে।",
+      "motion": "right",
+      "source": "জামে তিরমিযী ২৪১৭"
+    },
+    {
+      "id": "07",
+      "prompt": "the last light fading over a quiet sea, a moon rising, the day gone, irreversible",
+      "narration": "সময়ই একমাত্র সম্পদ, যা ফুরিয়ে গেলে আর কেনা যায় না।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৬৪১২"
+    }
+  ],
+  "description": "সুস্থতা ও অবসর — এই দুই মূল্যবান নিয়ামত অধিকাংশ মানুষ অবহেলায় হারিয়ে ফেলে। সময়ই জীবনের একমাত্র মূলধন যা ফুরিয়ে গেলে আর কোনো মূল্যে কেনা যায় না।\n\nসূত্র: সহীহ বুখারী ৬৪১২ · জামে তিরমিযী ২৪১৭",
+  "publish": {
+    "description": "সুস্থতা ও অবসর — এই দুই মূল্যবান নিয়ামত অধিকাংশ মানুষ অবহেলায় হারিয়ে ফেলে। সময়ই জীবনের একমাত্র মূলধন যা ফুরিয়ে গেলে আর কোনো মূল্যে কেনা যায় না।\n\nসূত্র: সহীহ বুখারী ৬৪১২ · জামে তিরমিযী ২৪১৭",
+    "hashtags": [
+      "#সময়",
+      "#জীবন",
+      "#সুস্থতা",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

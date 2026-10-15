@@ -1,0 +1,100 @@
+{
+  "title": "নূহ (আলাইহিছ ছালাম)-এর ধৈর্য",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "ancient wooden beams and timber, weathered grain, workshop light",
+      "narration": "নূহ আলাইহিছ ছালাম দীর্ঘ সময় ধরে তাঁর জাতিকে আল্লাহর পথে ডেকেছিলেন।",
+      "motion": "in",
+      "source": "সূরা নূহ ৭১:৫"
+    },
+    {
+      "id": "02",
+      "prompt": "empty village square at dusk, closed doors, long shadows",
+      "narration": "তিনি বললেন, হে আমার প্রভু, আমি আমার জাতিকে দিনরাত ডেকেছি।",
+      "motion": "left",
+      "source": "সূরা নূহ ৭১:৫"
+    },
+    {
+      "id": "03",
+      "prompt": "wind bending dry grass, overcast sky, sense of turning away",
+      "narration": "কিন্তু আমার ডাক তাদের পলায়নই বাড়িয়ে দিয়েছে।",
+      "motion": "out",
+      "source": "সূরা নূহ ৭১:৬"
+    },
+    {
+      "id": "04",
+      "prompt": "large wooden hull under construction on dry land, ropes and tools",
+      "narration": "আল্লাহর নির্দেশে তিনি শুকনো মাটিতে নৌকা বানাতে শুরু করলেন।",
+      "motion": "right",
+      "source": "সূরা হুদ ১১:৩৭"
+    },
+    {
+      "id": "05",
+      "prompt": "dark storm clouds gathering over water, first heavy raindrops",
+      "narration": "যখন আদেশ এলো, আকাশ থেকে পানি নামল আর মাটি ফেটে পানি উঠল।",
+      "motion": "in",
+      "source": "সূরা কামার ৫৪:১১-১২"
+    },
+    {
+      "id": "06",
+      "prompt": "vast water surface under heavy rain, wooden vessel silhouette far off",
+      "narration": "নৌকা পাহাড়সম ঢেউয়ের ভেতর দিয়ে চলতে লাগল।",
+      "motion": "right",
+      "source": "সূরা হুদ ১১:৪২"
+    },
+    {
+      "id": "07",
+      "prompt": "calm water after storm, mountain peak emerging, clearing sky",
+      "narration": "অবশেষে পানি নেমে গেল এবং নৌকা জুদি পাহাড়ে থামল।",
+      "motion": "out",
+      "source": "সূরা হুদ ১১:৪৪"
+    },
+    {
+      "id": "08",
+      "prompt": "rainbow over a calm lake, wet green hills, birds returning after the storm",
+      "narration": "ফল আসতে দেরি হলেও সত্যের পথে অবিচল থাকাই সফলতা।",
+      "motion": "left",
+      "source": "সূরা হুদ ১১:৪৯"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "title": "অন্তরের পরিচ্ছন্নতা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a clear glass vessel filled with pure water on a windowsill, sunlight passing straight through it, spotless",
+      "narration": "নবীজি বলেছেন, শরীরের ভেতরে একটি মাংসপিণ্ড আছে…",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৫২"
+    },
+    {
+      "id": "02",
+      "prompt": "the same glass of water glowing crystal clear in bright light, casting a clean bright pattern on the table",
+      "narration": "…তা ঠিক থাকলে পুরো শরীর ঠিক থাকে।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৫২"
+    },
+    {
+      "id": "03",
+      "prompt": "a drop of black ink spreading through clear water in a glass, clouding it, tendrils of dark, macro",
+      "narration": "আর তা নষ্ট হলে পুরো শরীর নষ্ট হয়ে যায়।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৫২"
+    },
+    {
+      "id": "04",
+      "prompt": "a red anatomical heart shape formed by light in dark water, glowing, mysterious, close-up",
+      "narration": "জেনে রাখো, সেটি হলো অন্তর।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৫২"
+    },
+    {
+      "id": "05",
+      "prompt": "a polished white marble surface reflecting light cleanly, one small black spot appearing on it",
+      "narration": "তিনি বলেছেন, বান্দা একটি গুনাহ করলে তার অন্তরে একটি কালো দাগ পড়ে।",
+      "motion": "in",
+      "source": "জামে তিরমিযী ৩৩৩৪"
+    },
+    {
+      "id": "06",
+      "prompt": "clean water washing over a stone marked with dark stains, the marks dissolving, sunlight on the wet surface",
+      "narration": "সে তওবা করলে দাগটি মুছে যায়। আর গুনাহ করতে থাকলে দাগ বাড়তে বাড়তে পুরো অন্তর ঢেকে ফেলে।",
+      "motion": "right",
+      "source": "জামে তিরমিযী ৩৩৩৪"
+    },
+    {
+      "id": "07",
+      "prompt": "crystal clear water at sunrise over bright coloured pebbles in a shallow stream, restored and pure",
+      "narration": "নবীজি বলেছেন, আল্লাহ তোমাদের চেহারা বা সম্পদ দেখেন না — তিনি দেখেন অন্তর ও আমল।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ২৫৬৪"
+    }
+  ],
+  "description": "মানুষের দেহ ও আমলের মূল চালিকাশক্তি হলো অন্তর। পাপ অন্তরে অন্ধকার ফেলে, আর খাঁটি তওবা তা পুনরায় নির্মল ও আলোকিত করে তোলে।\n\nসূত্র: সহীহ বুখারী ৫২ · জামে তিরমিযী ৩৩৩৪ · সহীহ মুসলিম ২৫৬৪",
+  "publish": {
+    "description": "মানুষের দেহ ও আমলের মূল চালিকাশক্তি হলো অন্তর। পাপ অন্তরে অন্ধকার ফেলে, আর খাঁটি তওবা তা পুনরায় নির্মল ও আলোকিত করে তোলে।\n\nসূত্র: সহীহ বুখারী ৫২ · জামে তিরমিযী ৩৩৩৪ · সহীহ মুসলিম ২৫৬৪",
+    "hashtags": [
+      "#অন্তর",
+      "#তওবা",
+      "#পবিত্রতা",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

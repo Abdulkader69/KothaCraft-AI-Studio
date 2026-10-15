@@ -1,0 +1,106 @@
+{
+  "title": "ইকরা — প্রথম ওহি",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "the mouth of a small mountain cave high on a rocky peak overlooking a vast dark valley under a full moon, Mecca's hills silver below, epic and lonely",
+      "narration": "মক্কার বাইরে হেরা গুহায় নবীজি একা বসে ধ্যান করতেন — দিনের পর দিন, রাতের পর রাত।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৩"
+    },
+    {
+      "id": "02",
+      "prompt": "the dark interior of a stone cave, rough walls, only faint starlight at the entrance, a sudden unexplained glow beginning to fill the space",
+      "narration": "এক রাতে হঠাৎ এক ফেরেশতা এসে বললেন, পড়ুন।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৩"
+    },
+    {
+      "id": "03",
+      "prompt": "a blank rough stone wall inside a cave in dim light, nothing written on it, deep shadows, the silence of not knowing",
+      "narration": "তিনি বললেন, আমি তো পড়তে জানি না।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৩"
+    },
+    {
+      "id": "04",
+      "prompt": "brilliant white light bursting from a cave mouth into the night, rock edges glowing, dust suspended in the beam, overwhelming",
+      "narration": "ফেরেশতা তাঁকে তিনবার শক্ত করে জড়িয়ে ধরলেন। তারপর বললেন, পড়ুন আপনার প্রভুর নামে, যিনি সৃষ্টি করেছেন।",
+      "motion": "right",
+      "source": "সূরা আলাক ৯৬:১"
+    },
+    {
+      "id": "05",
+      "prompt": "first sunlight striking a rocky mountainside at dawn, mist in the folds, the rock turning from grey to gold",
+      "narration": "সৃষ্টি করেছেন মানুষকে জমাট রক্ত থেকে।",
+      "motion": "in",
+      "source": "সূরা আলাক ৯৬:২"
+    },
+    {
+      "id": "06",
+      "prompt": "a reed pen and an ink pot on aged parchment in a shaft of morning light, the first stroke of calligraphy beginning, reverent",
+      "narration": "পড়ুন, আর আপনার প্রভু মহা দয়ালু — যিনি কলমের মাধ্যমে শিক্ষা দিয়েছেন।",
+      "motion": "right",
+      "source": "সূরা আলাক ৯৬:৩-৪"
+    },
+    {
+      "id": "07",
+      "prompt": "a wide dawn over rolling desert hills and a distant valley town, the whole world lit new, historic stillness",
+      "narration": "ইসলামের প্রথম শব্দটাই ছিল — পড়ো।",
+      "motion": "out",
+      "source": "সূরা আলাক ৯৬:১"
+    }
+  ],
+  "description": "হেরা গুহার নির্জনতায় মানবতার জন্য প্রথম আলোর স্পর্শ — 'ইকরা' (পড়ুন আপনার প্রভুর নামে)। ইসলামের প্রথম বাণীই জ্ঞান অর্জনের আহ্বান।\n\nসূত্র: সহীহ বুখারী ৩ · সূরা আলাক ৯৬:১-৪",
+  "publish": {
+    "description": "হেরা গুহার নির্জনতায় মানবতার জন্য প্রথম আলোর স্পর্শ — 'ইকরা' (পড়ুন আপনার প্রভুর নামে)। ইসলামের প্রথম বাণীই জ্ঞান অর্জনের আহ্বান।\n\nসূত্র: সহীহ বুখারী ৩ · সূরা আলাক ৯৬:১-৪",
+    "hashtags": [
+      "#ইকরা",
+      "#ওহি",
+      "#রাসূলুল্লাহ",
+      "#কোরআন",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

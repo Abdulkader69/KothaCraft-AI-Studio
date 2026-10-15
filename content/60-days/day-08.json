@@ -1,0 +1,93 @@
+{
+  "title": "সুলাইমান (আলাইহিছ ছালাম) ও পিঁপড়া",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "vast green valley at morning, wildflowers in long grass, wide sky",
+      "narration": "সুলাইমান আলাইহিছ ছালাম-কে আল্লাহ বিশাল রাজত্ব ও বিশেষ জ্ঞান দিয়েছিলেন।",
+      "motion": "in",
+      "source": "সূরা নামল ২৭:১৫-১৬"
+    },
+    {
+      "id": "02",
+      "prompt": "wind moving across a meadow of wildflowers, distant green hills",
+      "narration": "তাঁর বাহিনী উপত্যকা পেরিয়ে এগিয়ে চলছিল।",
+      "motion": "left",
+      "source": "সূরা নামল ২৭:১৭"
+    },
+    {
+      "id": "03",
+      "prompt": "macro of an ant on a flower stem, dew on petals, soft focus",
+      "narration": "তখন এক পিঁপড়া বলল, হে পিঁপড়ারা, তোমরা নিজেদের ঘরে ঢুকে পড়ো।",
+      "motion": "out",
+      "source": "সূরা নামল ২৭:১৮"
+    },
+    {
+      "id": "04",
+      "prompt": "bees moving between wildflowers, close macro, gentle light",
+      "narration": "যেন সুলাইমান ও তাঁর বাহিনী অজান্তে তোমাদের পিষে না ফেলে।",
+      "motion": "right",
+      "source": "সূরা নামল ২৭:১৮"
+    },
+    {
+      "id": "05",
+      "prompt": "sunlight breaking through clouds onto a flowering meadow",
+      "narration": "কথাটি শুনে সুলাইমান আলাইহিছ ছালাম হাসলেন।",
+      "motion": "in",
+      "source": "সূরা নামল ২৭:১৯"
+    },
+    {
+      "id": "06",
+      "prompt": "shafts of golden light falling over a landscape",
+      "narration": "তিনি বললেন, হে আমার প্রভু, আমাকে তৌফিক দাও যেন তোমার নিয়ামতের শোকর করতে পারি।",
+      "motion": "right",
+      "source": "সূরা নামল ২৭:১৯"
+    },
+    {
+      "id": "07",
+      "prompt": "still evening over a flower meadow, fireflies, soft colours",
+      "narration": "সবচেয়ে ক্ষুদ্র সৃষ্টির কথাও আল্লাহ শোনেন — আর কৃতজ্ঞতাই বড় মানুষের পরিচয়।",
+      "motion": "out",
+      "source": "সূরা নামল ২৭:১৯"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "title": "ভাইয়ের জন্য যা নিজের জন্য চাও",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "two identical clay bowls filled with exactly the same rice and dal on a wooden table, warm light, fairness",
+      "narration": "নবীজি বলেছেন, তোমাদের কেউ প্রকৃত মুমিন হতে পারবে না…",
+      "motion": "in",
+      "source": "সহীহ বুখারী ১৩"
+    },
+    {
+      "id": "02",
+      "prompt": "a mirror-still lake reflecting a mountain so exactly that the image is symmetrical, dawn light, one whole",
+      "narration": "…যতক্ষণ না সে তার ভাইয়ের জন্য তাই পছন্দ করে, যা সে নিজের জন্য পছন্দ করে।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ১৩"
+    },
+    {
+      "id": "03",
+      "prompt": "two old stone houses side by side, warm light in both windows equally, evening in a village lane",
+      "narration": "তিনি বলেছেন, মুমিনরা একে অপরের জন্য একটি দালানের ইটের মতো।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৪৮১"
+    },
+    {
+      "id": "04",
+      "prompt": "an ancient stone wall of tightly interlocking blocks, each holding the next, close-up in raking light, strong",
+      "narration": "একটি ইট অন্যটিকে শক্ত করে ধরে রাখে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৪৮১"
+    },
+    {
+      "id": "05",
+      "prompt": "one river branching into many streams across a green valley yet remaining a single body of water, aerial view",
+      "narration": "তিনি আরও বলেছেন, মুমিনদের উদাহরণ একটি দেহের মতো।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৫৮৬"
+    },
+    {
+      "id": "06",
+      "prompt": "sunset over joined green fields and hedgerows stretching to the horizon, one landscape, warm",
+      "narration": "দেহের একটি অঙ্গ কষ্ট পেলে পুরো শরীর জ্বরে আর নির্ঘুম রাতে কাতর হয়।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২৫৮৬"
+    }
+  ],
+  "description": "নিজের জন্য যা পছন্দ করি, অপর মুসলিম ভাইয়ের জন্যও তাই চাওয়া প্রকৃত ঈমানের লক্ষণ। পারস্পরিক সহানুভূতি ও ভালোবাসায় মুমিনরা একটি দেহের মতো অটুট।\n\nসূত্র: সহীহ বুখারী ১৩ · সহীহ বুখারী ৪৮১ · সহীহ মুসলিম ২৫৮৬",
+  "publish": {
+    "description": "নিজের জন্য যা পছন্দ করি, অপর মুসলিম ভাইয়ের জন্যও তাই চাওয়া প্রকৃত ঈমানের লক্ষণ। পারস্পরিক সহানুভূতি ও ভালোবাসায় মুমিনরা একটি দেহের মতো অটুট।\n\nসূত্র: সহীহ বুখারী ১৩ · সহীহ বুখারী ৪৮১ · সহীহ মুসলিম ২৫৮৬",
+    "hashtags": [
+      "#ভ্রাতৃত্ব",
+      "#ঈমান",
+      "#সহানুভূতি",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

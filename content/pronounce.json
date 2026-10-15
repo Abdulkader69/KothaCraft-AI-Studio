@@ -1,0 +1,14 @@
+{
+  "_": "Applies to EVERY tts provider. Voice-specific respellings belong in content/pronounce.<provider>.json — see pronounce.edge.json.",
+  "_honorific": "written short on screen, said in full by the voice. (রাঃ) male, (রাহাঃ) female. ঃ is a combining mark, so রাঃ and রা are different words and both need an entry.",
+  "রা": "রাদিয়াল্লাহু আনহু",
+  "রাহা": "রাদিয়াল্লাহু আনহা",
+  "আ": "আলাইহিস সালাম",
+  "সা": "সাল্লাল্লাহু আলাইহি ওয়া সাল্লাম",
+  "রহ": "রহিমাহুল্লাহ",
+  "রাঃ": "রাদিয়াল্লাহু আনহু",
+  "রাহাঃ": "রাদিয়াল্লাহু আনহা",
+  "আঃ": "আলাইহিস সালাম",
+  "সাঃ": "সাল্লাল্লাহু আলাইহি ওয়া সাল্লাম",
+  "রহঃ": "রহিমাহুল্লাহ"
+}

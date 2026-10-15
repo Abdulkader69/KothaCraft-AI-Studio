@@ -1,0 +1,69 @@
+{
+  "title": "The Deep Ocean",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.35,
+  "image": {
+    "style": "cinematic, volumetric light, 35mm film still, shallow depth of field, muted teal palette",
+    "negative": "text, watermark, logo, extra fingers, low quality",
+    "model": "fal-ai/flux/dev"
+  },
+  "voice": {
+    "kokoroVoice": "af_sarah",
+    "lang": "en-us",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.45,
+    "similarity": 0.8,
+    "speed": 1.0
+  },
+  "music": {
+    "file": "assets/music.mp3",
+    "gainDb": -20
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "primary": "#FFFFFF",
+    "highlight": "#FFD166",
+    "outline": "#000000"
+  },
+  "texture": {
+    "grain": 8,
+    "vignette": 4.5,
+    "contrast": 1.06,
+    "saturation": 1.05
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a lone diver silhouetted against a shaft of sunlight in deep blue water",
+      "narration": "Ninety five percent of the ocean has never been seen by human eyes.",
+      "motion": "in"
+    },
+    {
+      "id": "02",
+      "prompt": "abyssal trench, bioluminescent jellyfish drifting in total darkness",
+      "narration": "Below one thousand meters, sunlight simply stops. Everything here makes its own light.",
+      "motion": "left"
+    },
+    {
+      "id": "03",
+      "prompt": "hydrothermal vent on the sea floor releasing black smoke, glowing minerals",
+      "narration": "Yet on the sea floor, whole cities of life grow around boiling vents.",
+      "motion": "out"
+    },
+    {
+      "id": "04",
+      "prompt": "giant whale passing over a tiny submersible, scale and silence",
+      "narration": "Creatures the size of buildings pass by, and nobody ever records them.",
+      "motion": "right",
+      "seed": 445566
+    },
+    {
+      "id": "05",
+      "prompt": "sunrise over a calm open sea, horizon line, soft golden light",
+      "narration": "We mapped the moon before we mapped our own planet.",
+      "motion": "in"
+    }
+  ]
+}

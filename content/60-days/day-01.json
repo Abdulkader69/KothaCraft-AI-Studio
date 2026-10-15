@@ -1,0 +1,93 @@
+{
+  "title": "আদম (আলাইহিছ ছালাম) ও জ্ঞানের মর্যাদা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "empty vast plain at first light, soft mist, untouched earth, wide horizon",
+      "narration": "সৃষ্টির শুরুতে আল্লাহ ফেরেশতাদের বললেন, আমি পৃথিবীতে একজন প্রতিনিধি পাঠাচ্ছি।",
+      "motion": "in",
+      "source": "সূরা বাকারা ২:৩০"
+    },
+    {
+      "id": "02",
+      "prompt": "swirling dust and clay textures, earth tones, close macro of dry soil",
+      "narration": "ফেরেশতারা জিজ্ঞেস করলেন, আপনি কি এমন কাউকে পাঠাবেন যে বিশৃঙ্খলা সৃষ্টি করবে?",
+      "motion": "left",
+      "source": "সূরা বাকারা ২:৩০"
+    },
+    {
+      "id": "03",
+      "prompt": "morning light breaking over a still landscape, golden rays through haze",
+      "narration": "আল্লাহ বললেন, আমি যা জানি তোমরা তা জানো না।",
+      "motion": "out",
+      "source": "সূরা বাকারা ২:৩০"
+    },
+    {
+      "id": "04",
+      "prompt": "open manuscript pages beside a window, green leaves visible outside, warm lamplight",
+      "narration": "এরপর আল্লাহ আদমকে সব কিছুর নাম শিক্ষা দিলেন।",
+      "motion": "right",
+      "source": "সূরা বাকারা ২:৩১"
+    },
+    {
+      "id": "05",
+      "prompt": "rows of stone arches receding into soft light, quiet and ordered",
+      "narration": "ফেরেশতারা বললেন, আপনি পবিত্র, আপনি যা শিখিয়েছেন তার বাইরে আমাদের কোনো জ্ঞান নেই।",
+      "motion": "in",
+      "source": "সূরা বাকারা ২:৩২"
+    },
+    {
+      "id": "06",
+      "prompt": "single beam of light falling on an open book on a wooden table",
+      "narration": "আদম যখন নামগুলো বলে দিলেন, ফেরেশতারা তাঁর মর্যাদা বুঝতে পারলেন।",
+      "motion": "right",
+      "source": "সূরা বাকারা ২:৩৩"
+    },
+    {
+      "id": "07",
+      "prompt": "sunrise over a green valley, mist between trees, birds crossing the sky",
+      "narration": "মানুষের প্রকৃত সম্মান তার জ্ঞানে। শেখা কখনো বন্ধ কোরো না।",
+      "motion": "out",
+      "source": "সূরা বাকারা ২:৩১-৩৩"
+    }
+  ]
+}

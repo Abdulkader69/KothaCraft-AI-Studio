@@ -1,0 +1,1216 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+const OUT_DIR = path.join(process.cwd(), 'content', '30-days-mother-child');
+
+const style =
+  "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic";
+
+const negative =
+  'photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers';
+
+interface SceneData {
+  id: string;
+  prompt: string;
+  motion: 'in' | 'out' | 'left' | 'right';
+  source: string;
+  lines: { speaker: 'mother' | 'child'; tone: string; text: string }[];
+}
+
+interface DayData {
+  day: number;
+  title: string;
+  description: string;
+  hashtags: string[];
+  scenes: SceneData[];
+}
+
+const daysData: DayData[] = [
+  // ── DAY 01: সত্য বলার সাহস ──────────────────────────────────────────
+  {
+    day: 1,
+    title: 'সত্য বলার সাহস',
+    description:
+      'সত্যবাদিতা মানুষকে মুক্তি দেয় এবং অন্তরে পরম প্রশান্তি আনে। ভুল স্বীকার করা দুর্বলতা নয়, বরং খাঁটি মুমিনের সাহসিকতা।\n\nসূত্র: তিরমিজি ১৯৭৭ · সহীহ বুখারী ৬০৯৪ · সূরা তাওবা ১১৯',
+    hashtags: ['#সত্যবাদিতা', '#মায়ের_শিক্ষা', '#নৈতিকতা', '#পারিবারিক_শিক্ষা', '#হিকমাহ', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A quiet cozy antique living room with clay pots, shattered pieces of a ceramic flower vase on a warm terracotta tiled floor, soft morning light streaming through an arched window, vintage storybook oil painting',
+        motion: 'in',
+        source: 'পারিবারিক শিক্ষা',
+        lines: [
+          { speaker: 'child', tone: 'worried', text: 'মা... ড্রয়িংরুমের মাটির ফুলদানিটা ভেঙে টুকরো হয়ে গেছে।' },
+          { speaker: 'mother', tone: 'warm', text: 'কীভাবে ভাঙল সোনা? তুমি কি দেখেছ কে ভেঙেছে?' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'A young child looking down with trembling hands and tearful eyes, feeling guilty and scared, soft dramatic shadows, storybook gouache painting',
+        motion: 'left',
+        source: 'ভুল স্বীকার',
+        lines: [
+          { speaker: 'child', tone: 'remorseful', text: 'মা... খেলতে গিয়ে অসাবধানে আমার হাত লেগেছিল। আমি খুব ভয় পাচ্ছিলাম।' },
+          { speaker: 'mother', tone: 'gentle', text: 'আমার কাছে এসো সোনা, একটুও ভয় পেয়ো না।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'Mother kneeling down and gently wiping tears from the child’s cheek with a soft embroidered handkerchief, warm amber sunbeams, oil painting',
+        motion: 'right',
+        source: 'তিরমিজি ১৯৭৭',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'তুমি কি আমাকে বকা দেবে না মা? আমি তো ফুলদানি ভেঙে ফেলেছি।' },
+          { speaker: 'mother', tone: 'loving', text: 'জিনিসপত্র ভাঙলে আবার কেনা যায় বাবা, কিন্তু সত্যি বলার সাহস হারিয়ে গেলে তা সহজে ফিরে পাওয়া যায় না।' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'Mother and child sitting together on a woven window bench overlooking a sunlit garden, warm cozy indoor atmosphere, classical storybook painting',
+        motion: 'in',
+        source: 'সহীহ বুখারী ৬০৯৪',
+        lines: [
+          { speaker: 'mother', tone: 'warm', text: 'তুমি চাইলে বেড়ালের ওপর দোষ চাপিয়ে দিতে পারতে, কিন্তু তুমি সত্যকে বেছে নিয়েছ।' },
+          { speaker: 'child', tone: 'thoughtful', text: 'মিথ্যা বললে কি আল্লাহ অসন্তুষ্ট হতেন মা?' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'A deep dark shadowed forest path contrasting with a clear radiant sunlit highway, metaphorical storybook gouache illustration',
+        motion: 'left',
+        source: 'সূরা তাওবা ১১৯',
+        lines: [
+          { speaker: 'mother', tone: 'gentle', text: 'মিথ্যা মানুষকে সাময়িক বিপদ থেকে বাঁচাতে পারে, কিন্তু অন্তরে ভয় আর অশান্তি ঢুকিয়ে দেয়। আর সত্য সবসময় মুক্তি দেয়।' },
+          { speaker: 'child', tone: 'earnest', text: 'তাহলে যে কোনো পরিস্থিতিতেই সবসময় সত্যি কথা বলতে হয় মা?' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'Mother and child smiling together while sweeping the broken ceramic pieces into a small brass dustpan, warm glowing room, oil painting',
+        motion: 'right',
+        source: 'সততার মর্যাদা',
+        lines: [
+          { speaker: 'mother', tone: 'proud', text: 'হ্যাঁ মানিক। নবীজি বলেছেন, সত্য মানুষকে পুণ্যের পথ দেখায় আর পুণ্য নিয়ে যায় জান্নাতে।' },
+          { speaker: 'child', tone: 'happy', text: 'আমি প্রতিজ্ঞা করলাম মা, জীবনে যত বড় ভুলই হোক, তোমার কাছে কখনো মিথ্যা বলব না।' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'A vibrant green sprout blooming with a single white flower in a rustic clay pot on a sunlit windowsill, peaceful fairytale oil painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'আল্লাহ তোমার অন্তরকে সত্যের আলো দিয়ে পূর্ণ করুন সোনা। সত্যবাদীরাই আল্লাহর সবচেয়ে প্রিয় বান্দা।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 02: খাবার খাওয়ার সুন্দর আদব ─────────────────────────────────
+  {
+    day: 2,
+    title: 'খাবার খাওয়ার সুন্দর আদব',
+    description:
+      'খাবারের শুরুতে বিসমিল্লাহ বলা, ডান হাতে নিজের সামনে থেকে খাওয়া এবং অপচয় না করা খাবারের বরকত বৃদ্ধির উপায়।\n\nসূত্র: সহীহ বুখারী ৫৩৭৬ · সহীহ মুসলিম ২০২৩ · তিরমিজি ৩৪৫৮',
+    hashtags: ['#খাবারের_আদব', '#মায়ের_শিক্ষা', '#সুন্নাত', '#পারিবারিক_শিক্ষা', '#হিকমাহ', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A rustic low wooden dining table laden with steaming bowls of fragrant vegetable soup, warm flatbread, and fresh ripe dates, warm oil painting',
+        motion: 'in',
+        source: 'পারিবারিক খাবার',
+        lines: [
+          { speaker: 'child', tone: 'hungry', text: 'মা, খুব ক্ষুধা লেগেছে! এই সুস্বাদু রুটি আর স্যুপটা আমি তাড়াতাড়ি খেয়ে নিই?' },
+          { speaker: 'mother', tone: 'warm', text: 'একটু ধীরেসুস্থে বসো বাবা। খাওয়ার শুরুতে সুন্দর একটা নিয়ম মনে আছে কি?' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'Mother gently holding the child’s eager left hand and guiding the right hand forward, warm ambient kitchen lighting, storybook gouache painting',
+        motion: 'left',
+        source: 'সহীহ বুখারী ৫৩৭৬',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'কোন নিয়মটা মা? আমি তো হাত ধুয়েই টেবিলে বসেছি।' },
+          { speaker: 'mother', tone: 'gentle', text: 'খাবার মুখে তোলার আগে আল্লাহর নাম নিয়ে বলতে হয়—বিসমিল্লাহ।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'A small child politely saying Bismillah with right hand reaching toward the near edge of a hand-painted ceramic bowl, storybook illustration',
+        motion: 'right',
+        source: 'সহীহ মুসলিম ২০২৩',
+        lines: [
+          { speaker: 'child', tone: 'happy', text: 'বিসমিল্লাহ! মা, আমি কোন হাত দিয়ে খাব আর কোথা থেকে শুরু করব?' },
+          { speaker: 'mother', tone: 'warm', text: 'নবীজি উমর ইবনে আবি সালামাকে বলেছিলেন—ডান হাতে খাও এবং পাত্রের নিজের সামনের অংশ থেকে খাও।' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'A large shared platter with food taken neatly from the edges, steam rising gently, golden afternoon light, classical fairytale painting',
+        motion: 'in',
+        source: 'আদাবুল মুফরাদ',
+        lines: [
+          { speaker: 'child', tone: 'wondering', text: 'মাঝখান থেকে বা অন্যের সামনে থেকে খাবার তুলে নিলে কী হয় মা?' },
+          { speaker: 'mother', tone: 'gentle', text: 'তাতে অন্যের মনে কষ্ট হতে পারে সোনা। খাবারের বরকত সবসময় পাত্রের মাঝখানে নাযিল হয়, তাই কিনারা থেকে খেতে হয়।' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'Child carefully wiping the plate clean with a piece of bread, not leaving a single grain behind, warm cozy dining room, oil painting',
+        motion: 'left',
+        source: 'অপচয়রোধ',
+        lines: [
+          { speaker: 'mother', tone: 'caring', text: 'প্লেটে কোনো খাবার ফেলে রাখবে না বাবা। কোন দানায় বরকত আছে তা আমরা কেউ জানি না।' },
+          { speaker: 'child', tone: 'earnest', text: 'আমি প্লেটের শেষ কণা পর্যন্ত সবটুকু খেয়ে নিচ্ছি মা, কোনো খাবার নষ্ট করব না।' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'A sparkling clean brass cup of pure water held with both hands while sitting down, soft sunbeams, gouache painting',
+        motion: 'right',
+        source: 'সুন্নাত',
+        lines: [
+          { speaker: 'child', tone: 'polite', text: 'মা, পানি খাওয়ার সময়ও কি বসে বসে তিন চুমুকে খেতে হয়?' },
+          { speaker: 'mother', tone: 'proud', text: 'মাশাআল্লাহ! বসে ডান হাতে তিন নিঃশ্বাসে পানি পান করাই হলো সুন্নাত।' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'Child and mother with hands raised in gratitude after meal, serene dining room bathed in golden sunset, fairytale oil painting',
+        motion: 'out',
+        source: 'তিরমিজি ৩৪৫৮',
+        lines: [
+          { speaker: 'child', tone: 'joyful', text: 'আলহামদুলিল্লাহিল্লাজি আতআমানা ওয়া সাক্বানা ওয়া জাআলানা মিনাল মুসলিমীন!' },
+          { speaker: 'mother', tone: 'loving', text: 'আল্লাহ তোমার খাদ্যে বরকত দিন এবং তোমার জীবনকে কৃতজ্ঞতায় ভরিয়ে রাখুন মানিক।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 03: সালামের মিষ্টি উপহার ────────────────────────────────────
+  {
+    day: 3,
+    title: 'সালামের মিষ্টি উপহার',
+    description:
+      'সালাম হলো শান্তির দোয়া ও ভালোবাসার চাবিকাঠি। ঘরে প্রবেশের পূর্বে সালাম দেওয়া পরিবারের মধ্যে রহমত ডেকে আনে।\n\nসূত্র: সূরা আন-নূর ৬১ · সহীহ মুসলিম ৫৪ · তিরমিজি ২৬৯৮',
+    hashtags: ['#সালাম', '#মায়ের_শিক্ষা', '#পারিবারিক_শিক্ষা', '#শান্তি', '#হিকমাহ', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'An ancient heavy wooden arched door decorated with hanging dried herbs, shoes neatly aligned outside on stone steps, vintage storybook oil painting',
+        motion: 'in',
+        source: 'সূরা আন-নূর ৬১',
+        lines: [
+          { speaker: 'child', tone: 'rushing', text: 'মা, আমি বন্ধুদের সাথে মাঠ থেকে খেলে ফিরে এসেছি!' },
+          { speaker: 'mother', tone: 'warm', text: 'একটু দাঁড়াও বাবা। ঘরে ঢোকার সময় সবচেয়ে দামি উপহারটা দিলে না?' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'A young child stopping at the threshold, looking curiously at mother standing in the sunlit hallway, storybook gouache painting',
+        motion: 'left',
+        source: 'সালামের মহত্ত্ব',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'দামি উপহার? আমার পকেটে তো কোনো উপহার নেই মা!' },
+          { speaker: 'mother', tone: 'gentle', text: 'সালামের চেয়ে দামি উপহার আর কী হতে পারে সোনা? ঘরে প্রবেশের আগেই সালাম দিতে হয়।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'A small child smiling warmly with hands held respectfully in front, eyes glowing with sincerity, classical oil painting',
+        motion: 'right',
+        source: 'সহীহ মুসলিম ৫৪',
+        lines: [
+          { speaker: 'child', tone: 'polite', text: 'আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহু, মা!' },
+          { speaker: 'mother', tone: 'loving', text: 'ওয়া আলাইকুমুস সালাম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহু, আমার মানিক!' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'Mother hugging the child warmly by the entrance, soft golden evening light falling through carved wooden screens, gouache painting',
+        motion: 'in',
+        source: 'তিরমিজি ২৬৯৮',
+        lines: [
+          { speaker: 'child', tone: 'thoughtful', text: 'মা, সালামের পুরো অর্থটা আমাকে একটু বুঝিয়ে বলবে?' },
+          { speaker: 'mother', tone: 'warm', text: 'সালামের অর্থ হলো—আল্লাহর পক্ষ থেকে আপনার ওপর শান্তি, রহমত ও বরকত বর্ষিত হোক।' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'Two village children greeting each other happily on a quaint cobblestone pathway, birds singing in trees, fairytale storybook illustration',
+        motion: 'left',
+        source: 'সহীহ মুসলিম ৫৪',
+        lines: [
+          { speaker: 'mother', tone: 'gentle', text: 'নবীজি বলেছেন, তোমরা পরস্পরের মধ্যে সালামের প্রসার ঘটাও, তবেই তোমাদের মাঝে গভীর ভালোবাসা তৈরি হবে।' },
+          { speaker: 'child', tone: 'earnest', text: 'যদি আমি অপরিচিত কাউকে দেখি, তাকেও কি সালাম দেব মা?' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'A child smiling and waving politely to an elderly neighbor tending flowers in a village garden, warm golden hour, oil painting',
+        motion: 'right',
+        source: 'সহীহ বুখারী ১২',
+        lines: [
+          { speaker: 'mother', tone: 'proud', text: 'হ্যাঁ বাবা! পরিচিত-অপরিচিত সব মুসলমানকেই সালাম দিতে হয়। আর যে আগে সালাম দেয়, সে আল্লাহর বেশি নিকটবর্তী।' },
+          { speaker: 'child', tone: 'happy', text: 'তাহলে কাল থেকে স্কুলে ঢুকেই আমি সবাইকে আগে আগে সালাম দেব মা!' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'A glowing warm brass lantern lighting a peaceful home corridor, rugs and books arranged neatly, serene fairytale oil painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'সালাম তোমার মুখে সবসময় ফুটে থাকুক। সালাম দিলে অন্তরের অহংকার দূর হয়ে যায়।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 04: রাগ হলে এক ঢোক পানি ─────────────────────────────────────
+  {
+    day: 4,
+    title: 'রাগ হলে এক ঢোক পানি',
+    description:
+      'রাগ শয়তানের প্ররোচনা। রাগ উঠলে দাঁড়িয়ে থাকলে বসে পড়া, ঠান্ডা পানি পান করা এবং নীরব থাকা আত্মসংযমের সর্বোত্তম উপায়।\n\nসূত্র: আবু দাউদ ৪৭৮৪ · মুসনাদে আহমাদ ২১৩৬ · সহীহ বুখারী ৬১১৪',
+    hashtags: ['#রাগ_নিয়ন্ত্রণ', '#ধৈর্য', '#মায়ের_শিক্ষা', '#আত্মসংযম', '#হিকমাহ', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A child standing with clenched fists, red flushed cheeks, stomping on the woven floor mat beside broken wooden building blocks, vintage oil painting',
+        motion: 'in',
+        source: 'আত্মসংযম',
+        lines: [
+          { speaker: 'child', tone: 'angry', text: 'আমার সাধের কাঠের খেলনাটা ভাইয়া ভেঙে ফেলেছে! আমি এখনই ওকে মেরে ফেলব!' },
+          { speaker: 'mother', tone: 'calm', text: 'একদম থামো বাবা। রেগে গিয়ে চিৎকার করতে নেই।' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'Mother pouring cold water from an earthen pitcher into a clear glass, fresh mint leaves inside, peaceful ambient lighting, gouache painting',
+        motion: 'left',
+        source: 'আবু দাউদ ৪৭৮৪',
+        lines: [
+          { speaker: 'child', tone: 'impatient', text: 'তুমি ওকে কিছু না বলে আমাকে থামতে বলছ কেন মা? আমার খুব রাগ হচ্ছে!' },
+          { speaker: 'mother', tone: 'gentle', text: 'আগে এই ঠান্ডা পানিটুকু এক চুমুকে খেয়ে নাও সোনা, তারপর আমার সাথে কথা বলো।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'Child sitting down on a low wooden bench, slowly sipping the cool water from the glass, breathing calming down, storybook illustration',
+        motion: 'right',
+        source: 'মুসনাদে আহমাদ ২১৩৬',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'পানি খেলে কি রাগ চলে যায় মা? আমার মনটা কেমন যেন একটু শান্ত লাগছে।' },
+          { speaker: 'mother', tone: 'warm', text: 'রাগ আসে শয়তান থেকে, শয়তান আগুনের তৈরি, আর আগুন নিভিয়ে দিতে পারে শুধু পানি।' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'Mother sitting beside the child, putting an arm around his shoulders, gentle breeze blowing curtains, classical fairytale painting',
+        motion: 'in',
+        source: 'আবু দাউদ ৪৭৮২',
+        lines: [
+          { speaker: 'mother', tone: 'gentle', text: 'নবীজি শিখিয়েছেন, রাগ উঠলে দাঁড়িয়ে থাকলে বসে পড়তে হয়, আর বসে থাকলে শুয়ে পড়তে হয়।' },
+          { speaker: 'child', tone: 'thoughtful', text: 'যদি মুখে কোনো খারাপ কথা বলতে ইচ্ছে করে মা?' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'Mother placing a gentle finger on her lips, teaching silence during anger, warm cozy atmosphere, storybook gouache painting',
+        motion: 'left',
+        source: 'মুসনাদে আহমাদ ২১৩৬',
+        lines: [
+          { speaker: 'mother', tone: 'warm', text: 'তখন পুরোপুরি চুপ থাকবে। রাগের মাথায় মানুষ এমন কথা বলে ফেলে যার জন্য সারাজীবন আফসোস করতে হয়।' },
+          { speaker: 'child', tone: 'remorseful', text: 'আমি যদি ভাইয়াকে মারতাম, ও খুব কষ্ট পেত মা... আমি ভুল করতে যাচ্ছিলাম।' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'Two brothers sitting together on the rug, carefully assembling the wooden blocks back into a castle, warm lighting, oil painting',
+        motion: 'right',
+        source: 'সহীহ বুখারী ৬১১৪',
+        lines: [
+          { speaker: 'mother', tone: 'proud', text: 'নবীজি বলেছেন, আসল বীর সে নয় যে কুস্তিতে অন্যকে আছাড় দেয়; আসল বীর তো সেই যে রাগের সময় নিজেকে ধরে রাখে।' },
+          { speaker: 'child', tone: 'happy', text: 'আমি তাহলে ভাইয়াকে মাফ করে দিয়ে একসাথে খেলনাটা বানাই মা!' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'Mother smiling contentedly while watching the brothers share toys peacefully, sunset casting warm golden rays, fairytale oil painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'যে নিজের রাগকে দমন করে, আল্লাহ তার অন্তরকে প্রশান্তি আর ঈমান দিয়ে ভরিয়ে দেন।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 05: পশুপাখির প্রতি মায়াময় হৃদয় ──────────────────────────────
+  {
+    day: 5,
+    title: 'পশুপাখির প্রতি মায়াময় হৃদয়',
+    description:
+      'সৃষ্টির প্রতিটি অবলা জীবের প্রতি দয়া প্রদর্শন করা জান্নাত লাভের উসিলা। পিপাসার্ত পাখিকে পানি পান করানো মহান সদকা।\n\nসূত্র: সহীহ বুখারী ২৩৬৩ · তিরমিজি ১৯২৪',
+    hashtags: ['#জীবপ্রেম', '#মায়ের_শিক্ষা', '#দয়া', '#সদকা', '#পারিবারিক_শিক্ষা', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A sunbaked stone terrace during a blistering hot afternoon, two tiny dusty sparrows panting with open beaks under the scorching sun, vintage oil painting',
+        motion: 'in',
+        source: 'সৃষ্টির সেবা',
+        lines: [
+          { speaker: 'child', tone: 'concerned', text: 'মা, বারান্দার রোদটা দেখো! চড়ুই পাখি দুটো কেমন হাঁপাচ্ছে, ওদের খুব কষ্ট হচ্ছে।' },
+          { speaker: 'mother', tone: 'caring', text: 'ওরা পিপাসায় ছটফট করছে বাবা। প্রচণ্ড রোদে কোথাও একটু পানি খুঁজে পাচ্ছে না।' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'A child filling an earthen clay saucer with crystal clear water from a jug, mother standing beside with a handful of grain seeds, gouache painting',
+        motion: 'left',
+        source: 'সহীহ বুখারী ২৩৬৩',
+        lines: [
+          { speaker: 'child', tone: 'eager', text: 'মা, আমি কি এই মাটির সানকিতে ঠান্ডা পানি আর কিছু চাল নিয়ে যাই?' },
+          { speaker: 'mother', tone: 'warm', text: 'হ্যাঁ সোনা। সাবধানে বারান্দার রেলিংয়ের ছায়ায় রেখে এসো যাতে ওরা ভয় না পায়।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'Two sparrows eagerly dipping their beaks into the clean water, droplets scattering in the sunlight, child peeking from behind window curtain, storybook illustration',
+        motion: 'right',
+        source: 'রহমত',
+        lines: [
+          { speaker: 'child', tone: 'joyful', text: 'মা দেখো দেখো! পাখি দুটো কি তৃপ্তি নিয়ে পানি খাচ্ছে! ওদের ডানা ঝাপটানো দেখে মনটা ভরে গেল!' },
+          { speaker: 'mother', tone: 'gentle', text: 'ওরা কিন্তু ওদের ভাষায় আল্লাহর কাছে তোমার জন্য শুকরিয়া আদায় করছে সোনা।' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'An ancient storybook painting depicting a traveler lowering a leather sock into a desert well to save a thirsty panting dog, classical fairytale style',
+        motion: 'in',
+        source: 'সহীহ বুখারী ৩৩২১',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'পাখিদের পানি খাওয়ালে কি আমরা কোনো সওয়াব পাই মা?' },
+          { speaker: 'mother', tone: 'warm', text: 'নবীজি বলেছেন, এক ব্যক্তি তৃষ্ণার্ত কুকুরকে পানি খাইয়েছিল বলে আল্লাহ তাকে ক্ষমা করে জান্নাত দান করেছিলেন।' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'A gentle mother and child placing a wooden bird feeder under the shade of an olive tree in courtyard, gouache painting',
+        motion: 'left',
+        source: 'তিরমিজি ১৯২৪',
+        lines: [
+          { speaker: 'child', tone: 'amazed', text: 'শুধু একটা প্রাণীকে পানি খাইয়েই জান্নাত পাওয়া যায়?' },
+          { speaker: 'mother', tone: 'gentle', text: 'হ্যাঁ বাবা। প্রতিটি জীবন্ত প্রাণের সেবায় রয়েছে মহাপুরস্কার। সৃষ্টির প্রতি দয়া করাই স্রষ্টার সন্তুষ্টি।' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'Doves and sparrows flying peacefully across a brilliant blue sky above blooming courtyards, golden sunlight, oil painting',
+        motion: 'right',
+        source: 'আবু দাউদ ৪৯৪১',
+        lines: [
+          { speaker: 'child', tone: 'earnest', text: 'আমি প্রতিদিন সকালে ঘুম থেকে উঠে এই পাত্রটা ধুয়ে নতুন পানি আর খাবার দিয়ে দেব মা।' },
+          { speaker: 'mother', tone: 'proud', text: 'মাশাআল্লাহ! যে নিয়মিত এমন ছোট ছোট ভালো কাজ করে, তার ঘরে সবসময় রহমত বিরাজ করে।' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'Mother holding child close by the sunlit window, sparrows singing on the sill, peaceful fairytale oil painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'মনে রাখবে বাবা, জমিনের অধিবাসীদের প্রতি যে দয়া দেখায়, আসমানের মালিক তার প্রতি দয়া বর্ষণ করেন।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 06: মৃদু ও মিষ্টি সুরে কথা বলা ─────────────────────────────
+  {
+    day: 6,
+    title: 'মৃদু ও মিষ্টি সুরে কথা বলা',
+    description:
+      'উঁচু গলায় চিৎকার করে কথা বলা শিষ্টাচার পরিপন্থী। কোমল ও নরম কথায় মানুষের মন জয় করা যায়।\n\nসূত্র: সূরা লোকমান ১৯ · আদাবুল মুফরাদ · সহীহ মুসলিম ২৫৯৩',
+    hashtags: ['#কোমল_ভাষা', '#মায়ের_শিক্ষা', '#কুরআনের_শিক্ষা', '#আচার_আচরণ', '#হিকমাহ', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A child standing in the middle of a hallway shouting at the top of his lungs toward the kitchen, harsh echoing sound waves, vintage oil painting',
+        motion: 'in',
+        source: 'কুরআনী আদাব',
+        lines: [
+          { speaker: 'child', tone: 'shouting', text: 'মা! আমার রঙিন পেন্সিলগুলো কোথায়? এখনই এনে দাও বলছি!' },
+          { speaker: 'mother', tone: 'calm', text: 'সোনা, এত দূর থেকে চিৎকার না করে কাছে এসে বলো তো।' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'Mother gently kneeling down at eye level with the child, placing a loving hand on the child’s shoulder, warm soft morning light, gouache painting',
+        motion: 'left',
+        source: 'সূরা লোকমান ১৯',
+        lines: [
+          { speaker: 'child', tone: 'impatient', text: 'চিৎকার না করলে তুমি শুনবে কীভাবে মা?' },
+          { speaker: 'mother', tone: 'gentle', text: 'আমি তো পাশেই আছি বাবা। কিন্তু চিৎকার করে কথা বলা সুন্দর মানুষের স্বভাব নয়।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'An open Qur’an on a carved wooden rehal beside an arched window, soft rays of sunlight touching the Arabic script, classical storybook painting',
+        motion: 'right',
+        source: 'সূরা লোকমান ১৯',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'কুরআনে কি গলার আওয়াজ নিয়ে কিছু বলা আছে মা?' },
+          { speaker: 'mother', tone: 'warm', text: 'হযরত লোকমান (আ.) তার পুত্রকে উপদেশ দিয়ে বলেছিলেন—তোমার কণ্ঠস্বর নিচু রাখো।' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'A braying donkey in a dry desert field, mouth wide open with harsh unpleasant sound, metaphorical vintage storybook illustration',
+        motion: 'in',
+        source: 'কুরআনের উপমা',
+        lines: [
+          { speaker: 'mother', tone: 'gentle', text: 'তিনি বলেছিলেন, নিশ্চয়ই সবচেয়ে অপ্রীতিকর ও কর্কশ স্বর হলো গাধার বিকট চিৎকার।' },
+          { speaker: 'child', tone: 'remorseful', text: 'আমি কি গাধার মতো চেঁচিয়েছি মা? আমার খুব লজ্জা লাগছে...' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'Blooming delicate white jasmine and honeysuckle flowers on a sunlit balcony, bees humming gently, gouache painting',
+        motion: 'left',
+        source: 'সহীহ মুসলিম ২৫৯৩',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'লজ্জা পাওয়ার কিছু নেই বাবা, তবে নিজেকে শুধরে নিতে হবে। মিষ্টি কথায় কথা বললে সবাই তোমাকে ভালোবাসবে।' },
+          { speaker: 'child', tone: 'thoughtful', text: 'নরম গলায় কথা বললে কি মানুষ আমার কথা শুনবে মা?' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'Child speaking softly to mother with a warm pleasant smile, mother handing him the missing box of colored pencils, oil painting',
+        motion: 'right',
+        source: 'আদাবুল মুফরাদ',
+        lines: [
+          { speaker: 'mother', tone: 'warm', text: 'নবীজি বলেছেন, কোমলতা যে জিনিসেই থাকে, তাকে তা সুন্দর করে তোলে। আর যাতে কোমলতা থাকে না, তা কদর্য হয়ে যায়।' },
+          { speaker: 'child', tone: 'polite', text: 'মা, দয়া করে আমার পেন্সিলের বাক্সটা দেবে? আমি মিষ্টি করেই বলছি।' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'Mother kissing the child’s forehead, peaceful serene home interior bathed in warm golden light, fairytale oil painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'এই তো আমার লক্ষ্মী সোনা! তোমার কথার মিষ্টি সুরেই তোমার ভালো চরিত্রের পরিচয় মেলে।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 07: ক্ষমা করার অপার মহত্ত্ব ─────────────────────────────────
+  {
+    day: 7,
+    title: 'ক্ষমা করার অপার মহত্ত্ব',
+    description:
+      'প্রতিশোধ নেওয়ার ক্ষমতা থাকা সত্ত্বেও ক্ষমা করে দেওয়া মুমিনের অনন্য মহত্ত্ব। যে ক্ষমা করে, আল্লাহ তার মর্যাদা বাড়িয়ে দেন।\n\nসূত্র: সূরা শুরা ৪০ · তিরমিজি ২০২৩ · সহীহ মুসলিম ২৫৮৮',
+    hashtags: ['#ক্ষমা', '#সহমর্মিতা', '#মায়ের_শিক্ষা', '#নৈতিকতা', '#পারিবারিক_শিক্ষা', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A beautifully colored drawing of a green garden torn in half lying on a wooden study table, a crying child standing beside, vintage oil painting',
+        motion: 'in',
+        source: 'নৈতিক চরিত্র',
+        lines: [
+          { speaker: 'child', tone: 'crying', text: 'মা, আমি সারাদিন ধরে বাগানটার ছবি এঁকেছিলাম! বন্ধু রাফি সেটা ছিঁড়ে ফেলেছে!' },
+          { speaker: 'mother', tone: 'caring', text: 'মন খারাপ কোরো না বাবা। রাফি কি ইচ্ছে করে ছিঁড়েছে?' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'Mother gently wiping child’s tears, child clenching small fists with anger, warm indoor lighting, storybook gouache painting',
+        motion: 'left',
+        source: 'সহমর্মিতা',
+        lines: [
+          { speaker: 'child', tone: 'angry', text: 'ও বলল অসাবধানে লেগেছে, কিন্তু আমি কাল ওর খাতাও ছিঁড়ে ফেলব!' },
+          { speaker: 'mother', tone: 'gentle', text: 'ইটের বদলে পাটকেল মারলে তো তোমাদের দুজনের মাঝে কোনো তফাত থাকবে না সোনা।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'An open hand releasing a captive white bird into the clear blue sky, symbol of letting go and forgiveness, classical fairytale painting',
+        motion: 'right',
+        source: 'সূরা শুরা ৪০',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'ও আমার ক্ষতি করেছে মা, আমি কি প্রতিশোধ নিতে পারব না?' },
+          { speaker: 'mother', tone: 'warm', text: 'কুরআনে বলা হয়েছে, যে ব্যক্তি ধৈর্য ধরে এবং ক্ষমা করে দেয়—নিশ্চয়ই তা সাহসিকতা ও মহত্ত্বের কাজ।' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'Two children sitting under a shaded tree, one looking down apologetically while the other smiles gently, gouache painting',
+        motion: 'in',
+        source: 'সহীহ মুসলিম ২৫৮৮',
+        lines: [
+          { speaker: 'child', tone: 'thoughtful', text: 'ক্ষমা করে দিলে কি মানুষ আমাকে দুর্বল ভাববে মা?' },
+          { speaker: 'mother', tone: 'gentle', text: 'কখনোই না বাবা। নবীজি বলেছেন, ক্ষমার মাধ্যমে আল্লাহ বান্দার সম্মান ও মর্যাদা কেবল বৃদ্ধিই করেন।' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'Two hands holding clear tape and carefully pasting the torn drawing back together, creating something even more precious, oil painting',
+        motion: 'left',
+        source: 'তিরমিজি ২০২৩',
+        lines: [
+          { speaker: 'mother', tone: 'caring', text: 'তুমি যদি মানুষকে ক্ষমা করো, তবে কিয়ামতের দিন আল্লাহ তোমার সমস্ত বড় বড় ভুলগুলো ক্ষমা করে দেবেন।' },
+          { speaker: 'child', tone: 'remorseful', text: 'আমি তো আল্লাহর ক্ষমা পেতে চাই মা... তাহলে রাফিকে আমি মন থেকেই মাফ করে দিই?' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'Child drawing a fresh new flower on the taped paper with a bright smile, mother assisting, warm lamplight, storybook illustration',
+        motion: 'right',
+        source: 'মহত্ত্ব',
+        lines: [
+          { speaker: 'mother', tone: 'proud', text: 'হ্যাঁ সোনা। কাল সকালে রাফিকে বলবে—আমি তোমাকে ক্ষমা করে দিয়েছি, চলো আমরা আবার একসাথে ছবি আঁকি।' },
+          { speaker: 'child', tone: 'happy', text: 'রাফি নিশ্চয়ই খুব অবাক হবে আর অনেক খুশি হবে মা!' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'Mother hugging the child warmly against a glowing sunrise window, peaceful fairytale storybook painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'ক্ষমাশীল হৃদয় হলো পৃথিবীর সবচেয়ে সুন্দর হৃদয়। তোমার এই মহত্ত্ব আল্লাহ কবুল করুন।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 08: ভাগ করে খাওয়ার অনাবিল আনন্দ ─────────────────────────────
+  {
+    day: 8,
+    title: 'ভাগ করে খাওয়ার অনাবিল আনন্দ',
+    description:
+      'নিজের প্রিয় খাবার ভাইবোন ও বন্ধুদের সাথে ভাগ করে খাওয়া ভ্রাতৃত্ব ও বরকতের প্রতীক। একা খাওয়ার চেয়ে ভাগ করে খাওয়াতে তৃপ্তি অনেক বেশি।\n\nসূত্র: সহীহ বুখারী ১৩ · সহীহ মুসলিম ২০৫৯',
+    hashtags: ['#ভাগ_করে_খাওয়া', '#মায়ের_শিক্ষা', '#ভ্রাতৃত্ব', '#বরকত', '#পারিবারিক_শিক্ষা', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A single ripe juicy mango sliced into golden sweet pieces on a rustic ceramic plate, an older child holding the plate eagerly, vintage oil painting',
+        motion: 'in',
+        source: 'পারিবারিক সদাচরণ',
+        lines: [
+          { speaker: 'child', tone: 'excited', text: 'মা, বাগানের পাকা আমটা কী মিষ্টি গন্ধ বেরোচ্ছে! আমি সবটুকু একাই খেয়ে ফেলি?' },
+          { speaker: 'mother', tone: 'warm', text: 'একটু ডানে তাকিয়ে দেখো তো বাবা, ছোট বোন কিন্তু দরজার কোণে দাঁড়িয়ে আছে।' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'A little younger sister looking shyly at the plate with big hopeful eyes, warm cozy kitchen backdrop, storybook gouache painting',
+        motion: 'left',
+        source: 'আত্মত্যাগ',
+        lines: [
+          { speaker: 'child', tone: 'hesitant', text: 'ওকে দিলে তো আমার ভাগে খুব অল্প পড়বে মা... এটা তো আমার খুব পছন্দের ফল!' },
+          { speaker: 'mother', tone: 'gentle', text: 'একা খেলে শুধু পেট ভরে মানিক, কিন্তু ভাগ করে খেলে অন্তরটা শান্তিতে ভরে যায়।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'Older brother lovingly handing the largest golden mango slice to the younger sister, her face lighting up with a radiant grin, oil painting',
+        motion: 'right',
+        source: 'সহীহ বুখারী ১৩',
+        lines: [
+          { speaker: 'child', tone: 'generous', text: 'এই নাও আপুনি, বড় টুকরোটা তুমি খাও! আমরা একসাথে খাব।' },
+          { speaker: 'mother', tone: 'proud', text: 'নবীজি বলেছেন, তোমরা ততক্ষণ পর্যন্ত পূর্ণ মুমিন হতে পারবে না, যতক্ষণ না নিজের ভাইয়ের জন্য তা পছন্দ করবে যা নিজের জন্য পছন্দ করো।' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'Two siblings sitting cross-legged on a carpet eating mangoes together, laughing cheerfully, warm afternoon sunlight, fairytale painting',
+        motion: 'in',
+        source: 'সহীহ মুসলিম ২০৫৯',
+        lines: [
+          { speaker: 'child', tone: 'joyful', text: 'মা দেখো, বোন আম খেয়ে কেমন হাসছে! একা খেলে কিন্তু এতো আনন্দ লাগত না।' },
+          { speaker: 'mother', tone: 'warm', text: 'নবীজি বলেছেন, একজনের খাবার দুজনের জন্য যথেষ্ট আর দুজনের খাবার চারজনের জন্য যথেষ্ট।' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'A mother placing a fresh bowl of sweet dates on the table beside the children, smiling gratefully, gouache painting',
+        motion: 'left',
+        source: 'বরকতের রহস্য',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'খাবার ভাগ করে দিলে খাবার কি কমে যায় না মা?' },
+          { speaker: 'mother', tone: 'gentle', text: 'বাহ্যিকভাবে কম মনে হলেও খাবারে আল্লাহ এমন বরকত ঢেলে দেন যা দিয়ে অল্পতেই তৃপ্তি চলে আসে।' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'The children wiping their sticky hands with a wet cloth, smiling at each other with pure affection, storybook illustration',
+        motion: 'right',
+        source: 'ভ্রাতৃত্বের বন্ধন',
+        lines: [
+          { speaker: 'child', tone: 'happy', text: 'আমি এখন থেকে টিফিনের খাবারও বন্ধুদের সাথে ভাগ করে খাব মা।' },
+          { speaker: 'mother', tone: 'proud', text: 'মাশাআল্লাহ! যে হাত দেওয়ার জন্য প্রসারিত হয়, সে হাত কখনোই শূন্য থাকে না সোনা।' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'Mother wrapping both children in a warm embrace by the sunlit window, peaceful fairytale oil painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'ভালোবাসা ভাগ করলে বাড়ে, খাবার ভাগ করলে বরকত বাড়ে। আল্লাহ তোমাদের চিরকাল এমন মিল রাখুন।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 09: ঘরে প্রবেশের অনুমতি বা ইস্তিজান ──────────────────────────
+  {
+    day: 9,
+    title: 'ঘরে প্রবেশের অনুমতি বা ইস্তিজান',
+    description:
+      'কারো ঘরে বা ব্যক্তিগত কক্ষে প্রবেশের পূর্বে অনুমতি চাওয়া এবং দরজায় তিনবার মৃদু আঘাত করা ইসলামের সুন্দর শালীনতা।\n\nসূত্র: সূরা আন-নূর ২৭-২৮ · সহীহ বুখারী ৬২৪৫ · সহীহ মুসলিম ২১৫৩',
+    hashtags: ['#অনুমতি', '#ইস্তিজান', '#মায়ের_শিক্ষা', '#শিষ্টাচার', '#পারিবারিক_শিক্ষা', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A closed heavy wooden carved bedroom door, a child running quickly down the hallway about to push the door handle open, vintage oil painting',
+        motion: 'in',
+        source: 'সূরা আন-নূর ২৭',
+        lines: [
+          { speaker: 'child', tone: 'excited', text: 'মা, আমি একটা মজার জিনিস দেখাব! আমি দরজা খুলে ভেতরে ঢুকছি!' },
+          { speaker: 'mother', tone: 'calm', text: 'একটু থামো সোনা! কারো ঘরে এভাবে হঠাৎ করে দরজা ঠেলে ঢুকতে নেই।' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'A child standing outside the closed door, looking puzzled, knuckles raised near the wooden panel, storybook gouache painting',
+        motion: 'left',
+        source: 'অনুমতির নিয়ম',
+        lines: [
+          { speaker: 'child', tone: 'curious', text: 'মা, এটা তো আমাদের নিজেদের ঘর! এখানেও কি অনুমতি নিতে হবে?' },
+          { speaker: 'mother', tone: 'gentle', text: 'হ্যাঁ বাবা। এমনকি মা-বাবার ঘরে প্রবেশের আগেও অনুমতি নিতে হয়। একে ইসলামে বলে ইস্তিজান।' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'Child tapping gently three times with knuckles on the door, standing slightly to the side of the doorframe, classical oil painting',
+        motion: 'right',
+        source: 'সহীহ বুখারী ৬২৪৫',
+        lines: [
+          { speaker: 'child', tone: 'polite', text: 'তাহলে অনুমতি নেওয়ার সঠিক নিয়মটা কী মা?' },
+          { speaker: 'mother', tone: 'warm', text: 'দরজায় আস্তে তিনবার টোকা দেবে, তারপর সালাম দিয়ে বলবে—আমি কি ভেতরে আসতে পারি?' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'Child standing politely looking away from the doorway slit, not peeking inside, warm corridor lighting, storybook illustration',
+        motion: 'in',
+        source: 'সহীহ মুসলিম ২১৫৩',
+        lines: [
+          { speaker: 'mother', tone: 'gentle', text: 'আর দরজার ঠিক সামনাসামনি দাঁড়াবে না, একটু পাশে দাঁড়াবে যাতে দরজা খুললে ভেতরে নজর না পড়ে।' },
+          { speaker: 'child', tone: 'thoughtful', text: 'ভেতর থেকে যদি তিনবার ডাকার পরও কেউ সাড়া না দেয় মা?' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'A child quietly stepping back from a closed door and returning to the living room peacefully, fairytale gouache painting',
+        motion: 'left',
+        source: 'সূরা আন-নূর ২৮',
+        lines: [
+          { speaker: 'mother', tone: 'warm', text: 'কুরআনে আল্লাহ বলেছেন, যদি বলা হয় ফিরে যাও, তবে চুপচাপ ফিরে যাবে। কোনো রাগ বা জেদ করবে না।' },
+          { speaker: 'child', tone: 'remorseful', text: 'আমি তো আগে কখনো অনুমতি চাইতাম না... আমি দুঃখিত মা।' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'Mother opening the door with a welcoming smile, inviting child into the sunlit cozy room, oil painting',
+        motion: 'right',
+        source: 'ব্যক্তিগত শালীনতা',
+        lines: [
+          { speaker: 'mother', tone: 'proud', text: 'মানুষের ঘরের ভেতরে ব্যক্তিগত কাজকর্ম থাকতে পারে বাবা। তাদের গোপনীয়তাকে সম্মান করাই বড় শিষ্টাচার।' },
+          { speaker: 'child', tone: 'happy', text: 'আসসালামু আলাইকুম মা! আমি কি এখন ভেতরে আসতে পারি?' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'Mother embracing the child with deep affection in the peaceful room, golden sunbeams streaming, fairytale oil painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'ওয়া আলাইকুমুস সালাম সোনা! স্বাগতম। এই সুন্দর আদব তোমাকে সবার কাছে সম্মানিত করবে।' },
+        ],
+      },
+    ],
+  },
+
+  // ── DAY 10: এক ফোঁটা পানিও অপচয় নয় ────────────────────────────────
+  {
+    day: 10,
+    title: 'এক ফোঁটা পানিও অপচয় নয়',
+    description:
+      'পানি আল্লাহর অমূল্য নেয়ামত। অজু, ব্রাশ বা গোসলের সময়ও এক ফোঁটা পানি অকারণে নষ্ট করা নিষিদ্ধ। অপচয়কারী শয়তানের ভাই।\n\nসূত্র: সূরা আল-আরাফ ৩১ · ইবনে মাজাহ ৪২৫ · সূরা বনি ইসরাইল ২৭',
+    hashtags: ['#অপচয়রোধ', '#পানি_সংরক্ষণ', '#মায়ের_শিক্ষা', '#নেয়ামত', '#পারিবারিক_শিক্ষা', '#reels', '#shorts'],
+    scenes: [
+      {
+        id: '01',
+        prompt: 'A brass faucet fully turned on with clean clear water gushing into an overflowing stone basin while toothbrush lies on the edge, vintage oil painting',
+        motion: 'in',
+        source: 'সূরা আল-আরাফ ৩১',
+        lines: [
+          { speaker: 'mother', tone: 'caring', text: 'বাবা, তুমি দাঁত ব্রাশ করছ অথচ পানির কলটা পুরো ছেড়ে রেখেছ!' },
+          { speaker: 'child', tone: 'innocent', text: 'মা, আমি তো ব্রাশ শেষ করেই বন্ধ করব। একটু পানি পড়লে কী আর হবে?' },
+        ],
+      },
+      {
+        id: '02',
+        prompt: 'Mother’s gentle hand turning the brass tap off, stopping the rush of water, warm morning bathroom window light, storybook gouache painting',
+        motion: 'left',
+        source: 'ইবনে মাজাহ ৪২৫',
+        lines: [
+          { speaker: 'mother', tone: 'gentle', text: 'একটু একটু করেই অনেক পানি অপচয় হয়ে যায় বাবা। পানি আল্লাহর এক অমূল্য দান।' },
+          { speaker: 'child', tone: 'curious', text: 'কিন্তু আমাদের ট্যাংকে তো প্রচুর পানি আছে মা, নদী বা সাগরেও কি পানি কম?' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: 'An ancient miniature painting depicting Prophet’s companions performing wudhu beside a flowing river with minimal water, classical fairytale art',
+        motion: 'right',
+        source: 'ইবনে মাজাহ ৪২৫',
+        lines: [
+          { speaker: 'mother', tone: 'warm', text: 'নবীজি একবার হযরত সাদ (রা.)-কে বললেন, প্রবহমান নদীর তীরে বসে অজু করলেও অতিরিক্ত পানি খরচ কোরো না।' },
+          { speaker: 'child', tone: 'amazed', text: 'নদীর তীরে বসেও অপচয় করা নিষেধ ছিল মা?!' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: 'A dry cracked desert landscape under scorching sun where children walk miles carrying water pots on heads, dramatic storybook illustration',
+        motion: 'in',
+        source: 'সূরা বনি ইসরাইল ২৭',
+        lines: [
+          { speaker: 'mother', tone: 'serious', text: 'হ্যাঁ সোনা। পৃথিবীতে কত হাজারো শিশু এক ঢোক বিশুদ্ধ পানির জন্য মাইলের পর মাইল রোদে হাঁটে জানো?' },
+          { speaker: 'child', tone: 'sad', text: 'আমি তো ওদের কথা কখনো ভাবিনি মা... আমার ফেলে দেওয়া পানি ওদের কাজে লাগতে পারত।' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: 'A small terracotta clay mug filled with just enough water placed neatly beside the basin, gouache painting',
+        motion: 'left',
+        source: 'মগ ব্যবহারের সুন্নাত',
+        lines: [
+          { speaker: 'mother', tone: 'warm', text: 'ব্রাশ করার সময় বা অজু করার সময় মগে পানি নিয়ে নিলে এক ফোঁটাও বাড়তি নষ্ট হয় না।' },
+          { speaker: 'child', tone: 'earnest', text: 'আমি এখন থেকে মগ ব্যবহার করব মা, কল কখনো অকারণে ছেড়ে রাখব না।' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: 'Child carefully turning off an unneeded room lamp and closing a leaking tap tightly, smiling proudly, oil painting',
+        motion: 'right',
+        source: 'সূরা আল-আরাফ ৩১',
+        lines: [
+          { speaker: 'mother', tone: 'proud', text: 'শুধু পানি নয় বাবা; খাবার, বিদ্যুৎ, কাগজ—সবকিছুর পরিমিত ব্যবহারই হলো মুমিনের চরিত্র।' },
+          { speaker: 'child', tone: 'happy', text: 'কুরআনে অপচয়কারীদের শয়তানের ভাই বলা হয়েছে, তাই না মা?' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: 'Mother gently patting child’s shoulder in a bright sunlit kitchen, sparkling water glasses on the wooden table, fairytale oil painting',
+        motion: 'out',
+        source: 'হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'একদম ঠিক। যে নেয়ামতের কদর করে, আল্লাহ তার নেয়ামত আরও বহুগুণ বাড়িয়ে দেন।' },
+        ],
+      },
+    ],
+  },
+];
+
+// ── DAYS 11 to 30 generator to complete all 30 days richly ──────────────
+const remainingDaysConfig = [
+  {
+    day: 11,
+    title: 'পরিচ্ছন্নতা ঈমানের অঙ্গ',
+    desc: 'নিজের ঘর, খেলনা ও পোশাক পরিপাটি রাখা ঈমানের সৌন্দর্যের প্রতিফলন। পরিচ্ছন্ন হৃদয়ে আল্লাহর নূর জ্বলে।\n\nসূত্র: সহীহ মুসলিম ২২৩ · তিরমিজি ২৭৯৯',
+    tags: ['#পরিচ্ছন্নতা', '#শৃঙ্খলা', '#মায়ের_শিক্ষা', '#ঈমান', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'মেঝেতে খেলনা ফেলে রেখে উঠে যাচ্ছ কেন বাবা?',
+    c2: 'পরে গুছাব মা, এখন তো খেলা শেষ!',
+    lesson: 'নবীজি বলেছেন, পবিত্রতা ও পরিচ্ছন্নতা ঈমানের অর্ধেক অঙ্গ।',
+    action: 'সব খেলনা ঝুড়িতে গুছিয়ে রাখা এবং জুতো ঠিকমতো সাজানো।',
+  },
+  {
+    day: 12,
+    title: 'বড়দের সম্মান ও ছোটদের স্নেহ',
+    desc: 'পরিবারের বয়োজ্যেষ্ঠ ও মুরুব্বিদের সম্মান করা এবং ছোটদের ভালোবাসা দেওয়া আদর্শ মুসলিম পরিবারের ভিত্তি।\n\nসূত্র: তিরমিজি ১৯১৯ · আবু দাউদ ৪৯৪৩',
+    tags: ['#বড়দের_সম্মান', '#স্নেহ', '#মায়ের_শিক্ষা', '#পারিবারিক_শিক্ষা', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'দাদু লাঠিতে ভর দিয়ে ঘরে এলে উঠে দাঁড়াতে হয় সোনা।',
+    c2: 'আমি তো সোফায় বসে খেলা করছিলাম মা!',
+    lesson: 'বড়দের আসন ছেড়ে দেওয়া ও সালাম দিয়ে বসার ব্যবস্থা করা আদাব।',
+    action: 'দাদুর হাত ধরে সম্মানের সাথে সোফায় বসিয়ে দেওয়া ও দোয়া নেওয়া।',
+  },
+  {
+    day: 13,
+    title: 'গাছ লাগানো ও প্রকৃতির সেবা',
+    desc: 'একটি গাছ লাগানো একটি চিরস্থায়ী সদকা (সদকায়ে জারিয়া)। পশুপাখি বা মানুষ সেই গাছ থেকে উপকৃত হলে প্রতিদান মেলে।\n\nসূত্র: সহীহ বুখারী ২৩২০ · সহীহ মুসলিম ১৫৫৩',
+    tags: ['#গাছ_লাগানো', '#প্রকৃতিপ্রেম', '#মায়ের_শিক্ষা', '#সদকা', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'ছোট্ট ফলের বীজটা মাটিতে পুঁতে দিলে কি সত্যিই বড় গাছ হবে মা?',
+    c2: 'ধৈর্য ধরে পানি দিলে আল্লাহর হুকুমে ফলভর্তি গাছ হবে সোনা।',
+    lesson: 'গাছ থেকে পাখি বা মানুষ ফল ও ছায়া পেলে তা সদকায়ে জারিয়া হয়।',
+    action: 'প্রতিদিন সকালবেলায় ছোট্ট গাছে নিজ হাতে পানি দেওয়া।',
+  },
+  {
+    day: 14,
+    title: 'অন্যের জিনিসে অনুমতি নেওয়া',
+    desc: 'কারো ব্যক্তিগত জিনিস অনুমতি ছাড়া স্পর্শ করা অনুচিত। অন্যের অধিকারকে মর্যাদা দেওয়াই আমানতদারিতা।\n\nসূত্র: তিরমিজি ১২৬৮ · ইসলামি শিষ্টাচার',
+    tags: ['#আমানত', '#অনুমতি', '#মায়ের_শিক্ষা', '#চরিত্র', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'আপু তো ঘরে নেই, আমি কি ওর রঙের বাক্সটা একটু নিতে পারি মা?',
+    c2: 'না বাবা, জিনিসটা যার তার অনুমতি ছাড়া হাত দেওয়া ঠিক নয়।',
+    lesson: 'অনুমতি চাইলে সম্পর্ক সুন্দর থাকে আর আমানত রক্ষা পায়।',
+    action: 'আপু ফিরলে বিনয়ের সাথে চেয়ে নেওয়া এবং কাজ শেষে ধন্যবাদ দিয়ে ফেরত দেওয়া।',
+  },
+  {
+    day: 15,
+    title: 'হিংসা নয়, সবার জন্য শুভকামনা',
+    desc: 'অন্যের সৌভাগ্যে হিংসা না করে ‘মাশাআল্লাহ’ বলা ও বরকতের দোয়া করা আত্মিক শান্তির চাবিকাঠি।\n\nসূত্র: আবু দাউদ ৪৯০৩ · ইবনে মাজাহ ৩৫০৯',
+    tags: ['#হিংসা_বর্জন', '#শুভকামনা', '#মায়ের_শিক্ষা', '#অন্তরশুদ্ধি', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'বন্ধুর নতুন সুন্দর খেলনা দেখে আমার মন খারাপ হচ্ছে মা...',
+    c2: 'অন্যের ভালো দেখে চোখ টাটিয়ে হিংসা করতে নেই মানিক।',
+    lesson: 'হিংসা আগুন যেমন কাঠ পোড়ায়, তেমনি ভালো আমলকে পুড়িয়ে দেয়।',
+    action: 'অন্যের ভালো দেখে ‘মাশাআল্লাহ, আল্লাহ বরকত দিন’ বলা।',
+  },
+  {
+    day: 16,
+    title: 'প্রতিবেশীর অধিকার ও মিষ্টি খাবার',
+    desc: 'প্রতিবেশীর খোঁজ নেওয়া ও ঘরে রান্না হওয়া ভালো খাবার তাদের সাথে ভাগ করে নেওয়া নববী চরিত্র।\n\nসূত্র: সহীহ মুসলিম ২৬২৫ · বাইহাকী ৩২৪',
+    tags: ['#প্রতিবেশী', '#সহমর্মিতা', '#মায়ের_শিক্ষা', '#হাদিস', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'পায়েসের সুবাসে ঘর ভরে গেছে মা, আমরা কখন খাব?',
+    c2: 'আগে পাশের বাসার দাদীর ঘরে এক বাটি দিয়ে এসো বাবা।',
+    lesson: 'যে নিজে পেট ভরে খায় আর প্রতিবেশী অভুক্ত থাকে, সে পূর্ণ মুমিন নয়।',
+    action: 'সুন্দর পাত্রে খাবার ঢেকে প্রতিবেশীর ঘরে পৌঁছে দেওয়া।',
+  },
+  {
+    day: 17,
+    title: 'রাস্তা থেকে কষ্টদায়ক বস্তু সরানো',
+    desc: 'চলার পথ থেকে কাঁটা, পাথর বা ক্ষতিকর বস্তু সরিয়ে দেওয়া ঈমানের একটি শাখা ও উত্তম সদকা।\n\nসূত্র: সহীহ বুখারী ২৯৮৯ · সহীহ মুসলিম ১৯১৪',
+    tags: ['#সদকা', '#পথের_আদব', '#মায়ের_শিক্ষা', '#সদাচরণ', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'রাস্তায় একটা বড় শক্ত কাঁটার ডাল পড়ে আছে মা!',
+    c2: 'চলো বাবা, সাবধানে ডালটা একপাশে সরিয়ে রাখি।',
+    lesson: 'পথিকের পথ সহজ করে দিলে আল্লাহ তোমার জান্নাতের পথ সহজ করবেন।',
+    action: 'রাস্তা থেকে পাথর ও কাঁটা নিরাপদে সরিয়ে নেওয়া।',
+  },
+  {
+    day: 18,
+    title: 'অন্যের পেছনে কথা না বলা (গীবত)',
+    desc: 'কারো অনুপস্থিতিতে তার ত্রুটি নিয়ে আলোচনা বা উপহাস করা মারাত্মক পাপ। সম্মান রক্ষা করাই প্রকৃত শিষ্টাচার।\n\nসূত্র: সূরা হুজুরাত ১২ · সহীহ মুসলিম ২৫৮৯',
+    tags: ['#গীবত_বর্জন', '#মুখের_সংযম', '#মায়ের_শিক্ষা', '#নৈতিকতা', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'আজ ক্লাসে একজন কাদার মধ্যে পড়ে কেমন বোকা বনেছিল মা!',
+    c2: 'কারো বিপদে হাসতে নেই সোনা, সে শুনলে মনে খুব কষ্ট পাবে।',
+    lesson: 'কারো পেছনে অপ্রিয় কথা বলাই গীবত, যা মৃত ভাইয়ের গোশত খাওয়ার সমান।',
+    action: 'মুখ দিয়ে সবসময় ভালো কথা বলা, নয়তো চুপ থাকা।',
+  },
+  {
+    day: 19,
+    title: 'প্রতিশ্রুতি রক্ষা করা বা ওয়াদা পূরণ',
+    desc: 'দেওয়া কথা রক্ষা করা এবং আমানত সময়মতো ফেরত দেওয়া বিশ্বাসযোগ্য ও সম্মানিত ব্যক্তিত্বের লক্ষণ।\n\nসূত্র: সূরা বনি ইসরাইল ৩৪ · তিরমিজি ১৯৯৫',
+    tags: ['#ওয়াদা_পূরণ', '#আমানত', '#মায়ের_শিক্ষা', '#চরিত্র', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'আজ বিকেলে বন্ধুর বইটা ফেরত দেওয়ার কথা ছিল, কাল দিলে হয় না মা?',
+    c2: 'না বাবা, ওয়াদা হলো একটি পবিত্র ঋণ, যা সময়মতো পূরণ করতে হয়।',
+    lesson: 'প্রতিশ্রুতি রক্ষা করা মুমিনের নিদর্শন আর ভঙ্গ করা মুনাফিকের লক্ষণ।',
+    action: 'সময়মতো বই নিয়ে গিয়ে হাসিমুখে বন্ধুকে ধন্যবাদ দিয়ে ফেরত দেওয়া।',
+  },
+  {
+    day: 20,
+    title: 'অসুস্থ মানুষের সেবা ও খোঁজ নেওয়া',
+    desc: 'অসুস্থ মানুষের খোঁজ নেওয়া এবং তাদের জন্য সুস্থতার দোয়া করা পারস্পরিক ভ্রাতৃত্ব ও সহমর্মিতার পরাকাষ্ঠা।\n\nসূত্র: সহীহ বুখারী ৫৬৫৩ · তিরমিজি ৯৬৯',
+    tags: ['#অসুস্থের_সেবা', '#সহমর্মিতা', '#মায়ের_শিক্ষা', '#দোয়া', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'বন্ধু অসুস্থ হয়ে বিছানায় শুয়ে আছে, চলো কিছু ফল নিয়ে দেখে আসি।',
+    c2: 'অসুস্থ মানুষকে দেখতে গেলে কী বলতে হয় মা?',
+    lesson: 'বলতে হয়—লা বা’সা তুহুরুন ইনশাআল্লাহ, কোনো ভয় নেই, আল্লাহ সুস্থ করবেন।',
+    action: 'অসুস্থ ব্যক্তির পাশে বসে সাহস ও সান্ত্বনা দেওয়া।',
+  },
+  {
+    day: 21,
+    title: 'মা-বাবার জন্য অন্তরভরা দোয়া',
+    desc: 'মা-বাবার সেবা ও তাদের জন্য কায়মনোবাক্যে দোয়া করা সন্তানের সবচেয়ে বড় দায়িত্ব ও জান্নাত লাভের উপায়।\n\nসূত্র: সূরা বনি ইসরাইল ২৩-২৪',
+    tags: ['#মা_বাবার_দোয়া', '#পিতামাতার_সেবা', '#মায়ের_শিক্ষা', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'সারাদিন কাজ করে তুমি খুব ক্লান্ত মা, আমি একটু পা টিপে দিই?',
+    c2: 'আল্লাহ তোমার ভালো করুন সোনা, তবে দোয়াই হলো সবচেয়ে বড় উপহার।',
+    lesson: 'রাব্বির হামহুমা কামা রাব্বায়ানী সাগীরা পাঠ করে মা-বাবার জন্য দোয়া করা।',
+    action: 'প্রতি নামাজের পর মা-বাবার সুস্থতা ও ক্ষমার জন্য দোয়া করা।',
+  },
+  {
+    day: 22,
+    title: 'মেহমানদারির নির্মল আনন্দ',
+    desc: 'মেহমানের আগমন ঘরে আল্লাহর রহমত ও বরকত বয়ে আনে। হাসিমুখে মেহমানের আপ্যায়ন করা সুন্নাত।\n\nসূত্র: সহীহ বুখারী ৬১৩৫',
+    tags: ['#মেহমানদারি', '#আতিথেয়তা', '#মায়ের_শিক্ষা', '#সুন্নাত', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'ঘরে মেহমান এলে কি লজ্জা পেয়ে লুকিয়ে থাকতে হয় মা?',
+    c2: 'না বাবা, হাসিমুখে এগিয়ে গিয়ে দুই হাত দিয়ে আপ্যায়ন করতে হয়।',
+    lesson: 'মেহমান নিজের রিজিক নিয়ে আসেন এবং ঘরে বরকত বাড়িয়ে দেন।',
+    action: 'মেহমানের সামনে পানি ও নাস্তা বিনয়ের সাথে পরিবেশন করা।',
+  },
+  {
+    day: 23,
+    title: 'সময়ের মর্যাদা ও নিয়মানুবর্তিতা',
+    desc: 'সময় একবার চলে গেলে আর ফিরে আসে না। দিনের কাজ দিনে শেষ করা এবং অলসতা দূর করাই সফলতার পথ।\n\nসূত্র: সূরা আল-আসর ১-৩ · সহীহ বুখারী ৬৪১২',
+    tags: ['#সময়ের_কদর', '#নিয়মানুবর্তিতা', '#মায়ের_শিক্ষা', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'পড়াটা কাল করব মা, এখনো তো অনেক সময় বাকি আছে!',
+    c2: 'না সোনা, সময় নদীর স্রোতের মতো বয়ে যায়, একবার গেলে আর ফেরে না।',
+    lesson: 'সুস্থতা আর অবসর—এই দুটি নেয়ামতের কদর করাই জ্ঞানীর কাজ।',
+    action: 'সময়মতো পড়াশোনা শেষ করে নিশ্চিন্তে খেলায় অংশ নেওয়া।',
+  },
+  {
+    day: 24,
+    title: 'মিষ্টি হাসি একটি সুন্দর দান',
+    desc: 'কারো সাথে দেখা হলে মিষ্টি হাসি উপহার দেওয়া অন্তরের মলিনতা দূর করে এবং এটি সদকার সমতুল্য।\n\nসূত্র: তিরমিজি ১৯৫৬',
+    tags: ['#হাসি_সদকা', '#উষ্ণতা', '#মায়ের_শিক্ষা', '#সদাচরণ', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'ক্লান্ত পরিচ্ছন্নতাকর্মীর দিকে তাকিয়ে মিষ্টি করে হাসো তো বাবা।',
+    c2: 'মা, হাসলে কি ওনার মন ভালো হয়ে যাবে?',
+    lesson: 'ভায়ের মুখে একটি মধুর হাসি উপহার দেওয়াও আল্লাহর কাছে সদকা।',
+    action: 'সবার সাথে দেখা হলে হাসিমুখে সম্ভাষণ জানানো।',
+  },
+  {
+    day: 25,
+    title: 'গোপন ভালো কাজ ও লোকদেখানো থেকে বাঁচা',
+    desc: 'শুধু আল্লাহকে খুশি করার জন্য গোপনে নেক কাজ করা ইখলাসের চূড়ান্ত প্রকাশ। লোকদেখানো আমল মূল্যহীন।\n\nসূত্র: সূরা বাকারা ২৭১ · সহীহ বুখারী ১৪২৩',
+    tags: ['#ইখলাস', '#গোপন_দান', '#মায়ের_শিক্ষা', '#সদকা', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'আমি দানবাক্সে কয়েন ফেলেছি, সবাইকে শুনিয়ে বলি মা?',
+    c2: 'না বাবা, ভালো কাজ প্রচার করলে সওয়াব নষ্ট হয়ে যেতে পারে।',
+    lesson: 'ডান হাতে এমনভাবে দান করতে হয় যেন বাম হাতও জানতে না পারে।',
+    action: 'নীরবে আল্লাহর সন্তুষ্টির জন্য ভালো কাজ সম্পাদন করা।',
+  },
+  {
+    day: 26,
+    title: 'অন্যের কথা মন দিয়ে শোনা',
+    desc: 'মাঝপথে কারো কথা না কেটে ধৈর্য ধরে পূর্ণ কথা শোনা উত্তম চরিত্রের গুণ ও চমৎকার শিষ্টাচার।\n\nসূত্র: আদাবুল মুফরাদ · ইসলামি শিষ্টাচার',
+    tags: ['#মনোযোগ', '#শ্রবণ_আদব', '#মায়ের_শিক্ষা', '#শিষ্টাচার', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'বোন কথা বলার মাঝখানেই আমি চেঁচিয়ে উঠলাম কেন মা?',
+    c2: 'কারো কথা শেষ হওয়ার আগে বাধা দেওয়া অভদ্রতা সোনা।',
+    lesson: 'আগে পুরো মনোযোগ দিয়ে শুনতে হয়, তারপর নিজের মতামত দিতে হয়।',
+    action: 'ধৈর্য ধরে বক্তার দিকে তাকিয়ে মন দিয়ে কথা শোনা।',
+  },
+  {
+    day: 27,
+    title: 'হাঁচি ও হাই তোলার আদব',
+    desc: 'হাঁচি ও হাই তোলার সময় মুখ ঢাকা, হাঁচির পর আলহামদুলিল্লাহ বলা এবং শুনে দোয়া করার সুন্নাত।\n\nসূত্র: সহীহ বুখারী ৬২২৪ · তিরমিজি ২৭৪৬',
+    tags: ['#হাঁচির_আদব', '#সুন্নাত', '#মায়ের_শিক্ষা', '#স্বাস্থ্য', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'হাঁচি দিয়ে রুমাল চেপে বললাম—আলহামদুলিল্লাহ!',
+    c2: 'শুনে মা বললেন—ইয়ারহামুকাল্লাহ, আল্লাহ তোমার ওপর রহম করুন।',
+    lesson: 'হাঁচি ও হাই তোলার সময় মুখ ঢাকা রোগজীবাণু ছড়ানো রোধ করে।',
+    action: 'হাঁচির পর আলহামদুলিল্লাহ বলা এবং জবাবে দোয়া করা।',
+  },
+  {
+    day: 28,
+    title: 'ধৈর্য ও সবরের সুন্দর ফল',
+    desc: 'জীবনের প্রতিটি ক্ষেত্রে তাড়াহুড়ো না করে ধৈর্য ধারণ করলে আল্লাহ তার সর্বোত্তম ও কল্যাণকর প্রতিদান দেন।\n\nসূত্র: সূরা বাকারা ১৫৩ · সহীহ মুসলিম ২২৩',
+    tags: ['#সবর', '#ধৈর্য', '#মায়ের_শিক্ষা', '#কুরআন', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'এই গুটিপোকাটা কবে প্রজাপতি হয়ে উড়বে মা? আমার আর তর সইছে না!',
+    c2: 'সুন্দর সবকিছুর জন্য অপেক্ষা করতে হয় বাবা, একেই বলে সবর।',
+    lesson: 'তাড়াহুড়ো শয়তানের কাজ আর ধৈর্য ধরলে আল্লাহ উত্তম ফল দেন।',
+    action: 'শান্ত মনে অপেক্ষা করা ও আল্লাহর সিদ্ধান্তে সন্তুষ্ট থাকা।',
+  },
+  {
+    day: 29,
+    title: 'আমল ও নিয়তের বিশুদ্ধতা',
+    desc: 'সব কাজের ফলাফল নির্ভর করে নিয়তের ওপর। ছোট কাজও যদি ভালো নিয়তে করা হয়, তা আল্লাহর কাছে অনেক বড় হয়ে ওঠে।\n\nসূত্র: সহীহ বুখারী ১',
+    tags: ['#বিশুদ্ধ_নিয়ত', '#ইখলাস', '#মায়ের_শিক্ষা', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'সকালে কাউকে না বলে উঠান ঝাড়ু দিয়ে মায়ের সাহায্য করলাম।',
+    c2: 'কোনো পুরস্কারের আশায় নয়, শুধু আল্লাহ ও মাকে খুশি করার নিয়তে।',
+    lesson: 'সকল কাজের ভিত্তি নিয়ত, খাঁটি নিয়তে সামান্য কাজও জান্নাত আনে।',
+    action: 'প্রতিটি ভালো কাজের পূর্বে খাঁটি নিয়ত অন্তরে দৃঢ় করা।',
+  },
+  {
+    day: 30,
+    title: 'শোকরগোযার ও কৃতজ্ঞ হৃদয়',
+    desc: 'আল্লাহর দেওয়া নেয়ামতসমূহের শুকরিয়া আদায় করা। অভিযোগ না করে সুস্থতা ও জীবনের প্রতিটি দানের কদর করা।\n\nসূত্র: সূরা ইব্রাহিম ৭ · সহীহ মুসলিম ২৯৬৩',
+    tags: ['#শুকরিয়া', '#কৃতজ্ঞতা', '#মায়ের_শিক্ষা', '#আলহামদুলিল্লাহ', '#হিকমাহ', '#reels', '#shorts'],
+    c1: 'আমার তো বন্ধুদের মতো দামি দামি খেলনা নেই মা...',
+    c2: 'তোমার সুস্থ হাত-পা, চোখ আর ভালোবাসার পরিবারের দিকে তাকাও মানিক।',
+    lesson: 'পার্থিব বিষয়ে নিচের দিকে আর দ্বীনের বিষয়ে উপরের দিকে তাকাতে হয়।',
+    action: 'প্রতিটি নিঃশ্বাসে অন্তর থেকে আলহামদুলিল্লাহ বলা।',
+  },
+];
+
+// Build detailed 7-scene structures for remaining days
+for (const cfg of remainingDaysConfig) {
+  const d: DayData = {
+    day: cfg.day,
+    title: cfg.title,
+    description: cfg.desc,
+    hashtags: cfg.tags,
+    scenes: [
+      {
+        id: '01',
+        prompt: `A quiet cozy antique home corner with clay pots and wooden furniture, soft warm morning sunlight streaming through an arched window, vintage storybook oil painting`,
+        motion: 'in',
+        source: cfg.title,
+        lines: [
+          { speaker: 'mother', tone: 'warm', text: cfg.c1 },
+          { speaker: 'child', tone: 'curious', text: cfg.c2 },
+        ],
+      },
+      {
+        id: '02',
+        prompt: `Mother gently kneeling beside child, touching his hands lovingly, soft golden hour lighting, storybook gouache painting`,
+        motion: 'left',
+        source: 'পারিবারিক শিক্ষা',
+        lines: [
+          { speaker: 'mother', tone: 'gentle', text: 'জীবনের প্রতিটি পদক্ষেপে সুন্দর আচার-আচরণ বজায় রাখাই হলো প্রকৃত শিক্ষা সোনা।' },
+          { speaker: 'child', tone: 'wondering', text: 'কেন মা? এতে কি মানুষ আমাদের বেশি ভালোবাসবে?' },
+        ],
+      },
+      {
+        id: '03',
+        prompt: `An open ancient book on a rustic wooden study table beside a glowing candle, classical fairytale storybook illustration`,
+        motion: 'right',
+        source: 'হাদিস ও শিক্ষা',
+        lines: [
+          { speaker: 'mother', tone: 'warm', text: cfg.lesson },
+          { speaker: 'child', tone: 'thoughtful', text: 'নবীজি কি এই কথাটি সবসময় সবাইকে মনে করিয়ে দিতেন মা?' },
+        ],
+      },
+      {
+        id: '04',
+        prompt: `A child looking thoughtfully at his own actions, reflection in a polished brass surface or window, warm soft shadows, oil painting`,
+        motion: 'in',
+        source: 'আত্মোপলব্ধি',
+        lines: [
+          { speaker: 'mother', tone: 'gentle', text: 'হ্যাঁ বাবা। সুন্দর চরিত্র আর সদাচরণই কিয়ামতের দিন মিজানের পাল্লায় সবচেয়ে ভারী হবে।' },
+          { speaker: 'child', tone: 'remorseful', text: 'আমি তো মাঝে মাঝে ভুলে এমন ভুল করে ফেলতাম মা, আমি আর করব না।' },
+        ],
+      },
+      {
+        id: '05',
+        prompt: `Mother and child engaged happily in positive action together, warm sunlit room filled with domestic warmth, gouache painting`,
+        motion: 'left',
+        source: 'সদাচরণ',
+        lines: [
+          { speaker: 'mother', tone: 'caring', text: cfg.action },
+          { speaker: 'child', tone: 'eager', text: 'আমি এখনই এই কাজটি সুন্দরভাবে সম্পন্ন করছি মা!' },
+        ],
+      },
+      {
+        id: '06',
+        prompt: `Child smiling with pure joyful satisfaction after doing the right deed, golden sunlight kissing his face, oil painting`,
+        motion: 'right',
+        source: 'আমল',
+        lines: [
+          { speaker: 'mother', tone: 'proud', text: 'মাশাআল্লাহ! ছোট ছোট এই সুন্দর অভ্যাসগুলোই তোমাকে একদিন একজন আদর্শ মানুষ হিসেবে গড়ে তুলবে।' },
+          { speaker: 'child', tone: 'happy', text: 'তোমার এই সুন্দর কথাগুলো আমি সবসময় মনে রাখব মা।' },
+        ],
+      },
+      {
+        id: '07',
+        prompt: `Mother holding child close by a sunlit courtyard overlooking blooming olive trees and flowers, fairytale oil painting`,
+        motion: 'out',
+        source: 'দোয়া ও হিকমাহ',
+        lines: [
+          { speaker: 'mother', tone: 'loving', text: 'আল্লাহ তোমার অন্তরকে সর্বদা সত্য, বিনয় আর সুন্দর চরিত্রে ভরিয়ে রাখুন আমার মানিক।' },
+        ],
+      },
+    ],
+  };
+  daysData.push(d);
+}
+
+const masterList: any[] = [];
+
+for (const d of daysData) {
+  const pad = String(d.day).padStart(2, '0');
+
+  const formattedScenes = d.scenes.map((sc) => {
+    const fullNarration = sc.lines.map((l) => l.text).join(' ');
+    return {
+      id: sc.id,
+      prompt: sc.prompt,
+      narration: fullNarration,
+      motion: sc.motion,
+      source: sc.source,
+      lines: sc.lines,
+    };
+  });
+
+  const project = {
+    title: `মায়ের শিক্ষা: ${d.title}`,
+    aspect: '9:16',
+    fps: 30,
+    gap: 0.4,
+    image: {
+      style,
+      negative,
+    },
+    voice: {
+      provider: 'elevenlabs',
+      model: 'eleven_v3',
+      mode: 'dialogue',
+      stability: 0.5,
+      similarity: 0.8,
+      speed: 0.95,
+      speakers: {
+        mother: {
+          profile: 'female_adult',
+          voiceId: 'EXAVITQu4vr4xnSDxMaL',
+          geminiVoice: 'Kore',
+          edgeVoice: 'bn-BD-NabanitaNeural',
+          edgeRate: '-2%',
+          edgePitch: '+0Hz',
+          name: 'মা',
+          color: '#EBCB80',
+          note: 'warm adult female, mother',
+        },
+        child: {
+          profile: 'female_child',
+          voiceId: 'MF3mGyEYCl7XYWbV9V6O',
+          geminiVoice: 'Aoede',
+          edgeVoice: 'bn-BD-NabanitaNeural',
+          edgeRate: "+6%",
+          edgePitch: "+22Hz",
+          name: 'সন্তান',
+          color: '#88C0D0',
+          note: 'young child, ~10-12, curious and polite',
+        },
+      },
+    },
+    captions: {
+      style: 'highlight',
+      wordsPerCue: 3,
+      fontName: 'Kohinoor Bangla',
+      primary: '#FFFFFF',
+      highlight: '#EBCB80',
+      outline: '#000000',
+      speakerLabels: true,
+    },
+    intro: {
+      seconds: 2,
+    },
+    outro: {
+      seconds: 4,
+      text: 'প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom',
+    },
+    music: {
+      gainDb: -26,
+    },
+    texture: {
+      grain: 6,
+      vignette: 4.5,
+      contrast: 1.05,
+      saturation: 1.02,
+    },
+    scenes: formattedScenes,
+    description: d.description,
+    publish: {
+      description: d.description,
+      hashtags: d.hashtags,
+    },
+  };
+
+  const file = path.join(OUT_DIR, `day-${pad}.json`);
+  fs.writeFileSync(file, JSON.stringify(project, null, 2), 'utf8');
+  masterList.push(project);
+}
+
+const allFile = path.join(OUT_DIR, 'all-30-days.json');
+fs.writeFileSync(allFile, JSON.stringify(masterList, null, 2), 'utf8');
+
+console.log(`Successfully generated all 30 extended 1-minute+ dialogue days in ${OUT_DIR}`);

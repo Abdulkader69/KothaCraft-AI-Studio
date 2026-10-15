@@ -1,0 +1,100 @@
+{
+  "title": "মুমিনের প্রতিটি অবস্থাই কল্যাণ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "two roads diverging in a calm morning landscape, one sunlit and one in cloud shadow, both leading toward the same distant mountains",
+      "narration": "নবীজি বলেছেন, মুমিনের ব্যাপারটা আশ্চর্যের।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৯৯৯"
+    },
+    {
+      "id": "02",
+      "prompt": "a sunlit wheat field in full summer, warm and abundant, wind moving through the gold, a blue sky",
+      "narration": "তার সব অবস্থাই তার জন্য কল্যাণকর — আর এটা মুমিন ছাড়া আর কারো জন্য নয়।",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ২৯৯৯"
+    },
+    {
+      "id": "03",
+      "prompt": "ripe red pomegranates hanging heavy on a branch in generous golden light, one split open showing jewelled seeds",
+      "narration": "যদি তার ভালো কিছু হয়, সে শোকর করে — আর তা তার জন্য কল্যাণ।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ২৯৯৯"
+    },
+    {
+      "id": "04",
+      "prompt": "rain falling hard over a rocky mountain landscape, water running off the stone into new green shoots below, hard but nourishing",
+      "narration": "আর যদি কষ্ট আসে, সে ধৈর্য ধরে — আর তাও তার জন্য কল্যাণ।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২৯৯৯"
+    },
+    {
+      "id": "05",
+      "prompt": "a tower of smooth river stones balanced perfectly on a rock in a stream, sunlight, water flowing around it, equilibrium",
+      "narration": "এই সৌভাগ্য কেবল মুমিনেরই।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৯৯৯"
+    },
+    {
+      "id": "06",
+      "prompt": "a wide sky holding both dark rain clouds and bright sun at once, a rainbow between them, the whole horizon visible",
+      "narration": "ভালো সময়ে শোকর, খারাপ সময়ে সবর — মুমিনের জন্য দুটোই লাভ।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২৯৯৯"
+    }
+  ],
+  "description": "মুমিনের প্রতিটি অবস্থাই তার জন্য কল্যাণকর। সুখ ও প্রাচুর্যে শোকর আর কষ্ট ও বিপদে সবর — এই দুইয়ের মাঝেই মুমিনের প্রকৃত সৌভাগ্য।\n\nসূত্র: সহীহ মুসলিম ২৯৯৯",
+  "publish": {
+    "description": "মুমিনের প্রতিটি অবস্থাই তার জন্য কল্যাণকর। সুখ ও প্রাচুর্যে শোকর আর কষ্ট ও বিপদে সবর — এই দুইয়ের মাঝেই মুমিনের প্রকৃত সৌভাগ্য।\n\nসূত্র: সহীহ মুসলিম ২৯৯৯",
+    "hashtags": [
+      "#মুমিন",
+      "#সবর",
+      "#শোকর",
+      "#হাদিস",
+      "#ইসলামিক",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

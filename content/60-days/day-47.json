@@ -1,0 +1,100 @@
+{
+  "title": "ইলম অন্বেষণ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a worn stone path leading up to the carved wooden door of an ancient library, ivy on the walls, morning light",
+      "narration": "নবীজি বলেছেন, যে ব্যক্তি জ্ঞানের সন্ধানে কোনো পথে চলে…",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৬৯৯"
+    },
+    {
+      "id": "02",
+      "prompt": "the library door open, a long hall of light beyond, an invitation, dust glowing in the beams",
+      "narration": "…আল্লাহ তার জন্য জান্নাতের পথ সহজ করে দেন।",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ২৬৯৯"
+    },
+    {
+      "id": "03",
+      "prompt": "towering shelves of old leather-bound manuscripts in warm lamplight, a reading desk, the hush of centuries",
+      "narration": "ফেরেশতারা জ্ঞান অন্বেষণকারীর জন্য সন্তুষ্টিতে তাদের ডানা বিছিয়ে দেন।",
+      "motion": "out",
+      "source": "সুনানে আবু দাউদ ৩৬৪১"
+    },
+    {
+      "id": "04",
+      "prompt": "a full moon blazing among countless stars above a dark forest, its light clearly outshining them all",
+      "narration": "আলিমের মর্যাদা আবিদের উপর এমন, যেমন চাঁদের মর্যাদা তারাদের উপর।",
+      "motion": "right",
+      "source": "সুনানে আবু দাউদ ৩৬৪১"
+    },
+    {
+      "id": "05",
+      "prompt": "an old wooden inheritance chest standing open, containing only books and scrolls, warm light",
+      "narration": "নবীরা দিনার-দিরহাম রেখে যাননি — তাঁরা উত্তরাধিকার রেখে গেছেন জ্ঞান।",
+      "motion": "in",
+      "source": "সুনানে আবু দাউদ ৩৬৪১"
+    },
+    {
+      "id": "06",
+      "prompt": "a student's desk at dawn by a window, an open notebook, a pen, a cup of tea, ready and quiet",
+      "narration": "আল্লাহ বলেন, বলো — হে আমার প্রভু, আমার জ্ঞান বাড়িয়ে দাও।",
+      "motion": "right",
+      "source": "সূরা ত্বহা ২০:১১৪"
+    }
+  ],
+  "description": "জ্ঞান অন্বেষণকারীদের জন্য ফেরেশতারা সন্তুষ্টির ডানা বিছিয়ে দেন এবং আল্লাহ তাদের জন্য জান্নাতের পথ সহজ করে দেন। নবীদের আসল উত্তরাধিকার হলো উপকারী জ্ঞান।\n\nসূত্র: সহীহ মুসলিম ২৬৯৯ · সুনানে আবু দাউদ ৩৬৪১ · সূরা ত্বহা ২০:১১৪",
+  "publish": {
+    "description": "জ্ঞান অন্বেষণকারীদের জন্য ফেরেশতারা সন্তুষ্টির ডানা বিছিয়ে দেন এবং আল্লাহ তাদের জন্য জান্নাতের পথ সহজ করে দেন। নবীদের আসল উত্তরাধিকার হলো উপকারী জ্ঞান।\n\nসূত্র: সহীহ মুসলিম ২৬৯৯ · সুনানে আবু দাউদ ৩৬৪১ · সূরা ত্বহা ২০:১১৪",
+    "hashtags": [
+      "#ইলম",
+      "#জ্ঞান",
+      "#জান্নাত",
+      "#হাদিস",
+      "#কোরআন",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

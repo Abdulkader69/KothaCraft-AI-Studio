@@ -1,0 +1,106 @@
+{
+  "title": "উমার (রাঃ)-এর পরিবর্তন",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a narrow stone street in an ancient desert city at night, torchlight throwing long hard shadows, a sword's glint on a wall",
+      "narration": "উমার রাঃ একসময় ইসলামের সবচেয়ে কঠোর বিরোধীদের একজন ছিলেন।",
+      "motion": "in",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "02",
+      "prompt": "a heavy door thrown open onto a dark street, a torch guttering in the wind, urgency and anger",
+      "narration": "এক দিন তিনি তরবারি হাতে বেরিয়ে পড়লেন — নবীজিকে হত্যা করতে।",
+      "motion": "left",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "03",
+      "prompt": "a crossroads in an old town at dusk, a fork in the road, lamplight beginning, a moment of turning",
+      "narration": "পথে একজন তাঁকে থামিয়ে বলল, আগে নিজের ঘর সামলাও — তোমার বোন ও তার স্বামী ইসলাম গ্রহণ করেছে।",
+      "motion": "out",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "04",
+      "prompt": "a single oil lamp illuminating an open manuscript page of Arabic calligraphy on a low table, the rest of the room dark",
+      "narration": "রাগে বোনের ঘরে গিয়ে তিনি তাকে আঘাত করলেন। তারপর তার হাতের পাতাটি চেয়ে নিলেন — সূরা ত্বহার আয়াত।",
+      "motion": "right",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "05",
+      "prompt": "warm light spreading slowly across a dark room from a single source, shadows retreating, transformation",
+      "narration": "আয়াতগুলো পড়ে তাঁর হৃদয় বদলে গেল। তিনি বললেন, আমাকে মুহাম্মদের কাছে নিয়ে চলো।",
+      "motion": "in",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "06",
+      "prompt": "a door opening from darkness onto brilliant daylight, a sword laid down on the threshold, light flooding in",
+      "narration": "যে তরবারি নিয়ে হত্যা করতে বেরিয়েছিলেন, সেই তিনিই ইসলামের ঢাল হয়ে গেলেন।",
+      "motion": "right",
+      "source": "আস-সীরাহ"
+    },
+    {
+      "id": "07",
+      "prompt": "a wide sunlit avenue lined with green trees in a peaceful city, everything changed, morning",
+      "narration": "কাউকে শেষ বলে ধরে নিও না — আল্লাহ যে কোনো হৃদয় ফিরিয়ে দিতে পারেন।",
+      "motion": "out",
+      "source": "সূরা যুমার ৩৯:৫৩"
+    }
+  ],
+  "description": "যে তরবারি নিয়ে হত্যার উদ্দেশ্যে বের হয়েছিলেন, পবিত্র কোরআনের ছোঁয়ায় সেই হৃদয়ই ইসলামের অবিচল ঢালে পরিণত হলো। আল্লাহর রহমতে যেকোনো মানুষ যে কোনো মুহূর্তে বদলে যেতে পারে।\n\nসূত্র: আস-সীরাহ · সূরা যুমার ৩৯:৫৩",
+  "publish": {
+    "description": "যে তরবারি নিয়ে হত্যার উদ্দেশ্যে বের হয়েছিলেন, পবিত্র কোরআনের ছোঁয়ায় সেই হৃদয়ই ইসলামের অবিচল ঢালে পরিণত হলো। আল্লাহর রহমতে যেকোনো মানুষ যে কোনো মুহূর্তে বদলে যেতে পারে।\n\nসূত্র: আস-সীরাহ · সূরা যুমার ৩৯:৫৩",
+    "hashtags": [
+      "#উমার",
+      "#হেদায়েত",
+      "#কোরআন",
+      "#সাহাবি",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

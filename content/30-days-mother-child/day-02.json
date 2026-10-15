@@ -1,0 +1,215 @@
+{
+  "title": "মায়ের শিক্ষা: খাবার খাওয়ার সুন্দর আদব",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A rustic low wooden dining table laden with steaming bowls of fragrant vegetable soup, warm flatbread, and fresh ripe dates, warm oil painting",
+      "narration": "মা, খুব ক্ষুধা লেগেছে! এই সুস্বাদু রুটি আর স্যুপটা আমি তাড়াতাড়ি খেয়ে নিই? একটু ধীরেসুস্থে বসো বাবা। খাওয়ার শুরুতে সুন্দর একটা নিয়ম মনে আছে কি?",
+      "motion": "in",
+      "source": "পারিবারিক খাবার",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "hungry",
+          "text": "মা, খুব ক্ষুধা লেগেছে! এই সুস্বাদু রুটি আর স্যুপটা আমি তাড়াতাড়ি খেয়ে নিই?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "একটু ধীরেসুস্থে বসো বাবা। খাওয়ার শুরুতে সুন্দর একটা নিয়ম মনে আছে কি?"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "Mother gently holding the child’s eager left hand and guiding the right hand forward, warm ambient kitchen lighting, storybook gouache painting",
+      "narration": "কোন নিয়মটা মা? আমি তো হাত ধুয়েই টেবিলে বসেছি। খাবার মুখে তোলার আগে আল্লাহর নাম নিয়ে বলতে হয়—বিসমিল্লাহ।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৫৩৭৬",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "কোন নিয়মটা মা? আমি তো হাত ধুয়েই টেবিলে বসেছি।"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "খাবার মুখে তোলার আগে আল্লাহর নাম নিয়ে বলতে হয়—বিসমিল্লাহ।"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "A small child politely saying Bismillah with right hand reaching toward the near edge of a hand-painted ceramic bowl, storybook illustration",
+      "narration": "বিসমিল্লাহ! মা, আমি কোন হাত দিয়ে খাব আর কোথা থেকে শুরু করব? নবীজি উমর ইবনে আবি সালামাকে বলেছিলেন—ডান হাতে খাও এবং পাত্রের নিজের সামনের অংশ থেকে খাও।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২০২৩",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "happy",
+          "text": "বিসমিল্লাহ! মা, আমি কোন হাত দিয়ে খাব আর কোথা থেকে শুরু করব?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "নবীজি উমর ইবনে আবি সালামাকে বলেছিলেন—ডান হাতে খাও এবং পাত্রের নিজের সামনের অংশ থেকে খাও।"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "A large shared platter with food taken neatly from the edges, steam rising gently, golden afternoon light, classical fairytale painting",
+      "narration": "মাঝখান থেকে বা অন্যের সামনে থেকে খাবার তুলে নিলে কী হয় মা? তাতে অন্যের মনে কষ্ট হতে পারে সোনা। খাবারের বরকত সবসময় পাত্রের মাঝখানে নাযিল হয়, তাই কিনারা থেকে খেতে হয়।",
+      "motion": "in",
+      "source": "আদাবুল মুফরাদ",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "wondering",
+          "text": "মাঝখান থেকে বা অন্যের সামনে থেকে খাবার তুলে নিলে কী হয় মা?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "তাতে অন্যের মনে কষ্ট হতে পারে সোনা। খাবারের বরকত সবসময় পাত্রের মাঝখানে নাযিল হয়, তাই কিনারা থেকে খেতে হয়।"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "Child carefully wiping the plate clean with a piece of bread, not leaving a single grain behind, warm cozy dining room, oil painting",
+      "narration": "প্লেটে কোনো খাবার ফেলে রাখবে না বাবা। কোন দানায় বরকত আছে তা আমরা কেউ জানি না। আমি প্লেটের শেষ কণা পর্যন্ত সবটুকু খেয়ে নিচ্ছি মা, কোনো খাবার নষ্ট করব না।",
+      "motion": "left",
+      "source": "অপচয়রোধ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "caring",
+          "text": "প্লেটে কোনো খাবার ফেলে রাখবে না বাবা। কোন দানায় বরকত আছে তা আমরা কেউ জানি না।"
+        },
+        {
+          "speaker": "child",
+          "tone": "earnest",
+          "text": "আমি প্লেটের শেষ কণা পর্যন্ত সবটুকু খেয়ে নিচ্ছি মা, কোনো খাবার নষ্ট করব না।"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "A sparkling clean brass cup of pure water held with both hands while sitting down, soft sunbeams, gouache painting",
+      "narration": "মা, পানি খাওয়ার সময়ও কি বসে বসে তিন চুমুকে খেতে হয়? মাশাআল্লাহ! বসে ডান হাতে তিন নিঃশ্বাসে পানি পান করাই হলো সুন্নাত।",
+      "motion": "right",
+      "source": "সুন্নাত",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "polite",
+          "text": "মা, পানি খাওয়ার সময়ও কি বসে বসে তিন চুমুকে খেতে হয়?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "মাশাআল্লাহ! বসে ডান হাতে তিন নিঃশ্বাসে পানি পান করাই হলো সুন্নাত।"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "Child and mother with hands raised in gratitude after meal, serene dining room bathed in golden sunset, fairytale oil painting",
+      "narration": "আলহামদুলিল্লাহিল্লাজি আতআমানা ওয়া সাক্বানা ওয়া জাআলানা মিনাল মুসলিমীন! আল্লাহ তোমার খাদ্যে বরকত দিন এবং তোমার জীবনকে কৃতজ্ঞতায় ভরিয়ে রাখুন মানিক।",
+      "motion": "out",
+      "source": "তিরমিজি ৩৪৫৮",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "joyful",
+          "text": "আলহামদুলিল্লাহিল্লাজি আতআমানা ওয়া সাক্বানা ওয়া জাআলানা মিনাল মুসলিমীন!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "আল্লাহ তোমার খাদ্যে বরকত দিন এবং তোমার জীবনকে কৃতজ্ঞতায় ভরিয়ে রাখুন মানিক।"
+        }
+      ]
+    }
+  ],
+  "description": "খাবারের শুরুতে বিসমিল্লাহ বলা, ডান হাতে নিজের সামনে থেকে খাওয়া এবং অপচয় না করা খাবারের বরকত বৃদ্ধির উপায়।\n\nসূত্র: সহীহ বুখারী ৫৩৭৬ · সহীহ মুসলিম ২০২৩ · তিরমিজি ৩৪৫৮",
+  "publish": {
+    "description": "খাবারের শুরুতে বিসমিল্লাহ বলা, ডান হাতে নিজের সামনে থেকে খাওয়া এবং অপচয় না করা খাবারের বরকত বৃদ্ধির উপায়।\n\nসূত্র: সহীহ বুখারী ৫৩৭৬ · সহীহ মুসলিম ২০২৩ · তিরমিজি ৩৪৫৮",
+    "hashtags": [
+      "#খাবারের_আদব",
+      "#মায়ের_শিক্ষা",
+      "#সুন্নাত",
+      "#পারিবারিক_শিক্ষা",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

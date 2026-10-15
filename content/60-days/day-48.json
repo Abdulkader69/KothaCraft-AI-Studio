@@ -1,0 +1,99 @@
+{
+  "title": "অল্পে তুষ্টি",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a modest room with a mat, a lamp, a shelf of a few books and a window full of sky, warm and enough",
+      "narration": "নবীজি বলেছেন, প্রকৃত ধনী সে নয়, যার সম্পদ বেশি।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬৪৪৬"
+    },
+    {
+      "id": "02",
+      "prompt": "a huge storehouse packed with sacks and chests but locked and dark, dust on everything, unused",
+      "narration": "প্রকৃত ধনী সে, যার অন্তর ধনী।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৬৪৪৬"
+    },
+    {
+      "id": "03",
+      "prompt": "simple bread, a bowl of dates and a jug of water on a clean cloth in morning light, satisfying",
+      "narration": "তিনি বলেছেন, যার কাছে দিনের খাবার আছে, নিরাপত্তা আছে, আর শরীর সুস্থ…",
+      "motion": "out",
+      "source": "জামে তিরমিযী ২৩৪৬"
+    },
+    {
+      "id": "04",
+      "prompt": "an open window with a wide view over green fields and a river, curtain moving, contentment",
+      "narration": "…সে যেন গোটা দুনিয়া পেয়ে গেল।",
+      "motion": "right",
+      "source": "জামে তিরমিযী ২৩৪৬"
+    },
+    {
+      "id": "05",
+      "prompt": "a grand mansion in cold shadow beside a small cottage glowing with warm light, evening",
+      "narration": "তিনি বলেছেন, তোমার চেয়ে যার কম আছে, তার দিকে তাকাও।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৯৬৩"
+    },
+    {
+      "id": "06",
+      "prompt": "sunset over a small home with a thriving vegetable garden, washing on the line, a peaceful life",
+      "narration": "যার বেশি আছে তার দিকে তাকিয়ো না — তাহলে আল্লাহর নিয়ামত ছোট মনে হবে।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২৯৬৩"
+    }
+  ],
+  "description": "প্রচুর সম্পদের নাম সচ্ছলতা নয়, প্রকৃত ধনী সেই যার অন্তর অল্পে তুষ্ট। নিজের চেয়ে কম প্রাপ্তির মানুষের দিকে তাকালে আল্লাহর নিয়ামতের শোকর আদায় করা সহজ হয়।\n\nসূত্র: সহীহ বুখারী ৬৪৪৬ · জামে তিরমিযী ২৩৪৬ · সহীহ মুসলিম ২৯৬৩",
+  "publish": {
+    "description": "প্রচুর সম্পদের নাম সচ্ছলতা নয়, প্রকৃত ধনী সেই যার অন্তর অল্পে তুষ্ট। নিজের চেয়ে কম প্রাপ্তির মানুষের দিকে তাকালে আল্লাহর নিয়ামতের শোকর আদায় করা সহজ হয়।\n\nসূত্র: সহীহ বুখারী ৬৪৪৬ · জামে তিরমিযী ২৩৪৬ · সহীহ মুসলিম ২৯৬৩",
+    "hashtags": [
+      "#অল্পেতুষ্টি",
+      "#প্রশান্তি",
+      "#ধনীঅন্তর",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "_note": "Bangla here is a plain literal rendering, not a published translation — swap in one you hold the rights to before publishing at scale.",
+  "title": "আয়াতুল কুরসি",
+  "arabicTitle": "آية الكرسي",
+  "subtitle": "সূরা আল-বাকারা",
+  "range": "সূরা আল-বাকারা ২৫৫",
+  "surah": 2,
+  "aspect": "9:16",
+  "fps": 30,
+  "theme": "night-mosque",
+  "recitation": {
+    "reciter": "Abdul_Basit_Mujawwad_128kbps"
+  },
+  "voiceover": "none",
+  "opening": "taawwudh",
+  "gap": 0.6,
+  "intro": {
+    "seconds": 4
+  },
+  "type": {
+    "centerY": 0.42,
+    "arabicColor": "#FFFFFF",
+    "banglaColor": "#E9DCC0",
+    "numberColor": "#E9C987"
+  },
+  "verses": [
+    {
+      "id": "01",
+      "ayah": 255,
+      "number": "٢٥٥",
+      "arabic": "ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ ٱلْحَىُّ ٱلْقَيُّومُ لَا تَأْخُذُهُۥ سِنَةٌ وَلَا نَوْمٌ",
+      "bangla": "আল্লাহ — তিনি ছাড়া কোনো উপাস্য নেই; তিনি চিরঞ্জীব, সবকিছুর ধারক। তন্দ্রা ও নিদ্রা তাঁকে স্পর্শ করে না।"
+    }
+  ]
+}

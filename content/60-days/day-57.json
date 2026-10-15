@@ -1,0 +1,107 @@
+{
+  "title": "জান্নাতের বর্ণনা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a paradise garden with crystal streams running beneath fruit trees, blossom drifting, birds of every colour, otherworldly light",
+      "narration": "আল্লাহ বলেন, কেউ জানে না, তাদের জন্য চোখজুড়ানো কী লুকিয়ে রাখা হয়েছে…",
+      "motion": "in",
+      "source": "সূরা সাজদা ৩২:১৭"
+    },
+    {
+      "id": "02",
+      "prompt": "a clear stream flowing endlessly under deep green shade, its bed of white pebbles and gold, light dancing",
+      "narration": "…তাদের কাজের প্রতিদান হিসেবে।",
+      "motion": "left",
+      "source": "সূরা সাজদা ৩২:১৭"
+    },
+    {
+      "id": "03",
+      "prompt": "an orchard where every branch bows with ripe fruit within easy reach — pomegranates, figs, grapes — golden light",
+      "narration": "নবীজি বলেছেন, আল্লাহ বলেন, আমি আমার নেক বান্দাদের জন্য এমন কিছু প্রস্তুত রেখেছি…",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৩২৪৪"
+    },
+    {
+      "id": "04",
+      "prompt": "an impossible glow over a garden — light no eye has seen, colours beyond the spectrum, dreamlike",
+      "narration": "…যা কোনো চোখ কখনো দেখেনি।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৩২৪৪"
+    },
+    {
+      "id": "05",
+      "prompt": "a silent garden in perfect stillness, a mist of light hanging over still water, hushed",
+      "narration": "কোনো কান কখনো শোনেনি।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৩২৪৪"
+    },
+    {
+      "id": "06",
+      "prompt": "a landscape beyond imagination — floating gardens, rivers of light, palaces of pearl on the horizon, soft radiance",
+      "narration": "আর কোনো মানুষের কল্পনায়ও কখনো আসেনি।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৩২৪৪"
+    },
+    {
+      "id": "07",
+      "prompt": "sunrise over an endless green valley, a river winding to the horizon, flocks of birds rising into gold",
+      "narration": "যে পথ কঠিন, তার শেষটা এমনই সুন্দর।",
+      "motion": "out",
+      "source": "সূরা সাজদা ৩২:১৭"
+    }
+  ],
+  "description": "নেককার বান্দাদের জন্য প্রস্তুত রাখা হয়েছে এমন অফুরন্ত নিয়ামত, যা কোনো চোখ কখনো দেখেনি, কান শোনেনি এবং মানব কল্পনায়ও আসেনি। এই চিরন্তন সুখের জন্য দুনিয়ার আত্মত্যাগ সার্থক।\n\nসূত্র: সূরা সাজদা ৩২:১৭ · সহীহ বুখারী ৩২৪৪",
+  "publish": {
+    "description": "নেককার বান্দাদের জন্য প্রস্তুত রাখা হয়েছে এমন অফুরন্ত নিয়ামত, যা কোনো চোখ কখনো দেখেনি, কান শোনেনি এবং মানব কল্পনায়ও আসেনি। এই চিরন্তন সুখের জন্য দুনিয়ার আত্মত্যাগ সার্থক।\n\nসূত্র: সূরা সাজদা ৩২:১৭ · সহীহ বুখারী ৩২৪৪",
+    "hashtags": [
+      "#জান্নাত",
+      "#নিয়ামত",
+      "#প্রতিদান",
+      "#কোরআন",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

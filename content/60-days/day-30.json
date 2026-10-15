@@ -1,0 +1,99 @@
+{
+  "title": "উপরের হাত নিচের হাতের চেয়ে উত্তম",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "an open hand giving a coin into another open hand, warm side light, sleeves of simple cloth, dignified",
+      "narration": "নবীজি বলেছেন, উপরের হাত নিচের হাতের চেয়ে উত্তম।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ১৪২৯"
+    },
+    {
+      "id": "02",
+      "prompt": "a bundle of firewood bound with rope resting on a dusty road at dawn, an axe beside it, honest labour",
+      "narration": "উপরের হাত মানে যে দেয়, নিচের হাত মানে যে চায়।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ১৪২৯"
+    },
+    {
+      "id": "03",
+      "prompt": "worn hand tools — an axe, a coil of rope, a saw — resting against a tree after work, dignified simplicity, late light",
+      "narration": "তিনি বলেছেন, কেউ যদি দড়ি নিয়ে বনে গিয়ে কাঠ কেটে পিঠে করে এনে বিক্রি করে…",
+      "motion": "out",
+      "source": "সহীহ বুখারী ১৪৭০"
+    },
+    {
+      "id": "04",
+      "prompt": "a small market stall at dawn with goods laid out on a cloth, an old souk lane, first light on the awnings",
+      "narration": "…তা তার জন্য মানুষের কাছে হাত পাতার চেয়ে অনেক উত্তম।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ১৪৭০"
+    },
+    {
+      "id": "05",
+      "prompt": "fresh bread set on a clean cloth beside a bowl of olives, earned, warm light, quiet pride",
+      "narration": "তিনি বলেছেন, নিজ হাতের উপার্জনের চেয়ে উত্তম খাবার কেউ কখনো খায়নি।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ২০৭২"
+    },
+    {
+      "id": "06",
+      "prompt": "sunset over a carpenter's yard, wood shavings on the ground, tools hung up, the day's work done, amber light",
+      "narration": "হালাল পরিশ্রমের ক্লান্তিও ইবাদত।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ২০৭২"
+    }
+  ],
+  "description": "পরমুখাপেক্ষী না হয়ে নিজ হাতে হালাল উপার্জনের চেষ্টা করা অনেক সম্মানের। হালাল পরিশ্রমের ক্লান্তিও আল্লাহর কাছে এক অনন্য ইবাদত।\n\nসূত্র: সহীহ বুখারী ১৪২৯ · সহীহ বুখারী ১৪৭০ · সহীহ বুখারী ২০৭২",
+  "publish": {
+    "description": "পরমুখাপেক্ষী না হয়ে নিজ হাতে হালাল উপার্জনের চেষ্টা করা অনেক সম্মানের। হালাল পরিশ্রমের ক্লান্তিও আল্লাহর কাছে এক অনন্য ইবাদত।\n\nসূত্র: সহীহ বুখারী ১৪২৯ · সহীহ বুখারী ১৪৭০ · সহীহ বুখারী ২০৭২",
+    "hashtags": [
+      "#হালালরিজিক",
+      "#পরিশ্রম",
+      "#হাদিস",
+      "#স্বাবলম্বী",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

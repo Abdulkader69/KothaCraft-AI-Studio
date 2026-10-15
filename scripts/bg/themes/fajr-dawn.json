@@ -1,0 +1,15 @@
+{
+  "_name": "fajr-dawn",
+  "_note": "Before sunrise — cool blue lifting into peach. Stars nearly gone, no lanterns.",
+  "speed": 2,
+  "stars": 120,
+  "fireflies": 22,
+  "lanterns": false,
+  "horizon": 0.755,
+  "palette": {
+    "skyTop": "#0b1733", "skyMid": "#1f3c66", "skyLow": "#6b7aa1", "skyBottom": "#e0a583",
+    "haze": "#5c7ba8", "hazeWarm": "#e6b394", "star": "#e8f1ff", "moon": "#fdf3d8",
+    "gold": "#e8c9a0", "lantern": "#ffd9a0", "firefly": "#fff0a8",
+    "ink": "#141a2e", "window": "#ffcf8a", "water": "#18203a"
+  }
+}

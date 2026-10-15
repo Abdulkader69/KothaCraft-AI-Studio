@@ -1,0 +1,86 @@
+{
+  "title": "কন্যাসন্তান — রহমত",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a small pair of embroidered slippers by a door in a warm hallway, morning light, a school bag hanging on a hook",
+      "narration": "নবীজি বলেছেন, যার তিনটি কন্যাসন্তান আছে…",
+      "motion": "in",
+      "source": "সুনানে আবু দাউদ ৫১৪৭"
+    },
+    {
+      "id": "02",
+      "prompt": "an open storybook and a small wooden comb on a bedside table, a ribbon, soft lamplight, the tenderness of daily care",
+      "narration": "…সে যদি তাদের ধৈর্যের সাথে লালন করে।",
+      "motion": "left",
+      "source": "সুনানে আবু দাউদ ৫১৪৭"
+    },
+    {
+      "id": "03",
+      "prompt": "neatly folded children's clothes stacked in a sunlit room, a window with a garden beyond, clean and cared for",
+      "narration": "তাদের খাওয়ায়, পরায়, আর ভালো শিক্ষা দেয়।",
+      "motion": "out",
+      "source": "সুনানে আবু দাউদ ৫১৪৭"
+    },
+    {
+      "id": "04",
+      "prompt": "a wooden garden gate swinging open onto a bright green meadow, morning light pouring through, hopeful",
+      "narration": "তারা তার জন্য জাহান্নাম থেকে আড়াল হয়ে যাবে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ১৪১৮"
+    },
+    {
+      "id": "05",
+      "prompt": "two brass oil lamps burning side by side on a window sill at dusk, their flames leaning toward each other, equal and warm",
+      "narration": "তিনি আরও বলেছেন, যে দুটি কন্যাকে বড় হওয়া পর্যন্ত লালন করবে, সে ও আমি জান্নাতে পাশাপাশি থাকব।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৬৩১"
+    },
+    {
+      "id": "06",
+      "prompt": "sunrise over a courtyard garden overflowing with roses, jasmine and hibiscus, birds on the wall, dew sparkling, joyful",
+      "narration": "যে সমাজ কন্যাকে বোঝা ভাবে, সে আল্লাহর দেওয়া রহমতকেই অস্বীকার করে।",
+      "motion": "right",
+      "source": "সূরা নাহল ১৬:৫৮-৫৯"
+    }
+  ]
+}

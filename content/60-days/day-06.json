@@ -1,0 +1,100 @@
+{
+  "title": "ইউনুস (আলাইহিছ ছালাম)-এর দোয়া",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "small wooden boat on rough dark water, heavy clouds",
+      "narration": "ইউনুস আলাইহিছ ছালাম জাতির অবাধ্যতায় ব্যথিত হয়ে নৌকায় উঠে পড়লেন।",
+      "motion": "in",
+      "source": "সূরা সাফফাত ৩৭:১৪০"
+    },
+    {
+      "id": "02",
+      "prompt": "violent sea at night, spray and foam, no figures",
+      "narration": "সমুদ্র উত্তাল হলো এবং নৌকা বিপদের মুখে পড়ল।",
+      "motion": "left",
+      "source": "সূরা সাফফাত ৩৭:১৪১"
+    },
+    {
+      "id": "03",
+      "prompt": "deep dark underwater, faint light far above, silence",
+      "narration": "তিনি সমুদ্রে পড়ে গেলেন এবং এক বিশাল মাছ তাঁকে গিলে ফেলল।",
+      "motion": "out",
+      "source": "সূরা সাফফাত ৩৭:১৪২"
+    },
+    {
+      "id": "04",
+      "prompt": "total darkness with a single distant glimmer, deep blue black",
+      "narration": "অন্ধকারের ভেতর অন্ধকার — সেখানে তিনি ডাকলেন।",
+      "motion": "right",
+      "source": "সূরা আম্বিয়া ২১:৮৭"
+    },
+    {
+      "id": "05",
+      "prompt": "faint light growing in deep water, soft rays penetrating",
+      "narration": "তিনি বললেন, তুমি ছাড়া কোনো ইলাহ নেই, তুমি পবিত্র, নিশ্চয়ই আমি সীমালঙ্ঘনকারীদের অন্তর্ভুক্ত।",
+      "motion": "in",
+      "source": "সূরা আম্বিয়া ২১:৮৭"
+    },
+    {
+      "id": "06",
+      "prompt": "bright surface of the sea seen from below, breaking through",
+      "narration": "আল্লাহ তাঁর ডাকে সাড়া দিলেন এবং তাঁকে দুশ্চিন্তা থেকে মুক্ত করলেন।",
+      "motion": "right",
+      "source": "সূরা আম্বিয়া ২১:৮৮"
+    },
+    {
+      "id": "07",
+      "prompt": "bare shore with a spreading gourd vine, broad green leaves, soft morning light",
+      "narration": "তাঁকে খালি তীরে রাখা হলো এবং তাঁর উপর ছায়াদার গাছ উঠল।",
+      "motion": "out",
+      "source": "সূরা সাফফাত ৩৭:১৪৫-১৪৬"
+    },
+    {
+      "id": "08",
+      "prompt": "calm dawn sea with gentle rolling waves, seabirds gliding low",
+      "narration": "এভাবেই আমি মুমিনদের উদ্ধার করি। কোনো অন্ধকারই দোয়ার চেয়ে গভীর নয়।",
+      "motion": "left",
+      "source": "সূরা আম্বিয়া ২১:৮৮"
+    }
+  ]
+}

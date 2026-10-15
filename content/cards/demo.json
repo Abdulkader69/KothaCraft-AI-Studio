@@ -1,0 +1,30 @@
+{
+  "title": "আজকের আয়াত",
+  "aspect": "1:1",
+  "layout": "center",
+  "heading": "আজকের আয়াত",
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, no people, no figures, no text",
+    "negative": "people, person, face, hands, text, letters, watermark, logo, low quality, blurry"
+  },
+  "captions": { "fontName": "Kohinoor Bangla", "primary": "#FFFFFF", "highlight": "#EBCB80", "outline": "#000000" },
+  "brand": { "image": "assets/brand/profile-400.png", "position": "bottom-right", "size": 110 },
+  "cards": [
+    {
+      "text": "নিশ্চয়ই কষ্টের সাথে স্বস্তি আছে।",
+      "source": "সূরা ইনশিরাহ ৯৪:৬",
+      "prompt": "first light breaking over a still desert after a storm, soft golden haze, wide horizon"
+    },
+    {
+      "text": "হে ঈমানদারগণ! তোমরা ধৈর্য ও নামাজের মাধ্যমে সাহায্য প্রার্থনা করো। নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।",
+      "source": "সূরা বাকারা ২:১৫৩",
+      "prompt": "a lone lantern glowing inside an old stone mosque courtyard at dusk, deep blue sky",
+      "layout": "bottom"
+    },
+    {
+      "text": "যে আল্লাহর উপর ভরসা করে, তার জন্য তিনিই যথেষ্ট।",
+      "source": "সূরা তালাক ৬৫:৩",
+      "prompt": "a small boat resting on a calm river at dawn, mist over the water, no people"
+    }
+  ]
+}

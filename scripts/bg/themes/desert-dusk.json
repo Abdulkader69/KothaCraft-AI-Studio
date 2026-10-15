@@ -1,0 +1,15 @@
+{
+  "_name": "desert-dusk",
+  "_note": "Sand instead of water, so no reflection — rose dusk over dunes.",
+  "speed": 2,
+  "stars": 200,
+  "fireflies": 30,
+  "reflection": false,
+  "horizon": 0.70,
+  "palette": {
+    "skyTop": "#1b0f2e", "skyMid": "#4a2246", "skyLow": "#93455a", "skyBottom": "#d98a6b",
+    "haze": "#8e4a63", "hazeWarm": "#e0a07f", "star": "#ffeede", "moon": "#ffeec4",
+    "gold": "#f0cb8c", "lantern": "#ffc169", "firefly": "#ffdf95",
+    "ink": "#1d1024", "window": "#ffbb5e", "water": "#3a2436"
+  }
+}

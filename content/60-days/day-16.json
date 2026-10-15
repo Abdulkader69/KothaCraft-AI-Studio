@@ -1,0 +1,93 @@
+{
+  "title": "মায়ের মর্যাদা",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a worn wooden cradle in soft morning light beside a window, a thin white curtain stirring, tender and quiet",
+      "narration": "এক ব্যক্তি নবীজিকে জিজ্ঞেস করলেন, আমার উত্তম আচরণের সবচেয়ে বেশি হকদার কে?",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৫৯৭১; সহীহ মুসলিম ২৫৪৮"
+    },
+    {
+      "id": "02",
+      "prompt": "a folded shawl on a bed, warm domestic light, a cup of tea going cold on the bedside table, the shape of years of care",
+      "narration": "তিনি বললেন, তোমার মা।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৫৯৭১"
+    },
+    {
+      "id": "03",
+      "prompt": "an open window at dawn, curtain lifting in the breeze, a small garden beyond, gentle pastel light",
+      "narration": "লোকটি জিজ্ঞেস করলেন, তারপর কে? তিনি বললেন, তোমার মা।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৫৯৭১"
+    },
+    {
+      "id": "04",
+      "prompt": "a simple room with two chairs facing each other, a rug, morning light across the floor, lived-in and quiet",
+      "narration": "তারপর কে? তিনি আবার বললেন, তোমার মা।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৫৯৭১"
+    },
+    {
+      "id": "05",
+      "prompt": "an old wooden doorway with its threshold worn smooth by decades of footsteps, evening light, a walking stick leaning by the frame",
+      "narration": "চতুর্থবার জিজ্ঞেস করলে তিনি বললেন, তারপর তোমার বাবা।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৫৯৭১"
+    },
+    {
+      "id": "06",
+      "prompt": "a small bed lamp glowing beside prayer beads and a folded prayer mat, deep warm shadows, intimate",
+      "narration": "আল্লাহ বলেন, তাদের সাথে উফ শব্দটিও বোলো না, তাদের ধমক দিও না।",
+      "motion": "right",
+      "source": "সূরা ইসরা ১৭:২৩"
+    },
+    {
+      "id": "07",
+      "prompt": "hands raised in dua in soft lamplight, a Qur'an open on a low table, the rest of the room in warm darkness",
+      "narration": "বরং বলো, হে আমার প্রভু, তাদের প্রতি দয়া করুন, যেভাবে তারা শৈশবে আমাকে লালন করেছেন।",
+      "motion": "out",
+      "source": "সূরা ইসরা ১৭:২৪"
+    }
+  ]
+}

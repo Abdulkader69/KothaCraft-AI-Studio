@@ -1,0 +1,69 @@
+{
+  "title": "Elon Musk: The Bets That Changed Everything",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.35,
+  "image": {
+    "style": "cinematic, dramatic volumetric light, 35mm film still, shallow depth of field, realistic documentary photography, muted blue and charcoal palette",
+    "negative": "text, watermark, logo, distorted face, extra fingers, low quality, cartoon, illustration",
+    "model": "fal-ai/flux/dev"
+  },
+  "voice": {
+    "kokoroVoice": "af_sarah",
+    "lang": "en-us",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.45,
+    "similarity": 0.8,
+    "speed": 1.0
+  },
+  "music": {
+    "file": "assets/music.mp3",
+    "gainDb": -20
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "primary": "#FFFFFF",
+    "highlight": "#FFD166",
+    "outline": "#000000"
+  },
+  "texture": {
+    "grain": 8,
+    "vignette": 4.5,
+    "contrast": 1.06,
+    "saturation": 1.05
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "young technology entrepreneur working alone late at night in a small office, computer screens glowing, intense focus, cinematic shadows",
+      "narration": "Before Tesla and SpaceX, Elon Musk was already betting everything on technology.",
+      "motion": "in"
+    },
+    {
+      "id": "02",
+      "prompt": "dramatic early rocket launch at night, small rocket rising through smoke and fire, engineers watching from a distance",
+      "narration": "SpaceX struggled through its early launches, and failure came dangerously close.",
+      "motion": "left"
+    },
+    {
+      "id": "03",
+      "prompt": "rocket landing vertically on a futuristic ocean platform, powerful engines glowing, cinematic wide shot",
+      "narration": "But eventually, SpaceX proved that rockets could be designed to fly again.",
+      "motion": "out"
+    },
+    {
+      "id": "04",
+      "prompt": "sleek electric car driving through a dark futuristic city, reflections on wet pavement, cinematic automotive photography",
+      "narration": "At Tesla, the bet was even bigger: make electric cars impossible to ignore.",
+      "motion": "right"
+    },
+    {
+      "id": "05",
+      "prompt": "entrepreneur standing before rockets, electric vehicles and futuristic technology, dramatic sunrise behind him",
+      "narration": "His story is less about certainty—and more about making enormous bets on the future.",
+      "motion": "in",
+      "seed": 445566
+    }
+  ]
+}

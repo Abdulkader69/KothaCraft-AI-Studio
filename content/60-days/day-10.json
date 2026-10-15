@@ -1,0 +1,93 @@
+{
+  "title": "মারইয়াম (আলাইহিছ ছালাম) ও খেজুর গাছ",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "quiet secluded valley with palms and green undergrowth, soft light",
+      "narration": "মারইয়াম আলাইহিছ ছালাম পরিবার থেকে দূরে এক নির্জন জায়গায় সরে গেলেন।",
+      "motion": "in",
+      "source": "সূরা মারইয়াম ১৯:১৬-১৭"
+    },
+    {
+      "id": "02",
+      "prompt": "wind through a lone palm grove, dry grass below, solitary landscape",
+      "narration": "প্রসববেদনা তাঁকে এক খেজুর গাছের কাণ্ডের কাছে নিয়ে এলো।",
+      "motion": "left",
+      "source": "সূরা মারইয়াম ১৯:২৩"
+    },
+    {
+      "id": "03",
+      "prompt": "rough date palm trunk close up, dry bark texture",
+      "narration": "তিনি বললেন, হায়, আমি যদি এর আগেই মরে যেতাম।",
+      "motion": "out",
+      "source": "সূরা মারইয়াম ১৯:২৩"
+    },
+    {
+      "id": "04",
+      "prompt": "small clear stream appearing over sand, fresh water",
+      "narration": "নিচ থেকে ডাক এলো, দুঃখ কোরো না, তোমার প্রভু তোমার নিচে ঝর্ণা করে দিয়েছেন।",
+      "motion": "right",
+      "source": "সূরা মারইয়াম ১৯:২৪"
+    },
+    {
+      "id": "05",
+      "prompt": "ripe dates hanging from a palm, warm sunlight",
+      "narration": "খেজুর গাছের কাণ্ড নাড়াও, তোমার উপর তাজা পাকা খেজুর পড়বে।",
+      "motion": "in",
+      "source": "সূরা মারইয়াম ১৯:২৫"
+    },
+    {
+      "id": "06",
+      "prompt": "ripe dates fallen on green grass beneath a palm, soft shadows",
+      "narration": "খাও, পান করো এবং চোখ জুড়াও।",
+      "motion": "right",
+      "source": "সূরা মারইয়াম ১৯:২৬"
+    },
+    {
+      "id": "07",
+      "prompt": "palm grove beside a stream at golden hour, birds settling, abundant",
+      "narration": "কঠিন মুহূর্তেও আল্লাহ ব্যবস্থা রাখেন — শুধু হাত বাড়ানোর অপেক্ষা।",
+      "motion": "out",
+      "source": "সূরা মারইয়াম ১৯:২৪-২৬"
+    }
+  ]
+}

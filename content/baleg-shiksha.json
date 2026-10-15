@@ -1,0 +1,238 @@
+{
+  "title": "মায়ের শিক্ষা: বালেগ হওয়ার পর",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, respectful modest aesthetic"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "mother",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female"
+      },
+      "child": {
+        "profile": "daughter",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "মেয়ে",
+        "color": "#88C0D0",
+        "note": "young girl, ~12-14, from Voice Library or Voice Design"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A Muslim mother and her teenage daughter both wearing proper black niqabs covering their entire faces with only their eyes visible, dressed in loose abayas, sitting together by a wooden table with an open Quran and prayer mat, warm golden evening light through a window, two steaming cups of tea, serene and cozy room",
+      "narration": "মা, বড় হওয়া মানে কী? আজ তোমাকে একটা গুরুত্বপূর্ণ কথা বলব, মন দিয়ে শোনো।",
+      "motion": "in",
+      "source": "ইসলামি শিক্ষা",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "মা, বড় হওয়া মানে কী?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "আজ তোমাকে একটা গুরুত্বপূর্ণ কথা বলব, মন দিয়ে শোনো।"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "A Muslim mother and her daughter, both in full face-covering niqabs revealing strictly only their eyes and loose modest cloaks, standing together by a bright morning windowsill looking attentively at a tender green seedling in a terracotta pot, soft diffused sunlight, intimate teaching moment",
+      "narration": "শরীরে কিছু পরিবর্তন আসে, যেমন মেয়েদের মাসিক শুরু হওয়া। ইসলামে একে বলে বালেগ হওয়া। তাহলে এরপর কী বদলে যায়, মা?",
+      "motion": "right",
+      "source": "ইসলামি শিক্ষা",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "শরীরে কিছু পরিবর্তন আসে, যেমন মেয়েদের মাসিক শুরু হওয়া। ইসলামে একে বলে বালেগ হওয়া।"
+        },
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "তাহলে এরপর কী বদলে যায়, মা?"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "Side profile of a mother and daughter both wearing traditional niqabs that completely cover the entire face except the eyes, sitting side by side at an old wooden study table with a reed pen and leather-bound ledger book, warm vintage desk lamp light, reflective and dignified atmosphere",
+      "narration": "এখন থেকে তোমার আমলনামা লেখা শুরু। শিশুর ওপর থেকে কলম তুলে নেওয়া হয়, যতক্ষণ না সে বালেগ হয়।",
+      "motion": "left",
+      "source": "সুনান আবু দাউদ, তিরমিযী",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "এখন থেকে তোমার আমলনামা লেখা শুরু। শিশুর ওপর থেকে কলম তুলে নেওয়া হয়, যতক্ষণ না সে বালেগ হয়।"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "A Muslim mother and young daughter standing side by side in prayer on woven mats, both wearing full prayer abayas with niqabs covering their entire faces except their eyes, calm dawn sunlight breaking through a window, deep spiritual serenity",
+      "narration": "প্রথম কাজ — নামাজ। পাঁচ ওয়াক্ত এখন তোমার ওপর ফরজ। আমি সময়মতো পড়ব, মা।",
+      "motion": "in",
+      "source": "সূরা নিসা ৪:১০৩",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "প্রথম কাজ — নামাজ। পাঁচ ওয়াক্ত এখন তোমার ওপর ফরজ।"
+        },
+        {
+          "speaker": "child",
+          "tone": "earnest",
+          "text": "আমি সময়মতো পড়ব, মা।"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "A mother and daughter seated at an iftar table, both dressed in loose black abayas and full niqabs that conceal the entire face leaving only their eyes visible, a bowl of dates and cups of water on the table, warm sunset orange glow through the window",
+      "narration": "রমজানের রোজা রাখবে। আর প্রতিদিন কোরআন পড়বে, বুঝে পড়ার চেষ্টা করবে। ইনশাআল্লাহ, মা।",
+      "motion": "out",
+      "source": "সূরা বাকারা ২:১৮৩",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "রমজানের রোজা রাখবে। আর প্রতিদিন কোরআন পড়বে, বুঝে পড়ার চেষ্টা করবে।"
+        },
+        {
+          "speaker": "child",
+          "tone": "happy",
+          "text": "ইনশাআল্লাহ, মা।"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "Cinematic close framing of a mother in a full black niqab showing only her expressive eyes gently helping adjust a newly worn niqab and hijab on her young daughter so that only her daughter's eyes are visible, warm soft bedroom lighting, touching gesture of modesty and care",
+      "narration": "লজ্জা আর শালীনতা রাখবে। দৃষ্টি নিচু রাখবে, পোশাকে পর্দা মানবে। এটা তোমার সম্মান।",
+      "motion": "right",
+      "source": "সূরা নূর ২৪:৩০-৩১",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "লজ্জা আর শালীনতা রাখবে। দৃষ্টি নিচু রাখবে, পোশাকে পর্দা মানবে। এটা তোমার সম্মান।"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "A Muslim mother and daughter sitting quietly on a veranda bench overlooking a calm garden pond at dusk, both wearing full face-covering niqabs showing only their eyes and loose modest cloaks, contemplative posture, overcast evening sky",
+      "narration": "আর কী করা যাবে না, মা? মিথ্যা বলবে না, গীবত করবে না, মা-বাবার সামনে উঁচু গলায় কথা বলবে না।",
+      "motion": "left",
+      "source": "সূরা হুজুরাত ৪৯:১২",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "আর কী করা যাবে না, মা?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "serious",
+          "text": "মিথ্যা বলবে না, গীবত করবে না, মা-বাবার সামনে উঁচু গলায় কথা বলবে না।"
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "prompt": "A mother walking alongside her teenage daughter down a safe, softly lit garden pathway at twilight, both dressed in traditional loose abayas and complete niqabs that cover all of the face except the eyes, safely walking away from a distant shadowy gate",
+      "narration": "আর যিনার কাছেও যেও না। অপরিচিত কারও সাথে গোপন সম্পর্ক বা নির্জনে দেখা, এসব থেকে দূরে থাকবে।",
+      "motion": "in",
+      "source": "সূরা বনী ইসরাঈল ১৭:৩২",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "serious",
+          "text": "আর যিনার কাছেও যেও না। অপরিচিত কারও সাথে গোপন সম্পর্ক বা নির্জনে দেখা, এসব থেকে দূরে থাকবে।"
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "prompt": "A Muslim mother holding both hands of her daughter against a scenic golden sunrise over a mist-covered green field, both wearing complete niqabs covering their entire faces with strictly only their warm eyes showing, atmosphere of tender reassurance, hope, and peace",
+      "narration": "মা, ভুল করে ফেললে? তাওবা করবে। আল্লাহ ক্ষমা করেন। আর যেকোনো প্রশ্ন নির্দ্বিধায় আমাকে করবে।",
+      "motion": "out",
+      "source": "সূরা তাহরীম ৬৬:৮",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "worried",
+          "text": "মা, ভুল করে ফেললে?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "tender",
+          "text": "তাওবা করবে। আল্লাহ ক্ষমা করেন। আর যেকোনো প্রশ্ন নির্দ্বিধায় আমাকে করবে।"
+        }
+      ]
+    }
+  ],
+  "description": "বালেগ হওয়া মানে আল্লাহর সামনে নিজের আমলের দায়িত্ব শুরু। নামাজ, রোজা, শালীনতা, সত্যবাদিতা — আর ভুল হলে তাওবা। প্রতিটি মা তার সন্তানকে এই কথাগুলো শেখাতে পারেন।\n\nসূত্র: সূরা নিসা ৪:১০৩ · সূরা বাকারা ২:১৮৩ · সূরা নূর ২৪:৩০-৩১ · সূরা বনী ইসরাঈল ১৭:৩২ · সূরা তাহরীম ৬৬:৮ · সুনান আবু দাউদ, তিরমিযী",
+  "publish": {
+    "description": "বালেগ হওয়া মানে আল্লাহর সামনে নিজের আমলের দায়িত্ব শুরু। নামাজ, রোজা, শালীনতা, সত্যবাদিতা — আর ভুল হলে তাওবা। প্রতিটি মা তার সন্তানকে এই কথাগুলো শেখাতে পারেন।\n\nসূত্র: সূরা নিসা ৪:১০৩ · সূরা বাকারা ২:১৮৩ · সূরা নূর ২৪:৩০-৩১ · সূরা বনী ইসরাঈল ১৭:৩২ · সূরা তাহরীম ৬৬:৮ · সুনান আবু দাউদ, তিরমিযী",
+    "hashtags": [
+      "#বালেগ",
+      "#মায়ের_শিক্ষা",
+      "#ইসলামিক_শিক্ষা",
+      "#নামাজ",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}
+

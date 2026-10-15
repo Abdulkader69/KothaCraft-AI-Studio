@@ -1,0 +1,107 @@
+{
+  "title": "তায়েফের দিন",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a long stony road leading out of a desert town toward distant green hills, heat on the rocks, a hard journey ahead, wide shot",
+      "narration": "মক্কায় নির্যাতন যখন সীমা ছাড়িয়ে গেল, নবীজি পায়ে হেঁটে তায়েফে গেলেন — সেখানকার মানুষকে দাওয়াত দিতে।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৩২৩১"
+    },
+    {
+      "id": "02",
+      "prompt": "heavy wooden doors shut tight along a narrow stone street, shutters closed, no welcome, harsh midday shadows",
+      "narration": "তায়েফের নেতারা তাঁকে উপহাস করল, প্রত্যাখ্যান করল।",
+      "motion": "left",
+      "source": "সহীহ বুখারী ৩২৩১"
+    },
+    {
+      "id": "03",
+      "prompt": "scattered stones on a dusty road with dark drops on the pale ground, a lone sandal print, aftermath, low harsh light",
+      "narration": "তারা পথের ছেলেদের লেলিয়ে দিল। পাথরের আঘাতে তাঁর পা রক্তে ভিজে গেল।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৩২৩১"
+    },
+    {
+      "id": "04",
+      "prompt": "a quiet vineyard heavy with grapes behind a low stone wall, deep shade under the vines, a place to rest, soft green light",
+      "narration": "শহরের বাইরে এক আঙুর বাগানে বসে, ক্লান্ত ও আহত অবস্থায়, তিনি আল্লাহর কাছে দোয়া করলেন।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৩২৩১"
+    },
+    {
+      "id": "05",
+      "prompt": "two colossal dark mountains towering on either side of a valley town, storm light on their peaks, immense and threatening",
+      "narration": "তখন পাহাড়ের ফেরেশতা এসে বললেন, আপনি চাইলে আমি এই দুই পাহাড় তাদের উপর মিলিয়ে দিই।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৩২৩১"
+    },
+    {
+      "id": "06",
+      "prompt": "the same two mountains standing unchanged under a calm clearing sky, birds circling peacefully, the valley safe",
+      "narration": "তিনি বললেন, না। আমি আশা করি, তাদের বংশ থেকে এমন মানুষ আসবে যারা এক আল্লাহর ইবাদত করবে।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৩২৩১"
+    },
+    {
+      "id": "07",
+      "prompt": "soft evening light spilling over the green valley, a rainbow fading, the town's lamps beginning to glow, mercy",
+      "narration": "জীবনের সবচেয়ে কষ্টের দিনেও তিনি ধ্বংস নয় — রহমত চেয়েছিলেন।",
+      "motion": "out",
+      "source": "সূরা আম্বিয়া ২১:১০৭"
+    }
+  ],
+  "description": "তায়েফের উপত্যকায় রক্তাক্ত শরীরেও রাসূলুল্লাহ (ﷺ) ধ্বংস নয়, হেদায়েত ও রহমতের দোয়া করেছিলেন। জীবনের সবচেয়ে কষ্টের দিনেও ক্ষমা বেছে নেওয়ার এক অনুপম নিদর্শন।\n\nসূত্র: সহীহ বুখারী ৩২৩১ · সূরা আম্বিয়া ২১:১০৭",
+  "publish": {
+    "description": "তায়েফের উপত্যকায় রক্তাক্ত শরীরেও রাসূলুল্লাহ (ﷺ) ধ্বংস নয়, হেদায়েত ও রহমতের দোয়া করেছিলেন। জীবনের সবচেয়ে কষ্টের দিনেও ক্ষমা বেছে নেওয়ার এক অনুপম নিদর্শন।\n\nসূত্র: সহীহ বুখারী ৩২৩১ · সূরা আম্বিয়া ২১:১০৭",
+    "hashtags": [
+      "#তায়েফ",
+      "#রহমত",
+      "#নবীজি",
+      "#ক্ষমা",
+      "#সিরাত",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

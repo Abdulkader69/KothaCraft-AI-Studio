@@ -1,0 +1,13 @@
+{
+  "_name": "emerald-night",
+  "_note": "Deep green and teal — the Madinah palette.",
+  "speed": 2,
+  "stars": 360,
+  "fireflies": 40,
+  "palette": {
+    "skyTop": "#02110f", "skyMid": "#07332c", "skyLow": "#12614f", "skyBottom": "#2b8f6d",
+    "haze": "#14705c", "hazeWarm": "#5fae8a", "star": "#eafff6", "moon": "#f6f0c4",
+    "gold": "#e6d089", "lantern": "#ffd98a", "firefly": "#c9f07e",
+    "ink": "#03120f", "window": "#ffcf7a", "water": "#04150f"
+  }
+}

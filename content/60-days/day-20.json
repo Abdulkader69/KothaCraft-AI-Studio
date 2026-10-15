@@ -1,0 +1,86 @@
+{
+  "title": "নম্রতা ও অহংকার",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a huge boulder half-buried in cracked dry earth under a white sky, immovable, harsh light, a tiny green shoot beside it",
+      "narration": "নবীজি বলেছেন, যার অন্তরে অণু পরিমাণ অহংকার আছে সে জান্নাতে প্রবেশ করবে না।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ৯১"
+    },
+    {
+      "id": "02",
+      "prompt": "fine dust drifting through a single sunbeam in a dark old room, weightless golden particles, extreme shallow focus",
+      "narration": "এ কথা শুনে একজন বললেন, মানুষ তো চায় তার পোশাক সুন্দর হোক, জুতা সুন্দর হোক।",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ৯১"
+    },
+    {
+      "id": "03",
+      "prompt": "a clean white cotton robe folded on a wooden bench in soft light, simple, elegant, a sprig of jasmine on top",
+      "narration": "তিনি বললেন, এটা অহংকার নয়। আল্লাহ সুন্দর, তিনি সৌন্দর্য ভালোবাসেন।",
+      "motion": "out",
+      "source": "সহীহ মুসলিম ৯১"
+    },
+    {
+      "id": "04",
+      "prompt": "a mirror-still lake at dawn reflecting the sky and mountains exactly, honest and undistorted, pale light",
+      "narration": "অহংকার হলো সত্যকে অস্বীকার করা এবং মানুষকে তুচ্ছ ভাবা।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ৯১"
+    },
+    {
+      "id": "05",
+      "prompt": "a low humble stone doorway that one must bow to enter, worn threshold, soft golden light within, ancient",
+      "narration": "যে আল্লাহর জন্য বিনয়ী হয়, আল্লাহ তাকে উঁচু করে দেন।",
+      "motion": "in",
+      "source": "সহীহ মুসলিম ২৫৮৮"
+    },
+    {
+      "id": "06",
+      "prompt": "wheat stalks heavy with grain bowing low in a golden field at sunset, one empty stalk standing stiff and straight, warm backlight",
+      "narration": "ভরা শীষ সবসময় নুয়ে থাকে। খালি শীষই সোজা হয়ে দাঁড়ায়।",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ২৫৮৮"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "_name": "ramadan-gold",
+  "_note": "Warm amber night, lanterns carrying the frame. Fewer stars, more fireflies.",
+  "speed": 2,
+  "stars": 240,
+  "fireflies": 46,
+  "motes": 26,
+  "palette": {
+    "skyTop": "#160a1f", "skyMid": "#3d1630", "skyLow": "#7a3a3a", "skyBottom": "#a8613f",
+    "haze": "#9c4a45", "hazeWarm": "#d98e5a", "star": "#ffeccd", "moon": "#ffe9b0",
+    "gold": "#f2c96b", "lantern": "#ffb951", "firefly": "#ffd97a",
+    "ink": "#1a0c16", "window": "#ffb347", "water": "#1c0d17"
+  }
+}

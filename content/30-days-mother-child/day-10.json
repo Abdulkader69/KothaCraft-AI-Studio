@@ -1,0 +1,210 @@
+{
+  "title": "মায়ের শিক্ষা: এক ফোঁটা পানিও অপচয় নয়",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "A brass faucet fully turned on with clean clear water gushing into an overflowing stone basin while toothbrush lies on the edge, vintage oil painting",
+      "narration": "বাবা, তুমি দাঁত ব্রাশ করছ অথচ পানির কলটা পুরো ছেড়ে রেখেছ! মা, আমি তো ব্রাশ শেষ করেই বন্ধ করব। একটু পানি পড়লে কী আর হবে?",
+      "motion": "in",
+      "source": "সূরা আল-আরাফ ৩১",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "caring",
+          "text": "বাবা, তুমি দাঁত ব্রাশ করছ অথচ পানির কলটা পুরো ছেড়ে রেখেছ!"
+        },
+        {
+          "speaker": "child",
+          "tone": "innocent",
+          "text": "মা, আমি তো ব্রাশ শেষ করেই বন্ধ করব। একটু পানি পড়লে কী আর হবে?"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "Mother’s gentle hand turning the brass tap off, stopping the rush of water, warm morning bathroom window light, storybook gouache painting",
+      "narration": "একটু একটু করেই অনেক পানি অপচয় হয়ে যায় বাবা। পানি আল্লাহর এক অমূল্য দান। কিন্তু আমাদের ট্যাংকে তো প্রচুর পানি আছে মা, নদী বা সাগরেও কি পানি কম?",
+      "motion": "left",
+      "source": "ইবনে মাজাহ ৪২৫",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "একটু একটু করেই অনেক পানি অপচয় হয়ে যায় বাবা। পানি আল্লাহর এক অমূল্য দান।"
+        },
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "কিন্তু আমাদের ট্যাংকে তো প্রচুর পানি আছে মা, নদী বা সাগরেও কি পানি কম?"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "An ancient miniature painting depicting Prophet’s companions performing wudhu beside a flowing river with minimal water, classical fairytale art",
+      "narration": "নবীজি একবার হযরত সাদ (রা.)-কে বললেন, প্রবহমান নদীর তীরে বসে অজু করলেও অতিরিক্ত পানি খরচ কোরো না। নদীর তীরে বসেও অপচয় করা নিষেধ ছিল মা?!",
+      "motion": "right",
+      "source": "ইবনে মাজাহ ৪২৫",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "নবীজি একবার হযরত সাদ (রা.)-কে বললেন, প্রবহমান নদীর তীরে বসে অজু করলেও অতিরিক্ত পানি খরচ কোরো না।"
+        },
+        {
+          "speaker": "child",
+          "tone": "amazed",
+          "text": "নদীর তীরে বসেও অপচয় করা নিষেধ ছিল মা?!"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "A dry cracked desert landscape under scorching sun where children walk miles carrying water pots on heads, dramatic storybook illustration",
+      "narration": "হ্যাঁ সোনা। পৃথিবীতে কত হাজারো শিশু এক ঢোক বিশুদ্ধ পানির জন্য মাইলের পর মাইল রোদে হাঁটে জানো? আমি তো ওদের কথা কখনো ভাবিনি মা... আমার ফেলে দেওয়া পানি ওদের কাজে লাগতে পারত।",
+      "motion": "in",
+      "source": "সূরা বনি ইসরাইল ২৭",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "serious",
+          "text": "হ্যাঁ সোনা। পৃথিবীতে কত হাজারো শিশু এক ঢোক বিশুদ্ধ পানির জন্য মাইলের পর মাইল রোদে হাঁটে জানো?"
+        },
+        {
+          "speaker": "child",
+          "tone": "sad",
+          "text": "আমি তো ওদের কথা কখনো ভাবিনি মা... আমার ফেলে দেওয়া পানি ওদের কাজে লাগতে পারত।"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "A small terracotta clay mug filled with just enough water placed neatly beside the basin, gouache painting",
+      "narration": "ব্রাশ করার সময় বা অজু করার সময় মগে পানি নিয়ে নিলে এক ফোঁটাও বাড়তি নষ্ট হয় না। আমি এখন থেকে মগ ব্যবহার করব মা, কল কখনো অকারণে ছেড়ে রাখব না।",
+      "motion": "left",
+      "source": "মগ ব্যবহারের সুন্নাত",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "ব্রাশ করার সময় বা অজু করার সময় মগে পানি নিয়ে নিলে এক ফোঁটাও বাড়তি নষ্ট হয় না।"
+        },
+        {
+          "speaker": "child",
+          "tone": "earnest",
+          "text": "আমি এখন থেকে মগ ব্যবহার করব মা, কল কখনো অকারণে ছেড়ে রাখব না।"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "Child carefully turning off an unneeded room lamp and closing a leaking tap tightly, smiling proudly, oil painting",
+      "narration": "শুধু পানি নয় বাবা; খাবার, বিদ্যুৎ, কাগজ—সবকিছুর পরিমিত ব্যবহারই হলো মুমিনের চরিত্র। কুরআনে অপচয়কারীদের শয়তানের ভাই বলা হয়েছে, তাই না মা?",
+      "motion": "right",
+      "source": "সূরা আল-আরাফ ৩১",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "শুধু পানি নয় বাবা; খাবার, বিদ্যুৎ, কাগজ—সবকিছুর পরিমিত ব্যবহারই হলো মুমিনের চরিত্র।"
+        },
+        {
+          "speaker": "child",
+          "tone": "happy",
+          "text": "কুরআনে অপচয়কারীদের শয়তানের ভাই বলা হয়েছে, তাই না মা?"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "Mother gently patting child’s shoulder in a bright sunlit kitchen, sparkling water glasses on the wooden table, fairytale oil painting",
+      "narration": "একদম ঠিক। যে নেয়ামতের কদর করে, আল্লাহ তার নেয়ামত আরও বহুগুণ বাড়িয়ে দেন।",
+      "motion": "out",
+      "source": "হিকমাহ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "একদম ঠিক। যে নেয়ামতের কদর করে, আল্লাহ তার নেয়ামত আরও বহুগুণ বাড়িয়ে দেন।"
+        }
+      ]
+    }
+  ],
+  "description": "পানি আল্লাহর অমূল্য নেয়ামত। অজু, ব্রাশ বা গোসলের সময়ও এক ফোঁটা পানি অকারণে নষ্ট করা নিষিদ্ধ। অপচয়কারী শয়তানের ভাই।\n\nসূত্র: সূরা আল-আরাফ ৩১ · ইবনে মাজাহ ৪২৫ · সূরা বনি ইসরাইল ২৭",
+  "publish": {
+    "description": "পানি আল্লাহর অমূল্য নেয়ামত। অজু, ব্রাশ বা গোসলের সময়ও এক ফোঁটা পানি অকারণে নষ্ট করা নিষিদ্ধ। অপচয়কারী শয়তানের ভাই।\n\nসূত্র: সূরা আল-আরাফ ৩১ · ইবনে মাজাহ ৪২৫ · সূরা বনি ইসরাইল ২৭",
+    "hashtags": [
+      "#অপচয়রোধ",
+      "#পানি_সংরক্ষণ",
+      "#মায়ের_শিক্ষা",
+      "#নেয়ামত",
+      "#পারিবারিক_শিক্ষা",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

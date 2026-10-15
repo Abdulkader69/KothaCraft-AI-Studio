@@ -1,0 +1,210 @@
+{
+  "title": "মায়ের শিক্ষা: সালামের মিষ্টি উপহার",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "vintage children's storybook illustration, classical oil painting on textured canvas, warm gouache details, golden hour lighting with radiant sunbeams, rich warm earthy color palette, sandstone ochre terracotta and deep turquoise sky, highly detailed painterly masterpiece, nostalgic fairytale art style, respectful modest aesthetic",
+    "negative": "photorealistic 35mm photo, modern 3D CGI render, plastic skin, anime, cartoonish, low resolution, blurry, watermark, signature, modern clothing, modern buildings, western gadgets, distorted limbs, extra fingers"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "model": "eleven_v3",
+    "mode": "dialogue",
+    "stability": 0.5,
+    "similarity": 0.8,
+    "speed": 0.95,
+    "speakers": {
+      "mother": {
+        "profile": "female_adult",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "geminiVoice": "Kore",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "-2%",
+        "edgePitch": "+0Hz",
+        "name": "মা",
+        "color": "#EBCB80",
+        "note": "warm adult female, mother"
+      },
+      "child": {
+        "profile": "female_child",
+        "voiceId": "MF3mGyEYCl7XYWbV9V6O",
+        "geminiVoice": "Aoede",
+        "edgeVoice": "bn-BD-NabanitaNeural",
+        "edgeRate": "+6%",
+        "edgePitch": "+22Hz",
+        "name": "সন্তান",
+        "color": "#88C0D0",
+        "note": "young child, ~10-12, curious and polite"
+      }
+    }
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000",
+    "speakerLabels": true
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "An ancient heavy wooden arched door decorated with hanging dried herbs, shoes neatly aligned outside on stone steps, vintage storybook oil painting",
+      "narration": "মা, আমি বন্ধুদের সাথে মাঠ থেকে খেলে ফিরে এসেছি! একটু দাঁড়াও বাবা। ঘরে ঢোকার সময় সবচেয়ে দামি উপহারটা দিলে না?",
+      "motion": "in",
+      "source": "সূরা আন-নূর ৬১",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "rushing",
+          "text": "মা, আমি বন্ধুদের সাথে মাঠ থেকে খেলে ফিরে এসেছি!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "একটু দাঁড়াও বাবা। ঘরে ঢোকার সময় সবচেয়ে দামি উপহারটা দিলে না?"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "prompt": "A young child stopping at the threshold, looking curiously at mother standing in the sunlit hallway, storybook gouache painting",
+      "narration": "দামি উপহার? আমার পকেটে তো কোনো উপহার নেই মা! সালামের চেয়ে দামি উপহার আর কী হতে পারে সোনা? ঘরে প্রবেশের আগেই সালাম দিতে হয়।",
+      "motion": "left",
+      "source": "সালামের মহত্ত্ব",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "curious",
+          "text": "দামি উপহার? আমার পকেটে তো কোনো উপহার নেই মা!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "সালামের চেয়ে দামি উপহার আর কী হতে পারে সোনা? ঘরে প্রবেশের আগেই সালাম দিতে হয়।"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "prompt": "A small child smiling warmly with hands held respectfully in front, eyes glowing with sincerity, classical oil painting",
+      "narration": "আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহু, মা! ওয়া আলাইকুমুস সালাম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহু, আমার মানিক!",
+      "motion": "right",
+      "source": "সহীহ মুসলিম ৫৪",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "polite",
+          "text": "আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহু, মা!"
+        },
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "ওয়া আলাইকুমুস সালাম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহু, আমার মানিক!"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "prompt": "Mother hugging the child warmly by the entrance, soft golden evening light falling through carved wooden screens, gouache painting",
+      "narration": "মা, সালামের পুরো অর্থটা আমাকে একটু বুঝিয়ে বলবে? সালামের অর্থ হলো—আল্লাহর পক্ষ থেকে আপনার ওপর শান্তি, রহমত ও বরকত বর্ষিত হোক।",
+      "motion": "in",
+      "source": "তিরমিজি ২৬৯৮",
+      "lines": [
+        {
+          "speaker": "child",
+          "tone": "thoughtful",
+          "text": "মা, সালামের পুরো অর্থটা আমাকে একটু বুঝিয়ে বলবে?"
+        },
+        {
+          "speaker": "mother",
+          "tone": "warm",
+          "text": "সালামের অর্থ হলো—আল্লাহর পক্ষ থেকে আপনার ওপর শান্তি, রহমত ও বরকত বর্ষিত হোক।"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "prompt": "Two village children greeting each other happily on a quaint cobblestone pathway, birds singing in trees, fairytale storybook illustration",
+      "narration": "নবীজি বলেছেন, তোমরা পরস্পরের মধ্যে সালামের প্রসার ঘটাও, তবেই তোমাদের মাঝে গভীর ভালোবাসা তৈরি হবে। যদি আমি অপরিচিত কাউকে দেখি, তাকেও কি সালাম দেব মা?",
+      "motion": "left",
+      "source": "সহীহ মুসলিম ৫৪",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "gentle",
+          "text": "নবীজি বলেছেন, তোমরা পরস্পরের মধ্যে সালামের প্রসার ঘটাও, তবেই তোমাদের মাঝে গভীর ভালোবাসা তৈরি হবে।"
+        },
+        {
+          "speaker": "child",
+          "tone": "earnest",
+          "text": "যদি আমি অপরিচিত কাউকে দেখি, তাকেও কি সালাম দেব মা?"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "prompt": "A child smiling and waving politely to an elderly neighbor tending flowers in a village garden, warm golden hour, oil painting",
+      "narration": "হ্যাঁ বাবা! পরিচিত-অপরিচিত সব মুসলমানকেই সালাম দিতে হয়। আর যে আগে সালাম দেয়, সে আল্লাহর বেশি নিকটবর্তী। তাহলে কাল থেকে স্কুলে ঢুকেই আমি সবাইকে আগে আগে সালাম দেব মা!",
+      "motion": "right",
+      "source": "সহীহ বুখারী ১২",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "proud",
+          "text": "হ্যাঁ বাবা! পরিচিত-অপরিচিত সব মুসলমানকেই সালাম দিতে হয়। আর যে আগে সালাম দেয়, সে আল্লাহর বেশি নিকটবর্তী।"
+        },
+        {
+          "speaker": "child",
+          "tone": "happy",
+          "text": "তাহলে কাল থেকে স্কুলে ঢুকেই আমি সবাইকে আগে আগে সালাম দেব মা!"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "prompt": "A glowing warm brass lantern lighting a peaceful home corridor, rugs and books arranged neatly, serene fairytale oil painting",
+      "narration": "সালাম তোমার মুখে সবসময় ফুটে থাকুক। সালাম দিলে অন্তরের অহংকার দূর হয়ে যায়।",
+      "motion": "out",
+      "source": "হিকমাহ",
+      "lines": [
+        {
+          "speaker": "mother",
+          "tone": "loving",
+          "text": "সালাম তোমার মুখে সবসময় ফুটে থাকুক। সালাম দিলে অন্তরের অহংকার দূর হয়ে যায়।"
+        }
+      ]
+    }
+  ],
+  "description": "সালাম হলো শান্তির দোয়া ও ভালোবাসার চাবিকাঠি। ঘরে প্রবেশের পূর্বে সালাম দেওয়া পরিবারের মধ্যে রহমত ডেকে আনে।\n\nসূত্র: সূরা আন-নূর ৬১ · সহীহ মুসলিম ৫৪ · তিরমিজি ২৬৯৮",
+  "publish": {
+    "description": "সালাম হলো শান্তির দোয়া ও ভালোবাসার চাবিকাঠি। ঘরে প্রবেশের পূর্বে সালাম দেওয়া পরিবারের মধ্যে রহমত ডেকে আনে।\n\nসূত্র: সূরা আন-নূর ৬১ · সহীহ মুসলিম ৫৪ · তিরমিজি ২৬৯৮",
+    "hashtags": [
+      "#সালাম",
+      "#মায়ের_শিক্ষা",
+      "#পারিবারিক_শিক্ষা",
+      "#শান্তি",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}

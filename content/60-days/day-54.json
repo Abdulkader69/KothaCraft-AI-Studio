@@ -1,0 +1,107 @@
+{
+  "title": "আল্লাহর রহমত সবকিছুকে ঘিরে আছে",
+  "aspect": "9:16",
+  "fps": 30,
+  "gap": 0.4,
+  "image": {
+    "style": "cinematic 35mm film still, natural light, rich colour, atmospheric depth, shallow depth of field, no visible faces",
+    "negative": "people, person, man, woman, child, face, portrait, statue, idol, watermark, logo, low quality, blurry, deformed"
+  },
+  "voice": {
+    "piperSpeaker": 0,
+    "mmsLang": "ben",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "stability": 0.65,
+    "similarity": 0.8,
+    "speed": 0.95
+  },
+  "captions": {
+    "style": "highlight",
+    "wordsPerCue": 3,
+    "fontName": "Kohinoor Bangla",
+    "primary": "#FFFFFF",
+    "highlight": "#EBCB80",
+    "outline": "#000000"
+  },
+  "intro": {
+    "seconds": 2
+  },
+  "outro": {
+    "seconds": 4,
+    "text": "প্রতিদিন একটি গল্প\nফলো করুন\nfacebook//হিকমাহ-Wisdom"
+  },
+  "music": {
+    "gainDb": -26
+  },
+  "texture": {
+    "grain": 6,
+    "vignette": 4.5,
+    "contrast": 1.05,
+    "saturation": 1.02
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "prompt": "a dark heavy storm sky over a barren plain with one narrow break of golden light far away, hope in the distance",
+      "narration": "আল্লাহ বলেন, বলো — হে আমার বান্দারা, যারা নিজেদের উপর অবিচার করেছ…",
+      "motion": "in",
+      "source": "সূরা যুমার ৩৯:৫৩"
+    },
+    {
+      "id": "02",
+      "prompt": "the break in the clouds widening, rays of light fanning down across the plain, the dark retreating",
+      "narration": "…আল্লাহর রহমত থেকে নিরাশ হয়ো না।",
+      "motion": "left",
+      "source": "সূরা যুমার ৩৯:৫৩"
+    },
+    {
+      "id": "03",
+      "prompt": "warm rain washing a dusty landscape into fresh green, streams beginning to run, everything drinking",
+      "narration": "নিশ্চয়ই আল্লাহ সব গুনাহ ক্ষমা করে দেন।",
+      "motion": "out",
+      "source": "সূরা যুমার ৩৯:৫৩"
+    },
+    {
+      "id": "04",
+      "prompt": "a clear washed sky over orchards in full blossom, petals drifting, everything renewed, soft light",
+      "narration": "নিশ্চয়ই তিনি ক্ষমাশীল, পরম দয়ালু।",
+      "motion": "right",
+      "source": "সূরা যুমার ৩৯:৫৩"
+    },
+    {
+      "id": "05",
+      "prompt": "a hundred brass lamps arranged in rows in a dark hall, only one lit, its glow reaching every corner",
+      "narration": "নবীজি বলেছেন, আল্লাহ তাঁর রহমতকে একশ ভাগ করেছেন।",
+      "motion": "in",
+      "source": "সহীহ বুখারী ৬০০০"
+    },
+    {
+      "id": "06",
+      "prompt": "a single lamp lighting a whole room warmly — a mother's arms around a child, a bird sheltering its chicks, one glow",
+      "narration": "এক ভাগ দুনিয়ায় নামিয়ে দিয়েছেন — এতেই মায়ের মমতা, প্রাণীর স্নেহ, সব দয়া।",
+      "motion": "right",
+      "source": "সহীহ বুখারী ৬০০০"
+    },
+    {
+      "id": "07",
+      "prompt": "dawn breaking impossibly wide and bright over a green valley, light beyond light, the other ninety-nine",
+      "narration": "বাকি নিরানব্বই ভাগ তিনি রেখে দিয়েছেন কিয়ামতের দিনে তাঁর বান্দাদের জন্য।",
+      "motion": "out",
+      "source": "সহীহ বুখারী ৬০০০"
+    }
+  ],
+  "description": "কখনো গুনাহের কারণে আল্লাহর অসীম রহমত থেকে নিরাশ হবেন না। দুনিয়ার সমস্ত মায়া-মমতা তাঁর শতভাগের এক ভাগ দয়া মাত্র, বাকি নিরানব্বই ভাগ তিনি আখেরাতের জন্য রেখেছেন।\n\nসূত্র: সূরা যুমার ৩৯:৫৩ · সহীহ বুখারী ৬০০০",
+  "publish": {
+    "description": "কখনো গুনাহের কারণে আল্লাহর অসীম রহমত থেকে নিরাশ হবেন না। দুনিয়ার সমস্ত মায়া-মমতা তাঁর শতভাগের এক ভাগ দয়া মাত্র, বাকি নিরানব্বই ভাগ তিনি আখেরাতের জন্য রেখেছেন।\n\nসূত্র: সূরা যুমার ৩৯:৫৩ · সহীহ বুখারী ৬০০০",
+    "hashtags": [
+      "#রহমত",
+      "#ক্ষমা",
+      "#দয়া",
+      "#কোরআন",
+      "#হাদিস",
+      "#হিকমাহ",
+      "#reels",
+      "#shorts"
+    ]
+  }
+}
