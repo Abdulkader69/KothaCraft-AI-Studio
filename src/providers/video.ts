@@ -19,6 +19,12 @@ export const WAN_STORE = path.join(ROOT, ".wan");
 export const WAN_MODEL = path.join(WAN_STORE, "Wan2.2-TI2V-5B-MLX");
 export const wanInstalled = () => fs.existsSync(path.join(WAN_VENV, "bin", "python")) && fs.existsSync(path.join(WAN_MODEL, "config.json"));
 
+export const LTX2_BIN = path.join(WAN_VENV, "bin", "ltx-2-mlx");
+export const LTX2_MODEL = path.join(ROOT, "models", "ltx-2.3-mlx-q8");
+export const LTX2_CACHE = path.join(ROOT, ".hf_cache");
+export const ltx2Installed = () => fs.existsSync(LTX2_BIN) && fs.existsSync(path.join(LTX2_MODEL, "transformer-distilled-1.1.safetensors"));
+
+
 export interface VideoJob {
   image: string;             // source still
   prompt: string;            // what should move
@@ -118,9 +124,60 @@ function local(job: VideoJob): void {
   if (!fs.existsSync(job.dest) || fs.statSync(job.dest).size < 10_000) throw new Error(`local video produced no clip for ${path.basename(job.image)}`);
 }
 
-export async function generateClip(job: VideoJob): Promise<void> {
-  const provider = env("VIDEO_PROVIDER", "fal");
-  if (provider === "fal") return fal(job);
-  if (provider === "local") return local(job);
-  throw new Error(`unknown VIDEO_PROVIDER=${provider} — use "fal" or "local"`);
+function localLtx2(job: VideoJob): void {
+  if (!ltx2Installed()) {
+    throw new Error("LTX-2 model not found — verify models/ltx-2.3-mlx-q8 on Mac Drive");
+  }
+  const fps = 24;
+  const wantFrames = Math.round(Number(env("VIDEO_LOCAL_SECONDS", String(job.seconds))) * fps);
+  const k = Math.max(3, Math.min(15, Math.round((wantFrames - 1) / 8)));
+  const frames = 8 * k + 1; // 25, 33, 41, 49, ..., 121
+  const portrait = job.height > job.width;
+  const w = portrait ? 448 : 704;
+  const h = portrait ? 704 : 448;
+  ensureDir(path.dirname(job.dest));
+  log("video", `LTX-2.3 Q8 local: ${frames} frames (~${(frames / fps).toFixed(1)}s) @ ${fps} fps, ${w}x${h}`);
+  const args = [
+    "generate",
+    "--model", LTX2_MODEL,
+    "--text-encoder", "mlx-community/gemma-3-12b-it-4bit",
+    "--prompt", job.prompt,
+    "--distilled",
+    "--low-ram",
+    "--audio",
+    "-f", String(frames),
+    "--frame-rate", String(fps),
+    "--width", String(w),
+    "--height", String(h),
+    "-o", job.dest,
+    ...(job.image ? ["--image", job.image] : []),
+    ...(job.seed !== undefined ? ["--seed", String(job.seed)] : []),
+  ];
+  try {
+    execFileSync(LTX2_BIN, args, {
+      stdio: ["ignore", "ignore", "pipe"],
+      env: {
+        ...process.env,
+        HF_HOME: LTX2_CACHE,
+        HUGGINGFACE_HUB_CACHE: path.join(LTX2_CACHE, "hub"),
+        HF_HUB_OFFLINE: "1",
+      },
+      maxBuffer: 64 * 1024 * 1024,
+    });
+  } catch (err: any) {
+    const tail = (err?.stderr?.toString() ?? "").trim().split("\n").slice(-8).join("\n");
+    throw new Error(`LTX-2 video generation failed:\n${tail}`);
+  }
+  if (!fs.existsSync(job.dest) || fs.statSync(job.dest).size < 10_000) {
+    throw new Error(`LTX-2 produced no clip for ${path.basename(job.dest)}`);
+  }
 }
+
+export async function generateClip(job: VideoJob): Promise<void> {
+  const provider = env("VIDEO_PROVIDER", "ltx2");
+  if (provider === "fal") return fal(job);
+  if (provider === "local" || provider === "wan") return local(job);
+  if (provider === "ltx2" || provider === "ltx") return localLtx2(job);
+  throw new Error(`unknown VIDEO_PROVIDER=${provider} — use "ltx2", "local" (wan), or "fal"`);
+}
+

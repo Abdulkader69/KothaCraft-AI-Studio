@@ -22,7 +22,17 @@ import {
   loadEnv,
 } from '../src/config';
 import { mfluxInstalled } from '../src/providers/images';
-import { wanInstalled } from '../src/providers/video';
+import { wanInstalled, ltx2Installed, LTX2_BIN, LTX2_CACHE } from '../src/providers/video';
+import {
+  AI_VIDEOS_DIR,
+  AI_THUMBS_DIR,
+  readVideoMeta,
+  buildLtx2Args,
+  deleteAiVideo,
+  saveAiVideoToStock,
+  generateThumb,
+} from '../src/video-studio';
+
 import {
   metaAuthUrl,
   metaConfigured,
@@ -1252,6 +1262,12 @@ function capabilities() {
     },
     mflux: { ok: mfluxInstalled(), arm64: process.arch === 'arm64' },
     wan: { ok: wanInstalled(), arm64: process.arch === 'arm64' },
+    ltx2: {
+      ok: ltx2Installed(),
+      model: 'LTX-2.3 Distilled Q8 (Local Apple Silicon)',
+      arm64: process.arch === 'arm64',
+    },
+
     piper: { ok: piperInstalled() },
     vitsBd: { ok: vitsBdInstalled() },
     edge: { ok: edgeInstalled(), voices: EDGE_VOICES },
@@ -1380,7 +1396,10 @@ const server = http.createServer(async (req, res) => {
       '/verses.html': 'verses.html',
       '/dialogue': 'dialogue.html',
       '/dialogue.html': 'dialogue.html',
+      '/video': 'video.html',
+      '/video.html': 'video.html',
       '/terms': 'terms.html',
+
       '/terms.html': 'terms.html',
       '/privacy': 'privacy.html',
       '/privacy.html': 'privacy.html',
@@ -2714,6 +2733,268 @@ const server = http.createServer(async (req, res) => {
       sendVideo(req, res, finalOf(reel, url.searchParams.get('variant') ?? ''));
       return;
     }
+
+    // ── AI Video Generation Studio Endpoints ─────────────────────────────────
+    if (route === '/api/video/gallery' && req.method === 'GET') {
+      const videos = readVideoMeta();
+      json(res, 200, { ok: true, videos });
+      return;
+    }
+
+    if (route === '/api/video/stream') {
+      const file = path.basename(url.searchParams.get('file') ?? '');
+      if (!file) {
+        res.writeHead(400).end('missing file parameter');
+        return;
+      }
+      const full = path.join(AI_VIDEOS_DIR, file);
+      sendVideo(req, res, full);
+      return;
+    }
+
+    if (route === '/api/video/thumb') {
+      const file = path.basename(url.searchParams.get('file') ?? '');
+      const thumb = path.join(AI_THUMBS_DIR, `${file}.jpg`);
+      if (!fs.existsSync(thumb)) {
+        const videoFile = path.join(AI_VIDEOS_DIR, file);
+        if (fs.existsSync(videoFile)) generateThumb(videoFile, thumb);
+      }
+      if (!fs.existsSync(thumb)) {
+        res.writeHead(404).end();
+        return;
+      }
+      res.writeHead(200, {
+        'Content-Type': 'image/jpeg',
+        'Cache-Control': 'public, max-age=3600',
+      });
+      fs.createReadStream(thumb).pipe(res);
+      return;
+    }
+
+    if (route === '/api/video/to-stock' && req.method === 'POST') {
+      const body = JSON.parse((await readBody(req)).toString() || '{}');
+      const file = path.basename(body.file ?? '');
+      if (!file) {
+        json(res, 400, { error: 'no file provided' });
+        return;
+      }
+      try {
+        const result = saveAiVideoToStock(file, body.name);
+        json(res, 200, result);
+      } catch (err: any) {
+        json(res, 500, { error: err?.message || String(err) });
+      }
+      return;
+    }
+
+    if (route === '/api/video/to-scene' && req.method === 'POST') {
+      const body = JSON.parse((await readBody(req)).toString() || '{}');
+      const file = path.basename(body.file ?? '');
+      const slug = isSlug(body.slug ?? '') ? body.slug : currentSlug();
+      const sceneIdx = Number(body.sceneIndex ?? 0);
+      const isDialogue = body.mode === 'dialogue' || body.isDialogue;
+      const reel = reelPaths(slug, isDialogue ? 'dialogue' : 'reels');
+      const project = readProject(reel.slug);
+      if (!project) {
+        json(res, 404, { error: `Project ${slug} not found` });
+        return;
+      }
+
+      // Also copy to stock so it's a persistent asset across the studio
+      const stockResult = saveAiVideoToStock(file);
+      const scenes = (project.scenes as any[]) || [];
+      if (sceneIdx >= 0 && sceneIdx < scenes.length) {
+        scenes[sceneIdx].stock = stockResult.stockName;
+        scenes[sceneIdx].motion = 'pan-left';
+      }
+      writeProject(project, reel);
+      broadcast('project', { slug: reel.slug, project });
+      json(res, 200, { ok: true, stockName: stockResult.stockName });
+      return;
+    }
+
+    if (route === '/api/video' && req.method === 'DELETE') {
+      const file = path.basename(url.searchParams.get('file') ?? '');
+      if (!file) {
+        json(res, 400, { error: 'file param required' });
+        return;
+      }
+      deleteAiVideo(file);
+      json(res, 200, { ok: true });
+      return;
+    }
+
+    if (route === '/api/video/generate' && req.method === 'POST') {
+      if (job) {
+        json(res, 409, { error: `busy: ${jobLabel}` });
+        return;
+      }
+      if (!ltx2Installed()) {
+        json(res, 400, { error: 'LTX-2 model not installed on Mac Drive' });
+        return;
+      }
+
+      const body = JSON.parse((await readBody(req)).toString() || '{}');
+      if (!body.prompt || !body.prompt.trim()) {
+        json(res, 400, { error: 'prompt is required' });
+        return;
+      }
+
+      const cleanPrompt = body.prompt.trim();
+      const slug = slugify(cleanPrompt.slice(0, 30)) || 'video';
+      const filename = `${Date.now()}-${slug}.mp4`;
+      const destFile = path.join(AI_VIDEOS_DIR, filename);
+
+      const { args, frames, width, height, tempImage } = buildLtx2Args(
+        body,
+        destFile,
+      );
+
+      jobLabel = `AI Video: ${slug.slice(0, 20)}`;
+      broadcast('start', { label: jobLabel });
+      broadcast('video-progress', {
+        stage: 1,
+        step: 0,
+        total: 8,
+        percent: 5,
+        status: 'Starting LTX-2 MLX inference...',
+      });
+
+      const envVars = {
+        ...childEnv(),
+        HF_HOME: LTX2_CACHE,
+        HUGGINGFACE_HUB_CACHE: path.join(LTX2_CACHE, 'hub'),
+        HF_HUB_OFFLINE: '1',
+      };
+
+      const child = spawn(LTX2_BIN, args, { cwd: ROOT, env: envVars });
+      job = child;
+
+      const pump = (buf: Buffer) => {
+        const text = buf.toString();
+        for (const rawLine of text.split('\n')) {
+          const line = rawLine.replace(ANSI, '').trimEnd();
+          if (!line.trim()) continue;
+          broadcast('log', { line });
+
+          const stage2Match = line.match(/Stage\s*2.*?(\d+)\s*\/\s*(\d+)/i);
+          const stage1Match =
+            line.match(/Stage\s*1.*?(\d+)\s*\/\s*(\d+)/i) ||
+            (!line.includes('Stage 2') && line.match(/(\d+)\s*\/\s*(\d+)/));
+
+          if (stage2Match) {
+            const cur = Number(stage2Match[1]);
+            const tot = Number(stage2Match[2]) || 3;
+            const pct = Math.round(60 + (cur / tot) * 30);
+            broadcast('video-progress', {
+              stage: 2,
+              step: cur,
+              total: tot,
+              percent: pct,
+              status: `Stage 2 Refine: ${cur}/${tot}`,
+              line,
+            });
+          } else if (stage1Match) {
+            const cur = Number(stage1Match[1]);
+            const tot = Number(stage1Match[2]) || 8;
+            const pct = Math.round(10 + (cur / tot) * 50);
+            broadcast('video-progress', {
+              stage: 1,
+              step: cur,
+              total: tot,
+              percent: pct,
+              status: `Stage 1 Denoise: ${cur}/${tot}`,
+              line,
+            });
+          } else if (
+            line.toLowerCase().includes('decode') ||
+            line.toLowerCase().includes('audio') ||
+            line.toLowerCase().includes('vae')
+          ) {
+            broadcast('video-progress', {
+              stage: 3,
+              step: 1,
+              total: 1,
+              percent: 94,
+              status: 'Decoding Video & Generating Audio...',
+              line,
+            });
+          }
+        }
+      };
+
+      child.stdout?.on('data', pump);
+      child.stderr?.on('data', pump);
+
+      child.on('close', (code) => {
+        job = null;
+        if (
+          tempImage &&
+          fs.existsSync(tempImage) &&
+          tempImage.includes('temp-input-')
+        ) {
+          try {
+            fs.rmSync(tempImage, { force: true });
+          } catch {}
+        }
+
+        if (code === 0 && fs.existsSync(destFile)) {
+          const thumbFile = path.join(AI_THUMBS_DIR, `${filename}.jpg`);
+          generateThumb(destFile, thumbFile);
+
+          let duration = frames / 24;
+          try {
+            duration = Math.round(probeDuration(destFile) * 10) / 10;
+          } catch {}
+
+          const st = fs.statSync(destFile);
+          const meta = readVideoMeta();
+          const record = {
+            id: filename,
+            filename,
+            prompt: cleanPrompt,
+            negative: body.negative_prompt,
+            duration,
+            frames,
+            width,
+            height,
+            audio: body.audio !== false,
+            aspect: body.aspect || '9:16',
+            createdAt: Date.now(),
+            size: st.size,
+            hasThumb: fs.existsSync(thumbFile),
+          };
+          meta.unshift(record);
+          fs.writeFileSync(
+            path.join(AI_VIDEOS_DIR, 'metadata.json'),
+            JSON.stringify(meta, null, 2),
+          );
+
+          broadcast('video-progress', {
+            stage: 3,
+            percent: 100,
+            status: 'Generation Completed!',
+          });
+          broadcast('video-done', { ok: true, video: record });
+          broadcast('done', { label: jobLabel, code: 0, ok: true });
+        } else {
+          broadcast('video-progress', {
+            stage: 0,
+            percent: 0,
+            status: `Failed (exit code ${code})`,
+          });
+          broadcast('video-done', {
+            ok: false,
+            error: `Process exited with code ${code}`,
+          });
+          broadcast('done', { label: jobLabel, code: code ?? 1, ok: false });
+        }
+      });
+
+      json(res, 200, { ok: true, filename, started: true });
+      return;
+    }
+
 
     // Fast Remaster: re-runs only render-music + master-final in 2-3s
     if (route === '/api/remaster' && req.method === 'POST') {

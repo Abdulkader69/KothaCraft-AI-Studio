@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KothaCraft AI Studio — AI Video Generation</title>
+    <link rel="stylesheet" href="/ui.css" />
+    <style>
+      .video-studio-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(380px, 1fr);
+        gap: 20px;
+        align-items: start;
+      }
+      @media (max-width: 1040px) {
+        .video-studio-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .panel-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .panel-card h2 {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .prompt-box {
+        width: 100%;
+        min-height: 110px;
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        padding: 12px;
+        border-radius: 8px;
+        font: inherit;
+        resize: vertical;
+        box-sizing: border-box;
+      }
+      .prompt-box:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+      .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tag-pill {
+        background: rgba(110, 168, 254, 0.08);
+        border: 1px solid rgba(110, 168, 254, 0.25);
+        color: var(--accent);
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+      .tag-pill:hover {
+        background: rgba(110, 168, 254, 0.2);
+        border-color: var(--accent);
+      }
+      .btn-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        gap: 8px;
+      }
+      .choice-btn {
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        padding: 10px 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        transition: all 0.15s;
+      }
+      .choice-btn small {
+        color: var(--dim);
+        font-size: 10px;
+      }
+      .choice-btn.active {
+        border-color: var(--accent);
+        background: rgba(110, 168, 254, 0.12);
+        color: #fff;
+      }
+      .choice-btn.active small {
+        color: var(--accent);
+      }
+      .dropzone {
+        border: 2px dashed var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.01);
+        cursor: pointer;
+        position: relative;
+        transition: border-color 0.15s;
+      }
+      .dropzone:hover, .dropzone.dragover {
+        border-color: var(--accent);
+        background: rgba(110, 168, 254, 0.04);
+      }
+      .dropzone img {
+        max-height: 120px;
+        border-radius: 6px;
+        margin-top: 8px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .action-btn-main {
+        background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        padding: 14px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(46, 160, 67, 0.25);
+        transition: all 0.15s;
+      }
+      .action-btn-main:hover {
+        background: linear-gradient(135deg, #2ea043 0%, #3fb950 100%);
+        box-shadow: 0 6px 16px rgba(46, 160, 67, 0.35);
+      }
+      .action-btn-main:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .progress-card {
+        background: var(--panel-2);
+        border: 1px solid rgba(110, 168, 254, 0.3);
+        border-radius: 8px;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .prog-bar-bg {
+        height: 8px;
+        background: var(--line);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .prog-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #6ea8fe 0%, #a371f7 100%);
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+      .player-container {
+        position: relative;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 280px;
+      }
+      .player-container video {
+        max-width: 100%;
+        max-height: 520px;
+        display: block;
+        border-radius: 6px;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 14px;
+      }
+      .gallery-item {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: transform 0.15s, border-color 0.15s;
+        position: relative;
+      }
+      .gallery-item:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+      }
+      .gallery-thumb-wrap {
+        width: 100%;
+        height: 125px;
+        background: #05070a;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .gallery-thumb-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .gallery-meta {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .gallery-title {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--ink);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .gallery-badges {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+      .badge {
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background: var(--panel-2);
+        color: var(--dim);
+        border: 1px solid var(--line);
+      }
+      .badge.accent {
+        color: var(--accent);
+        border-color: rgba(110, 168, 254, 0.3);
+      }
+      .actions-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .btn-sec {
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: all 0.15s;
+      }
+      .btn-sec:hover {
+        background: var(--line);
+        border-color: var(--dim);
+      }
+      .btn-sec.danger:hover {
+        border-color: var(--bad);
+        color: var(--bad);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>KothaCraft AI Studio</h1>
+      <nav class="nav">
+        <a id="navVideo" class="active" href="/video">🎥 AI Video</a>
+        <a id="navReels" href="/">🎬 Reels</a>
+        <a id="navDialogue" href="/dialogue">💬 Dialogue</a>
+        <a id="navVerses" href="/verses">📖 Verse reels</a>
+        <a id="navCards" href="/cards">🎴 Photo cards</a>
+      </nav>
+      <div class="caps" id="caps">
+        <span class="chip ok">LTX-2.3 Q8 Ready (Metal 8.2 GB)</span>
+      </div>
+    </header>
+
+    <main style="max-width: 1560px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 24px;">
+      <div class="video-studio-grid">
+        <!-- LEFT: Generation Controls -->
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div class="panel-card">
+            <h2>
+              <span>Prompt Description</span>
+              <span id="charCount" style="font-size: 11px; color: var(--dim); font-weight: normal;">0 chars</span>
+            </h2>
+            <textarea
+              id="prompt"
+              class="prompt-box"
+              placeholder="Describe what you want to see moving (e.g. A majestic golden eagle soaring above snow-capped mountain peaks at sunrise, cinematic 4k)..."
+            ></textarea>
+
+            <div>
+              <div style="font-size: 11px; color: var(--dim); margin-bottom: 6px; text-transform: uppercase; font-weight: 600;">
+                Quick Inspiration Ideas
+              </div>
+              <div class="tag-cloud">
+                <span class="tag-pill" data-prompt="A majestic golden eagle soaring over snow-capped mountain peaks at sunrise, cinematic">🦅 Mountain Eagle</span>
+                <span class="tag-pill" data-prompt="A cozy steaming cup of coffee next to rain droplets on a cafe window, warm moody lighting">☕ Rainy Cafe</span>
+                <span class="tag-prompt tag-pill" data-prompt="Cinematic drone flyover above a traditional Bengali river village at golden hour, wooden boats drifting">🌅 Bengal River</span>
+                <span class="tag-pill" data-prompt="Cyberpunk street in the rain with glowing neon signs reflecting on wet asphalt, slow camera push">🏙️ Cyberpunk Neon</span>
+                <span class="tag-pill" data-prompt="Gentle ocean waves rolling onto a tropical beach with palm tree silhouettes at dusk">🌊 Ocean Dusk</span>
+                <span class="tag-pill" data-prompt="Slow camera pan across an ancient illuminated mosque courtyard with starry night sky">🕌 Night Mosque</span>
+              </div>
+            </div>
+
+            <details style="font-size: 12px; color: var(--dim);">
+              <summary style="cursor: pointer; padding: 4px 0;">Negative Prompt (Optional)</summary>
+              <textarea
+                id="negativePrompt"
+                class="prompt-box"
+                style="min-height: 60px; margin-top: 8px;"
+                placeholder="blurry, distorted, jitter, bad anatomy, artifacts, oversaturated..."
+              ></textarea>
+            </details>
+          </div>
+
+          <!-- DURATION & FRAMES -->
+          <div class="panel-card">
+            <h2>Clip Duration</h2>
+            <div class="btn-group" id="durationGroup">
+              <button class="choice-btn active" data-frames="25" data-duration="1">
+                <strong>1.0s</strong>
+                <small>25 frames (~1.8m)</small>
+              </button>
+              <button class="choice-btn" data-frames="49" data-duration="2">
+                <strong>2.0s</strong>
+                <small>49 frames (~3.5m)</small>
+              </button>
+              <button class="choice-btn" data-frames="73" data-duration="3">
+                <strong>3.0s</strong>
+                <small>73 frames (~5.0m)</small>
+              </button>
+              <button class="choice-btn" data-frames="97" data-duration="4">
+                <strong>4.0s</strong>
+                <small>97 frames (~6.5m)</small>
+              </button>
+              <button class="choice-btn" data-frames="121" data-duration="5">
+                <strong>5.0s</strong>
+                <small>121 frames (~8.5m)</small>
+              </button>
+            </div>
+          </div>
+
+          <!-- ASPECT RATIO & RESOLUTION -->
+          <div class="panel-card">
+            <h2>Aspect Ratio & Resolution</h2>
+            <div class="btn-group" id="aspectGroup">
+              <button class="choice-btn active" data-aspect="9:16" data-res="448x704">
+                <strong>9:16 Vertical</strong>
+                <small>448 × 704 (Shorts / Reels)</small>
+              </button>
+              <button class="choice-btn" data-aspect="16:9" data-res="704x448">
+                <strong>16:9 Landscape</strong>
+                <small>704 × 448 (YouTube)</small>
+              </button>
+              <button class="choice-btn" data-aspect="1:1" data-res="512x512">
+                <strong>1:1 Square</strong>
+                <small>512 × 512 (Feed)</small>
+              </button>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px; padding-top: 4px;">
+              <input type="checkbox" id="audioToggle" checked style="width: auto; cursor: pointer;" />
+              <label for="audioToggle" style="font-size: 13px; cursor: pointer;">
+                Synchronized Audio Track <span style="color: var(--dim);">(generates matched ambient sound effects)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- IMAGE-TO-VIDEO CONDITIONING -->
+          <div class="panel-card">
+            <h2>
+              <span>Image-to-Video Conditioning</span>
+              <button id="clearImgBtn" class="btn-sec" style="padding: 2px 8px; font-size: 11px; display: none;">Clear</button>
+            </h2>
+            <div class="dropzone" id="imgDropzone">
+              <input type="file" id="imgFile" accept="image/png,image/jpeg,image/webp" style="display: none;" />
+              <div id="dropText">
+                <div style="font-size: 24px; margin-bottom: 4px;">🖼️</div>
+                <div style="font-size: 12px; font-weight: 500;">Drop an image here, or click to browse</div>
+                <div style="font-size: 11px; color: var(--dim); margin-top: 4px;">Animates the starting photo into motion</div>
+              </div>
+              <img id="imgPreview" style="display: none;" alt="Preview" />
+            </div>
+          </div>
+
+          <!-- GENERATE ACTION -->
+          <button id="btnGenerate" class="action-btn-main">
+            <span>✨ Generate AI Video (LTX-2 MLX)</span>
+          </button>
+        </div>
+
+        <!-- RIGHT: Live Player & Progress HUD -->
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <!-- Progress HUD -->
+          <div id="progressCard" class="progress-card" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong id="progStage" style="font-size: 13px; color: var(--accent);">Initializing Model...</strong>
+              <span id="progPct" style="font-size: 12px; font-weight: 600; color: var(--ink);">0%</span>
+            </div>
+            <div class="prog-bar-bg">
+              <div id="progFill" class="prog-bar-fill"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--dim);">
+              <span id="progDetail">Loading weights onto Apple Silicon GPU...</span>
+              <button id="btnCancel" class="btn-sec danger" style="padding: 3px 8px; font-size: 11px;">Cancel</button>
+            </div>
+            <pre id="liveLog" style="margin: 0; background: var(--bg); padding: 8px; border-radius: 4px; font-size: 10px; max-height: 80px; overflow-y: auto; color: var(--dim); border: 1px solid var(--line); white-space: pre-wrap;"></pre>
+          </div>
+
+          <!-- Video Player -->
+          <div class="panel-card">
+            <h2>
+              <span id="playerTitle">Video Preview</span>
+              <span id="playerMeta" style="font-size: 11px; color: var(--dim); font-weight: normal;"></span>
+            </h2>
+            <div class="player-container">
+              <video id="mainVideo" controls autoplay loop playsinline poster="">
+                <source id="videoSource" src="" type="video/mp4" />
+                Your browser does not support HTML5 video.
+              </video>
+            </div>
+
+            <!-- Interoperability Action Bar -->
+            <div class="actions-bar" id="playerActions" style="margin-top: 4px;">
+              <button id="btnToStock" class="btn-sec" title="Saves this video into stock/ library for use in all studios">
+                📁 Save to Stock
+              </button>
+              <button id="btnDownload" class="btn-sec" title="Download video file to your Mac">
+                ⬇️ Download MP4
+              </button>
+              <button id="btnToReelScene" class="btn-sec" title="Add as a scene in the current Story Reel">
+                🎬 Use in Story Reel
+              </button>
+              <button id="btnToDialogue" class="btn-sec" title="Add to current Dialogue Reel">
+                💬 Use in Dialogue
+              </button>
+            </div>
+
+            <div id="actionToast" style="display: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; background: rgba(63, 185, 80, 0.15); border: 1px solid var(--ok); color: var(--ok); text-align: center;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM: Recent Creations Gallery -->
+      <div class="panel-card">
+        <h2>
+          <span>Recent AI Creations Gallery</span>
+          <button id="btnRefreshGallery" class="btn-sec" style="padding: 3px 10px; font-size: 11px;">🔄 Refresh</button>
+        </h2>
+        <div id="galleryContainer" class="gallery-grid">
+          <div style="grid-column: 1 / -1; color: var(--dim); text-align: center; padding: 30px;">
+            Loading generated videos...
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let activeVideo = null;
+      let selectedFrames = 25;
+      let selectedDuration = 1;
+      let selectedAspect = '9:16';
+      let selectedRes = '448x704';
+      let attachedImageData = null;
+      let isBusy = false;
+
+      // Elements
+      const promptInput = document.getElementById('prompt');
+      const negativeInput = document.getElementById('negativePrompt');
+      const charCount = document.getElementById('charCount');
+      const btnGenerate = document.getElementById('btnGenerate');
+      const btnCancel = document.getElementById('btnCancel');
+      const progressCard = document.getElementById('progressCard');
+      const progFill = document.getElementById('progFill');
+      const progPct = document.getElementById('progPct');
+      const progStage = document.getElementById('progStage');
+      const progDetail = document.getElementById('progDetail');
+      const liveLog = document.getElementById('liveLog');
+      const mainVideo = document.getElementById('mainVideo');
+      const videoSource = document.getElementById('videoSource');
+      const playerTitle = document.getElementById('playerTitle');
+      const playerMeta = document.getElementById('playerMeta');
+      const galleryContainer = document.getElementById('galleryContainer');
+      const actionToast = document.getElementById('actionToast');
+
+      // Tag Inspiration click
+      document.querySelectorAll('.tag-pill').forEach((pill) => {
+        pill.addEventListener('click', () => {
+          promptInput.value = pill.dataset.prompt;
+          updateCharCount();
+          promptInput.focus();
+        });
+      });
+
+      function updateCharCount() {
+        charCount.textContent = `${promptInput.value.length} chars`;
+      }
+      promptInput.addEventListener('input', updateCharCount);
+
+      // Duration selector
+      document.getElementById('durationGroup').addEventListener('click', (e) => {
+        const btn = e.target.closest('.choice-btn');
+        if (!btn) return;
+        document.querySelectorAll('#durationGroup .choice-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedFrames = Number(btn.dataset.frames);
+        selectedDuration = Number(btn.dataset.duration);
+      });
+
+      // Aspect ratio selector
+      document.getElementById('aspectGroup').addEventListener('click', (e) => {
+        const btn = e.target.closest('.choice-btn');
+        if (!btn) return;
+        document.querySelectorAll('#aspectGroup .choice-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedAspect = btn.dataset.aspect;
+        selectedRes = btn.dataset.res;
+      });
+
+      // Image Dropzone
+      const imgDropzone = document.getElementById('imgDropzone');
+      const imgFileInput = document.getElementById('imgFile');
+      const imgPreview = document.getElementById('imgPreview');
+      const dropText = document.getElementById('dropText');
+      const clearImgBtn = document.getElementById('clearImgBtn');
+
+      imgDropzone.addEventListener('click', () => imgFileInput.click());
+      imgDropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        imgDropzone.classList.add('dragover');
+      });
+      imgDropzone.addEventListener('dragleave', () => imgDropzone.classList.remove('dragover'));
+      imgDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        imgDropzone.classList.remove('dragover');
+        if (e.dataTransfer.files?.[0]) handleImageFile(e.dataTransfer.files[0]);
+      });
+      imgFileInput.addEventListener('change', (e) => {
+        if (e.target.files?.[0]) handleImageFile(e.target.files[0]);
+      });
+
+      function handleImageFile(file) {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          attachedImageData = evt.target.result;
+          imgPreview.src = attachedImageData;
+          imgPreview.style.display = 'block';
+          dropText.style.display = 'none';
+          clearImgBtn.style.display = 'inline-block';
+        };
+        reader.readAsDataURL(file);
+      }
+
+      clearImgBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        attachedImageData = null;
+        imgPreview.src = '';
+        imgPreview.style.display = 'none';
+        dropText.style.display = 'block';
+        clearImgBtn.style.display = 'none';
+        imgFileInput.value = '';
+      });
+
+      // Toast feedback helper
+      function showToast(msg) {
+        actionToast.textContent = msg;
+        actionToast.style.display = 'block';
+        setTimeout(() => {
+          actionToast.style.display = 'none';
+        }, 3500);
+      }
+
+      // Generate Button Click
+      btnGenerate.addEventListener('click', async () => {
+        const prompt = promptInput.value.trim();
+        if (!prompt) {
+          promptInput.focus();
+          alert('Please enter a prompt first.');
+          return;
+        }
+
+        const [w, h] = selectedRes.split('x').map(Number);
+        const payload = {
+          prompt,
+          negative_prompt: negativeInput.value.trim(),
+          duration: selectedDuration,
+          frames: selectedFrames,
+          width: w,
+          height: h,
+          aspect: selectedAspect,
+          audio: document.getElementById('audioToggle').checked,
+          image: attachedImageData || undefined,
+        };
+
+        btnGenerate.disabled = true;
+        progressCard.style.display = 'flex';
+        progFill.style.width = '5%';
+        progPct.textContent = '5%';
+        progStage.textContent = 'Starting LTX-2 MLX Engine...';
+        progDetail.textContent = `Rendering ${selectedFrames} frames (${selectedDuration}s) @ 24fps`;
+        liveLog.textContent = 'Launching generation job...';
+
+        try {
+          const res = await fetch('/api/video/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json();
+          if (!res.ok) {
+            alert(`Error: ${data.error || 'Failed to start generation'}`);
+            btnGenerate.disabled = false;
+            progressCard.style.display = 'none';
+          }
+        } catch (err) {
+          alert(`Network error: ${err.message}`);
+          btnGenerate.disabled = false;
+          progressCard.style.display = 'none';
+        }
+      });
+
+      // Cancel button
+      btnCancel.addEventListener('click', async () => {
+        if (confirm('Cancel current generation?')) {
+          await fetch('/api/cancel', { method: 'POST' });
+          progStage.textContent = 'Cancelling...';
+        }
+      });
+
+      // Server-Sent Events (SSE)
+      const es = new EventSource('/api/events');
+      es.addEventListener('video-progress', (e) => {
+        const d = JSON.parse(e.data);
+        if (d.percent !== undefined) {
+          progFill.style.width = `${d.percent}%`;
+          progPct.textContent = `${d.percent}%`;
+        }
+        if (d.status) progStage.textContent = d.status;
+        if (d.line) {
+          progDetail.textContent = d.line;
+          liveLog.textContent += `\n${d.line}`;
+          liveLog.scrollTop = liveLog.scrollHeight;
+        }
+      });
+
+      es.addEventListener('video-done', (e) => {
+        const d = JSON.parse(e.data);
+        btnGenerate.disabled = false;
+        if (d.ok && d.video) {
+          progFill.style.width = '100%';
+          progPct.textContent = '100%';
+          progStage.textContent = 'Generation Completed!';
+          setTimeout(() => {
+            progressCard.style.display = 'none';
+          }, 2000);
+          loadVideoInPlayer(d.video);
+          loadGallery();
+          showToast('Video generated successfully!');
+        } else {
+          progressCard.style.display = 'none';
+          alert(`Video generation failed: ${d.error || 'Unknown error'}`);
+        }
+      });
+
+      es.addEventListener('done', () => {
+        btnGenerate.disabled = false;
+      });
+
+      // Load Video in Main Player
+      function loadVideoInPlayer(video) {
+        activeVideo = video;
+        playerTitle.textContent = video.prompt;
+        playerMeta.textContent = `${video.duration}s • ${video.width}×${video.height} • ${(video.size / (1024 * 1024)).toFixed(1)} MB`;
+        const streamUrl = `/api/video/stream?file=${encodeURIComponent(video.filename)}`;
+        videoSource.src = streamUrl;
+        mainVideo.load();
+        mainVideo.play().catch(() => {});
+      }
+
+      // Action: Download
+      document.getElementById('btnDownload').addEventListener('click', () => {
+        if (!activeVideo) return;
+        const a = document.createElement('a');
+        a.href = `/api/video/stream?file=${encodeURIComponent(activeVideo.filename)}`;
+        a.download = activeVideo.filename;
+        a.click();
+      });
+
+      // Action: Save to Stock
+      document.getElementById('btnToStock').addEventListener('click', async () => {
+        if (!activeVideo) return;
+        try {
+          const res = await fetch('/api/video/to-stock', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ file: activeVideo.filename }),
+          });
+          const d = await res.json();
+          if (d.ok) {
+            showToast(`Saved to stock as "${d.stockName}"! Now available in all studios.`);
+          } else {
+            alert(d.error || 'Failed to save to stock');
+          }
+        } catch (err) {
+          alert(err.message);
+        }
+      });
+
+      // Action: Use in Story Reel
+      document.getElementById('btnToReelScene').addEventListener('click', async () => {
+        if (!activeVideo) return;
+        const idxStr = window.prompt('Which scene number would you like to assign this video to? (1 for Scene 1)', '1');
+        if (!idxStr) return;
+        const sceneIndex = Math.max(0, parseInt(idxStr, 10) - 1);
+        try {
+          const res = await fetch('/api/video/to-scene', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ file: activeVideo.filename, sceneIndex, mode: 'reels' }),
+          });
+          const d = await res.json();
+          if (d.ok) {
+            showToast(`Added to Scene ${sceneIndex + 1}! Redirecting to Story Reels...`);
+            setTimeout(() => {
+              window.location.href = '/';
+            }, 1200);
+          } else {
+            alert(d.error || 'Failed to assign to scene');
+          }
+        } catch (err) {
+          alert(err.message);
+        }
+      });
+
+      // Action: Use in Dialogue
+      document.getElementById('btnToDialogue').addEventListener('click', async () => {
+        if (!activeVideo) return;
+        const idxStr = window.prompt('Which dialogue scene number? (1 for Scene 1)', '1');
+        if (!idxStr) return;
+        const sceneIndex = Math.max(0, parseInt(idxStr, 10) - 1);
+        try {
+          const res = await fetch('/api/video/to-scene', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ file: activeVideo.filename, sceneIndex, mode: 'dialogue' }),
+          });
+          const d = await res.json();
+          if (d.ok) {
+            showToast(`Added to Dialogue Scene ${sceneIndex + 1}! Redirecting...`);
+            setTimeout(() => {
+              window.location.href = '/dialogue';
+            }, 1200);
+          } else {
+            alert(d.error || 'Failed to assign');
+          }
+        } catch (err) {
+          alert(err.message);
+        }
+      });
+
+      // Gallery Loader
+      async function loadGallery() {
+        try {
+          const res = await fetch('/api/video/gallery');
+          const data = await res.json();
+          const videos = data.videos || [];
+          if (!videos.length) {
+            galleryContainer.innerHTML = '<div style="grid-column: 1 / -1; color: var(--dim); text-align: center; padding: 24px;">No AI videos generated yet. Enter a prompt above and click Generate!</div>';
+            return;
+          }
+
+          galleryContainer.innerHTML = '';
+          videos.forEach((v) => {
+            const card = document.createElement('div');
+            card.className = 'gallery-item';
+            const thumbUrl = `/api/video/thumb?file=${encodeURIComponent(v.filename)}`;
+            card.innerHTML = `
+              <div class="gallery-thumb-wrap">
+                <img src="${thumbUrl}" alt="thumb" onerror="this.src='/ui.css'" />
+                <span style="position: absolute; bottom: 6px; right: 6px; background: rgba(0,0,0,0.8); color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 4px;">${v.duration}s</span>
+              </div>
+              <div class="gallery-meta">
+                <div class="gallery-title" title="${v.prompt}">${v.prompt}</div>
+                <div class="gallery-badges">
+                  <span class="badge accent">${v.width}×${v.height}</span>
+                  <span class="badge">${v.aspect}</span>
+                  ${v.audio ? '<span class="badge">🔊 audio</span>' : ''}
+                </div>
+              </div>
+            `;
+            card.addEventListener('click', () => {
+              loadVideoInPlayer(v);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            galleryContainer.appendChild(card);
+          });
+
+          // Auto-load newest video if nothing is active
+          if (!activeVideo && videos.length > 0) {
+            loadVideoInPlayer(videos[0]);
+          }
+        } catch (err) {
+          galleryContainer.innerHTML = `<div style="grid-column: 1 / -1; color: var(--bad); text-align: center; padding: 20px;">Failed to load gallery: ${err.message}</div>`;
+        }
+      }
+
+      document.getElementById('btnRefreshGallery').addEventListener('click', loadGallery);
+
+      // Initialize
+      loadGallery();
+    </script>
+  </body>
+</html>
